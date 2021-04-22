@@ -1,0 +1,27 @@
+{
+  "name": "ppns-repository",
+  "version": "1.0.0",
+  "description": "Ahu PPNS Database Repository",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": "http://devocp-gitlab.dc.ahu.go.id/ahu-ppns-dev/ppns-repository",
+  "author": "Deni Dharmatin",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.11.1",
+    "@types/validator": "^13.1.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "class-validator": "^0.13.1",
+    "bluebird": "^3.7.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.26"
+  }
+}
