@@ -19,11 +19,11 @@ export class Badwords extends Base {
     words: string;
 
     @Column({
-        name: "words_type",
+        name: "badwords_type_id",
         type: "tinyint",
         nullable: false
     })
-    wordsType: number;
+    badwordsTypeId: number;
 
     @Column({
         name: "words_code",
