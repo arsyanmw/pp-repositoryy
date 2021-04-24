@@ -1,4 +1,4 @@
-import { Identity } from "../entity/Identity";
+import { Identity } from '../entity/Identity';
 interface TempData {
     nik?: string;
     email?: string;

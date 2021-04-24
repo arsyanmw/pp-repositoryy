@@ -33,29 +33,29 @@ var TransactionType = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], TransactionType.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], TransactionType.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "display_name",
-            type: "varchar",
+            name: 'display_name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], TransactionType.prototype, "displayName", void 0);
     TransactionType = __decorate([
-        typeorm_1.Entity({ name: "transaction_type" })
+        typeorm_1.Entity({ name: 'transaction_type' })
     ], TransactionType);
     return TransactionType;
 }(Base_1.Base));

@@ -1,4 +1,4 @@
-import { Base } from "./Base";
+import { Base } from './Base';
 export declare class EstablishmentPpOwner extends Base {
     id: number;
     establishmentPpId: number;

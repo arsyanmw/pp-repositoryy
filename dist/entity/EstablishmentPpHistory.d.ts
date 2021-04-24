@@ -1,5 +1,5 @@
-import { Base } from "./Base";
-import { SubDistrict } from "./SubDistrict";
+import { Base } from './Base';
+import { SubDistrict } from './SubDistrict';
 export declare class EstablishmentPpHistory extends Base {
     id: number;
     insertedAt: Date;

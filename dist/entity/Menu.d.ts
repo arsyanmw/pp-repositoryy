@@ -1,5 +1,5 @@
-import { Base } from "./Base";
-import { ActionMenu } from "./ActionMenu";
+import { Base } from './Base';
+import { ActionMenu } from './ActionMenu';
 export declare class Menu extends Base {
     id: number;
     level: number;

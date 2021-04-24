@@ -33,45 +33,45 @@ var Country = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Country.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "code",
-            type: "varchar",
+            name: 'code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Country.prototype, "code", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Country.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "latitude",
-            type: "varchar",
-            length: 255
+            name: 'latitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Country.prototype, "latitude", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "longitude",
-            type: "varchar",
-            length: 255
+            name: 'longitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Country.prototype, "longitude", void 0);
     Country = __decorate([
-        typeorm_1.Entity({ name: "country" })
+        typeorm_1.Entity({ name: 'country' })
     ], Country);
     return Country;
 }(Base_1.Base));

@@ -35,27 +35,27 @@ var AccessMenu = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], AccessMenu.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Group_1.Group; }),
         typeorm_1.JoinColumn({
-            name: "groups_id",
-            referencedColumnName: "id"
+            name: 'groups_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Group_1.Group)
     ], AccessMenu.prototype, "group", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return ActionMenu_1.ActionMenu; }),
         typeorm_1.JoinColumn({
-            name: "action_menu_id",
-            referencedColumnName: "id"
+            name: 'action_menu_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", ActionMenu_1.ActionMenu)
     ], AccessMenu.prototype, "actionMenu", void 0);
     AccessMenu = __decorate([
-        typeorm_1.Entity({ name: "access_menu" })
+        typeorm_1.Entity({ name: 'access_menu' })
     ], AccessMenu);
     return AccessMenu;
 }(Base_1.Base));

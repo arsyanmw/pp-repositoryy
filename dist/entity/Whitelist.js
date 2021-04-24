@@ -33,28 +33,28 @@ var Whitelist = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Whitelist.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "whitelist_name",
-            type: "varchar",
+            name: 'whitelist_name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Whitelist.prototype, "whitelistName", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "whitelist_type",
-            type: "tinyint",
-            nullable: false
+            name: 'whitelist_type',
+            type: 'tinyint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], Whitelist.prototype, "whitelistType", void 0);
     Whitelist = __decorate([
-        typeorm_1.Entity({ name: "whitelist" })
+        typeorm_1.Entity({ name: 'whitelist' })
     ], Whitelist);
     return Whitelist;
 }(Base_1.Base));

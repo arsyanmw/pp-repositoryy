@@ -33,29 +33,29 @@ var NormalizationWords = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], NormalizationWords.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "right_words",
-            type: "varchar",
+            name: 'right_words',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], NormalizationWords.prototype, "rightWords", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "left_words",
-            type: "varchar",
+            name: 'left_words',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], NormalizationWords.prototype, "leftWords", void 0);
     NormalizationWords = __decorate([
-        typeorm_1.Entity({ name: "normalization_words" })
+        typeorm_1.Entity({ name: 'normalization_words' })
     ], NormalizationWords);
     return NormalizationWords;
 }(Base_1.Base));

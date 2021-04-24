@@ -1,6 +1,6 @@
-import { Base } from "./Base";
-import { IdentityGroup } from "./IdentityGroup";
-import { AccessMenu } from "./AccessMenu";
+import { Base } from './Base';
+import { IdentityGroup } from './IdentityGroup';
+import { AccessMenu } from './AccessMenu';
 export declare class Group extends Base {
     id: number;
     parentId: number;

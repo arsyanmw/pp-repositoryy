@@ -33,28 +33,28 @@ var Position = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Position.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Position.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "display_name",
-            type: "varchar",
-            length: 255
+            name: 'display_name',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Position.prototype, "displayName", void 0);
     Position = __decorate([
-        typeorm_1.Entity({ name: "position" })
+        typeorm_1.Entity({ name: 'position' })
     ], Position);
     return Position;
 }(Base_1.Base));

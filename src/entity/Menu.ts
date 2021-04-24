@@ -1,67 +1,61 @@
-import { Base } from "./Base";
-import { ActionMenu } from "./ActionMenu"
+import { Base } from './Base';
+import { ActionMenu } from './ActionMenu';
 
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    OneToMany,
-    JoinTable
-} from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinTable } from 'typeorm';
 
-@Entity({name: "menu"})
+@Entity({ name: 'menu' })
 export class Menu extends Base {
-    @PrimaryGeneratedColumn("increment")
-    id:number;
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
     @Column({
-        type: "int",
-        name: "level",
+        type: 'int',
+        name: 'level',
         nullable: false,
-        default: 0
+        default: 0,
     })
     level: number;
 
     @Column({
-        type: "varchar",
-        name: "name",
+        type: 'varchar',
+        name: 'name',
         nullable: false,
-        length: 255
+        length: 255,
     })
     name: string;
 
     @Column({
-        type: "varchar",
-        name: "display_name",
+        type: 'varchar',
+        name: 'display_name',
         nullable: true,
-        length: 255
+        length: 255,
     })
     displayName: string;
 
     @Column({
-        type: "int",
-        name: "order_value",
-        nullable: true
+        type: 'int',
+        name: 'order_value',
+        nullable: true,
     })
     orderValue: number;
 
     @Column({
-        type: "longtext",
-        name: "description"
+        type: 'longtext',
+        name: 'description',
     })
     description: string;
 
     @Column({
-        type: "varchar",
-        name: "image_url",
+        type: 'varchar',
+        name: 'image_url',
         nullable: true,
-        length: 255
+        length: 255,
     })
     image_url: string;
 
-    @OneToMany(type => ActionMenu, actionMenu => actionMenu.menu)
+    @OneToMany((type) => ActionMenu, (actionMenu) => actionMenu.menu)
     @JoinTable({
-      name: "id"
+        name: 'id',
     })
     actionMenus: ActionMenu[];
 }

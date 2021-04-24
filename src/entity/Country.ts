@@ -1,42 +1,38 @@
-import { Base } from "./Base";
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column, ManyToOne, JoinColumn
-} from "typeorm";
+import { Base } from './Base';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({name: "country"})
+@Entity({ name: 'country' })
 export class Country extends Base {
-    @PrimaryGeneratedColumn("increment")
-    id:number;
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
     @Column({
-        name: "code",
-        type: "varchar",
+        name: 'code',
+        type: 'varchar',
         length: 255,
-        nullable: false
+        nullable: false,
     })
     code: string;
 
     @Column({
-        name: "name",
-        type: "varchar",
+        name: 'name',
+        type: 'varchar',
         length: 255,
-        nullable: false
+        nullable: false,
     })
     name: string;
 
     @Column({
-        name: "latitude",
-        type: "varchar",
-        length: 255
+        name: 'latitude',
+        type: 'varchar',
+        length: 255,
     })
     latitude: string;
 
     @Column({
-        name: "longitude",
-        type: "varchar",
-        length: 255
+        name: 'longitude',
+        type: 'varchar',
+        length: 255,
     })
     longitude: string;
 }

@@ -1,4 +1,4 @@
-import { Base } from "./Base";
+import { Base } from './Base';
 export declare class Position extends Base {
     id: number;
     name: string;

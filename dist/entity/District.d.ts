@@ -1,5 +1,5 @@
-import { Base } from "./Base";
-import { City } from "./City";
+import { Base } from './Base';
+import { City } from './City';
 export declare class District extends Base {
     id: number;
     city: City;

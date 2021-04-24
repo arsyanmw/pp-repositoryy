@@ -34,123 +34,123 @@ var EstablishmentPpBenefit = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], EstablishmentPpBenefit.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "establishment_pp_id",
-            type: "bigint",
-            nullable: false
+            name: 'establishment_pp_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpBenefit.prototype, "establishmentPpId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "criteria_value",
-            type: "varchar",
+            name: 'criteria_value',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "criteriaValue", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "identities_id",
-            type: "bigint",
-            nullable: false
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpBenefit.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_name",
-            type: "varchar",
+            name: 'benefit_name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitName", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "identity_type_id",
-            type: "bigint",
-            nullable: false
+            name: 'identity_type_id',
+            type: 'bigint',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], EstablishmentPpBenefit.prototype, "identityTypeId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "identity_value",
-            type: "varchar",
+            name: 'identity_value',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "identityValue", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_birthplace",
-            type: "varchar",
+            name: 'benefit_birthplace',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitBirthplace", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_birthdate",
-            type: "date",
-            nullable: false
+            name: 'benefit_birthdate',
+            type: 'date',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", Date)
     ], EstablishmentPpBenefit.prototype, "benefitBirthdate", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_address",
-            type: "varchar",
+            name: 'benefit_address',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitAddress", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_nationality",
-            type: "varchar",
+            name: 'benefit_nationality',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitNationality", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_npwp",
-            type: "varchar",
+            name: 'benefit_npwp',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitNpwp", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_relation",
-            type: "text",
-            nullable: false
+            name: 'benefit_relation',
+            type: 'text',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitRelation", void 0);
     EstablishmentPpBenefit = __decorate([
-        typeorm_1.Entity({ name: "establishment_pp_benefit" })
+        typeorm_1.Entity({ name: 'establishment_pp_benefit' })
     ], EstablishmentPpBenefit);
     return EstablishmentPpBenefit;
 }(Base_1.Base));

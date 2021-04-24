@@ -120,7 +120,7 @@ var connection = function (config) { return __awaiter(void 0, void 0, void 0, fu
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + "/entity/**/*"] });
+                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + '/entity/**/*'] });
                 return [4 /*yield*/, typeorm_1.createConnection(connectionOptions)];
             case 1: return [2 /*return*/, _a.sent()];
         }

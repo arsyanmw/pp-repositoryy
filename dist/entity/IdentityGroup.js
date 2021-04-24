@@ -35,27 +35,27 @@ var IdentityGroup = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], IdentityGroup.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Identity_1.Identity; }, function (identity) { return identity.identityGroups; }),
         typeorm_1.JoinColumn({
-            name: "identities_id",
-            referencedColumnName: "id"
+            name: 'identities_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Identity_1.Identity)
     ], IdentityGroup.prototype, "identity", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Group_1.Group; }, function (group) { return group.identityGroups; }),
         typeorm_1.JoinColumn({
-            name: "groups_id",
-            referencedColumnName: "id"
+            name: 'groups_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Group_1.Group)
     ], IdentityGroup.prototype, "group", void 0);
     IdentityGroup = __decorate([
-        typeorm_1.Entity({ name: "identities_group" })
+        typeorm_1.Entity({ name: 'identities_group' })
     ], IdentityGroup);
     return IdentityGroup;
 }(Base_1.Base));

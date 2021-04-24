@@ -34,61 +34,61 @@ var SubDistrict = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], SubDistrict.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return District_1.District; }),
         typeorm_1.JoinColumn({
-            name: "district_id",
-            referencedColumnName: "id"
+            name: 'district_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", District_1.District)
     ], SubDistrict.prototype, "district", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "code",
-            type: "varchar",
+            name: 'code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], SubDistrict.prototype, "code", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], SubDistrict.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "latitude",
-            type: "varchar",
-            length: 255
+            name: 'latitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], SubDistrict.prototype, "latitude", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "longitude",
-            type: "varchar",
-            length: 255
+            name: 'longitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], SubDistrict.prototype, "longitude", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "old_sub_district_id",
-            type: "int",
-            nullable: false
+            name: 'old_sub_district_id',
+            type: 'int',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], SubDistrict.prototype, "oldSubDistrictId", void 0);
     SubDistrict = __decorate([
-        typeorm_1.Entity({ name: "sub_district" })
+        typeorm_1.Entity({ name: 'sub_district' })
     ], SubDistrict);
     return SubDistrict;
 }(Base_1.Base));

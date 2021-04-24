@@ -1,6 +1,6 @@
-import { Base } from "./Base";
-import { SubDistrict } from "./SubDistrict";
-import { TransactionType } from "./TransactionType";
+import { Base } from './Base';
+import { SubDistrict } from './SubDistrict';
+import { TransactionType } from './TransactionType';
 export declare class EstablishmentPp extends Base {
     id: number;
     ppTypeId: number;

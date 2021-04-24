@@ -33,45 +33,45 @@ var Badwords = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Badwords.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "words",
-            type: "varchar",
+            name: 'words',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Badwords.prototype, "words", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "badwords_type_id",
-            type: "tinyint",
-            nullable: false
+            name: 'badwords_type_id',
+            type: 'tinyint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], Badwords.prototype, "badwordsTypeId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "words_code",
-            type: "varchar",
+            name: 'words_code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Badwords.prototype, "wordsCode", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "reason",
-            type: "varchar",
-            length: 255
+            name: 'reason',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Badwords.prototype, "reason", void 0);
     Badwords = __decorate([
-        typeorm_1.Entity({ name: "badwords" })
+        typeorm_1.Entity({ name: 'badwords' })
     ], Badwords);
     return Badwords;
 }(Base_1.Base));

@@ -33,27 +33,27 @@ var EstablishmentPpOwner = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], EstablishmentPpOwner.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "establishment_pp_id",
-            type: "bigint",
-            nullable: false
+            name: 'establishment_pp_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpOwner.prototype, "establishmentPpId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "identities_id",
-            type: "bigint",
-            nullable: false
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpOwner.prototype, "identitiesId", void 0);
     EstablishmentPpOwner = __decorate([
-        typeorm_1.Entity({ name: "establishment_pp_owner" })
+        typeorm_1.Entity({ name: 'establishment_pp_owner' })
     ], EstablishmentPpOwner);
     return EstablishmentPpOwner;
 }(Base_1.Base));
