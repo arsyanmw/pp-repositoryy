@@ -1,11 +1,11 @@
 {
-  "name": "ppns-repository",
+  "name": "ahu-pp-repository",
   "version": "1.0.0",
-  "description": "Ahu PPNS Database Repository",
+  "description": "AHU PP Database Repository",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": "http://devocp-gitlab.dc.ahu.go.id/ahu-ppns-dev/ppns-repository",
-  "author": "Deni Dharmatin",
+  "repository": "git@devocp-gitlab.dc.ahu.go.id:ahu-pp-dev/pp-repository.git",
+  "author": "flexi developer <flexi@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && tsc"
