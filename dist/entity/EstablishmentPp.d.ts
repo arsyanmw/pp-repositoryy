@@ -20,6 +20,10 @@ export declare class EstablishmentPp extends Base {
     perseroanPostalcode: number;
     perseroanPhone: number;
     perseroanCapital: number;
+    perseroanNpwp: number;
+    perseroanNpwpCreatedAt: Date;
+    perseroanKppCode: number;
+    perseroanKppName: number;
     fileStatement: string;
     fileCertificate: string;
 }

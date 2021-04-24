@@ -6,7 +6,7 @@ import {
 } from "typeorm";
 import {SubDistrict} from "./SubDistrict";
 import {TransactionType} from "./TransactionType";
-import {IsEmail, IsNotEmpty} from "class-validator";
+import {IsEmail, IsNotEmpty, IsDateString} from "class-validator";
 
 @Entity({name: "establishment_pp"})
 export class EstablishmentPp extends Base {
@@ -140,6 +140,32 @@ export class EstablishmentPp extends Base {
         type: "bigint"
     })
     perseroanCapital: number;
+
+    @Column({
+        name: "perseroan_npwp",
+        type: "bigint"
+    })
+    perseroanNpwp: number;
+
+    @Column({
+        name: "perseroan_npwp_created_at",
+        type: "date"
+    })
+    @IsDateString()
+    perseroanNpwpCreatedAt: Date;
+
+    @Column({
+        name: "perseroan_kpp_code",
+        type: "bigint"
+    })
+    perseroanKppCode: number;
+
+    @Column({
+        name: "perseroan_kpp_name",
+        type: "varchar",
+        length: 255
+    })
+    perseroanKppName: number;
 
     @Column({
         name: "file_statement",

@@ -186,6 +186,36 @@ var EstablishmentPp = /** @class */ (function (_super) {
     ], EstablishmentPp.prototype, "perseroanCapital", void 0);
     __decorate([
         typeorm_1.Column({
+            name: "perseroan_npwp",
+            type: "bigint"
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPp.prototype, "perseroanNpwp", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: "perseroan_npwp_created_at",
+            type: "date"
+        }),
+        class_validator_1.IsDateString(),
+        __metadata("design:type", Date)
+    ], EstablishmentPp.prototype, "perseroanNpwpCreatedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: "perseroan_kpp_code",
+            type: "bigint"
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPp.prototype, "perseroanKppCode", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: "perseroan_kpp_name",
+            type: "varchar",
+            length: 255
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPp.prototype, "perseroanKppName", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: "file_statement",
             type: "varchar",
             length: 255
