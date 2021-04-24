@@ -47,12 +47,12 @@ var Badwords = /** @class */ (function (_super) {
     ], Badwords.prototype, "words", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "words_type",
+            name: "badwords_type_id",
             type: "tinyint",
             nullable: false
         }),
         __metadata("design:type", Number)
-    ], Badwords.prototype, "wordsType", void 0);
+    ], Badwords.prototype, "badwordsTypeId", void 0);
     __decorate([
         typeorm_1.Column({
             name: "words_code",
