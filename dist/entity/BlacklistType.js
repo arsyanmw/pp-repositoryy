@@ -33,28 +33,28 @@ var BlacklistType = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], BlacklistType.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], BlacklistType.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "display_name",
-            type: "varchar",
-            length: 255
+            name: 'display_name',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], BlacklistType.prototype, "displayName", void 0);
     BlacklistType = __decorate([
-        typeorm_1.Entity({ name: "blacklist_type" })
+        typeorm_1.Entity({ name: 'blacklist_type' })
     ], BlacklistType);
     return BlacklistType;
 }(Base_1.Base));

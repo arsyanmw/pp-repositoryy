@@ -1,5 +1,5 @@
-import { Base } from "./Base";
-import { Country } from "./Country";
+import { Base } from './Base';
+import { Country } from './Country';
 export declare class Province extends Base {
     id: number;
     Country: Country;

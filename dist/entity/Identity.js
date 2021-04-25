@@ -38,32 +38,32 @@ var Identity = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Identity.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "text",
+            type: 'text',
             unique: false,
-            name: "full_name",
-            nullable: false
+            name: 'full_name',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], Identity.prototype, "fullName", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "password_hash",
-            type: "longtext"
+            name: 'password_hash',
+            type: 'longtext',
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], Identity.prototype, "passwordHash", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
+            type: 'varchar',
             length: 255,
-            name: "phone",
+            name: 'phone',
         }),
         class_validator_1.IsOptional(),
         class_validator_1.IsPhoneNumber(),
@@ -71,86 +71,86 @@ var Identity = /** @class */ (function (_super) {
     ], Identity.prototype, "phone", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "birthplace",
-            type: "varchar",
+            name: 'birthplace',
+            type: 'varchar',
             length: 255,
         }),
         __metadata("design:type", String)
     ], Identity.prototype, "birthplace", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "birthdate",
-            type: "date"
+            name: 'birthdate',
+            type: 'date',
         }),
         class_validator_1.IsDateString(),
         __metadata("design:type", Date)
     ], Identity.prototype, "birthdate", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "address",
-            type: "varchar",
-            length: 255
+            name: 'address',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Identity.prototype, "address", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "address_rt",
-            type: "int"
+            name: 'address_rt',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "addressRt", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "address_rw",
-            type: "int"
+            name: 'address_rw',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "addressRw", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "sub_district_id",
-            type: "int"
+            name: 'sub_district_id',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "subDistrictId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "postalcode",
-            type: "int"
+            name: 'postalcode',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "postalcode", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "position_id",
-            type: "int"
+            name: 'position_id',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "positionId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "job",
-            type: "varchar",
+            name: 'job',
+            type: 'varchar',
             length: 255,
         }),
         __metadata("design:type", String)
     ], Identity.prototype, "job", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "nationality",
-            type: "varchar",
+            name: 'nationality',
+            type: 'varchar',
             length: 255,
         }),
         __metadata("design:type", String)
     ], Identity.prototype, "nationality", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "npwp",
-            type: "varchar",
+            name: 'npwp',
+            type: 'varchar',
             length: 255,
             nullable: false,
-            default: "NP0000000001"
+            default: 'NP0000000001',
         }),
         class_validator_1.IsOptional(),
         class_validator_1.IsNumberString(),
@@ -159,44 +159,44 @@ var Identity = /** @class */ (function (_super) {
     ], Identity.prototype, "npwp", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "npwp_is_verified",
-            type: "int",
+            name: 'npwp_is_verified',
+            type: 'int',
             nullable: false,
-            default: 0
+            default: 0,
         }),
         __metadata("design:type", Number)
     ], Identity.prototype, "npwpIsVerified", void 0);
     __decorate([
         typeorm_1.OneToOne(function (type) { return IdentityNik_1.IdentityNik; }, function (identityNik) { return identityNik.identity; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", IdentityNik_1.IdentityNik)
     ], Identity.prototype, "identityNik", void 0);
     __decorate([
         typeorm_1.OneToOne(function (type) { return IdentityEmail_1.IdentityEmail; }, function (identityEmail) { return identityEmail.identity; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", IdentityEmail_1.IdentityEmail)
     ], Identity.prototype, "identityEmail", void 0);
     __decorate([
         typeorm_1.OneToMany(function (type) { return IdentityGroup_1.IdentityGroup; }, function (identityGroup) { return identityGroup.identity; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", Array)
     ], Identity.prototype, "identityGroups", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Position_1.Position; }),
         typeorm_1.JoinColumn({
-            name: "position_id",
-            referencedColumnName: "id"
+            name: 'position_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Position_1.Position)
     ], Identity.prototype, "position", void 0);
     Identity = __decorate([
-        typeorm_1.Entity({ name: "identities" })
+        typeorm_1.Entity({ name: 'identities' })
     ], Identity);
     return Identity;
 }(Base_1.Base));

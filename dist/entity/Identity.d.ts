@@ -1,8 +1,8 @@
-import { Base } from "./Base";
-import { IdentityNik } from "./IdentityNik";
-import { IdentityEmail } from "./IdentityEmail";
-import { IdentityGroup } from "./IdentityGroup";
-import { Position } from "./Position";
+import { Base } from './Base';
+import { IdentityNik } from './IdentityNik';
+import { IdentityEmail } from './IdentityEmail';
+import { IdentityGroup } from './IdentityGroup';
+import { Position } from './Position';
 export declare class Identity extends Base {
     id: number;
     fullName: string;

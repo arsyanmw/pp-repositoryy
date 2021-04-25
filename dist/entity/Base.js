@@ -16,26 +16,26 @@ var Base = /** @class */ (function () {
     }
     __decorate([
         typeorm_1.Column({
-            name: "deleted_at"
+            name: 'deleted_at',
         }),
         __metadata("design:type", Date)
     ], Base.prototype, "deletedAt", void 0);
     __decorate([
         typeorm_1.UpdateDateColumn({
-            name: "updated_at"
+            name: 'updated_at',
         }),
         __metadata("design:type", Date)
     ], Base.prototype, "updatedAt", void 0);
     __decorate([
         typeorm_1.CreateDateColumn({
-            name: "created_at"
+            name: 'created_at',
         }),
         __metadata("design:type", Date)
     ], Base.prototype, "createdAt", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "status",
-            type: "int"
+            name: 'status',
+            type: 'int',
         }),
         __metadata("design:type", Number)
     ], Base.prototype, "status", void 0);

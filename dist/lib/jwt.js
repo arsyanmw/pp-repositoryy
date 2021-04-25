@@ -53,8 +53,8 @@ var bluebird_1 = require("bluebird");
 var ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 var ACCESS_TOKEN_LIFE = 3600 * 48;
 var TEMP_ACCESS_TOKEN_LIFE = 3600 * 25;
-var ALGORITHM = "HS256";
-var ISSUER = "Auth Service";
+var ALGORITHM = 'HS256';
+var ISSUER = 'Auth Service';
 var Jwt = /** @class */ (function () {
     function Jwt() {
     }
@@ -67,7 +67,7 @@ var Jwt = /** @class */ (function () {
                         signAsync = bluebird_1.promisify(jsonwebtoken_1.sign);
                         return [4 /*yield*/, signAsync(this.payload(identity), ACCESS_TOKEN_SECRET, {
                                 algorithm: ALGORITHM,
-                                expiresIn: ACCESS_TOKEN_LIFE
+                                expiresIn: ACCESS_TOKEN_LIFE,
                             })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
@@ -83,10 +83,10 @@ var Jwt = /** @class */ (function () {
                         signAsync = bluebird_1.promisify(jsonwebtoken_1.sign);
                         return [4 /*yield*/, signAsync({
                                 iss: ISSUER,
-                                data: __assign({}, data)
+                                data: __assign({}, data),
                             }, ACCESS_TOKEN_SECRET, {
                                 algorithm: ALGORITHM,
-                                expiresIn: TEMP_ACCESS_TOKEN_LIFE
+                                expiresIn: TEMP_ACCESS_TOKEN_LIFE,
                             })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
@@ -116,7 +116,7 @@ var Jwt = /** @class */ (function () {
                 fullName: identity.fullName,
                 email: identity.identityEmail.email,
                 nik: identity.identityNik.nik,
-            }
+            },
         };
     };
     return Jwt;

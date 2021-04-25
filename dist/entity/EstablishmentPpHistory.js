@@ -35,91 +35,91 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "inserted_at",
-            nullable: false
+            name: 'inserted_at',
+            nullable: false,
         }),
         __metadata("design:type", Date)
     ], EstablishmentPpHistory.prototype, "insertedAt", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "establishment_pp_id",
-            type: "bigint",
-            nullable: false
+            name: 'establishment_pp_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "establishmentPpId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "pp_type_id",
-            type: "bigint",
-            nullable: false
+            name: 'pp_type_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "ppTypeId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "transaction_type_id",
-            type: "bigint",
-            nullable: false
+            name: 'transaction_type_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "transactionTypeId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "vouchers_code",
-            type: "varchar",
+            name: 'vouchers_code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "vouchersCode", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "transaction_number",
-            type: "varchar",
+            name: 'transaction_number',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "transactionNumber", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "certificate_number",
-            type: "varchar",
-            length: 255
+            name: 'certificate_number',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "certificateNumber", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_name",
-            type: "varchar",
+            name: 'perseroan_name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "perseroanName", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_alias",
-            type: "varchar",
+            name: 'perseroan_alias',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "perseroanAlias", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_email",
-            type: "varchar",
+            name: 'perseroan_email',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsEmail(),
         class_validator_1.IsNotEmpty(),
@@ -127,92 +127,92 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
     ], EstablishmentPpHistory.prototype, "perseroanEmail", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_address",
-            type: "varchar",
+            name: 'perseroan_address',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "perseroanAddress", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_rt",
-            type: "int"
+            name: 'perseroan_rt',
+            type: 'int',
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "perseroanRt", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_rw",
-            type: "int"
+            name: 'perseroan_rw',
+            type: 'int',
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "perseroanRw", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return SubDistrict_1.SubDistrict; }),
         typeorm_1.JoinColumn({
-            name: "perseroan_sub_district_id",
-            referencedColumnName: "id"
+            name: 'perseroan_sub_district_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", SubDistrict_1.SubDistrict)
     ], EstablishmentPpHistory.prototype, "SubDistrict", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_sub_district_id",
-            type: "bigint",
-            nullable: false
+            name: 'perseroan_sub_district_id',
+            type: 'bigint',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "perseroanSubDistrictId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_postalcode",
-            type: "bigint",
-            nullable: false
+            name: 'perseroan_postalcode',
+            type: 'bigint',
+            nullable: false,
         }),
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "perseroanPostalcode", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_phone",
-            type: "varchar",
-            length: 255
+            name: 'perseroan_phone',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "perseroanPhone", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "perseroan_capital",
-            type: "bigint"
+            name: 'perseroan_capital',
+            type: 'bigint',
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "perseroanCapital", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "kbli_value_json",
-            type: "text"
+            name: 'kbli_value_json',
+            type: 'text',
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "kbliValueJson", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "owner_value_json",
-            type: "text"
+            name: 'owner_value_json',
+            type: 'text',
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "ownerValueJson", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "benefit_value_json",
-            type: "text"
+            name: 'benefit_value_json',
+            type: 'text',
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "benefitValueJson", void 0);
     EstablishmentPpHistory = __decorate([
-        typeorm_1.Entity({ name: "establishment_pp_history" })
+        typeorm_1.Entity({ name: 'establishment_pp_history' })
     ], EstablishmentPpHistory);
     return EstablishmentPpHistory;
 }(Base_1.Base));

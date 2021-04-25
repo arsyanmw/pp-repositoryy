@@ -35,24 +35,24 @@ var IdentityNik = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], IdentityNik.prototype, "id", void 0);
     __decorate([
         typeorm_1.OneToOne(function (type) { return Identity_1.Identity; }, function (identity) { return identity.identityNik; }),
         typeorm_1.JoinColumn({
-            name: "identities_id",
-            referencedColumnName: "id"
+            name: 'identities_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Identity_1.Identity)
     ], IdentityNik.prototype, "identity", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "nik",
-            type: "varchar",
+            name: 'nik',
+            type: 'varchar',
             unique: true,
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsNumberString(),
         class_validator_1.Length(16, 16),
@@ -60,14 +60,14 @@ var IdentityNik = /** @class */ (function (_super) {
     ], IdentityNik.prototype, "nik", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "is_verified",
-            type: "tinyint",
-            nullable: false
+            name: 'is_verified',
+            type: 'tinyint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], IdentityNik.prototype, "isVerified", void 0);
     IdentityNik = __decorate([
-        typeorm_1.Entity({ name: "identities_nik" })
+        typeorm_1.Entity({ name: 'identities_nik' })
     ], IdentityNik);
     return IdentityNik;
 }(Base_1.Base));

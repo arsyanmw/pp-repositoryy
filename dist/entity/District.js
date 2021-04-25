@@ -34,61 +34,61 @@ var District = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], District.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return City_1.City; }),
         typeorm_1.JoinColumn({
-            name: "city_id",
-            referencedColumnName: "id"
+            name: 'city_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", City_1.City)
     ], District.prototype, "city", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "code",
-            type: "varchar",
+            name: 'code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], District.prototype, "code", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], District.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "latitude",
-            type: "varchar",
-            length: 255
+            name: 'latitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], District.prototype, "latitude", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "longitude",
-            type: "varchar",
-            length: 255
+            name: 'longitude',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], District.prototype, "longitude", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "old_district_id",
-            type: "int",
-            nullable: false
+            name: 'old_district_id',
+            type: 'int',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], District.prototype, "oldDistrictId", void 0);
     District = __decorate([
-        typeorm_1.Entity({ name: "district" })
+        typeorm_1.Entity({ name: 'district' })
     ], District);
     return District;
 }(Base_1.Base));

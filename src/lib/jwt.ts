@@ -1,12 +1,12 @@
-import { sign, verify } from "jsonwebtoken";
-import { Identity } from "../entity/Identity";
-import { promisify } from "bluebird";
+import { sign, verify } from 'jsonwebtoken';
+import { Identity } from '../entity/Identity';
+import { promisify } from 'bluebird';
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const ACCESS_TOKEN_LIFE = 3600 * 48;
 const TEMP_ACCESS_TOKEN_LIFE = 3600 * 25;
-const ALGORITHM = "HS256";
-const ISSUER = "Auth Service";
+const ALGORITHM = 'HS256';
+const ISSUER = 'Auth Service';
 
 interface TempData {
     nik?: string;
@@ -16,14 +16,10 @@ interface TempData {
 class Jwt {
     public static async generate(identity: Identity) {
         const signAsync = promisify(sign);
-        return await signAsync(
-            this.payload(identity),
-            ACCESS_TOKEN_SECRET, 
-            {
-                algorithm: ALGORITHM,
-                expiresIn: ACCESS_TOKEN_LIFE
-            }
-        );
+        return await signAsync(this.payload(identity), ACCESS_TOKEN_SECRET, {
+            algorithm: ALGORITHM,
+            expiresIn: ACCESS_TOKEN_LIFE,
+        });
     }
 
     public static async generateTemporaryToken(data: TempData) {
@@ -31,13 +27,13 @@ class Jwt {
         return await signAsync(
             {
                 iss: ISSUER,
-                data: { ...data }
+                data: { ...data },
             },
             ACCESS_TOKEN_SECRET,
             {
                 algorithm: ALGORITHM,
-                expiresIn: TEMP_ACCESS_TOKEN_LIFE
-            }
+                expiresIn: TEMP_ACCESS_TOKEN_LIFE,
+            },
         );
     }
 
@@ -47,7 +43,7 @@ class Jwt {
         return decoded;
     }
 
-    private static payload(identity: Identity): Object {
+    private static payload(identity: Identity): any {
         return {
             iss: ISSUER,
             data: {
@@ -55,9 +51,9 @@ class Jwt {
                 fullName: identity.fullName,
                 email: identity.identityEmail.email,
                 nik: identity.identityNik.nik,
-            }
-        }
-    }   
+            },
+        };
+    }
 }
 
 export { Jwt };

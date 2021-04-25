@@ -43,22 +43,21 @@ var test = function () { return __awaiter(void 0, void 0, void 0, function () {
         switch (_a.label) {
             case 0:
                 conn = _1.connection({
-                    type: "mariadb",
+                    type: 'mariadb',
                     host: process.env.DB_HOST,
                     username: process.env.DB_USERNAME,
                     password: process.env.DB_PASSWORD,
                     database: process.env.DATABASE,
                     port: parseInt(process.env.DB_PORT) || 3306,
-                    logging: true
+                    logging: true,
                 });
                 return [4 /*yield*/, conn];
             case 1:
                 repo = (_a.sent()).getRepository(_1.Identity);
-                return [4 /*yield*/, repo
-                        .find({ where: { status: 1 } })];
+                return [4 /*yield*/, repo.find({ where: { status: 1 } })];
             case 2:
                 identities = _a.sent();
-                console.log("degress", identities);
+                console.log('degress', identities);
                 return [2 /*return*/];
         }
     });

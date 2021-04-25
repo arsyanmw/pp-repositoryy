@@ -34,35 +34,35 @@ var EstablishmentPpActivities = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], EstablishmentPpActivities.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "establishment_pp_id",
-            type: "bigint",
-            nullable: false
+            name: 'establishment_pp_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpActivities.prototype, "establishmentPpId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "kbli_id",
-            type: "bigint",
-            nullable: false
+            name: 'kbli_id',
+            type: 'bigint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpActivities.prototype, "kbliId", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Kbli_1.Kbli; }),
         typeorm_1.JoinColumn({
-            name: "kbli_id",
-            referencedColumnName: "id"
+            name: 'kbli_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Kbli_1.Kbli)
     ], EstablishmentPpActivities.prototype, "Kbli", void 0);
     EstablishmentPpActivities = __decorate([
-        typeorm_1.Entity({ name: "establishment_pp_activities" })
+        typeorm_1.Entity({ name: 'establishment_pp_activities' })
     ], EstablishmentPpActivities);
     return EstablishmentPpActivities;
 }(Base_1.Base));

@@ -35,80 +35,80 @@ var Group = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Group.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "int",
-            name: "parent_id",
+            type: 'int',
+            name: 'parent_id',
             nullable: false,
-            default: 0
+            default: 0,
         }),
         __metadata("design:type", Number)
     ], Group.prototype, "parentId", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "int",
-            name: "level",
+            type: 'int',
+            name: 'level',
             nullable: false,
-            default: 0
+            default: 0,
         }),
         __metadata("design:type", Number)
     ], Group.prototype, "level", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "name",
+            type: 'varchar',
+            name: 'name',
             nullable: false,
             length: 255,
-            unique: true
+            unique: true,
         }),
         __metadata("design:type", String)
     ], Group.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "description",
+            type: 'varchar',
+            name: 'description',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Group.prototype, "description", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "path",
+            type: 'varchar',
+            name: 'path',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Group.prototype, "path", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "url",
+            type: 'varchar',
+            name: 'url',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Group.prototype, "url", void 0);
     __decorate([
         typeorm_1.OneToMany(function (type) { return IdentityGroup_1.IdentityGroup; }, function (identityGroup) { return identityGroup.group; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", Array)
     ], Group.prototype, "identityGroups", void 0);
     __decorate([
         typeorm_1.OneToMany(function (type) { return AccessMenu_1.AccessMenu; }, function (accessMenu) { return accessMenu.group; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", Array)
     ], Group.prototype, "accessMenus", void 0);
     Group = __decorate([
-        typeorm_1.Entity({ name: "groups" })
+        typeorm_1.Entity({ name: 'groups' })
     ], Group);
     return Group;
 }(Base_1.Base));

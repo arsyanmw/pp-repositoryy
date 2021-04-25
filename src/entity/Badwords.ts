@@ -1,42 +1,38 @@
-import { Base } from "./Base";
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column
-} from "typeorm";
+import { Base } from './Base';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({name: "badwords"})
+@Entity({ name: 'badwords' })
 export class Badwords extends Base {
-    @PrimaryGeneratedColumn("increment")
-    id:number;
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
     @Column({
-        name: "words",
-        type: "varchar",
+        name: 'words',
+        type: 'varchar',
         length: 255,
-        nullable: false
+        nullable: false,
     })
     words: string;
 
     @Column({
-        name: "words_type",
-        type: "tinyint",
-        nullable: false
+        name: 'badwords_type_id',
+        type: 'tinyint',
+        nullable: false,
     })
-    wordsType: number;
+    badwordsTypeId: number;
 
     @Column({
-        name: "words_code",
-        type: "varchar",
+        name: 'words_code',
+        type: 'varchar',
         length: 255,
-        nullable: false
+        nullable: false,
     })
     wordsCode: string;
 
     @Column({
-        name: "reason",
-        type: "varchar",
-        length: 255
+        name: 'reason',
+        type: 'varchar',
+        length: 255,
     })
     reason: string;
 }

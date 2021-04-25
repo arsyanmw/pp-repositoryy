@@ -34,36 +34,36 @@ var Blacklist = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Blacklist.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "blacklist_name",
-            type: "varchar",
+            name: 'blacklist_name',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Blacklist.prototype, "blacklistName", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return BlacklistType_1.BlacklistType; }),
         typeorm_1.JoinColumn({
-            name: "blacklist_type_id",
-            referencedColumnName: "id"
+            name: 'blacklist_type_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", BlacklistType_1.BlacklistType)
     ], Blacklist.prototype, "BlacklistType", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "reason",
-            type: "varchar",
-            length: 255
+            name: 'reason',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Blacklist.prototype, "reason", void 0);
     Blacklist = __decorate([
-        typeorm_1.Entity({ name: "blacklist" })
+        typeorm_1.Entity({ name: 'blacklist' })
     ], Blacklist);
     return Blacklist;
 }(Base_1.Base));

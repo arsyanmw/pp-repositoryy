@@ -34,69 +34,69 @@ var Menu = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Menu.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "int",
-            name: "level",
+            type: 'int',
+            name: 'level',
             nullable: false,
-            default: 0
+            default: 0,
         }),
         __metadata("design:type", Number)
     ], Menu.prototype, "level", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "name",
+            type: 'varchar',
+            name: 'name',
             nullable: false,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Menu.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "display_name",
+            type: 'varchar',
+            name: 'display_name',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Menu.prototype, "displayName", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "int",
-            name: "order_value",
-            nullable: true
+            type: 'int',
+            name: 'order_value',
+            nullable: true,
         }),
         __metadata("design:type", Number)
     ], Menu.prototype, "orderValue", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "longtext",
-            name: "description"
+            type: 'longtext',
+            name: 'description',
         }),
         __metadata("design:type", String)
     ], Menu.prototype, "description", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "image_url",
+            type: 'varchar',
+            name: 'image_url',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Menu.prototype, "image_url", void 0);
     __decorate([
         typeorm_1.OneToMany(function (type) { return ActionMenu_1.ActionMenu; }, function (actionMenu) { return actionMenu.menu; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", Array)
     ], Menu.prototype, "actionMenus", void 0);
     Menu = __decorate([
-        typeorm_1.Entity({ name: "menu" })
+        typeorm_1.Entity({ name: 'menu' })
     ], Menu);
     return Menu;
 }(Base_1.Base));

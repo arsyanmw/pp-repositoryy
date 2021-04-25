@@ -35,51 +35,51 @@ var ActionMenu = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], ActionMenu.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Menu_1.Menu; }),
         typeorm_1.JoinColumn({
-            name: "menu_id",
-            referencedColumnName: "id"
+            name: 'menu_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Menu_1.Menu)
     ], ActionMenu.prototype, "menu", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "action_name",
+            type: 'varchar',
+            name: 'action_name',
             nullable: false,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], ActionMenu.prototype, "actionName", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "longtext",
-            name: "description"
+            type: 'longtext',
+            name: 'description',
         }),
         __metadata("design:type", String)
     ], ActionMenu.prototype, "description", void 0);
     __decorate([
         typeorm_1.Column({
-            type: "varchar",
-            name: "url",
+            type: 'varchar',
+            name: 'url',
             nullable: true,
-            length: 255
+            length: 255,
         }),
         __metadata("design:type", String)
     ], ActionMenu.prototype, "url", void 0);
     __decorate([
         typeorm_1.OneToMany(function (type) { return AccessMenu_1.AccessMenu; }, function (accessMenu) { return accessMenu.actionMenu; }),
         typeorm_1.JoinTable({
-            name: "id"
+            name: 'id',
         }),
         __metadata("design:type", Array)
     ], ActionMenu.prototype, "accessMenus", void 0);
     ActionMenu = __decorate([
-        typeorm_1.Entity({ name: "action_menu" })
+        typeorm_1.Entity({ name: 'action_menu' })
     ], ActionMenu);
     return ActionMenu;
 }(Base_1.Base));

@@ -33,46 +33,46 @@ var Kbli = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], Kbli.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "code",
-            type: "varchar",
+            name: 'code',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Kbli.prototype, "code", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "category",
-            type: "varchar",
+            name: 'category',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Kbli.prototype, "category", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "title",
-            type: "varchar",
+            name: 'title',
+            type: 'varchar',
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         __metadata("design:type", String)
     ], Kbli.prototype, "title", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "description",
-            type: "varchar",
-            length: 255
+            name: 'description',
+            type: 'varchar',
+            length: 255,
         }),
         __metadata("design:type", String)
     ], Kbli.prototype, "description", void 0);
     Kbli = __decorate([
-        typeorm_1.Entity({ name: "kbli" })
+        typeorm_1.Entity({ name: 'kbli' })
     ], Kbli);
     return Kbli;
 }(Base_1.Base));

@@ -1,5 +1,5 @@
-import { Base } from "./Base";
-import { SubDistrict } from "./SubDistrict";
+import { Base } from './Base';
+import { SubDistrict } from './SubDistrict';
 export declare class PpMaster extends Base {
     id: number;
     ppTypeId: number;

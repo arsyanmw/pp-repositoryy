@@ -35,38 +35,38 @@ var IdentityEmail = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        typeorm_1.PrimaryGeneratedColumn("increment"),
+        typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
     ], IdentityEmail.prototype, "id", void 0);
     __decorate([
         typeorm_1.OneToOne(function (type) { return Identity_1.Identity; }, function (identity) { return identity.identityEmail; }),
         typeorm_1.JoinColumn({
-            name: "identities_id",
-            referencedColumnName: "id"
+            name: 'identities_id',
+            referencedColumnName: 'id',
         }),
         __metadata("design:type", Identity_1.Identity)
     ], IdentityEmail.prototype, "identity", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "email",
-            type: "varchar",
+            name: 'email',
+            type: 'varchar',
             unique: true,
             length: 255,
-            nullable: false
+            nullable: false,
         }),
         class_validator_1.IsEmail(),
         __metadata("design:type", String)
     ], IdentityEmail.prototype, "email", void 0);
     __decorate([
         typeorm_1.Column({
-            name: "is_verified",
-            type: "tinyint",
-            nullable: false
+            name: 'is_verified',
+            type: 'tinyint',
+            nullable: false,
         }),
         __metadata("design:type", Number)
     ], IdentityEmail.prototype, "isVerified", void 0);
     IdentityEmail = __decorate([
-        typeorm_1.Entity({ name: "identities_email" })
+        typeorm_1.Entity({ name: 'identities_email' })
     ], IdentityEmail);
     return IdentityEmail;
 }(Base_1.Base));

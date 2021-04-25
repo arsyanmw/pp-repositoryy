@@ -1,24 +1,42 @@
 {
-  "name": "ppns-repository",
+  "name": "ahu-pp-repository",
   "version": "1.0.0",
-  "description": "Ahu PPNS Database Repository",
+  "description": "AHU PP Database Repository",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": "http://devocp-gitlab.dc.ahu.go.id/ahu-ppns-dev/ppns-repository",
-  "author": "Deni Dharmatin",
+  "repository": "git@devocp-gitlab.dc.ahu.go.id:ahu-pp-dev/pp-repository.git",
+  "author": "flexi developer <flexi@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint '**/*.ts?(x)' --quiet --fix",
     "build": "rm -rf ./dist && tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts?(x)": "eslint .eslintrc.js --fix"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.11.1",
     "@types/validator": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-unused-imports": "^1.1.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "class-validator": "^0.13.1",
     "bluebird": "^3.7.2",
+    "class-validator": "^0.13.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.2",
     "reflect-metadata": "^0.1.13",

@@ -1,4 +1,4 @@
-import { Base } from "./Base";
+import { Base } from './Base';
 export declare class Country extends Base {
     id: number;
     code: string;
