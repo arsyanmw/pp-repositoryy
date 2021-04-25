@@ -18,6 +18,7 @@ import { EstablishmentPpActivities } from './entity/EstablishmentPpActivities';
 import { EstablishmentPpBenefit } from './entity/EstablishmentPpBenefit';
 import { EstablishmentPpHistory } from './entity/EstablishmentPpHistory';
 import { EstablishmentPpOwner } from './entity/EstablishmentPpOwner';
+import { GlobalParam } from './entity/GlobalParam';
 import { Group } from './entity/Group';
 import { Identity } from './entity/Identity';
 import { IdentityEmail } from './entity/IdentityEmail';
@@ -28,6 +29,7 @@ import { Menu } from './entity/Menu';
 import { NormalizationWords } from './entity/NormalizationWords';
 import { Position } from './entity/Position';
 import { PpMaster } from './entity/PpMaster';
+import { PpMasterTransactionState } from './entity/PpMasterTransactionState';
 import { Province } from './entity/Province';
 import { SubDistrict } from './entity/SubDistrict';
 import { TransactionType } from './entity/TransactionType';
@@ -63,6 +65,7 @@ export {
     EstablishmentPpBenefit,
     EstablishmentPpHistory,
     EstablishmentPpOwner,
+    GlobalParam,
     Group,
     Identity,
     IdentityEmail,
@@ -73,6 +76,7 @@ export {
     NormalizationWords,
     Position,
     PpMaster,
+    PpMasterTransactionState,
     Province,
     SubDistrict,
     TransactionType,
