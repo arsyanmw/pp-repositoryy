@@ -121,6 +121,20 @@ export class PpMaster extends Base {
     perseroanCapital: number;
 
     @Column({
+        name: 'file_statement',
+        type: 'varchar',
+        length: 255,
+    })
+    fileStatement: string;
+
+    @Column({
+        name: 'file_certificate',
+        type: 'varchar',
+        length: 255,
+    })
+    fileCertificate: string;
+
+    @Column({
         name: 'kbli_value_json',
         type: 'text',
     })

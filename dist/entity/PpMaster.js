@@ -167,6 +167,22 @@ var PpMaster = /** @class */ (function (_super) {
     ], PpMaster.prototype, "perseroanCapital", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'file_statement',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], PpMaster.prototype, "fileStatement", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'file_certificate',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], PpMaster.prototype, "fileCertificate", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'kbli_value_json',
             type: 'text',
         }),
