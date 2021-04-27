@@ -147,7 +147,6 @@ export class EstablishmentPp extends Base {
         name: 'perseroan_npwp_created_at',
         type: 'date',
     })
-    @IsDateString()
     perseroanNpwpCreatedAt: Date;
 
     @Column({
