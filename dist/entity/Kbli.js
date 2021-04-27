@@ -47,13 +47,21 @@ var Kbli = /** @class */ (function (_super) {
     ], Kbli.prototype, "code", void 0);
     __decorate([
         typeorm_1.Column({
-            name: 'category',
+            name: 'kbli_category_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], Kbli.prototype, "kbliCategoryId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'old_category',
             type: 'varchar',
-            length: 255,
+            length: 3,
             nullable: false,
         }),
         __metadata("design:type", String)
-    ], Kbli.prototype, "category", void 0);
+    ], Kbli.prototype, "oldCategory", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'title',

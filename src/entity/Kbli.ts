@@ -15,12 +15,19 @@ export class Kbli extends Base {
     code: string;
 
     @Column({
-        name: 'category',
-        type: 'varchar',
-        length: 255,
+        name: 'kbli_category_id',
+        type: 'bigint',
         nullable: false,
     })
-    category: string;
+    kbliCategoryId: number;
+
+    @Column({
+        name: 'old_category',
+        type: 'varchar',
+        length: 3,
+        nullable: false,
+    })
+    oldCategory: string;
 
     @Column({
         name: 'title',

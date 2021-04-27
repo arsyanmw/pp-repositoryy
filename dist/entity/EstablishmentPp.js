@@ -196,7 +196,6 @@ var EstablishmentPp = /** @class */ (function (_super) {
             name: 'perseroan_npwp_created_at',
             type: 'date',
         }),
-        class_validator_1.IsDateString(),
         __metadata("design:type", Date)
     ], EstablishmentPp.prototype, "perseroanNpwpCreatedAt", void 0);
     __decorate([
