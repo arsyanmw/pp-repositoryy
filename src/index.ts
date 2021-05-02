@@ -18,6 +18,11 @@ import { EstablishmentPpActivities } from './entity/EstablishmentPpActivities';
 import { EstablishmentPpBenefit } from './entity/EstablishmentPpBenefit';
 import { EstablishmentPpHistory } from './entity/EstablishmentPpHistory';
 import { EstablishmentPpOwner } from './entity/EstablishmentPpOwner';
+import { ModificationPp } from './entity/ModificationPp';
+import { ModificationPpActivities } from './entity/ModificationPpActivities';
+import { ModificationPpBenefit } from './entity/ModificationPpBenefit';
+import { ModificationPpHistory } from './entity/ModificationPpHistory';
+import { ModificationPpOwner } from './entity/ModificationPpOwner';
 import { GlobalParam } from './entity/GlobalParam';
 import { Group } from './entity/Group';
 import { Identity } from './entity/Identity';
@@ -65,6 +70,11 @@ export {
     EstablishmentPpBenefit,
     EstablishmentPpHistory,
     EstablishmentPpOwner,
+    ModificationPp,
+    ModificationPpActivities,
+    ModificationPpBenefit,
+    ModificationPpHistory,
+    ModificationPpOwner,
     GlobalParam,
     Group,
     Identity,
