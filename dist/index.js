@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionState = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
+exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionState = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -82,6 +82,16 @@ var EstablishmentPpHistory_1 = require("./entity/EstablishmentPpHistory");
 Object.defineProperty(exports, "EstablishmentPpHistory", { enumerable: true, get: function () { return EstablishmentPpHistory_1.EstablishmentPpHistory; } });
 var EstablishmentPpOwner_1 = require("./entity/EstablishmentPpOwner");
 Object.defineProperty(exports, "EstablishmentPpOwner", { enumerable: true, get: function () { return EstablishmentPpOwner_1.EstablishmentPpOwner; } });
+var ModificationPp_1 = require("./entity/ModificationPp");
+Object.defineProperty(exports, "ModificationPp", { enumerable: true, get: function () { return ModificationPp_1.ModificationPp; } });
+var ModificationPpActivities_1 = require("./entity/ModificationPpActivities");
+Object.defineProperty(exports, "ModificationPpActivities", { enumerable: true, get: function () { return ModificationPpActivities_1.ModificationPpActivities; } });
+var ModificationPpBenefit_1 = require("./entity/ModificationPpBenefit");
+Object.defineProperty(exports, "ModificationPpBenefit", { enumerable: true, get: function () { return ModificationPpBenefit_1.ModificationPpBenefit; } });
+var ModificationPpHistory_1 = require("./entity/ModificationPpHistory");
+Object.defineProperty(exports, "ModificationPpHistory", { enumerable: true, get: function () { return ModificationPpHistory_1.ModificationPpHistory; } });
+var ModificationPpOwner_1 = require("./entity/ModificationPpOwner");
+Object.defineProperty(exports, "ModificationPpOwner", { enumerable: true, get: function () { return ModificationPpOwner_1.ModificationPpOwner; } });
 var GlobalParam_1 = require("./entity/GlobalParam");
 Object.defineProperty(exports, "GlobalParam", { enumerable: true, get: function () { return GlobalParam_1.GlobalParam; } });
 var Group_1 = require("./entity/Group");
