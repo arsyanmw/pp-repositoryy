@@ -2,7 +2,7 @@ import { Base } from './Base';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { SubDistrict } from './SubDistrict';
 import { TransactionType } from './TransactionType';
-import { IsEmail, IsNotEmpty, IsDateString } from 'class-validator';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 @Entity({ name: 'establishment_pp' })
 export class EstablishmentPp extends Base {
