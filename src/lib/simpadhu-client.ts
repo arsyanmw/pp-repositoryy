@@ -14,7 +14,9 @@ export interface RedeemRequest extends DefaultRequest {
     trxNumber: string;
 }
 class SimpadhuClient {
+    // for bypassing voucher validation, testing purpose
     private static readonly byPassVoucher: string = 'VC0000000001';
+    
     private static readonly host: string = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     private static readonly key: string = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
 
