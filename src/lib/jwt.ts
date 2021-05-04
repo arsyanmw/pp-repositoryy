@@ -13,6 +13,11 @@ interface TempData {
     email?: string;
 }
 
+interface ClientCredentialData {
+    client: string;
+    clientKey: string;
+}
+
 class Jwt {
     public static async generate(identity: Identity) {
         const signAsync = promisify(sign);
@@ -34,6 +39,21 @@ class Jwt {
                 algorithm: ALGORITHM,
                 expiresIn: TEMP_ACCESS_TOKEN_LIFE,
             },
+        );
+    }
+
+    public static async generateThirdPartyAccessToken(data: ClientCredentialData, ttl: string | number) {
+        const signAsync = promisify(sign);
+        return await signAsync(
+            {
+                iss: ISSUER,
+                data: { ...data },
+            },
+            ACCESS_TOKEN_SECRET,
+            {
+                algorithm: ALGORITHM,
+                expiresIn: ttl || '1h',
+            }
         );
     }
 

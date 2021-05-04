@@ -121,6 +121,12 @@ export class PpMaster extends Base {
     perseroanCapital: number;
 
     @Column({
+        name: 'perseroan_npwp',
+        type: 'bigint',
+    })
+    perseroanNpwp: number;
+
+    @Column({
         name: 'file_statement',
         type: 'varchar',
         length: 255,
