@@ -11,6 +11,7 @@ export interface RedeemRequest extends DefaultRequest {
     trxNumber: string;
 }
 declare class SimpadhuClient {
+    private static readonly byPassVoucher;
     private static readonly host;
     private static readonly key;
     private static post;
