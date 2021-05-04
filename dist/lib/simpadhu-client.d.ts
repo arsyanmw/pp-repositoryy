@@ -12,6 +12,7 @@ export interface RedeemRequest extends DefaultRequest {
 }
 declare class SimpadhuClient {
     private static readonly byPassVoucher;
+    private static readonly environment;
     private static readonly host;
     private static readonly key;
     private static post;

@@ -80,20 +80,21 @@ var SimpadhuClient = /** @class */ (function () {
             var resp, form, validationResp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        if (data.voucher == SimpadhuClient.byPassVoucher) {
-                            return [2 /*return*/, {
-                                    data: {
-                                        status: 200,
-                                    },
-                                }];
-                        }
-                        return [4 /*yield*/, SimpadhuClient.getToken()];
+                    case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
                     case 1:
                         resp = _a.sent();
                         console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
                         if (resp.data.status != 200) {
                             return [2 /*return*/, resp];
+                        }
+                        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
+                            return [2 /*return*/, {
+                                    data: {
+                                        status: 200,
+                                        message: 'SUCCESS',
+                                        value: 1
+                                    },
+                                }];
                         }
                         form = new FormData();
                         form.append('no_voucher', data.voucher);
@@ -114,20 +115,21 @@ var SimpadhuClient = /** @class */ (function () {
             var resp, form, redeemResp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        if (data.voucher == SimpadhuClient.byPassVoucher) {
-                            return [2 /*return*/, {
-                                    data: {
-                                        status: 200,
-                                    },
-                                }];
-                        }
-                        return [4 /*yield*/, SimpadhuClient.getToken()];
+                    case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
                     case 1:
                         resp = _a.sent();
                         console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
                         if (resp.data.status != 200) {
                             return [2 /*return*/, resp];
+                        }
+                        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
+                            return [2 /*return*/, {
+                                    data: {
+                                        status: 200,
+                                        message: 'SUCCESS',
+                                        value: 1
+                                    },
+                                }];
                         }
                         form = new FormData();
                         form.append('kode_pembayaran', data.voucher);
@@ -146,6 +148,7 @@ var SimpadhuClient = /** @class */ (function () {
     };
     // for bypassing voucher validation, testing purpose
     SimpadhuClient.byPassVoucher = 'VC0000000001';
+    SimpadhuClient.environment = process.env.ENVIRONMENT || 'development';
     SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
     return SimpadhuClient;

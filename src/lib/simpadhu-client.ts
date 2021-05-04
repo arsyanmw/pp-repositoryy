@@ -17,6 +17,7 @@ class SimpadhuClient {
     // for bypassing voucher validation, testing purpose
     private static readonly byPassVoucher: string = 'VC0000000001';
 
+    private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly host: string = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     private static readonly key: string = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
 
@@ -38,18 +39,20 @@ class SimpadhuClient {
     }
 
     public static async validate(data: ValidationRequest) {
-        if (data.voucher == SimpadhuClient.byPassVoucher) {
-            return {
-                data: {
-                    status: 200,
-                },
-            };
-        }
-
         const resp = await SimpadhuClient.getToken();
         console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
         if (resp.data.status != 200) {
             return resp;
+        }
+
+        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
+            return {
+                data: {
+                    status: 200,
+                    message: 'SUCCESS',
+                    value: 1,
+                },
+            };
         }
 
         const form = new FormData();
@@ -74,18 +77,20 @@ class SimpadhuClient {
     }
 
     public static async redeem(data: RedeemRequest) {
-        if (data.voucher == SimpadhuClient.byPassVoucher) {
-            return {
-                data: {
-                    status: 200,
-                },
-            };
-        }
-
         const resp = await SimpadhuClient.getToken();
         console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
         if (resp.data.status != 200) {
             return resp;
+        }
+
+        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
+            return {
+                data: {
+                    status: 200,
+                    message: 'SUCCESS',
+                    value: 1,
+                },
+            };
         }
 
         const form = new FormData();
