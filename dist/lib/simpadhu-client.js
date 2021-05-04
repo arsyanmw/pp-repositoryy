@@ -84,8 +84,8 @@ var SimpadhuClient = /** @class */ (function () {
                         if (data.voucher == SimpadhuClient.byPassVoucher) {
                             return [2 /*return*/, {
                                     data: {
-                                        status: 200
-                                    }
+                                        status: 200,
+                                    },
                                 }];
                         }
                         return [4 /*yield*/, SimpadhuClient.getToken()];
@@ -118,8 +118,8 @@ var SimpadhuClient = /** @class */ (function () {
                         if (data.voucher == SimpadhuClient.byPassVoucher) {
                             return [2 /*return*/, {
                                     data: {
-                                        status: 200
-                                    }
+                                        status: 200,
+                                    },
                                 }];
                         }
                         return [4 /*yield*/, SimpadhuClient.getToken()];
@@ -144,6 +144,7 @@ var SimpadhuClient = /** @class */ (function () {
             });
         });
     };
+    // for bypassing voucher validation, testing purpose
     SimpadhuClient.byPassVoucher = 'VC0000000001';
     SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';

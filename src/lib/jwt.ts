@@ -53,7 +53,7 @@ class Jwt {
             {
                 algorithm: ALGORITHM,
                 expiresIn: ttl || '1h',
-            }
+            },
         );
     }
 
