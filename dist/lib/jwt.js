@@ -93,6 +93,25 @@ var Jwt = /** @class */ (function () {
             });
         });
     };
+    Jwt.generateThirdPartyAccessToken = function (data, ttl) {
+        return __awaiter(this, void 0, void 0, function () {
+            var signAsync;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        signAsync = bluebird_1.promisify(jsonwebtoken_1.sign);
+                        return [4 /*yield*/, signAsync({
+                                iss: ISSUER,
+                                data: __assign({}, data),
+                            }, ACCESS_TOKEN_SECRET, {
+                                algorithm: ALGORITHM,
+                                expiresIn: ttl || '1h',
+                            })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     Jwt.verify = function (token) {
         return __awaiter(this, void 0, void 0, function () {
             var verifyAsync, decoded;
