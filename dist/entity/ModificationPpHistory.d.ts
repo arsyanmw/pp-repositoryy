@@ -20,6 +20,9 @@ export declare class ModificationPpHistory extends Base {
     perseroanPostalcode: number;
     perseroanPhone: number;
     perseroanCapital: number;
+    perseroanNpwp: number;
+    fileStatement: string;
+    fileCertificate: string;
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;

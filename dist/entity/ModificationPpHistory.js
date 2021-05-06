@@ -192,6 +192,29 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "perseroanCapital", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'perseroan_npwp',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "perseroanNpwp", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'file_statement',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "fileStatement", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'file_certificate',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "fileCertificate", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'kbli_value_json',
             type: 'text',
         }),
