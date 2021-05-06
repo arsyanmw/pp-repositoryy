@@ -1,7 +1,7 @@
 import { Base } from './Base';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { SubDistrict } from './SubDistrict';
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsDateString } from 'class-validator';
 
 @Entity({ name: 'pp_master' })
 export class PpMaster extends Base {
@@ -125,6 +125,29 @@ export class PpMaster extends Base {
         type: 'bigint',
     })
     perseroanNpwp: number;
+
+    @Column({
+        name: 'perseroan_npwp_created_at',
+        type: 'date',
+    })
+    @IsDateString()
+    perseroanNpwpCreatedAt: Date;
+
+    @Column({
+        name: 'perseroan_kpp_code',
+        type: 'varchar',
+        length: 255,
+        nullable: true,
+    })
+    perseroanKppCode: string;
+
+    @Column({
+        name: 'perseroan_kpp_name',
+        type: 'varchar',
+        length: 255,
+        nullable: true,
+    })
+    perseroanKppName: string;
 
     @Column({
         name: 'file_statement',

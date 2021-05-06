@@ -18,6 +18,9 @@ export declare class PpMaster extends Base {
     perseroanPhone: number;
     perseroanCapital: number;
     perseroanNpwp: number;
+    perseroanNpwpCreatedAt: Date;
+    perseroanKppCode: string;
+    perseroanKppName: string;
     fileStatement: string;
     fileCertificate: string;
     kbliValueJson: string;

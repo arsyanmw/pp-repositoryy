@@ -174,6 +174,32 @@ var PpMaster = /** @class */ (function (_super) {
     ], PpMaster.prototype, "perseroanNpwp", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'perseroan_npwp_created_at',
+            type: 'date',
+        }),
+        class_validator_1.IsDateString(),
+        __metadata("design:type", Date)
+    ], PpMaster.prototype, "perseroanNpwpCreatedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_code',
+            type: 'varchar',
+            length: 255,
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], PpMaster.prototype, "perseroanKppCode", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_name',
+            type: 'varchar',
+            length: 255,
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], PpMaster.prototype, "perseroanKppName", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'file_statement',
             type: 'varchar',
             length: 255,

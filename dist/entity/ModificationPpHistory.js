@@ -199,6 +199,32 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "perseroanNpwp", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'perseroan_npwp_created_at',
+            type: 'date',
+        }),
+        class_validator_1.IsDateString(),
+        __metadata("design:type", Date)
+    ], ModificationPpHistory.prototype, "perseroanNpwpCreatedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_code',
+            type: 'varchar',
+            length: 255,
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "perseroanKppCode", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_name',
+            type: 'varchar',
+            length: 255,
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "perseroanKppName", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'file_statement',
             type: 'varchar',
             length: 255,
