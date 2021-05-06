@@ -92,7 +92,7 @@ var SimpadhuClient = /** @class */ (function () {
                                     data: {
                                         status: 200,
                                         message: 'SUCCESS',
-                                        value: 1
+                                        value: 1,
                                     },
                                 }];
                         }
@@ -127,7 +127,7 @@ var SimpadhuClient = /** @class */ (function () {
                                     data: {
                                         status: 200,
                                         message: 'SUCCESS',
-                                        value: 1
+                                        value: 1,
                                     },
                                 }];
                         }
@@ -147,7 +147,7 @@ var SimpadhuClient = /** @class */ (function () {
         });
     };
     // for bypassing voucher validation, testing purpose
-    SimpadhuClient.byPassVoucher = 'VC0000000001';
+    SimpadhuClient.byPassVoucher = '000000000001';
     SimpadhuClient.environment = process.env.ENVIRONMENT || 'development';
     SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';

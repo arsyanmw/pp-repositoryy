@@ -15,7 +15,7 @@ export interface RedeemRequest extends DefaultRequest {
 }
 class SimpadhuClient {
     // for bypassing voucher validation, testing purpose
-    private static readonly byPassVoucher: string = 'VC0000000001';
+    private static readonly byPassVoucher: string = '000000000001';
 
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly host: string = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
