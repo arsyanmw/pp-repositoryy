@@ -122,6 +122,27 @@ var EstablishmentPpBenefit = /** @class */ (function (_super) {
     ], EstablishmentPpBenefit.prototype, "benefitAddress", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'benefit_sub_district_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpBenefit.prototype, "benefitSubDistrictId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'benefit_rt',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpBenefit.prototype, "benefitRt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'benefit_rw',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpBenefit.prototype, "benefitRw", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'benefit_nationality',
             type: 'varchar',
             length: 255,
@@ -137,16 +158,28 @@ var EstablishmentPpBenefit = /** @class */ (function (_super) {
             length: 255,
             nullable: false,
         }),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitNpwp", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'benefit_country_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpBenefit.prototype, "benefitCountryId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'benefit_country_address',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpBenefit.prototype, "benefitCountryAddress", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'benefit_relation',
             type: 'text',
-            nullable: false,
         }),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], EstablishmentPpBenefit.prototype, "benefitRelation", void 0);
     EstablishmentPpBenefit = __decorate([
