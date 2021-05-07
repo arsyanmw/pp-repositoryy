@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionState = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
+exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -116,6 +116,8 @@ var PpMaster_1 = require("./entity/PpMaster");
 Object.defineProperty(exports, "PpMaster", { enumerable: true, get: function () { return PpMaster_1.PpMaster; } });
 var PpMasterTransactionState_1 = require("./entity/PpMasterTransactionState");
 Object.defineProperty(exports, "PpMasterTransactionState", { enumerable: true, get: function () { return PpMasterTransactionState_1.PpMasterTransactionState; } });
+var PpMasterTransactionNumberCount_1 = require("./entity/PpMasterTransactionNumberCount");
+Object.defineProperty(exports, "PpMasterTransactionNumberCount", { enumerable: true, get: function () { return PpMasterTransactionNumberCount_1.PpMasterTransactionNumberCount; } });
 var Province_1 = require("./entity/Province");
 Object.defineProperty(exports, "Province", { enumerable: true, get: function () { return Province_1.Province; } });
 var SubDistrict_1 = require("./entity/SubDistrict");
