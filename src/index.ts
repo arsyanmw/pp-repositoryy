@@ -35,6 +35,7 @@ import { NormalizationWords } from './entity/NormalizationWords';
 import { Position } from './entity/Position';
 import { PpMaster } from './entity/PpMaster';
 import { PpMasterTransactionState } from './entity/PpMasterTransactionState';
+import { PpMasterTransactionNumberCount } from './entity/PpMasterTransactionNumberCount';
 import { Province } from './entity/Province';
 import { SubDistrict } from './entity/SubDistrict';
 import { TransactionType } from './entity/TransactionType';
@@ -87,6 +88,7 @@ export {
     Position,
     PpMaster,
     PpMasterTransactionState,
+    PpMasterTransactionNumberCount,
     Province,
     SubDistrict,
     TransactionType,

@@ -82,6 +82,24 @@ export class EstablishmentPpBenefit extends Base {
     benefitAddress: string;
 
     @Column({
+        name: 'benefit_sub_district_id',
+        type: 'bigint',
+    })
+    benefitSubDistrictId: number;
+
+    @Column({
+        name: 'benefit_rt',
+        type: 'bigint',
+    })
+    benefitRt: number;
+
+    @Column({
+        name: 'benefit_rw',
+        type: 'bigint',
+    })
+    benefitRw: number;
+
+    @Column({
         name: 'benefit_nationality',
         type: 'varchar',
         length: 255,
@@ -96,14 +114,24 @@ export class EstablishmentPpBenefit extends Base {
         length: 255,
         nullable: false,
     })
-    @IsNotEmpty()
     benefitNpwp: string;
+
+    @Column({
+        name: 'benefit_country_id',
+        type: 'bigint',
+    })
+    benefitCountryId: number;
+
+    @Column({
+        name: 'benefit_country_address',
+        type: 'varchar',
+        length: 255,
+    })
+    benefitCountryAddress: string;
 
     @Column({
         name: 'benefit_relation',
         type: 'text',
-        nullable: false,
     })
-    @IsNotEmpty()
     benefitRelation: string;
 }
