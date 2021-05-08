@@ -36,12 +36,25 @@ export class EstablishmentPpHistory extends Base {
     transactionTypeId: number;
 
     @Column({
+        name: 'section_value_json',
+        type: 'text',
+    })
+    sectionValueJson: string;
+
+    @Column({
         name: 'vouchers_code',
         type: 'varchar',
         length: 255,
         nullable: false,
     })
     vouchersCode: string;
+
+    @Column({
+        name: 'identities_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    identitiesId: number;
 
     @Column({
         name: 'transaction_number',
@@ -141,6 +154,45 @@ export class EstablishmentPpHistory extends Base {
         type: 'bigint',
     })
     perseroanCapital: number;
+
+    @Column({
+        name: 'perseroan_npwp',
+        type: 'bigint',
+    })
+    perseroanNpwp: number;
+
+    @Column({
+        name: 'perseroan_npwp_created_at',
+        type: 'date'
+    })
+    perseroanNpwpCreatedAt: Date;
+
+    @Column({
+        name: 'perseroan_kpp_code',
+        type: 'bigint',
+    })
+    perseroanKppCode: number;
+
+    @Column({
+        name: 'perseroan_kpp_name',
+        type: 'varchar',
+        length: 255,
+    })
+    perseroanKppName: string;
+
+    @Column({
+        name: 'file_statement',
+        type: 'varchar',
+        length: 255,
+    })
+    fileStatement: string;
+
+    @Column({
+        name: 'file_certificate',
+        type: 'varchar',
+        length: 255,
+    })
+    fileCertificate: string;
 
     @Column({
         name: 'kbli_value_json',

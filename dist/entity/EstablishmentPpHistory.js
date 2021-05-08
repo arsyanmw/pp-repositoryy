@@ -71,6 +71,13 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
     ], EstablishmentPpHistory.prototype, "transactionTypeId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'section_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "sectionValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'vouchers_code',
             type: 'varchar',
             length: 255,
@@ -78,6 +85,14 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], EstablishmentPpHistory.prototype, "vouchersCode", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpHistory.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'transaction_number',
@@ -190,6 +205,51 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpHistory.prototype, "perseroanCapital", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_npwp',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpHistory.prototype, "perseroanNpwp", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_npwp_created_at',
+            type: 'date'
+        }),
+        __metadata("design:type", Date)
+    ], EstablishmentPpHistory.prototype, "perseroanNpwpCreatedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_code',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpHistory.prototype, "perseroanKppCode", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_kpp_name',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "perseroanKppName", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'file_statement',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "fileStatement", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'file_certificate',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "fileCertificate", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'kbli_value_json',
