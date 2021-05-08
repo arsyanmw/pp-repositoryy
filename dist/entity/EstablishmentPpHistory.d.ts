@@ -6,7 +6,9 @@ export declare class EstablishmentPpHistory extends Base {
     establishmentPpId: number;
     ppTypeId: number;
     transactionTypeId: number;
+    sectionValueJson: string;
     vouchersCode: string;
+    identitiesId: number;
     transactionNumber: string;
     certificateNumber: string;
     perseroanName: string;
@@ -20,6 +22,12 @@ export declare class EstablishmentPpHistory extends Base {
     perseroanPostalcode: number;
     perseroanPhone: number;
     perseroanCapital: number;
+    perseroanNpwp: number;
+    perseroanNpwpCreatedAt: Date;
+    perseroanKppCode: number;
+    perseroanKppName: string;
+    fileStatement: string;
+    fileCertificate: string;
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
