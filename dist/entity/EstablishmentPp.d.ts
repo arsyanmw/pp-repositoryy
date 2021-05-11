@@ -7,6 +7,7 @@ export declare class EstablishmentPp extends Base {
     transactionType: TransactionType;
     transactionTypeId: number;
     vouchersCode: string;
+    identitiesId: number;
     transactionNumber: string;
     certificateNumber: string;
     perseroanName: string;

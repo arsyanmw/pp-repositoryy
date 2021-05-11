@@ -39,6 +39,13 @@ export class EstablishmentPp extends Base {
     vouchersCode: string;
 
     @Column({
+        name: 'identities_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    identitiesId: number;
+
+    @Column({
         name: 'transaction_number',
         type: 'varchar',
         length: 255,
