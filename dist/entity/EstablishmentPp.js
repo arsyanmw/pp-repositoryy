@@ -74,6 +74,14 @@ var EstablishmentPp = /** @class */ (function (_super) {
     ], EstablishmentPp.prototype, "vouchersCode", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPp.prototype, "identitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'transaction_number',
             type: 'varchar',
             length: 255,
