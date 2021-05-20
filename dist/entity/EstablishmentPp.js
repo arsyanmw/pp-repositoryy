@@ -172,9 +172,7 @@ var EstablishmentPp = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'perseroan_postalcode',
             type: 'bigint',
-            nullable: false,
         }),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], EstablishmentPp.prototype, "perseroanPostalcode", void 0);
     __decorate([
