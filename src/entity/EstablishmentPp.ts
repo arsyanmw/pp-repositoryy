@@ -126,9 +126,7 @@ export class EstablishmentPp extends Base {
     @Column({
         name: 'perseroan_postalcode',
         type: 'bigint',
-        nullable: false,
     })
-    @IsNotEmpty()
     perseroanPostalcode: number;
 
     @Column({
