@@ -3,6 +3,7 @@ import { Identity } from '../entity/Identity';
 import { promisify } from 'bluebird';
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+const AHU_TOKEN_SECRET = 'QXJndWUgZm9yIHlvdXIgbGltaXRhdGlvbnMsIGFuZCBzdXJlbHkgdGhleeKAmXJlIHlvdXJzLg==';
 const ACCESS_TOKEN_LIFE = 3600 * 48;
 const TEMP_ACCESS_TOKEN_LIFE = 3600 * 25;
 const ALGORITHM = 'HS256';
@@ -61,6 +62,12 @@ class Jwt {
         const verifyAsync = promisify(verify);
         const decoded = await verifyAsync(token, ACCESS_TOKEN_SECRET);
         return decoded;
+    }
+
+    public static verifyAhuToken(token: string) {
+        const ahuKey = Buffer.from(AHU_TOKEN_SECRET, 'base64').toString('utf8');
+        console.log("ahuKey: ", ahuKey);
+        return verify(token, ahuKey);
     }
 
     private static payload(identity: Identity): any {
