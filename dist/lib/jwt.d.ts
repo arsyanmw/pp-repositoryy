@@ -12,6 +12,7 @@ declare class Jwt {
     static generateTemporaryToken(data: TempData): Promise<any>;
     static generateThirdPartyAccessToken(data: ClientCredentialData, ttl: string | number): Promise<any>;
     static verify(token: string): Promise<any>;
+    static verifyAhuToken(token: string): string | object;
     private static payload;
 }
 export { Jwt };

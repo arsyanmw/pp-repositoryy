@@ -51,6 +51,7 @@ exports.Jwt = void 0;
 var jsonwebtoken_1 = require("jsonwebtoken");
 var bluebird_1 = require("bluebird");
 var ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+var AHU_TOKEN_SECRET = 'QXJndWUgZm9yIHlvdXIgbGltaXRhdGlvbnMsIGFuZCBzdXJlbHkgdGhleeKAmXJlIHlvdXJzLg==';
 var ACCESS_TOKEN_LIFE = 3600 * 48;
 var TEMP_ACCESS_TOKEN_LIFE = 3600 * 25;
 var ALGORITHM = 'HS256';
@@ -126,6 +127,11 @@ var Jwt = /** @class */ (function () {
                 }
             });
         });
+    };
+    Jwt.verifyAhuToken = function (token) {
+        var ahuKey = Buffer.from(AHU_TOKEN_SECRET, 'base64').toString('utf8');
+        console.log("ahuKey: ", ahuKey);
+        return jsonwebtoken_1.verify(token, ahuKey);
     };
     Jwt.payload = function (identity) {
         return {
