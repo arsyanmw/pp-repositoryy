@@ -1,0 +1,32 @@
+import { Base } from './Base';
+import { SubDistrict } from './SubDistrict';
+export declare class PpMasterHistory extends Base {
+    id: number;
+    insertedAt: Date;
+    ppMasterId: number;
+    transactionSeq: number;
+    ppTypeId: number;
+    transactionTypeId: number;
+    identitiesId: number;
+    certificateNumber: string;
+    perseroanName: string;
+    perseroanAlias: string;
+    perseroanEmail: string;
+    perseroanAddress: string;
+    perseroanRt: string;
+    perseroanRw: string;
+    SubDistrict: SubDistrict;
+    perseroanSubDistrictId: number;
+    perseroanPostalcode: number;
+    perseroanPhone: number;
+    perseroanCapital: number;
+    perseroanNpwp: number;
+    perseroanNpwpCreatedAt: Date;
+    perseroanKppCode: string;
+    perseroanKppName: string;
+    fileStatement: string;
+    fileCertificate: string;
+    kbliValueJson: string;
+    ownerValueJson: string;
+    benefitValueJson: string;
+}
