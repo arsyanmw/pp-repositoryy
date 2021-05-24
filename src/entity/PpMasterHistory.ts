@@ -22,13 +22,6 @@ export class PpMasterHistory extends Base {
     ppMasterId: number;
 
     @Column({
-        name: 'transaction_seq',
-        type: 'bigint',
-        nullable: false,
-    })
-    transactionSeq: number;
-
-    @Column({
         name: 'pp_type_id',
         type: 'bigint',
         nullable: false,

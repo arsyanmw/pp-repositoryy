@@ -55,14 +55,6 @@ var PpMasterHistory = /** @class */ (function (_super) {
     ], PpMasterHistory.prototype, "ppMasterId", void 0);
     __decorate([
         typeorm_1.Column({
-            name: 'transaction_seq',
-            type: 'bigint',
-            nullable: false,
-        }),
-        __metadata("design:type", Number)
-    ], PpMasterHistory.prototype, "transactionSeq", void 0);
-    __decorate([
-        typeorm_1.Column({
             name: 'pp_type_id',
             type: 'bigint',
             nullable: false,

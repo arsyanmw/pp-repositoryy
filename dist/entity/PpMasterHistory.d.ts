@@ -4,7 +4,6 @@ export declare class PpMasterHistory extends Base {
     id: number;
     insertedAt: Date;
     ppMasterId: number;
-    transactionSeq: number;
     ppTypeId: number;
     transactionTypeId: number;
     identitiesId: number;
