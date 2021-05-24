@@ -33,6 +33,7 @@ import { Menu } from './entity/Menu';
 import { NormalizationWords } from './entity/NormalizationWords';
 import { Position } from './entity/Position';
 import { PpMaster } from './entity/PpMaster';
+import { PpMasterHistory } from './entity/PpMasterHistory';
 import { PpMasterTransactionState } from './entity/PpMasterTransactionState';
 import { PpMasterTransactionNumberCount } from './entity/PpMasterTransactionNumberCount';
 import { Province } from './entity/Province';
@@ -44,4 +45,4 @@ import { Whitelist } from './entity/Whitelist';
  */
 import { Jwt } from './lib/jwt';
 export declare const connection: (config: ConnectionOptions) => Promise<Connection>;
-export { Jwt, Connection, AccessMenu, ActionMenu, Badwords, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpMaster, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, };
+export { Jwt, Connection, AccessMenu, ActionMenu, Badwords, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, };
