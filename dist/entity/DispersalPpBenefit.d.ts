@@ -1,7 +1,7 @@
 import { Base } from './Base';
 export declare class DispersalPpBenefit extends Base {
     id: number;
-    establishmentPpId: number;
+    dispersalPpId: number;
     criteriaValue: string;
     identitiesId: number;
     benefitName: string;

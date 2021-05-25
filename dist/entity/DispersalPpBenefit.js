@@ -44,7 +44,7 @@ var DispersalPpBenefit = /** @class */ (function (_super) {
             nullable: false,
         }),
         __metadata("design:type", Number)
-    ], DispersalPpBenefit.prototype, "establishmentPpId", void 0);
+    ], DispersalPpBenefit.prototype, "dispersalPpId", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'criteria_value',
