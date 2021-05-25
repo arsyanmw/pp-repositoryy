@@ -16,7 +16,7 @@ export declare class DispersalPp extends Base {
     perseroanRw: string;
     perseroanSubDistrictId: number;
     perseroanPostalcode: number;
-    perseroanPhone: number;
+    perseroanPhone: string;
     perseroanCapital: number;
     perseroanNpwp: number;
     perseroanNpwpCreatedAt: Date;

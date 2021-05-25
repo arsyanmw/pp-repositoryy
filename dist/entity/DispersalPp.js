@@ -170,7 +170,7 @@ var DispersalPp = /** @class */ (function (_super) {
             type: 'varchar',
             length: 255,
         }),
-        __metadata("design:type", Number)
+        __metadata("design:type", String)
     ], DispersalPp.prototype, "perseroanPhone", void 0);
     __decorate([
         typeorm_1.Column({
