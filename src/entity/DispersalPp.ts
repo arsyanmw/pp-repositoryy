@@ -124,7 +124,7 @@ export class DispersalPp extends Base {
         type: 'varchar',
         length: 255,
     })
-    perseroanPhone: number;
+    perseroanPhone: string;
 
     @Column({
         name: 'perseroan_capital',
