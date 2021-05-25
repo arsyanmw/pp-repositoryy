@@ -41,6 +41,11 @@ import { Province } from './entity/Province';
 import { SubDistrict } from './entity/SubDistrict';
 import { TransactionType } from './entity/TransactionType';
 import { Whitelist } from './entity/Whitelist';
+import { DispersalPp } from './entity/DispersalPp';
+import { DispersalPpActivities } from './entity/DispersalPpActivities';
+import { DispersalPpBenefit } from './entity/DispersalPpBenefit';
+import { DispersalPpOwner } from './entity/DispersalPpOwner';
+import { DispersalReason } from './entity/DispersalReason';
 
 /**
  * Another lib
@@ -95,4 +100,9 @@ export {
     SubDistrict,
     TransactionType,
     Whitelist,
+    DispersalPp,
+    DispersalPpActivities,
+    DispersalPpBenefit,
+    DispersalPpOwner,
+    DispersalReason,
 };

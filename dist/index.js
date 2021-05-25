@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
+exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Jwt = exports.connection = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -128,6 +128,16 @@ var TransactionType_1 = require("./entity/TransactionType");
 Object.defineProperty(exports, "TransactionType", { enumerable: true, get: function () { return TransactionType_1.TransactionType; } });
 var Whitelist_1 = require("./entity/Whitelist");
 Object.defineProperty(exports, "Whitelist", { enumerable: true, get: function () { return Whitelist_1.Whitelist; } });
+var DispersalPp_1 = require("./entity/DispersalPp");
+Object.defineProperty(exports, "DispersalPp", { enumerable: true, get: function () { return DispersalPp_1.DispersalPp; } });
+var DispersalPpActivities_1 = require("./entity/DispersalPpActivities");
+Object.defineProperty(exports, "DispersalPpActivities", { enumerable: true, get: function () { return DispersalPpActivities_1.DispersalPpActivities; } });
+var DispersalPpBenefit_1 = require("./entity/DispersalPpBenefit");
+Object.defineProperty(exports, "DispersalPpBenefit", { enumerable: true, get: function () { return DispersalPpBenefit_1.DispersalPpBenefit; } });
+var DispersalPpOwner_1 = require("./entity/DispersalPpOwner");
+Object.defineProperty(exports, "DispersalPpOwner", { enumerable: true, get: function () { return DispersalPpOwner_1.DispersalPpOwner; } });
+var DispersalReason_1 = require("./entity/DispersalReason");
+Object.defineProperty(exports, "DispersalReason", { enumerable: true, get: function () { return DispersalReason_1.DispersalReason; } });
 /**
  * Another lib
  */
