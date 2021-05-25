@@ -12,7 +12,7 @@ export class DispersalPpBenefit extends Base {
         type: 'bigint',
         nullable: false,
     })
-    establishmentPpId: number;
+    dispersalPpId: number;
 
     @Column({
         name: 'criteria_value',
