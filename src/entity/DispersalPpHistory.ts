@@ -14,11 +14,11 @@ export class DispersalPpHistory extends Base {
     insertedAt: Date;
 
     @Column({
-        name: 'establishment_pp_id',
+        name: 'dispersal_pp_id',
         type: 'bigint',
         nullable: false,
     })
-    establishmentPpId: number;
+    dispersalPpId: number;
 
     @Column({
         name: 'pp_type_id',
@@ -155,7 +155,7 @@ export class DispersalPpHistory extends Base {
 
     @Column({
         name: 'perseroan_npwp_created_at',
-        type: 'date'
+        type: 'date',
     })
     perseroanNpwpCreatedAt: Date;
 

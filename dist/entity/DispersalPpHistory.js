@@ -46,12 +46,12 @@ var DispersalPpHistory = /** @class */ (function (_super) {
     ], DispersalPpHistory.prototype, "insertedAt", void 0);
     __decorate([
         typeorm_1.Column({
-            name: 'establishment_pp_id',
+            name: 'dispersal_pp_id',
             type: 'bigint',
             nullable: false,
         }),
         __metadata("design:type", Number)
-    ], DispersalPpHistory.prototype, "establishmentPpId", void 0);
+    ], DispersalPpHistory.prototype, "dispersalPpId", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'pp_type_id',
@@ -206,7 +206,7 @@ var DispersalPpHistory = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.Column({
             name: 'perseroan_npwp_created_at',
-            type: 'date'
+            type: 'date',
         }),
         __metadata("design:type", Date)
     ], DispersalPpHistory.prototype, "perseroanNpwpCreatedAt", void 0);

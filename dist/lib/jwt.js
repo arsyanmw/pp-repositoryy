@@ -130,7 +130,7 @@ var Jwt = /** @class */ (function () {
     };
     Jwt.verifyAhuToken = function (token) {
         var ahuKey = Buffer.from(AHU_TOKEN_SECRET, 'base64').toString('utf8');
-        console.log("ahuKey: ", ahuKey);
+        console.log('ahuKey: ', ahuKey);
         return jsonwebtoken_1.verify(token, ahuKey);
     };
     Jwt.payload = function (identity) {

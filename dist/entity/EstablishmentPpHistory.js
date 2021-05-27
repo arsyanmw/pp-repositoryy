@@ -215,7 +215,7 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.Column({
             name: 'perseroan_npwp_created_at',
-            type: 'date'
+            type: 'date',
         }),
         __metadata("design:type", Date)
     ], EstablishmentPpHistory.prototype, "perseroanNpwpCreatedAt", void 0);

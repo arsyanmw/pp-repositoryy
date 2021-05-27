@@ -2,7 +2,7 @@ import { Base } from './Base';
 export declare class DispersalPpHistory extends Base {
     id: number;
     insertedAt: Date;
-    establishmentPpId: number;
+    dispersalPpId: number;
     ppTypeId: number;
     transactionTypeId: number;
     sectionValueJson: string;

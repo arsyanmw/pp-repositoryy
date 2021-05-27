@@ -66,7 +66,7 @@ class Jwt {
 
     public static verifyAhuToken(token: string) {
         const ahuKey = Buffer.from(AHU_TOKEN_SECRET, 'base64').toString('utf8');
-        console.log("ahuKey: ", ahuKey);
+        console.log('ahuKey: ', ahuKey);
         return verify(token, ahuKey);
     }
 

@@ -163,7 +163,7 @@ export class EstablishmentPpHistory extends Base {
 
     @Column({
         name: 'perseroan_npwp_created_at',
-        type: 'date'
+        type: 'date',
     })
     perseroanNpwpCreatedAt: Date;
 
