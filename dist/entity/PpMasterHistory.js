@@ -250,6 +250,13 @@ var PpMasterHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], PpMasterHistory.prototype, "benefitValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'dispersal_reason_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterHistory.prototype, "dispersalReasonId", void 0);
     PpMasterHistory = __decorate([
         typeorm_1.Entity({ name: 'pp_master_history' })
     ], PpMasterHistory);

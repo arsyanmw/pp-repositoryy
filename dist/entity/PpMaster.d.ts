@@ -26,4 +26,5 @@ export declare class PpMaster extends Base {
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
+    dispersalReasonId: number;
 }

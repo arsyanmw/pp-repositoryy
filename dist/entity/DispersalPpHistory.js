@@ -262,6 +262,13 @@ var DispersalPpHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], DispersalPpHistory.prototype, "benefitValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'dispersal_reason_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], DispersalPpHistory.prototype, "dispersalReasonId", void 0);
     DispersalPpHistory = __decorate([
         typeorm_1.Entity({ name: 'dispersal_pp_history' })
     ], DispersalPpHistory);

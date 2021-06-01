@@ -235,6 +235,13 @@ var PpMaster = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], PpMaster.prototype, "benefitValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'dispersal_reason_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], PpMaster.prototype, "dispersalReasonId", void 0);
     PpMaster = __decorate([
         typeorm_1.Entity({ name: 'pp_master' })
     ], PpMaster);

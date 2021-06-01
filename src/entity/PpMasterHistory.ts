@@ -193,4 +193,10 @@ export class PpMasterHistory extends Base {
         type: 'text',
     })
     benefitValueJson: string;
+
+    @Column({
+        name: 'dispersal_reason_id',
+        type: 'bigint',
+    })
+    dispersalReasonId: number;
 }

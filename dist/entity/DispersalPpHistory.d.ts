@@ -29,4 +29,5 @@ export declare class DispersalPpHistory extends Base {
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
+    dispersalReasonId: number;
 }

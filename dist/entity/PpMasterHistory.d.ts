@@ -28,4 +28,5 @@ export declare class PpMasterHistory extends Base {
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
+    dispersalReasonId: number;
 }
