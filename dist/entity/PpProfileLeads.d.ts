@@ -1,7 +1,7 @@
 import { Base } from './Base';
 export declare class PpProfileLeads extends Base {
     id: number;
-    transactionNumber: number;
+    transactionNumber: string;
     ppMasterId: number;
     vouchersCode: string;
     profileNik: string;
