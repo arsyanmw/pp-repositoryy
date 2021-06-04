@@ -72,14 +72,12 @@ export class PpProfileLeads extends Base {
     @Column({
         name: 'profile_rt',
         type: 'int',
-        length: 11,
     })
     profileRt: number;
 
     @Column({
         name: 'profile_rw',
         type: 'int',
-        length: 11,
     })
     profileRw: number;
 
@@ -113,7 +111,6 @@ export class PpProfileLeads extends Base {
     @Column({
         name: 'profile_download_count',
         type: 'int',
-        length: 11,
     })
     profileDownloadCount: number;
 

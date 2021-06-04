@@ -111,7 +111,6 @@ var PpProfileLeads = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'profile_rt',
             type: 'int',
-            length: 11,
         }),
         __metadata("design:type", Number)
     ], PpProfileLeads.prototype, "profileRt", void 0);
@@ -119,7 +118,6 @@ var PpProfileLeads = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'profile_rw',
             type: 'int',
-            length: 11,
         }),
         __metadata("design:type", Number)
     ], PpProfileLeads.prototype, "profileRw", void 0);
@@ -158,7 +156,6 @@ var PpProfileLeads = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'profile_download_count',
             type: 'int',
-            length: 11,
         }),
         __metadata("design:type", Number)
     ], PpProfileLeads.prototype, "profileDownloadCount", void 0);
