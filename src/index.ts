@@ -47,6 +47,7 @@ import { DispersalPpBenefit } from './entity/DispersalPpBenefit';
 import { DispersalPpOwner } from './entity/DispersalPpOwner';
 import { DispersalReason } from './entity/DispersalReason';
 import { DispersalPpHistory } from './entity/DispersalPpHistory';
+import { PpProfileLeads } from './entity/PpProfileLeads';
 
 /**
  * Another lib
@@ -107,4 +108,5 @@ export {
     DispersalPpOwner,
     DispersalReason,
     DispersalPpHistory,
+    PpProfileLeads,
 };
