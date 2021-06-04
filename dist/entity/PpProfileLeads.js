@@ -40,10 +40,11 @@ var PpProfileLeads = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.Column({
             name: 'transaction_number',
-            type: 'bigint',
+            type: 'varchar',
+            length: 255,
             nullable: false,
         }),
-        __metadata("design:type", Number)
+        __metadata("design:type", String)
     ], PpProfileLeads.prototype, "transactionNumber", void 0);
     __decorate([
         typeorm_1.Column({

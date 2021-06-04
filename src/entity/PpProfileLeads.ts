@@ -9,10 +9,11 @@ export class PpProfileLeads extends Base {
 
     @Column({
         name: 'transaction_number',
-        type: 'bigint',
+        type: 'varchar',
+        length: 255,
         nullable: false,
     })
-    transactionNumber: number;
+    transactionNumber: string;
 
     @Column({
         name: 'pp_master_id',
