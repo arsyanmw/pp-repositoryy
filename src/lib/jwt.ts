@@ -78,6 +78,8 @@ class Jwt {
                 fullName: identity.fullName,
                 email: identity.identityEmail.email,
                 nik: identity.identityNik.nik,
+                nip: identity.nip,
+                groups: identity.identityGroups || [],
             },
         };
     }
