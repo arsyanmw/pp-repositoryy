@@ -159,6 +159,17 @@ var Identity = /** @class */ (function (_super) {
     ], Identity.prototype, "npwp", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'nip',
+            type: 'varchar',
+            length: 255
+        }),
+        class_validator_1.IsOptional(),
+        class_validator_1.IsNumberString(),
+        class_validator_1.Length(25, 25),
+        __metadata("design:type", String)
+    ], Identity.prototype, "nip", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'npwp_is_verified',
             type: 'int',
             nullable: false,
