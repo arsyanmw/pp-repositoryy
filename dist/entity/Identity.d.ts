@@ -19,6 +19,7 @@ export declare class Identity extends Base {
     job: string;
     nationality: string;
     npwp: string;
+    nip: string;
     npwpIsVerified: number;
     identityNik: IdentityNik;
     identityEmail: IdentityEmail;
