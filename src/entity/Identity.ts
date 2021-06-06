@@ -114,6 +114,16 @@ export class Identity extends Base {
     npwp: string;
 
     @Column({
+        name: 'nip',
+        type: 'varchar',
+        length: 255
+    })
+    @IsOptional()
+    @IsNumberString()
+    @Length(25, 25)
+    nip: string;
+
+    @Column({
         name: 'npwp_is_verified',
         type: 'int',
         nullable: false,
