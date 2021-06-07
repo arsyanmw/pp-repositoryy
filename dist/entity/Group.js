@@ -58,6 +58,15 @@ var Group = /** @class */ (function (_super) {
     ], Group.prototype, "level", void 0);
     __decorate([
         typeorm_1.Column({
+            type: 'int',
+            name: 'is_internal',
+            nullable: false,
+            default: 0,
+        }),
+        __metadata("design:type", Number)
+    ], Group.prototype, "isInternal", void 0);
+    __decorate([
+        typeorm_1.Column({
             type: 'varchar',
             name: 'name',
             nullable: false,

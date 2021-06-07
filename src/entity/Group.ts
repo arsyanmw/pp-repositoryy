@@ -26,6 +26,14 @@ export class Group extends Base {
     level: number;
 
     @Column({
+        type: 'int',
+        name: 'is_internal',
+        nullable: false,
+        default: 0,
+    })
+    isInternal: number;
+
+    @Column({
         type: 'varchar',
         name: 'name',
         nullable: false,

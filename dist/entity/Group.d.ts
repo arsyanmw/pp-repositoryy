@@ -5,6 +5,7 @@ export declare class Group extends Base {
     id: number;
     parentId: number;
     level: number;
+    isInternal: number;
     name: string;
     description: string;
     path: string;
