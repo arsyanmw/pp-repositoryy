@@ -134,13 +134,14 @@ var Jwt = /** @class */ (function () {
         return jsonwebtoken_1.verify(token, ahuKey);
     };
     Jwt.payload = function (identity) {
+        var _a;
         return {
             iss: ISSUER,
             data: {
                 identityId: identity.id,
                 fullName: identity.fullName,
                 email: identity.identityEmail.email,
-                nik: identity.identityNik.nik,
+                nik: (_a = identity.identityNik) === null || _a === void 0 ? void 0 : _a.nik,
                 nip: identity.nip,
                 groups: identity.identityGroups || [],
             },
