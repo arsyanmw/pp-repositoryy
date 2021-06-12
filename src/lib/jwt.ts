@@ -77,7 +77,7 @@ class Jwt {
                 identityId: identity.id,
                 fullName: identity.fullName,
                 email: identity.identityEmail.email,
-                nik: identity.identityNik.nik,
+                nik: identity.identityNik?.nik,
                 nip: identity.nip,
                 groups: identity.identityGroups || [],
             },
