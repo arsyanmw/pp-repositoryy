@@ -8,5 +8,7 @@ export declare class Menu extends Base {
     orderValue: number;
     description: string;
     image_url: string;
+    parentId: number;
+    url: string;
     actionMenus: ActionMenu[];
 }

@@ -89,6 +89,23 @@ var Menu = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Menu.prototype, "image_url", void 0);
     __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'parent_id',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Menu.prototype, "parentId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'varchar',
+            name: 'url',
+            nullable: true,
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], Menu.prototype, "url", void 0);
+    __decorate([
         typeorm_1.OneToMany(function (type) { return ActionMenu_1.ActionMenu; }, function (actionMenu) { return actionMenu.menu; }),
         typeorm_1.JoinTable({
             name: 'id',

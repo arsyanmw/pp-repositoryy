@@ -53,6 +53,21 @@ export class Menu extends Base {
     })
     image_url: string;
 
+    @Column({
+        type: 'int',
+        name: 'parent_id',
+        nullable: true,
+    })
+    parentId: number;
+
+    @Column({
+        type: 'varchar',
+        name: 'url',
+        nullable: true,
+        length: 255,
+    })
+    url: string;
+
     @OneToMany((type) => ActionMenu, (actionMenu) => actionMenu.menu)
     @JoinTable({
         name: 'id',
