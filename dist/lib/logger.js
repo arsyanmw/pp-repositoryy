@@ -27,7 +27,6 @@ var ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 var Logger = /** @class */ (function () {
     function Logger() {
         this.esTransport = new winston_elasticsearch_1.ElasticsearchTransport({
-            level: 'info',
             clientOpts: {
                 node: ELASTICSEARCH_LOGS,
                 maxRetries: 2,

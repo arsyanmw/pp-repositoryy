@@ -9,7 +9,6 @@ const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 
 class Logger {
     private esTransport = new ElasticsearchTransport({
-        level: 'info',
         clientOpts: {
             node: ELASTICSEARCH_LOGS,
             maxRetries: 2,
