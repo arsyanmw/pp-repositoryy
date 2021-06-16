@@ -43,6 +43,9 @@
     "minio": "^7.0.18",
     "mysql2": "^2.2.2",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.32"
+    "typeorm": "^0.2.32",
+    "winston": "^3.3.3",
+    "winston-elasticsearch": "^0.15.6",
+    "winston-format-debug": "^1.0.3"
   }
 }

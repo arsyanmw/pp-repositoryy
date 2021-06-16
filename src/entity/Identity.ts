@@ -116,7 +116,7 @@ export class Identity extends Base {
     @Column({
         name: 'nip',
         type: 'varchar',
-        length: 255
+        length: 255,
     })
     @IsOptional()
     @IsNumberString()

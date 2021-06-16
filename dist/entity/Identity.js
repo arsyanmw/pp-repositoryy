@@ -161,7 +161,7 @@ var Identity = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'nip',
             type: 'varchar',
-            length: 255
+            length: 255,
         }),
         class_validator_1.IsOptional(),
         class_validator_1.IsNumberString(),
