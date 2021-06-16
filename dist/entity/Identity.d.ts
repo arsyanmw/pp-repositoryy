@@ -25,4 +25,7 @@ export declare class Identity extends Base {
     identityEmail: IdentityEmail;
     identityGroups: IdentityGroup[];
     position: Position;
+    createdBy: number;
+    updatedBy: number;
+    deletedBy: number;
 }

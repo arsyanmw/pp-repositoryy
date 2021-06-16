@@ -1,7 +1,7 @@
 import { Base } from './Base';
 import { Identity } from './Identity';
 import { Group } from './Group';
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column } from 'typeorm';
 
 @Entity({ name: 'identities_group' })
 export class IdentityGroup extends Base {
@@ -21,4 +21,25 @@ export class IdentityGroup extends Base {
         referencedColumnName: 'id',
     })
     group: Group;
+
+    @Column({
+        type: 'int',
+        name: 'created_by',
+        nullable: true,
+    })
+    createdBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'updated_by',
+        nullable: true,
+    })
+    updatedBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'deleted_by',
+        nullable: true,
+    })
+    deletedBy: number;
 }

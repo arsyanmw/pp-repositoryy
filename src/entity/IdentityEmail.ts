@@ -31,4 +31,25 @@ export class IdentityEmail extends Base {
         nullable: false,
     })
     isVerified: number;
+
+    @Column({
+        type: 'int',
+        name: 'created_by',
+        nullable: true,
+    })
+    createdBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'updated_by',
+        nullable: true,
+    })
+    updatedBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'deleted_by',
+        nullable: true,
+    })
+    deletedBy: number;
 }

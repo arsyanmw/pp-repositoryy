@@ -5,4 +5,7 @@ export declare class IdentityEmail extends Base {
     identity: Identity;
     email: string;
     isVerified: number;
+    createdBy: number;
+    updatedBy: number;
+    deletedBy: number;
 }

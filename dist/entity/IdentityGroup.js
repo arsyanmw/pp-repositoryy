@@ -54,6 +54,30 @@ var IdentityGroup = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Group_1.Group)
     ], IdentityGroup.prototype, "group", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'created_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityGroup.prototype, "createdBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityGroup.prototype, "updatedBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'deleted_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityGroup.prototype, "deletedBy", void 0);
     IdentityGroup = __decorate([
         typeorm_1.Entity({ name: 'identities_group' })
     ], IdentityGroup);
