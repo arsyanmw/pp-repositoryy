@@ -52,6 +52,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             type: 'bigint',
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], PpProfileLeads.prototype, "ppMasterId", void 0);
     __decorate([
@@ -61,6 +62,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             length: 255,
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], PpProfileLeads.prototype, "vouchersCode", void 0);
     __decorate([
@@ -79,6 +81,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             length: 255,
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], PpProfileLeads.prototype, "profileName", void 0);
     __decorate([
@@ -97,6 +100,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             type: 'date',
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", Date)
     ], PpProfileLeads.prototype, "profileBirthdate", void 0);
     __decorate([
@@ -106,6 +110,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             length: 255,
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], PpProfileLeads.prototype, "profileAddress", void 0);
     __decorate([
@@ -128,6 +133,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             type: 'bigint',
             nullable: false,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], PpProfileLeads.prototype, "profileSubDistrictId", void 0);
     __decorate([
@@ -143,6 +149,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             type: 'varchar',
             length: 255,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], PpProfileLeads.prototype, "profilePhone", void 0);
     __decorate([
@@ -151,6 +158,7 @@ var PpProfileLeads = /** @class */ (function (_super) {
             type: 'varchar',
             length: 255,
         }),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], PpProfileLeads.prototype, "profileReason", void 0);
     __decorate([

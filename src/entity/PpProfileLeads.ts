@@ -20,6 +20,7 @@ export class PpProfileLeads extends Base {
         type: 'bigint',
         nullable: false,
     })
+    @IsNotEmpty()
     ppMasterId: number;
 
     @Column({
@@ -28,6 +29,7 @@ export class PpProfileLeads extends Base {
         length: 255,
         nullable: false,
     })
+    @IsNotEmpty()
     vouchersCode: string;
 
     @Column({
@@ -44,6 +46,7 @@ export class PpProfileLeads extends Base {
         length: 255,
         nullable: false,
     })
+    @IsNotEmpty()
     profileName: string;
 
     @Column({
@@ -60,6 +63,7 @@ export class PpProfileLeads extends Base {
         type: 'date',
         nullable: false,
     })
+    @IsNotEmpty()
     profileBirthdate: Date;
 
     @Column({
@@ -68,6 +72,7 @@ export class PpProfileLeads extends Base {
         length: 255,
         nullable: false,
     })
+    @IsNotEmpty()
     profileAddress: string;
 
     @Column({
@@ -87,6 +92,7 @@ export class PpProfileLeads extends Base {
         type: 'bigint',
         nullable: false,
     })
+    @IsNotEmpty()
     profileSubDistrictId: number;
 
     @Column({
@@ -100,6 +106,7 @@ export class PpProfileLeads extends Base {
         type: 'varchar',
         length: 255,
     })
+    @IsNotEmpty()
     profilePhone: string;
 
     @Column({
@@ -107,6 +114,7 @@ export class PpProfileLeads extends Base {
         type: 'varchar',
         length: 255,
     })
+    @IsNotEmpty()
     profileReason: string;
 
     @Column({
