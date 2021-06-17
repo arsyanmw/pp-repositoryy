@@ -54,6 +54,7 @@ import { BenefitCriteria } from './entity/BenefitCriteria';
  * Another lib
  */
 import { Jwt } from './lib/jwt';
+import { Logger } from './lib/logger';
 
 export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
@@ -65,6 +66,7 @@ export const connection = async (config: ConnectionOptions) => {
 
 export {
     Jwt,
+    Logger,
     Connection,
     AccessMenu,
     ActionMenu,

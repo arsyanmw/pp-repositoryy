@@ -5,4 +5,7 @@ export declare class IdentityGroup extends Base {
     id: number;
     identity: Identity;
     group: Group;
+    createdBy: number;
+    updatedBy: number;
+    deletedBy: number;
 }

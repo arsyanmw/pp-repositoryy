@@ -116,7 +116,7 @@ export class Identity extends Base {
     @Column({
         name: 'nip',
         type: 'varchar',
-        length: 255
+        length: 255,
     })
     @IsOptional()
     @IsNumberString()
@@ -155,4 +155,25 @@ export class Identity extends Base {
         referencedColumnName: 'id',
     })
     position: Position;
+
+    @Column({
+        type: 'int',
+        name: 'created_by',
+        nullable: true,
+    })
+    createdBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'updated_by',
+        nullable: true,
+    })
+    updatedBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'deleted_by',
+        nullable: true,
+    })
+    deletedBy: number;
 }

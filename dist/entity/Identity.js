@@ -161,7 +161,7 @@ var Identity = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'nip',
             type: 'varchar',
-            length: 255
+            length: 255,
         }),
         class_validator_1.IsOptional(),
         class_validator_1.IsNumberString(),
@@ -206,6 +206,30 @@ var Identity = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Position_1.Position)
     ], Identity.prototype, "position", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'created_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Identity.prototype, "createdBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Identity.prototype, "updatedBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'deleted_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Identity.prototype, "deletedBy", void 0);
     Identity = __decorate([
         typeorm_1.Entity({ name: 'identities' })
     ], Identity);

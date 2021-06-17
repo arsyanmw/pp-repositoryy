@@ -65,6 +65,30 @@ var IdentityEmail = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], IdentityEmail.prototype, "isVerified", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'created_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityEmail.prototype, "createdBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityEmail.prototype, "updatedBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'deleted_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], IdentityEmail.prototype, "deletedBy", void 0);
     IdentityEmail = __decorate([
         typeorm_1.Entity({ name: 'identities_email' })
     ], IdentityEmail);
