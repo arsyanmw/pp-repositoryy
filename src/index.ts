@@ -49,6 +49,7 @@ import { DispersalReason } from './entity/DispersalReason';
 import { DispersalPpHistory } from './entity/DispersalPpHistory';
 import { PpProfileLeads } from './entity/PpProfileLeads';
 import { BenefitCriteria } from './entity/BenefitCriteria';
+import { PpProfileState } from './entity/PpProfileState';
 
 /**
  * Another lib
@@ -113,4 +114,5 @@ export {
     DispersalPpHistory,
     PpProfileLeads,
     BenefitCriteria,
+    PpProfileState,
 };
