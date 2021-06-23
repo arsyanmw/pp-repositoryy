@@ -98,6 +98,14 @@ var Menu = /** @class */ (function (_super) {
     ], Menu.prototype, "parentId", void 0);
     __decorate([
         typeorm_1.Column({
+            type: 'int',
+            name: 'is_admin',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Menu.prototype, "isAdmin", void 0);
+    __decorate([
+        typeorm_1.Column({
             type: 'varchar',
             name: 'url',
             nullable: true,

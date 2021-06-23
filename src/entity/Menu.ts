@@ -61,6 +61,13 @@ export class Menu extends Base {
     parentId: number;
 
     @Column({
+        type: 'int',
+        name: 'is_admin',
+        nullable: true,
+    })
+    isAdmin: number;
+
+    @Column({
         type: 'varchar',
         name: 'url',
         nullable: true,

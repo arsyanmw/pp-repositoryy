@@ -9,6 +9,7 @@ export declare class Menu extends Base {
     description: string;
     image_url: string;
     parentId: number;
+    isAdmin: number;
     url: string;
     actionMenus: ActionMenu[];
 }
