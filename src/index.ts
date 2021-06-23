@@ -50,7 +50,7 @@ import { DispersalPpHistory } from './entity/DispersalPpHistory';
 import { PpProfileLeads } from './entity/PpProfileLeads';
 import { BenefitCriteria } from './entity/BenefitCriteria';
 import { PpProfileState } from './entity/PpProfileState';
-
+import { ElasticSearchResponse, ElasticSearchConnection } from './lib/elastic-search';
 /**
  * Another lib
  */
@@ -66,6 +66,8 @@ export const connection = async (config: ConnectionOptions) => {
 };
 
 export {
+    ElasticSearchResponse,
+    ElasticSearchConnection,
     Jwt,
     Logger,
     Connection,

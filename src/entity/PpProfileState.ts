@@ -1,6 +1,6 @@
 import { Base } from './Base';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import {IsEmail, IsNotEmpty} from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity({ name: 'pp_profile_state' })
 export class PpProfileState extends Base {

@@ -49,10 +49,11 @@ import { DispersalPpHistory } from './entity/DispersalPpHistory';
 import { PpProfileLeads } from './entity/PpProfileLeads';
 import { BenefitCriteria } from './entity/BenefitCriteria';
 import { PpProfileState } from './entity/PpProfileState';
+import { ElasticSearchResponse, ElasticSearchConnection } from './lib/elastic-search';
 /**
  * Another lib
  */
 import { Jwt } from './lib/jwt';
 import { Logger } from './lib/logger';
 export declare const connection: (config: ConnectionOptions) => Promise<Connection>;
-export { Jwt, Logger, Connection, AccessMenu, ActionMenu, Badwords, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, };
+export { ElasticSearchResponse, ElasticSearchConnection, Jwt, Logger, Connection, AccessMenu, ActionMenu, Badwords, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, };
