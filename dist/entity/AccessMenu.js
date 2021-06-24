@@ -54,6 +54,30 @@ var AccessMenu = /** @class */ (function (_super) {
         }),
         __metadata("design:type", ActionMenu_1.ActionMenu)
     ], AccessMenu.prototype, "actionMenu", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'created_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], AccessMenu.prototype, "createdBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], AccessMenu.prototype, "updatedBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'deleted_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], AccessMenu.prototype, "deletedBy", void 0);
     AccessMenu = __decorate([
         typeorm_1.Entity({ name: 'access_menu' })
     ], AccessMenu);

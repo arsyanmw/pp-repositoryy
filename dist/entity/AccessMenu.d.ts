@@ -5,4 +5,7 @@ export declare class AccessMenu extends Base {
     id: number;
     group: Group;
     actionMenu: ActionMenu;
+    createdBy: number;
+    updatedBy: number;
+    deletedBy: number;
 }

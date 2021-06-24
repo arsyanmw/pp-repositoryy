@@ -116,6 +116,30 @@ var Group = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Array)
     ], Group.prototype, "accessMenus", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'created_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Group.prototype, "createdBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Group.prototype, "updatedBy", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'deleted_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], Group.prototype, "deletedBy", void 0);
     Group = __decorate([
         typeorm_1.Entity({ name: 'groups' })
     ], Group);

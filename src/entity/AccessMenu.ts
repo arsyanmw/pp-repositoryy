@@ -2,7 +2,7 @@ import { Base } from './Base';
 import { Group } from './Group';
 import { ActionMenu } from './ActionMenu';
 
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column } from 'typeorm';
 
 @Entity({ name: 'access_menu' })
 export class AccessMenu extends Base {
@@ -22,4 +22,25 @@ export class AccessMenu extends Base {
         referencedColumnName: 'id',
     })
     actionMenu: ActionMenu;
+
+    @Column({
+        type: 'int',
+        name: 'created_by',
+        nullable: true,
+    })
+    createdBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'updated_by',
+        nullable: true,
+    })
+    updatedBy: number;
+
+    @Column({
+        type: 'int',
+        name: 'deleted_by',
+        nullable: true,
+    })
+    deletedBy: number;
 }

@@ -12,4 +12,7 @@ export declare class Group extends Base {
     url: string;
     identityGroups: IdentityGroup[];
     accessMenus: AccessMenu[];
+    createdBy: number;
+    updatedBy: number;
+    deletedBy: number;
 }
