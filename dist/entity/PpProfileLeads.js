@@ -57,6 +57,15 @@ var PpProfileLeads = /** @class */ (function (_super) {
     ], PpProfileLeads.prototype, "ppMasterId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'download_section',
+            type: 'int',
+            nullable: false,
+        }),
+        class_validator_1.IsNotEmpty(),
+        __metadata("design:type", Number)
+    ], PpProfileLeads.prototype, "downloadSection", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'vouchers_code',
             type: 'varchar',
             length: 255,

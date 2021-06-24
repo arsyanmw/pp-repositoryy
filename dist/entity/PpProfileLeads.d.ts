@@ -3,6 +3,7 @@ export declare class PpProfileLeads extends Base {
     id: number;
     transactionNumber: string;
     ppMasterId: number;
+    downloadSection: number;
     vouchersCode: string;
     profileNik: string;
     profileName: string;
