@@ -24,6 +24,14 @@ export class PpProfileLeads extends Base {
     ppMasterId: number;
 
     @Column({
+        name: 'download_section',
+        type: 'int',
+        nullable: false,
+    })
+    @IsNotEmpty()
+    downloadSection: number;
+
+    @Column({
         name: 'vouchers_code',
         type: 'varchar',
         length: 255,
