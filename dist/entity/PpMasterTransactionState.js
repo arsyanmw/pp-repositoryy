@@ -38,6 +38,14 @@ var PpMasterTransactionState = /** @class */ (function (_super) {
     ], PpMasterTransactionState.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'pp_master_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterTransactionState.prototype, "ppMasterId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'pp_type_id',
             type: 'bigint',
             nullable: false,
