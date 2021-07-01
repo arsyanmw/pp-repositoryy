@@ -7,6 +7,13 @@ export class PpMasterTransactionState extends Base {
     id: number;
 
     @Column({
+        name: 'pp_master_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    ppMasterId: number;
+
+    @Column({
         name: 'pp_type_id',
         type: 'bigint',
         nullable: false,
