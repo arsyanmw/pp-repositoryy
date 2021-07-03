@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Logger = exports.Jwt = exports.ElasticSearchConnection = exports.connection = void 0;
-exports.TrackingDownloadCount = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = void 0;
+exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -153,8 +153,8 @@ var TrackingDownloadSection_1 = require("./entity/TrackingDownloadSection");
 Object.defineProperty(exports, "TrackingDownloadSection", { enumerable: true, get: function () { return TrackingDownloadSection_1.TrackingDownloadSection; } });
 var TrackingDownloadDetail_1 = require("./entity/TrackingDownloadDetail");
 Object.defineProperty(exports, "TrackingDownloadDetail", { enumerable: true, get: function () { return TrackingDownloadDetail_1.TrackingDownloadDetail; } });
-var TrackingDownloadCount_1 = require("./entity/TrackingDownloadCount");
-Object.defineProperty(exports, "TrackingDownloadCount", { enumerable: true, get: function () { return TrackingDownloadCount_1.TrackingDownloadCount; } });
+var TrackingDownloadCounter_1 = require("./entity/TrackingDownloadCounter");
+Object.defineProperty(exports, "TrackingDownloadCounter", { enumerable: true, get: function () { return TrackingDownloadCounter_1.TrackingDownloadCounter; } });
 /**
  * Another lib
  */

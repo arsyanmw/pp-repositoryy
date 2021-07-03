@@ -53,7 +53,7 @@ import { PpProfileState } from './entity/PpProfileState';
 import { ElasticSearchResponse, ElasticSearchConnection } from './lib/elastic-search';
 import { TrackingDownloadSection } from './entity/TrackingDownloadSection';
 import { TrackingDownloadDetail } from './entity/TrackingDownloadDetail';
-import { TrackingDownloadCount } from './entity/TrackingDownloadCount';
+import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
 /**
  * Another lib
  */
@@ -122,5 +122,5 @@ export {
     PpProfileState,
     TrackingDownloadSection,
     TrackingDownloadDetail,
-    TrackingDownloadCount,
+    TrackingDownloadCounter,
 };

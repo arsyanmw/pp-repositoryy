@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrackingDownloadCount = void 0;
+exports.TrackingDownloadCounter = void 0;
 var TrackingDownloadSection_1 = require("./TrackingDownloadSection");
 var PpMaster_1 = require("./PpMaster");
 var typeorm_1 = require("typeorm");
-var TrackingDownloadCount = /** @class */ (function () {
-    function TrackingDownloadCount() {
+var TrackingDownloadCounter = /** @class */ (function () {
+    function TrackingDownloadCounter() {
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn('increment'),
         __metadata("design:type", Number)
-    ], TrackingDownloadCount.prototype, "id", void 0);
+    ], TrackingDownloadCounter.prototype, "id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return TrackingDownloadSection_1.TrackingDownloadSection; }),
         typeorm_1.JoinColumn({
@@ -27,7 +27,7 @@ var TrackingDownloadCount = /** @class */ (function () {
             referencedColumnName: 'id',
         }),
         __metadata("design:type", TrackingDownloadSection_1.TrackingDownloadSection)
-    ], TrackingDownloadCount.prototype, "trackingDownloadSection", void 0);
+    ], TrackingDownloadCounter.prototype, "trackingDownloadSection", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return PpMaster_1.PpMaster; }),
         typeorm_1.JoinColumn({
@@ -35,7 +35,7 @@ var TrackingDownloadCount = /** @class */ (function () {
             referencedColumnName: 'id',
         }),
         __metadata("design:type", PpMaster_1.PpMaster)
-    ], TrackingDownloadCount.prototype, "ppMaster", void 0);
+    ], TrackingDownloadCounter.prototype, "ppMaster", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'transaction_number',
@@ -44,7 +44,7 @@ var TrackingDownloadCount = /** @class */ (function () {
             nullable: false,
         }),
         __metadata("design:type", String)
-    ], TrackingDownloadCount.prototype, "transactionNumber", void 0);
+    ], TrackingDownloadCounter.prototype, "transactionNumber", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'certificate_number',
@@ -53,7 +53,7 @@ var TrackingDownloadCount = /** @class */ (function () {
             nullable: true,
         }),
         __metadata("design:type", String)
-    ], TrackingDownloadCount.prototype, "certificateNumber", void 0);
+    ], TrackingDownloadCounter.prototype, "certificateNumber", void 0);
     __decorate([
         typeorm_1.Column({
             type: 'int',
@@ -61,7 +61,7 @@ var TrackingDownloadCount = /** @class */ (function () {
             nullable: true,
         }),
         __metadata("design:type", Number)
-    ], TrackingDownloadCount.prototype, "downloadCount", void 0);
+    ], TrackingDownloadCounter.prototype, "downloadCount", void 0);
     __decorate([
         typeorm_1.Column({
             type: 'int',
@@ -69,11 +69,11 @@ var TrackingDownloadCount = /** @class */ (function () {
             nullable: true,
         }),
         __metadata("design:type", Number)
-    ], TrackingDownloadCount.prototype, "status", void 0);
-    TrackingDownloadCount = __decorate([
-        typeorm_1.Entity({ name: 'tracking_download_count' })
-    ], TrackingDownloadCount);
-    return TrackingDownloadCount;
+    ], TrackingDownloadCounter.prototype, "status", void 0);
+    TrackingDownloadCounter = __decorate([
+        typeorm_1.Entity({ name: 'tracking_download_counter' })
+    ], TrackingDownloadCounter);
+    return TrackingDownloadCounter;
 }());
-exports.TrackingDownloadCount = TrackingDownloadCount;
-//# sourceMappingURL=TrackingDownloadCount.js.map
+exports.TrackingDownloadCounter = TrackingDownloadCounter;
+//# sourceMappingURL=TrackingDownloadCounter.js.map

@@ -3,8 +3,8 @@ import { PpMaster } from './PpMaster';
 
 import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column } from 'typeorm';
 
-@Entity({ name: 'tracking_download_count' })
-export class TrackingDownloadCount {
+@Entity({ name: 'tracking_download_counter' })
+export class TrackingDownloadCounter {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
