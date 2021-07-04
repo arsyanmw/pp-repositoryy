@@ -59,6 +59,7 @@ import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
  */
 import { Jwt } from './lib/jwt';
 import { Logger } from './lib/logger';
+import { KafkaLibrary, kafkaMessageInterface } from './lib/kafka-library';
 
 export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
@@ -69,6 +70,8 @@ export const connection = async (config: ConnectionOptions) => {
 };
 
 export {
+    KafkaLibrary,
+    kafkaMessageInterface,
     ElasticSearchResponse,
     ElasticSearchConnection,
     Jwt,
