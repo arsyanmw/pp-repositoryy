@@ -3,8 +3,8 @@ import debugFormat from 'winston-format-debug';
 import { ElasticsearchTransport } from 'winston-elasticsearch';
 const winston = require('winston');
 
-const ELASTICSEARCH_LOGS = process.env.ELASTICSEARCH_LOGS;
-const SERVICE_NAME = process.env.SERVICE_NAME;
+const ELASTICSEARCH_LOGS = process.env.ELASTICSEARCH_LOGS || 'http://127.0.0.1:9200';
+const SERVICE_NAME = process.env.SERVICE_NAME || 'service-local';
 const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 
 class Logger {

@@ -21,8 +21,8 @@ exports.Logger = void 0;
 var winston_format_debug_1 = require("winston-format-debug");
 var winston_elasticsearch_1 = require("winston-elasticsearch");
 var winston = require('winston');
-var ELASTICSEARCH_LOGS = process.env.ELASTICSEARCH_LOGS;
-var SERVICE_NAME = process.env.SERVICE_NAME;
+var ELASTICSEARCH_LOGS = process.env.ELASTICSEARCH_LOGS || 'http://127.0.0.1:9200';
+var SERVICE_NAME = process.env.SERVICE_NAME || 'service-local';
 var ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 var Logger = /** @class */ (function () {
     function Logger() {
