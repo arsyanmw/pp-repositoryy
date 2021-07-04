@@ -1,6 +1,6 @@
 import { Client } from '@elastic/elasticsearch';
 
-const { ELASTICSEARCH_APPS } = process.env;
+const ELASTICSEARCH_APPS = process.env.ELASTICSEARCH_APPS || 'http://127.0.0.1:9200';
 
 interface ShardsResponse {
     total: number;

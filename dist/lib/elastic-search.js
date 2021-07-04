@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ElasticSearchConnection = void 0;
 var elasticsearch_1 = require("@elastic/elasticsearch");
-var ELASTICSEARCH_APPS = process.env.ELASTICSEARCH_APPS;
+var ELASTICSEARCH_APPS = process.env.ELASTICSEARCH_APPS || 'http://127.0.0.1:9200';
 exports.ElasticSearchConnection = new elasticsearch_1.Client({
     node: ELASTICSEARCH_APPS,
 });
