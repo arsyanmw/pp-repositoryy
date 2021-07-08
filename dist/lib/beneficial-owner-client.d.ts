@@ -1,4 +1,4 @@
-interface TransaksiBoInterface {
+interface TransaksiBeneficialOwnerInterface {
     nama_lengkap: string;
     id_jenis_identitas: number;
     nomor_identitas: string;
@@ -30,7 +30,7 @@ interface BeneficialOwnerServiceInterface {
         kode_kecamatan: string;
         id_master_sumber: string;
     };
-    transaksi_bo?: Array<TransaksiBoInterface>;
+    transaksi_bo?: Array<TransaksiBeneficialOwnerInterface>;
 }
 declare class BeneficialOwnerClient {
     private static readonly host;
@@ -39,4 +39,4 @@ declare class BeneficialOwnerClient {
     private static post;
     private static get;
 }
-export { BeneficialOwnerServiceInterface, TransaksiBoInterface, BeneficialOwnerClient };
+export { BeneficialOwnerServiceInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };

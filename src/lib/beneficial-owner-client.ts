@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { forOwn } from 'lodash';
 
-interface TransaksiBoInterface {
+interface TransaksiBeneficialOwnerInterface {
     nama_lengkap: string;
     id_jenis_identitas: number;
     nomor_identitas: string;
@@ -35,7 +35,7 @@ interface BeneficialOwnerServiceInterface {
         kode_kecamatan: string;
         id_master_sumber: string;
     };
-    transaksi_bo?: Array<TransaksiBoInterface>;
+    transaksi_bo?: Array<TransaksiBeneficialOwnerInterface>;
 }
 
 class BeneficialOwnerClient {
@@ -77,4 +77,4 @@ class BeneficialOwnerClient {
     }
 }
 
-export { BeneficialOwnerServiceInterface, TransaksiBoInterface, BeneficialOwnerClient };
+export { BeneficialOwnerServiceInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };
