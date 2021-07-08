@@ -19,11 +19,4 @@ export class DispersalPpOwner extends Base {
         nullable: false,
     })
     identitiesId: number;
-
-    @Column({
-        name: 'previous_identities_id',
-        type: 'bigint',
-        nullable: false,
-    })
-    previousIdentitiesId: number;
 }
