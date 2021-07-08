@@ -52,14 +52,6 @@ var DispersalPpOwner = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], DispersalPpOwner.prototype, "identitiesId", void 0);
-    __decorate([
-        typeorm_1.Column({
-            name: 'previous_identities_id',
-            type: 'bigint',
-            nullable: false,
-        }),
-        __metadata("design:type", Number)
-    ], DispersalPpOwner.prototype, "previousIdentitiesId", void 0);
     DispersalPpOwner = __decorate([
         typeorm_1.Entity({ name: 'dispersal_pp_owner' })
     ], DispersalPpOwner);
