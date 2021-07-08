@@ -42,27 +42,27 @@ var kafkajs_1 = require("kafkajs");
 var SnappyCodec = require('kafkajs-snappy');
 kafkajs_1.CompressionCodecs[kafkajs_1.CompressionTypes.Snappy] = SnappyCodec;
 var KafkaLibrary = /** @class */ (function () {
-    function KafkaLibrary() {
+    function KafkaLibrary(logLevelKafka) {
+        if (logLevelKafka === void 0) { logLevelKafka = kafkajs_1.logLevel.ERROR; }
         var brokers = KafkaLibrary.kafkaBroker.trim().split(',');
         this.applicationId = KafkaLibrary.serviceName + "-" + KafkaLibrary.environment;
-        var kafka = new kafkajs_1.Kafka({
-            logLevel: kafkajs_1.logLevel.DEBUG,
+        this.kafka = new kafkajs_1.Kafka({
+            logLevel: logLevelKafka,
             brokers: brokers,
             clientId: this.applicationId,
         });
-        this.producer = kafka.producer({
+        this.producer = this.kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
-        });
-        this.consumer = kafka.consumer({
-            groupId: this.applicationId,
         });
     }
     KafkaLibrary.prototype.getTopicPostfix = function (topic) {
         return topic.trim() + "-" + KafkaLibrary.environment;
     };
-    KafkaLibrary.prototype.getConsumer = function () {
-        return this.consumer;
+    KafkaLibrary.prototype.getConsumer = function (group) {
+        return this.kafka.consumer({
+            groupId: group + "-" + this.applicationId,
+        });
     };
     KafkaLibrary.prototype.sendMessages = function (messages, topic) {
         return __awaiter(this, void 0, void 0, function () {
@@ -81,11 +81,18 @@ var KafkaLibrary = /** @class */ (function () {
                             })];
                     case 2:
                         result = _a.sent();
-                        return [2 /*return*/, result];
+                        return [2 /*return*/, {
+                                status: 200,
+                                message: 'success',
+                                data: result,
+                            }];
                     case 3:
                         error_1 = _a.sent();
                         console.error("[example/producer] " + error_1.message, error_1);
-                        return [2 /*return*/, 'failed'];
+                        return [2 /*return*/, {
+                                status: 400,
+                                message: error_1.message,
+                            }];
                     case 4: return [4 /*yield*/, this.producer.disconnect()];
                     case 5:
                         _a.sent();
@@ -95,7 +102,7 @@ var KafkaLibrary = /** @class */ (function () {
             });
         });
     };
-    KafkaLibrary.kafkaBroker = process.env.KAFKA_BROKER || '192.168.71.7:31454';
+    KafkaLibrary.kafkaBroker = process.env.KAFKA_BROKER || '127.0.0.1:9092';
     KafkaLibrary.serviceName = process.env.SERVICE_NAME || 'service-local';
     KafkaLibrary.environment = process.env.ENVIRONMENT || 'development';
     return KafkaLibrary;

@@ -8,30 +8,30 @@ interface kafkaMessageInterface {
     key?: string;
     value: string;
 }
-
+interface kafkaLibraryResponseInterface {
+    status: number;
+    message?: string;
+    data?: any;
+}
 class KafkaLibrary {
-    private static readonly kafkaBroker: string = process.env.KAFKA_BROKER || '192.168.71.7:31454';
+    private static readonly kafkaBroker: string = process.env.KAFKA_BROKER || '127.0.0.1:9092';
     private static readonly serviceName: string = process.env.SERVICE_NAME || 'service-local';
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private applicationId: string;
+    private kafka: Kafka;
     private producer: Producer;
-    private consumer: Consumer;
 
-    constructor() {
+    constructor(logLevelKafka: logLevel = logLevel.ERROR) {
         const brokers = KafkaLibrary.kafkaBroker.trim().split(',');
         this.applicationId = `${KafkaLibrary.serviceName}-${KafkaLibrary.environment}`;
-        const kafka: Kafka = new Kafka({
-            logLevel: logLevel.DEBUG,
+        this.kafka = new Kafka({
+            logLevel: logLevelKafka,
             brokers,
             clientId: this.applicationId,
         });
-        this.producer = kafka.producer({
+        this.producer = this.kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
-        });
-
-        this.consumer = kafka.consumer({
-            groupId: this.applicationId,
         });
     }
 
@@ -39,11 +39,16 @@ class KafkaLibrary {
         return `${topic.trim()}-${KafkaLibrary.environment}`;
     }
 
-    public getConsumer(): Consumer {
-        return this.consumer;
+    public getConsumer(group: string): Consumer {
+        return this.kafka.consumer({
+            groupId: `${group}-${this.applicationId}`,
+        });
     }
 
-    public async sendMessages(messages: kafkaMessageInterface[], topic: string): Promise<any> {
+    public async sendMessages(
+        messages: kafkaMessageInterface[],
+        topic: string,
+    ): Promise<kafkaLibraryResponseInterface> {
         try {
             await this.producer.connect();
             const result = await this.producer.send({
@@ -51,10 +56,17 @@ class KafkaLibrary {
                 compression: CompressionTypes.Snappy,
                 messages,
             });
-            return result;
+            return {
+                status: 200,
+                message: 'success',
+                data: result,
+            };
         } catch (error) {
             console.error(`[example/producer] ${error.message}`, error);
-            return 'failed';
+            return {
+                status: 400,
+                message: error.message,
+            };
         } finally {
             await this.producer.disconnect();
         }
