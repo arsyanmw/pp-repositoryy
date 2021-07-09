@@ -1,5 +1,5 @@
-import { Base } from './Base';
-export declare class Kbli extends Base {
+import { BaseUserLog } from './BaseUserLog';
+export declare class Kbli extends BaseUserLog {
     id: number;
     code: string;
     kbliCategoryId: number;

@@ -25,7 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kbli = void 0;
-var Base_1 = require("./Base");
+var BaseUserLog_1 = require("./BaseUserLog");
 var typeorm_1 = require("typeorm");
 var Kbli = /** @class */ (function (_super) {
     __extends(Kbli, _super);
@@ -83,6 +83,6 @@ var Kbli = /** @class */ (function (_super) {
         typeorm_1.Entity({ name: 'kbli' })
     ], Kbli);
     return Kbli;
-}(Base_1.Base));
+}(BaseUserLog_1.BaseUserLog));
 exports.Kbli = Kbli;
 //# sourceMappingURL=Kbli.js.map
