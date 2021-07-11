@@ -19,4 +19,10 @@ export class EstablishmentPpOwner extends Base {
         nullable: false,
     })
     identitiesId: number;
+
+    @Column({
+        name: 'owner_value_json',
+        type: 'text',
+    })
+    ownerValueJson: string;
 }

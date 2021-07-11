@@ -52,6 +52,13 @@ var EstablishmentPpOwner = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], EstablishmentPpOwner.prototype, "identitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpOwner.prototype, "ownerValueJson", void 0);
     EstablishmentPpOwner = __decorate([
         typeorm_1.Entity({ name: 'establishment_pp_owner' })
     ], EstablishmentPpOwner);
