@@ -25,7 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Blacklist = void 0;
-var Base_1 = require("./Base");
+var BaseUserLog_1 = require("./BaseUserLog");
 var typeorm_1 = require("typeorm");
 var BlacklistType_1 = require("./BlacklistType");
 var Blacklist = /** @class */ (function (_super) {
@@ -66,6 +66,6 @@ var Blacklist = /** @class */ (function (_super) {
         typeorm_1.Entity({ name: 'blacklist' })
     ], Blacklist);
     return Blacklist;
-}(Base_1.Base));
+}(BaseUserLog_1.BaseUserLog));
 exports.Blacklist = Blacklist;
 //# sourceMappingURL=Blacklist.js.map

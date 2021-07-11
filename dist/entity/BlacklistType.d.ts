@@ -1,5 +1,5 @@
-import { Base } from './Base';
-export declare class BlacklistType extends Base {
+import { BaseUserLog } from './BaseUserLog';
+export declare class BlacklistType extends BaseUserLog {
     id: number;
     name: string;
     displayName: string;

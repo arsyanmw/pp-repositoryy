@@ -1,8 +1,8 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'whitelist' })
-export class Whitelist extends Base {
+export class Whitelist extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 

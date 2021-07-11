@@ -25,7 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Whitelist = void 0;
-var Base_1 = require("./Base");
+var BaseUserLog_1 = require("./BaseUserLog");
 var typeorm_1 = require("typeorm");
 var Whitelist = /** @class */ (function (_super) {
     __extends(Whitelist, _super);
@@ -57,6 +57,6 @@ var Whitelist = /** @class */ (function (_super) {
         typeorm_1.Entity({ name: 'whitelist' })
     ], Whitelist);
     return Whitelist;
-}(Base_1.Base));
+}(BaseUserLog_1.BaseUserLog));
 exports.Whitelist = Whitelist;
 //# sourceMappingURL=Whitelist.js.map

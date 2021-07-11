@@ -26,5 +26,4 @@ export class DispersalPpOwner extends Base {
         nullable: false,
     })
     nextIdentitiesId: number;
-
 }

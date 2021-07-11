@@ -1,8 +1,8 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'blacklist_type' })
-export class BlacklistType extends Base {
+export class BlacklistType extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
