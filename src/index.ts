@@ -51,6 +51,7 @@ import { PpProfileLeads } from './entity/PpProfileLeads';
 import { BenefitCriteria } from './entity/BenefitCriteria';
 import { PpProfileState } from './entity/PpProfileState';
 import { ElasticSearchResponse, ElasticSearchConnection } from './lib/elastic-search';
+import { Section } from './entity/Section';
 import { TrackingDownloadSection } from './entity/TrackingDownloadSection';
 import { TrackingDownloadDetail } from './entity/TrackingDownloadDetail';
 import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
@@ -126,4 +127,5 @@ export {
     TrackingDownloadSection,
     TrackingDownloadDetail,
     TrackingDownloadCounter,
+    Section,
 };
