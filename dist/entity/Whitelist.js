@@ -53,6 +53,15 @@ var Whitelist = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], Whitelist.prototype, "whitelistType", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'whitelist_description',
+            type: 'varchar',
+            length: 255,
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], Whitelist.prototype, "whitelistDescription", void 0);
     Whitelist = __decorate([
         typeorm_1.Entity({ name: 'whitelist' })
     ], Whitelist);

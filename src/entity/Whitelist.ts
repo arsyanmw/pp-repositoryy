@@ -20,4 +20,12 @@ export class Whitelist extends BaseUserLog {
         nullable: false,
     })
     whitelistType: number;
+
+    @Column({
+        name: 'whitelist_description',
+        type: 'varchar',
+        length: 255,
+        nullable: true,
+    })
+    whitelistDescription: string;
 }
