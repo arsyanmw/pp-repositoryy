@@ -1,8 +1,8 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'badwords' })
-export class Badwords extends Base {
+export class Badwords extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 

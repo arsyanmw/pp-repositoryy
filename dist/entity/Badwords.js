@@ -25,7 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Badwords = void 0;
-var Base_1 = require("./Base");
+var BaseUserLog_1 = require("./BaseUserLog");
 var typeorm_1 = require("typeorm");
 var Badwords = /** @class */ (function (_super) {
     __extends(Badwords, _super);
@@ -74,6 +74,6 @@ var Badwords = /** @class */ (function (_super) {
         typeorm_1.Entity({ name: 'badwords' })
     ], Badwords);
     return Badwords;
-}(Base_1.Base));
+}(BaseUserLog_1.BaseUserLog));
 exports.Badwords = Badwords;
 //# sourceMappingURL=Badwords.js.map

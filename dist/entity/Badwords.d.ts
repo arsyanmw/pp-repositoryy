@@ -1,5 +1,5 @@
-import { Base } from './Base';
-export declare class Badwords extends Base {
+import { BaseUserLog } from './BaseUserLog';
+export declare class Badwords extends BaseUserLog {
     id: number;
     words: string;
     badwordsTypeId: number;
