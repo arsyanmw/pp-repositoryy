@@ -37,10 +37,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DjpClient = void 0;
-/* eslint @typescript-eslint/no-var-requires: "off" */
 var axios_1 = require("axios");
 var lodash_1 = require("lodash");
-var moment = require('moment');
+var moment = require("moment");
 var DjpClient = /** @class */ (function () {
     function DjpClient() {
     }

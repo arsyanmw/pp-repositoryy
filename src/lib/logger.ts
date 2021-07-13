@@ -43,24 +43,42 @@ class Logger {
     });
 
     public eInfo(message: string, fields: any = null) {
-        this.elasticLogger.info({
-            message,
-            ...fields,
-        });
+        if (fields) {
+            this.elasticLogger.info({
+                message,
+                infoData: fields,
+            });
+        } else {
+            this.elasticLogger.info({
+                message,
+            });
+        }
     }
 
     public eError(message: string, fields: any = null) {
-        this.elasticLogger.error({
-            message,
-            ...fields,
-        });
+        if (fields) {
+            this.elasticLogger.error({
+                message,
+                errorData: fields,
+            });
+        } else {
+            this.elasticLogger.error({
+                message,
+            });
+        }
     }
 
     public eWarn(message: string, fields: any = null) {
-        this.elasticLogger.warn({
-            message,
-            ...fields,
-        });
+        if (fields) {
+            this.elasticLogger.warn({
+                message,
+                warnData: fields,
+            });
+        } else {
+            this.elasticLogger.warn({
+                message,
+            });
+        }
     }
 
     public info(message: any) {

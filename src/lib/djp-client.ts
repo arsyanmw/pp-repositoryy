@@ -1,7 +1,6 @@
-/* eslint @typescript-eslint/no-var-requires: "off" */
 import axios from 'axios';
 import { forOwn } from 'lodash';
-const moment = require('moment');
+import * as moment from 'moment';
 
 interface submitRegistrationBussinessOwner {
     statusPj: string;

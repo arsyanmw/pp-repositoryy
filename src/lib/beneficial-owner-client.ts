@@ -1,7 +1,9 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 import axios from 'axios';
-import { forOwn } from 'lodash';
-
+import { forOwn, toString } from 'lodash';
+import * as FormData from 'form-data';
+import { RedisConnect } from './redis-connect';
+import { Logger } from './logger';
 interface TransaksiBeneficialOwnerInterface {
     nama_lengkap: string;
     id_jenis_identitas: number;
@@ -23,7 +25,7 @@ interface TransaksiBeneficialOwnerInterface {
     kriteria: any;
 }
 
-interface BeneficialOwnerServiceInterface {
+interface BeneficialOwnerTransactionInterface {
     transaksi_korporasi: {
         npwp: string;
         nama_korporasi: string;
@@ -39,9 +41,13 @@ interface BeneficialOwnerServiceInterface {
 }
 
 class BeneficialOwnerClient {
-    private static readonly host: string = process.env.BENEFICIAL_OWNER_HOST || 'http://staging-bo.ahu.go.id';
+    private static readonly environment: string = process.env.ENVIRONMENT || 'development';
+
+    private static readonly host: string = process.env.BENEFICIAL_OWNER_HOST || 'https://staging-bo.ahu.go.id';
     private static readonly client: string = process.env.BENEFICIAL_OWNER_CLIENT_ID || 'tes-api-bo';
     private static readonly clientKey: string = process.env.BENEFICIAL_OWNER_CLIENT_SECRET || '123456';
+    private static readonly redis: RedisConnect = new RedisConnect(10);
+    private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
         try {
@@ -50,13 +56,26 @@ class BeneficialOwnerClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.post(BeneficialOwnerClient.host + path + paramUri, body, {
-                headers: headers,
+            const config = {
+                headers,
                 timeout: 10000,
+            };
+
+            if (BeneficialOwnerClient.environment != 'production') {
+                config['auth'] = {
+                    username: 'AHU2021',
+                    password: 'ceban1',
+                };
+            }
+
+            const result = await axios.post(BeneficialOwnerClient.host + path + paramUri, body, config);
+            BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:${path}`, {
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
             });
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:${path}`, { message: e.message });
             return e.response;
         }
     }
@@ -68,13 +87,59 @@ class BeneficialOwnerClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.get(BeneficialOwnerClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const config = {
+                headers,
+                timeout: 10000,
+            };
+
+            if (BeneficialOwnerClient.environment != 'production') {
+                config['auth'] = {
+                    username: 'AHU2021',
+                    password: 'ceban1',
+                };
+            }
+
+            const result = await axios.get(BeneficialOwnerClient.host + path + paramUri, config);
+            BeneficialOwnerClient.logger.eInfo('BeneficialOwnerClient', { ...result.data, status: result.status });
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient`, { message: e.message });
             return e.response;
         }
     }
+
+    private static async getToken() {
+        const form = new FormData();
+        form.append('client', BeneficialOwnerClient.client);
+        form.append('clientKey', BeneficialOwnerClient.clientKey);
+
+        const key = 'BO:token';
+        const cache = await BeneficialOwnerClient.redis.getJson(key);
+        if (cache) {
+            return cache;
+        } else {
+            const result = await BeneficialOwnerClient.post('/service/getToken', form.getHeaders(), form);
+            if (result.status == 200 && result.data.status == 'success') {
+                BeneficialOwnerClient.redis.setJson(key, { data: result.data, status: result.status }, 'EX', 60 * 20);
+                return result;
+            }
+            return result;
+        }
+    }
+
+    public static async transaction(body: BeneficialOwnerTransactionInterface) {
+        const token = await BeneficialOwnerClient.getToken();
+        if (token.status != 200) {
+            return token;
+        }
+
+        const headers = {
+            'content-type': 'application/json',
+            'auth-jwt': 'Bearer ' + token.data.data,
+        };
+
+        return await BeneficialOwnerClient.post('/service/transaksi', headers, body);
+    }
 }
 
-export { BeneficialOwnerServiceInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };
+export { BeneficialOwnerTransactionInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };

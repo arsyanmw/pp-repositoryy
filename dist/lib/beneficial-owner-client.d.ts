@@ -18,7 +18,7 @@ interface TransaksiBeneficialOwnerInterface {
     hubungan_bo: string;
     kriteria: any;
 }
-interface BeneficialOwnerServiceInterface {
+interface BeneficialOwnerTransactionInterface {
     transaksi_korporasi: {
         npwp: string;
         nama_korporasi: string;
@@ -33,10 +33,15 @@ interface BeneficialOwnerServiceInterface {
     transaksi_bo?: Array<TransaksiBeneficialOwnerInterface>;
 }
 declare class BeneficialOwnerClient {
+    private static readonly environment;
     private static readonly host;
     private static readonly client;
     private static readonly clientKey;
+    private static readonly redis;
+    private static readonly logger;
     private static post;
     private static get;
+    private static getToken;
+    static transaction(body: BeneficialOwnerTransactionInterface): Promise<any>;
 }
-export { BeneficialOwnerServiceInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };
+export { BeneficialOwnerTransactionInterface, TransaksiBeneficialOwnerInterface, BeneficialOwnerClient };
