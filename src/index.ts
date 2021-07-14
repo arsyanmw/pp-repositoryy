@@ -7,6 +7,7 @@ import { createConnection, ConnectionOptions, Connection } from 'typeorm';
 import { AccessMenu } from './entity/AccessMenu';
 import { ActionMenu } from './entity/ActionMenu';
 import { Badwords } from './entity/Badwords';
+import { BadwordsType } from './entity/BadwordsType';
 import { Base } from './entity/Base';
 import { Blacklist } from './entity/Blacklist';
 import { BlacklistType } from './entity/BlacklistType';
@@ -83,6 +84,7 @@ export {
     AccessMenu,
     ActionMenu,
     Badwords,
+    BadwordsType,
     Base,
     Blacklist,
     BlacklistType,
