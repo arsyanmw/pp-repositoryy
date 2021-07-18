@@ -25,7 +25,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentityEmail = void 0;
-var Base_1 = require("./Base");
+var BaseUserLog_1 = require("./BaseUserLog");
 var Identity_1 = require("./Identity");
 var typeorm_1 = require("typeorm");
 var class_validator_1 = require("class-validator");
@@ -93,6 +93,6 @@ var IdentityEmail = /** @class */ (function (_super) {
         typeorm_1.Entity({ name: 'identities_email' })
     ], IdentityEmail);
     return IdentityEmail;
-}(Base_1.Base));
+}(BaseUserLog_1.BaseUserLog));
 exports.IdentityEmail = IdentityEmail;
 //# sourceMappingURL=IdentityEmail.js.map

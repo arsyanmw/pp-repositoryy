@@ -1,10 +1,10 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Identity } from './Identity';
 import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, Column } from 'typeorm';
 import { IsEmail } from 'class-validator';
 
 @Entity({ name: 'identities_email' })
-export class IdentityEmail extends Base {
+export class IdentityEmail extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 

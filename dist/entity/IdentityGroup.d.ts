@@ -1,7 +1,7 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Identity } from './Identity';
 import { Group } from './Group';
-export declare class IdentityGroup extends Base {
+export declare class IdentityGroup extends BaseUserLog {
     id: number;
     identity: Identity;
     group: Group;

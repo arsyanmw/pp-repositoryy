@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, JoinTable, OneToOne, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { IdentityNik } from './IdentityNik';
 import { IdentityEmail } from './IdentityEmail';
 import { IdentityGroup } from './IdentityGroup';
@@ -7,7 +7,7 @@ import { IsNotEmpty, Length, IsPhoneNumber, IsOptional, IsDateString, IsNumberSt
 import { Position } from './Position';
 
 @Entity({ name: 'identities' })
-export class Identity extends Base {
+export class Identity extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 

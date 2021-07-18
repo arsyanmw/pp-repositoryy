@@ -1,9 +1,9 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { IdentityNik } from './IdentityNik';
 import { IdentityEmail } from './IdentityEmail';
 import { IdentityGroup } from './IdentityGroup';
 import { Position } from './Position';
-export declare class Identity extends Base {
+export declare class Identity extends BaseUserLog {
     id: number;
     fullName: string;
     passwordHash: string;

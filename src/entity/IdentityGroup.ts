@@ -1,10 +1,10 @@
-import { Base } from './Base';
+import { BaseUserLog } from './BaseUserLog';
 import { Identity } from './Identity';
 import { Group } from './Group';
 import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column } from 'typeorm';
 
 @Entity({ name: 'identities_group' })
-export class IdentityGroup extends Base {
+export class IdentityGroup extends BaseUserLog {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
