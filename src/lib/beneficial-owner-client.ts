@@ -129,7 +129,7 @@ class BeneficialOwnerClient {
 
     public static async transaction(body: BeneficialOwnerTransactionInterface) {
         const token = await BeneficialOwnerClient.getToken();
-        if (token.status != 200) {
+        if (token.status != 200 && token.data.status != 'success') {
             return token;
         }
 

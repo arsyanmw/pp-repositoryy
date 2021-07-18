@@ -167,7 +167,7 @@ var BeneficialOwnerClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, BeneficialOwnerClient.getToken()];
                     case 1:
                         token = _a.sent();
-                        if (token.status != 200) {
+                        if (token.status != 200 && token.data.status != 'success') {
                             return [2 /*return*/, token];
                         }
                         headers = {
