@@ -73,12 +73,6 @@ var BeneficialOwnerClient = /** @class */ (function () {
                             headers: headers,
                             timeout: 10000,
                         };
-                        if (BeneficialOwnerClient.environment != 'production') {
-                            config['auth'] = {
-                                username: 'AHU2021',
-                                password: 'ceban1',
-                            };
-                        }
                         return [4 /*yield*/, axios_1.default.post(BeneficialOwnerClient.host + path + paramUri_1, body, config)];
                     case 1:
                         result = _a.sent();
@@ -112,12 +106,6 @@ var BeneficialOwnerClient = /** @class */ (function () {
                             headers: headers,
                             timeout: 10000,
                         };
-                        if (BeneficialOwnerClient.environment != 'production') {
-                            config['auth'] = {
-                                username: 'AHU2021',
-                                password: 'ceban1',
-                            };
-                        }
                         return [4 /*yield*/, axios_1.default.get(BeneficialOwnerClient.host + path + paramUri_2, config)];
                     case 1:
                         result = _a.sent();

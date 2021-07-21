@@ -61,13 +61,6 @@ class BeneficialOwnerClient {
                 timeout: 10000,
             };
 
-            if (BeneficialOwnerClient.environment != 'production') {
-                config['auth'] = {
-                    username: 'AHU2021',
-                    password: 'ceban1',
-                };
-            }
-
             const result = await axios.post(BeneficialOwnerClient.host + path + paramUri, body, config);
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:${path}`, {
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -91,13 +84,6 @@ class BeneficialOwnerClient {
                 headers,
                 timeout: 10000,
             };
-
-            if (BeneficialOwnerClient.environment != 'production') {
-                config['auth'] = {
-                    username: 'AHU2021',
-                    password: 'ceban1',
-                };
-            }
 
             const result = await axios.get(BeneficialOwnerClient.host + path + paramUri, config);
             BeneficialOwnerClient.logger.eInfo('BeneficialOwnerClient', { ...result.data, status: result.status });
