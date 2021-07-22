@@ -47,8 +47,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.BadwordsType = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Logger = exports.Jwt = exports.ElasticSearchConnection = exports.KafkaLibrary = exports.RedisConnect = exports.connection = void 0;
-exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = void 0;
+exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.PpBlockedHistory = exports.PpBlocked = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.BadwordsType = exports.Badwords = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Logger = exports.Jwt = exports.ElasticSearchConnection = exports.KafkaLibrary = exports.RedisConnect = exports.connection = void 0;
+exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -115,6 +115,10 @@ var NormalizationWords_1 = require("./entity/NormalizationWords");
 Object.defineProperty(exports, "NormalizationWords", { enumerable: true, get: function () { return NormalizationWords_1.NormalizationWords; } });
 var Position_1 = require("./entity/Position");
 Object.defineProperty(exports, "Position", { enumerable: true, get: function () { return Position_1.Position; } });
+var PpBlocked_1 = require("./entity/PpBlocked");
+Object.defineProperty(exports, "PpBlocked", { enumerable: true, get: function () { return PpBlocked_1.PpBlocked; } });
+var PpBlockedHistory_1 = require("./entity/PpBlockedHistory");
+Object.defineProperty(exports, "PpBlockedHistory", { enumerable: true, get: function () { return PpBlockedHistory_1.PpBlockedHistory; } });
 var PpMaster_1 = require("./entity/PpMaster");
 Object.defineProperty(exports, "PpMaster", { enumerable: true, get: function () { return PpMaster_1.PpMaster; } });
 var PpMasterHistory_1 = require("./entity/PpMasterHistory");

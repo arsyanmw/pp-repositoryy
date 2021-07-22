@@ -27,4 +27,6 @@ export declare class PpMaster extends Base {
     ownerValueJson: string;
     benefitValueJson: string;
     dispersalReasonId: number;
+    isBlocked: number;
+    blockedAt: Date;
 }

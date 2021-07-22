@@ -257,6 +257,21 @@ var PpMasterHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], PpMasterHistory.prototype, "dispersalReasonId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterHistory.prototype, "isBlocked", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'blocked_at',
+            nullable: true,
+        }),
+        __metadata("design:type", Date)
+    ], PpMasterHistory.prototype, "blockedAt", void 0);
     PpMasterHistory = __decorate([
         typeorm_1.Entity({ name: 'pp_master_history' })
     ], PpMasterHistory);

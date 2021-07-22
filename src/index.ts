@@ -34,6 +34,8 @@ import { Kbli } from './entity/Kbli';
 import { Menu } from './entity/Menu';
 import { NormalizationWords } from './entity/NormalizationWords';
 import { Position } from './entity/Position';
+import { PpBlocked } from './entity/PpBlocked';
+import { PpBlockedHistory } from './entity/PpBlockedHistory';
 import { PpMaster } from './entity/PpMaster';
 import { PpMasterHistory } from './entity/PpMasterHistory';
 import { PpMasterTransactionState } from './entity/PpMasterTransactionState';
@@ -111,6 +113,8 @@ export {
     Menu,
     NormalizationWords,
     Position,
+    PpBlocked,
+    PpBlockedHistory,
     PpMaster,
     PpMasterHistory,
     PpMasterTransactionState,

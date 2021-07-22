@@ -242,6 +242,21 @@ var PpMaster = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], PpMaster.prototype, "dispersalReasonId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], PpMaster.prototype, "isBlocked", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'blocked_at',
+            nullable: true,
+        }),
+        __metadata("design:type", Date)
+    ], PpMaster.prototype, "blockedAt", void 0);
     PpMaster = __decorate([
         typeorm_1.Entity({ name: 'pp_master' })
     ], PpMaster);
