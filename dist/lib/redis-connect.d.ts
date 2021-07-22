@@ -1,6 +1,6 @@
 import { Option } from 'redis';
 declare class RedisConnect {
-    private static readonly redisServer;
+    private static readonly redisHost;
     private static readonly redisPort;
     private client;
     constructor(db?: number);

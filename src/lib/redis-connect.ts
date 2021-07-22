@@ -6,13 +6,13 @@ promisifyAll(redis.RedisClient.prototype);
 promisifyAll(redis.Multi.prototype);
 
 class RedisConnect {
-    private static readonly redisServer: string = process.env.REDIS_SERVER || '127.0.0.1';
+    private static readonly redisHost: string = process.env.REDIS_HOST || '127.0.0.1';
     private static readonly redisPort: string = process.env.REDIS_PORT || '6379';
     private client: RedisClient;
 
     constructor(db = 0) {
         this.client = redis.createClient({
-            host: RedisConnect.redisServer,
+            host: RedisConnect.redisHost,
             port: RedisConnect.redisPort,
             db,
         });

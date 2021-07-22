@@ -46,7 +46,7 @@ var RedisConnect = /** @class */ (function () {
     function RedisConnect(db) {
         if (db === void 0) { db = 0; }
         this.client = redis.createClient({
-            host: RedisConnect.redisServer,
+            host: RedisConnect.redisHost,
             port: RedisConnect.redisPort,
             db: db,
         });
@@ -113,7 +113,7 @@ var RedisConnect = /** @class */ (function () {
             });
         });
     };
-    RedisConnect.redisServer = process.env.REDIS_SERVER || '127.0.0.1';
+    RedisConnect.redisHost = process.env.REDIS_HOST || '127.0.0.1';
     RedisConnect.redisPort = process.env.REDIS_PORT || '6379';
     return RedisConnect;
 }());
