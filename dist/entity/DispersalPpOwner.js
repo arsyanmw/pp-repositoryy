@@ -54,12 +54,46 @@ var DispersalPpOwner = /** @class */ (function (_super) {
     ], DispersalPpOwner.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: 0,
+        }),
+        __metadata("design:type", Number)
+    ], DispersalPpOwner.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'next_identities_id',
             type: 'bigint',
             nullable: false,
+            default: 0,
         }),
         __metadata("design:type", Number)
     ], DispersalPpOwner.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'owner_value_json',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPpOwner.prototype, "ownerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_owner_value_json',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPpOwner.prototype, "prevOwnerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'next_owner_value_json',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPpOwner.prototype, "nextOwnerValueJson", void 0);
     DispersalPpOwner = __decorate([
         typeorm_1.Entity({ name: 'dispersal_pp_owner' })
     ], DispersalPpOwner);
