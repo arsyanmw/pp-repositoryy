@@ -65,6 +65,21 @@ var ModificationPp = /** @class */ (function (_super) {
     ], ModificationPp.prototype, "transactionTypeId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'section_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "sectionValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "identitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'vouchers_code',
             type: 'varchar',
             length: 255,

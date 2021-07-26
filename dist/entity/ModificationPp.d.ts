@@ -6,6 +6,8 @@ export declare class ModificationPp extends Base {
     ppTypeId: number;
     transactionType: TransactionType;
     transactionTypeId: number;
+    sectionValueJson: string;
+    identitiesId: number;
     vouchersCode: string;
     transactionNumber: string;
     certificateNumber: string;
