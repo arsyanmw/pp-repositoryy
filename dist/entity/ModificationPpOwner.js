@@ -52,6 +52,43 @@ var ModificationPpOwner = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], ModificationPpOwner.prototype, "identitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'next_identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpOwner.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpOwner.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpOwner.prototype, "ownerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'next_owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpOwner.prototype, "nextOwnerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpOwner.prototype, "prevOwnerValueJson", void 0);
     ModificationPpOwner = __decorate([
         typeorm_1.Entity({ name: 'modification_pp_owner' })
     ], ModificationPpOwner);
