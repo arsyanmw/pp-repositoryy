@@ -1,45 +1,5 @@
 import { Client } from '@elastic/elasticsearch';
-interface ShardsResponse {
-    total: number;
-    successful: number;
-    failed: number;
-    skipped: number;
-}
-
-interface Explanation {
-    value: number;
-    description: string;
-    details: Explanation[];
-}
-
-interface ElasticSearchResponse<T> {
-    took: number;
-    timed_out: boolean;
-    _scroll_id?: string;
-    _shards: ShardsResponse;
-    hits: {
-        total: {
-            value: number;
-            relation: string;
-        };
-        max_score: number;
-        hits: Array<{
-            _index: string;
-            _type: string;
-            _id: string;
-            _score: number;
-            _source: T;
-            _version?: number;
-            _explanation?: Explanation;
-            fields?: any;
-            highlight?: any;
-            inner_hits?: any;
-            matched_queries?: string[];
-            sort?: string[];
-        }>;
-    };
-    aggregations?: any;
-}
+import { pickBy, Identity } from 'lodash';
 
 interface SearchBodyProfilePp {
     from?: number;
@@ -60,35 +20,50 @@ interface ResultSearchResponse<T> {
     data: Array<T>;
 }
 
+interface ResultIndexorUpdateResponse {
+    body: {
+        index: string;
+        type: string;
+        _type: string;
+        _id: string;
+        _version: number;
+        result: string;
+        _shards: { total: number; successful: number; failed: number };
+        _seq_no: number;
+        _primary_term: number;
+    };
+    statusCode: number;
+}
+
 interface SourceProfilePp {
-    perseroan_name: string;
-    perseroan_phone: string;
-    province_name: string;
-    city_name: string;
-    district_name: string;
-    sub_district_name: string;
     pp_master_id: number;
-    transaction_qty: number;
-    perseroan_address: string;
-    perseroan_postalcode: number;
+    perseroan_name?: string;
+    perseroan_phone?: string;
+    province_name?: string;
+    city_name?: string;
+    district_name?: string;
+    sub_district_name?: string;
+    transaction_qty?: number;
+    perseroan_address?: string;
+    perseroan_postalcode?: number;
 }
 interface ResultProfilePp {
-    perseroanName: string;
-    perseroanPhone: string;
-    provinceName: string;
-    cityName: string;
-    districtName: string;
-    subDistrictName: string;
     ppMasterId: number;
-    transactionQty: number;
-    perseroanAddress: string;
-    perseroanPostalcode: number;
+    perseroanName?: string;
+    perseroanPhone?: string;
+    provinceName?: string;
+    cityName?: string;
+    districtName?: string;
+    subDistrictName?: string;
+    transactionQty?: number;
+    perseroanAddress?: string;
+    perseroanPostalcode?: number;
 }
 
 class ElasticLibrary {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly elasticsearchHost = process.env.ELASTICSEARCH_APPS || 'http://127.0.0.1:9200';
-    private elasticSearchConnection: Client;
+    private elasticSearchConnection: any;
 
     constructor() {
         this.elasticSearchConnection = new Client({
@@ -101,27 +76,25 @@ class ElasticLibrary {
     }
 
     public async searchProfilePp(query: SearchBodyProfilePp): Promise<ResultSearchResponse<ResultProfilePp>> {
-        const elasticResponse = await this.elasticSearchConnection.search<
-            ElasticSearchResponse<SourceProfilePp>,
-            SearchBodyProfilePp
-        >({
+        const elasticResponse = await this.elasticSearchConnection.search({
             index: this.getIndexPostfix('search_profile_pp'),
             body: query,
         });
 
         const results = elasticResponse.body.hits.hits.map(
             (hit): ResultProfilePp => {
+                const source: SourceProfilePp = hit._source;
                 return {
-                    perseroanName: hit._source.perseroan_name,
-                    perseroanPhone: hit._source.perseroan_phone,
-                    provinceName: hit._source.province_name,
-                    cityName: hit._source.city_name,
-                    districtName: hit._source.district_name,
-                    subDistrictName: hit._source.sub_district_name,
-                    ppMasterId: hit._source.pp_master_id,
-                    transactionQty: hit._source.transaction_qty,
-                    perseroanAddress: hit._source.perseroan_address,
-                    perseroanPostalcode: hit._source.perseroan_postalcode,
+                    perseroanName: source.perseroan_name,
+                    perseroanPhone: source.perseroan_phone,
+                    provinceName: source.province_name,
+                    cityName: source.city_name,
+                    districtName: source.district_name,
+                    subDistrictName: source.sub_district_name,
+                    ppMasterId: source.pp_master_id,
+                    transactionQty: source.transaction_qty,
+                    perseroanAddress: source.perseroan_address,
+                    perseroanPostalcode: source.perseroan_postalcode,
                 };
             },
         );
@@ -131,6 +104,31 @@ class ElasticLibrary {
             data: results,
         };
     }
+
+    public async indexOrUpdateProfilePp(profilePp: ResultProfilePp): Promise<ResultIndexorUpdateResponse> {
+        const doc: SourceProfilePp = pickBy(
+            {
+                pp_master_id: profilePp.ppMasterId,
+                perseroan_name: profilePp.perseroanName,
+                perseroan_phone: profilePp.perseroanPhone,
+                province_name: profilePp.provinceName,
+                city_name: profilePp.cityName,
+                district_name: profilePp.districtName,
+                sub_district_name: profilePp.subDistrictName,
+                transaction_qty: profilePp.transactionQty,
+                perseroan_address: profilePp.perseroanAddress,
+                perseroan_postalcode: profilePp.perseroanPostalcode,
+            },
+            Identity,
+        );
+
+        const result = await this.elasticSearchConnection.index({
+            index: this.getIndexPostfix('search_profile_pp'),
+            id: profilePp.ppMasterId,
+            body: { doc },
+        });
+        return result;
+    }
 }
 
-export { ElasticSearchResponse, ElasticLibrary };
+export { ElasticLibrary };

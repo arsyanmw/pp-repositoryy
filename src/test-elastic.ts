@@ -1,6 +1,18 @@
-import { ElasticLibrary } from './lib/elastic-search';
+import { ElasticLibrary } from '.';
 
 const elastic = new ElasticLibrary();
+
+elastic
+    .indexOrUpdateProfilePp({
+        ppMasterId: 998,
+        perseroanAddress: 'bisa',
+        districtName: 'test',
+        cityName: 'city',
+    })
+    .then((e) => {
+        console.log(e);
+    })
+    .catch((e) => console.log(e));
 
 elastic
     .searchProfilePp({

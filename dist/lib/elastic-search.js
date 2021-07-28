@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ElasticLibrary = void 0;
 var elasticsearch_1 = require("@elastic/elasticsearch");
+var lodash_1 = require("lodash");
 var ElasticLibrary = /** @class */ (function () {
     function ElasticLibrary() {
         this.elasticSearchConnection = new elasticsearch_1.Client({
@@ -59,23 +60,54 @@ var ElasticLibrary = /** @class */ (function () {
                     case 1:
                         elasticResponse = _a.sent();
                         results = elasticResponse.body.hits.hits.map(function (hit) {
+                            var source = hit._source;
                             return {
-                                perseroanName: hit._source.perseroan_name,
-                                perseroanPhone: hit._source.perseroan_phone,
-                                provinceName: hit._source.province_name,
-                                cityName: hit._source.city_name,
-                                districtName: hit._source.district_name,
-                                subDistrictName: hit._source.sub_district_name,
-                                ppMasterId: hit._source.pp_master_id,
-                                transactionQty: hit._source.transaction_qty,
-                                perseroanAddress: hit._source.perseroan_address,
-                                perseroanPostalcode: hit._source.perseroan_postalcode,
+                                perseroanName: source.perseroan_name,
+                                perseroanPhone: source.perseroan_phone,
+                                provinceName: source.province_name,
+                                cityName: source.city_name,
+                                districtName: source.district_name,
+                                subDistrictName: source.sub_district_name,
+                                ppMasterId: source.pp_master_id,
+                                transactionQty: source.transaction_qty,
+                                perseroanAddress: source.perseroan_address,
+                                perseroanPostalcode: source.perseroan_postalcode,
                             };
                         });
                         return [2 /*return*/, {
                                 totalCount: elasticResponse.body.hits.total.value,
                                 data: results,
                             }];
+                }
+            });
+        });
+    };
+    ElasticLibrary.prototype.indexOrUpdateProfilePp = function (profilePp) {
+        return __awaiter(this, void 0, void 0, function () {
+            var doc, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        doc = lodash_1.pickBy({
+                            pp_master_id: profilePp.ppMasterId,
+                            perseroan_name: profilePp.perseroanName,
+                            perseroan_phone: profilePp.perseroanPhone,
+                            province_name: profilePp.provinceName,
+                            city_name: profilePp.cityName,
+                            district_name: profilePp.districtName,
+                            sub_district_name: profilePp.subDistrictName,
+                            transaction_qty: profilePp.transactionQty,
+                            perseroan_address: profilePp.perseroanAddress,
+                            perseroan_postalcode: profilePp.perseroanPostalcode,
+                        }, lodash_1.Identity);
+                        return [4 /*yield*/, this.elasticSearchConnection.index({
+                                index: this.getIndexPostfix('search_profile_pp'),
+                                id: profilePp.ppMasterId,
+                                body: { doc: doc }
+                            })];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
                 }
             });
         });

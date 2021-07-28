@@ -53,7 +53,7 @@ import { DispersalPpHistory } from './entity/DispersalPpHistory';
 import { PpProfileLeads } from './entity/PpProfileLeads';
 import { BenefitCriteria } from './entity/BenefitCriteria';
 import { PpProfileState } from './entity/PpProfileState';
-import { ElasticSearchResponse, ElasticLibrary } from './lib/elastic-search';
+import { ElasticLibrary } from './lib/elastic-search';
 import { Section } from './entity/Section';
 import { TrackingDownloadSection } from './entity/TrackingDownloadSection';
 import { TrackingDownloadDetail } from './entity/TrackingDownloadDetail';
@@ -78,7 +78,6 @@ export {
     RedisConnect,
     KafkaLibrary,
     kafkaMessageInterface,
-    ElasticSearchResponse,
     ElasticLibrary,
     Jwt,
     Logger,

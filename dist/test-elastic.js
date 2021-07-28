@@ -1,7 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var elastic_search_1 = require("./lib/elastic-search");
-var elastic = new elastic_search_1.ElasticLibrary();
+var _1 = require(".");
+var elastic = new _1.ElasticLibrary();
+elastic.indexOrUpdateProfilePp({
+    ppMasterId: 998,
+    perseroanAddress: "bisa",
+    districtName: "test",
+    cityName: "city"
+})
+    .then(function (e) { console.log(e); })
+    .catch(function (e) { return console.log(e); });
 elastic
     .searchProfilePp({
     query: {
