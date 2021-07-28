@@ -1,4 +1,3 @@
-import { Client } from '@elastic/elasticsearch';
 interface ShardsResponse {
     total: number;
     successful: number;
@@ -10,7 +9,7 @@ interface Explanation {
     description: string;
     details: Explanation[];
 }
-export interface ElasticSearchResponse<T> {
+interface ElasticSearchResponse<T> {
     took: number;
     timed_out: boolean;
     _scroll_id?: string;
@@ -38,5 +37,38 @@ export interface ElasticSearchResponse<T> {
     };
     aggregations?: any;
 }
-export declare const ElasticSearchConnection: Client;
-export {};
+interface SearchBodyProfilePp {
+    from?: number;
+    size?: number;
+    query: {
+        match?: {
+            perseroan_name?: {
+                query: string;
+                operator: string;
+            };
+        };
+        match_all?: any;
+    };
+}
+interface ResultProfilePp {
+    perseroanName: string;
+    perseroanPhone: string;
+    provinceName: string;
+    cityName: string;
+    districtName: string;
+    subDistrictName: string;
+    ppMasterId: number;
+    transactionQty: number;
+    perseroanAddress: string;
+    perseroanPostalcode: number;
+}
+declare class ElasticLibrary {
+    private static readonly environment;
+    private static readonly elasticsearchHost;
+    private elasticSearchConnection;
+    constructor();
+    getIndexPostfix(index: string): string;
+    searchProfilePp(query: SearchBodyProfilePp): Promise<Array<ResultProfilePp>>;
+    async: any;
+}
+export { ElasticSearchResponse, ElasticLibrary };
