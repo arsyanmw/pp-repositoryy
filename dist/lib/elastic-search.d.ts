@@ -69,6 +69,5 @@ declare class ElasticLibrary {
     constructor();
     getIndexPostfix(index: string): string;
     searchProfilePp(query: SearchBodyProfilePp): Promise<Array<ResultProfilePp>>;
-    async: any;
 }
 export { ElasticSearchResponse, ElasticLibrary };

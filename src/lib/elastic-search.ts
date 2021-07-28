@@ -85,18 +85,18 @@ class ElasticLibrary {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly elasticsearchHost = process.env.ELASTICSEARCH_APPS || 'http://127.0.0.1:9200';
     private elasticSearchConnection: Client;
-    
-    constructor () {
+
+    constructor() {
         this.elasticSearchConnection = new Client({
-            node: ElasticLibrary.elasticsearchHost
-        })
+            node: ElasticLibrary.elasticsearchHost,
+        });
     }
 
     public getIndexPostfix(index: string): string {
         return `${index.trim()}_${ElasticLibrary.environment.toLowerCase()}`;
     }
-    
-    public async searchProfilePp(query: SearchBodyProfilePp) : Promise<Array<ResultProfilePp>>{
+
+    public async searchProfilePp(query: SearchBodyProfilePp): Promise<Array<ResultProfilePp>> {
         const elasticResponse = await this.elasticSearchConnection.search<
             ElasticSearchResponse<SourceProfilePp>,
             SearchBodyProfilePp
@@ -116,14 +116,12 @@ class ElasticLibrary {
                 ppMasterId: hit._source.pp_master_id,
                 transactionQty: hit._source.transaction_qty,
                 perseroanAddress: hit._source.perseroan_address,
-                perseroanPostalcode: hit._source.perseroan_postalcode
+                perseroanPostalcode: hit._source.perseroan_postalcode,
             } as ResultProfilePp;
         });
 
         return results;
     }
-
-    public async 
 }
 
-export { ElasticSearchResponse, ElasticLibrary }
+export { ElasticSearchResponse, ElasticLibrary };
