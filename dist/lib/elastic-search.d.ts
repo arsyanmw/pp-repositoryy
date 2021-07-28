@@ -50,6 +50,10 @@ interface SearchBodyProfilePp {
         match_all?: any;
     };
 }
+interface ResultSearchResponse<T> {
+    totalCount: number;
+    data: Array<T>;
+}
 interface ResultProfilePp {
     perseroanName: string;
     perseroanPhone: string;
@@ -68,6 +72,6 @@ declare class ElasticLibrary {
     private elasticSearchConnection;
     constructor();
     getIndexPostfix(index: string): string;
-    searchProfilePp(query: SearchBodyProfilePp): Promise<Array<ResultProfilePp>>;
+    searchProfilePp(query: SearchBodyProfilePp): Promise<ResultSearchResponse<ResultProfilePp>>;
 }
 export { ElasticSearchResponse, ElasticLibrary };

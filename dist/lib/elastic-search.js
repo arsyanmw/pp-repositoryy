@@ -72,7 +72,10 @@ var ElasticLibrary = /** @class */ (function () {
                                 perseroanPostalcode: hit._source.perseroan_postalcode,
                             };
                         });
-                        return [2 /*return*/, results];
+                        return [2 /*return*/, {
+                                totalCount: elasticResponse.body.hits.total.value,
+                                data: results,
+                            }];
                 }
             });
         });

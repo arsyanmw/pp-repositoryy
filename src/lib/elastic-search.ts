@@ -55,6 +55,11 @@ interface SearchBodyProfilePp {
     };
 }
 
+interface ResultSearchResponse<T> {
+    totalCount: number;
+    data: Array<T>;
+}
+
 interface SourceProfilePp {
     perseroan_name: string;
     perseroan_phone: string;
@@ -67,7 +72,6 @@ interface SourceProfilePp {
     perseroan_address: string;
     perseroan_postalcode: number;
 }
-
 interface ResultProfilePp {
     perseroanName: string;
     perseroanPhone: string;
@@ -96,7 +100,7 @@ class ElasticLibrary {
         return `${index.trim()}_${ElasticLibrary.environment.toLowerCase()}`;
     }
 
-    public async searchProfilePp(query: SearchBodyProfilePp): Promise<Array<ResultProfilePp>> {
+    public async searchProfilePp(query: SearchBodyProfilePp): Promise<ResultSearchResponse<ResultProfilePp>> {
         const elasticResponse = await this.elasticSearchConnection.search<
             ElasticSearchResponse<SourceProfilePp>,
             SearchBodyProfilePp
@@ -105,22 +109,27 @@ class ElasticLibrary {
             body: query,
         });
 
-        const results = elasticResponse.body.hits.hits.map((hit) => {
-            return {
-                perseroanName: hit._source.perseroan_name,
-                perseroanPhone: hit._source.perseroan_phone,
-                provinceName: hit._source.province_name,
-                cityName: hit._source.city_name,
-                districtName: hit._source.district_name,
-                subDistrictName: hit._source.sub_district_name,
-                ppMasterId: hit._source.pp_master_id,
-                transactionQty: hit._source.transaction_qty,
-                perseroanAddress: hit._source.perseroan_address,
-                perseroanPostalcode: hit._source.perseroan_postalcode,
-            } as ResultProfilePp;
-        });
+        const results = elasticResponse.body.hits.hits.map(
+            (hit): ResultProfilePp => {
+                return {
+                    perseroanName: hit._source.perseroan_name,
+                    perseroanPhone: hit._source.perseroan_phone,
+                    provinceName: hit._source.province_name,
+                    cityName: hit._source.city_name,
+                    districtName: hit._source.district_name,
+                    subDistrictName: hit._source.sub_district_name,
+                    ppMasterId: hit._source.pp_master_id,
+                    transactionQty: hit._source.transaction_qty,
+                    perseroanAddress: hit._source.perseroan_address,
+                    perseroanPostalcode: hit._source.perseroan_postalcode,
+                };
+            },
+        );
 
-        return results;
+        return {
+            totalCount: elasticResponse.body.hits.total.value,
+            data: results,
+        };
     }
 }
 
