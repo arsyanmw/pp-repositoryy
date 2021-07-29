@@ -158,6 +158,7 @@ var PpBlockedHistory = /** @class */ (function () {
         typeorm_1.Column({
             name: 'updated_by',
             type: 'bigint',
+            nullable: true,
         }),
         __metadata("design:type", Number)
     ], PpBlockedHistory.prototype, "updatedBy", void 0);

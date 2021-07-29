@@ -18,4 +18,5 @@ export declare class PpProfileLeads extends Base {
     profileReason: string;
     profileDownloadCount: number;
     profileDownloadAt: Date;
+    updatedBy: number;
 }

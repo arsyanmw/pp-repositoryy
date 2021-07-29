@@ -128,6 +128,12 @@ var PpBlocked = /** @class */ (function () {
         __metadata("design:type", Date)
     ], PpBlocked.prototype, "blockedAt", void 0);
     __decorate([
+        typeorm_1.CreateDateColumn({
+            name: 'created_at',
+        }),
+        __metadata("design:type", Date)
+    ], PpBlocked.prototype, "createdAt", void 0);
+    __decorate([
         typeorm_1.Column({
             name: 'blocked_by',
             type: 'bigint',

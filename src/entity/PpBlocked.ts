@@ -101,6 +101,11 @@ export class PpBlocked {
     })
     blockedAt: Date;
 
+    @CreateDateColumn({
+        name: 'created_at',
+    })
+    createdAt: Date;
+
     @Column({
         name: 'blocked_by',
         type: 'bigint',

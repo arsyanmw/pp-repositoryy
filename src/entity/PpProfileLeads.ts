@@ -136,4 +136,11 @@ export class PpProfileLeads extends Base {
         type: 'date',
     })
     profileDownloadAt: Date;
+
+    @Column({
+        type: 'int',
+        name: 'updated_by',
+        nullable: true,
+    })
+    updatedBy: number;
 }

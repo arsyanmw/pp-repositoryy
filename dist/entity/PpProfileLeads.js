@@ -184,6 +184,14 @@ var PpProfileLeads = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Date)
     ], PpProfileLeads.prototype, "profileDownloadAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            type: 'int',
+            name: 'updated_by',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], PpProfileLeads.prototype, "updatedBy", void 0);
     PpProfileLeads = __decorate([
         typeorm_1.Entity({ name: 'pp_profile_leads' })
     ], PpProfileLeads);

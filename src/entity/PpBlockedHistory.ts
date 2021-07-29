@@ -127,6 +127,7 @@ export class PpBlockedHistory {
     @Column({
         name: 'updated_by',
         type: 'bigint',
+        nullable: true,
     })
     updatedBy: number;
 }

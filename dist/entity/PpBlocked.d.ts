@@ -14,6 +14,7 @@ export declare class PpBlocked {
     requesterPerson: string;
     isBlocked: number;
     blockedAt: Date;
+    createdAt: Date;
     blockedBy: number;
     updatedAt: Date;
     updatedBy: number;
