@@ -62,13 +62,15 @@ class BeneficialOwnerClient {
             };
 
             const result = await axios.post(BeneficialOwnerClient.host + path + paramUri, body, config);
-            BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:${path}`, {
+            BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:post:${path}`, {
+                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;
         } catch (e) {
-            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:${path}`, { message: e.message });
+            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:post:${path}`, { message: e.message });
             return e.response;
         }
     }
@@ -86,10 +88,14 @@ class BeneficialOwnerClient {
             };
 
             const result = await axios.get(BeneficialOwnerClient.host + path + paramUri, config);
-            BeneficialOwnerClient.logger.eInfo('BeneficialOwnerClient', { ...result.data, status: result.status });
+            BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:get:${path}`, {
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
             return result;
         } catch (e) {
-            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient`, { message: e.message });
+            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:get:${path}`, { message: e.message });
             return e.response;
         }
     }

@@ -1,4 +1,4 @@
-import { ElasticLibrary } from '.';
+import { ElasticLibrary } from '../';
 
 const elastic = new ElasticLibrary();
 

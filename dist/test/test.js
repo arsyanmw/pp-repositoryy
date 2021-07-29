@@ -36,13 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _1 = require(".");
+var __1 = require("../");
 var test = function () { return __awaiter(void 0, void 0, void 0, function () {
     var conn, repo, identities;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                conn = _1.connection({
+                conn = __1.connection({
                     type: 'mariadb',
                     host: process.env.DB_HOST,
                     username: process.env.DB_USERNAME,
@@ -53,7 +53,7 @@ var test = function () { return __awaiter(void 0, void 0, void 0, function () {
                 });
                 return [4 /*yield*/, conn];
             case 1:
-                repo = (_a.sent()).getRepository(_1.Identity);
+                repo = (_a.sent()).getRepository(__1.Identity);
                 return [4 /*yield*/, repo.find({ where: { status: 1 } })];
             case 2:
                 identities = _a.sent();

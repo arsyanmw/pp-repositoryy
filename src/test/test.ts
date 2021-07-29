@@ -1,4 +1,4 @@
-import { connection, Identity } from '.';
+import { connection, Identity } from '../';
 
 const test = async () => {
     const conn = connection({

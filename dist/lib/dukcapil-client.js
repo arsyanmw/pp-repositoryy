@@ -36,20 +36,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BeneficialOwnerClient = void 0;
-/* eslint @typescript-eslint/no-var-requires: "off" */
+exports.DukcapilClient = void 0;
 var axios_1 = require("axios");
 var lodash_1 = require("lodash");
-var FormData = require("form-data");
-var redis_connect_1 = require("./redis-connect");
 var logger_1 = require("./logger");
-var BeneficialOwnerClient = /** @class */ (function () {
-    function BeneficialOwnerClient() {
+var moment = require("moment");
+var DukcapilClient = /** @class */ (function () {
+    function DukcapilClient() {
     }
-    BeneficialOwnerClient.post = function (path, headers, body, params) {
+    DukcapilClient.post = function (path, headers, body, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, config, result, e_1;
+            var paramUri_1, result, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -58,14 +56,15 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         lodash_1.forOwn(params, function (value, key) {
                             paramUri_1 += paramUri_1 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
-                        config = {
-                            headers: headers,
-                            timeout: 10000,
-                        };
-                        return [4 /*yield*/, axios_1.default.post(BeneficialOwnerClient.host + path + paramUri_1, body, config)];
+                        return [4 /*yield*/, axios_1.default.post(DukcapilClient.host + path + paramUri_1, body, {
+                                headers: headers,
+                                timeout: 10000,
+                            })];
                     case 1:
                         result = _a.sent();
-                        BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:post:" + path, {
+                        lodash_1.unset(body, 'USER_ID');
+                        lodash_1.unset(body, 'PASSWORD');
+                        DukcapilClient.logger.eInfo("DukcapilClient:post:" + path, {
                             bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
@@ -74,17 +73,17 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         return [2 /*return*/, result];
                     case 2:
                         e_1 = _a.sent();
-                        BeneficialOwnerClient.logger.eError("BeneficialOwnerClient:post:" + path, { message: e_1.message });
+                        DukcapilClient.logger.eError("DukcapilClient:post:" + path, { message: e_1.message });
                         return [2 /*return*/, e_1.response];
                     case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    BeneficialOwnerClient.get = function (path, headers, params) {
+    DukcapilClient.get = function (path, headers, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_2, config, result, e_2;
+            var paramUri_2, result, e_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -93,14 +92,10 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         lodash_1.forOwn(params, function (value, key) {
                             paramUri_2 += paramUri_2 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
-                        config = {
-                            headers: headers,
-                            timeout: 10000,
-                        };
-                        return [4 /*yield*/, axios_1.default.get(BeneficialOwnerClient.host + path + paramUri_2, config)];
+                        return [4 /*yield*/, axios_1.default.get(DukcapilClient.host + path + paramUri_2, { headers: headers, timeout: 10000 })];
                     case 1:
                         result = _a.sent();
-                        BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:get:" + path, {
+                        DukcapilClient.logger.eInfo("DukcapilClient:get:" + path, {
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
@@ -108,68 +103,43 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         return [2 /*return*/, result];
                     case 2:
                         e_2 = _a.sent();
-                        BeneficialOwnerClient.logger.eError("BeneficialOwnerClient:get:" + path, { message: e_2.message });
+                        DukcapilClient.logger.eError("DukcapilClient:get:" + path, { message: e_2.message });
                         return [2 /*return*/, e_2.response];
                     case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    BeneficialOwnerClient.getToken = function () {
+    DukcapilClient.nikVerifByElement = function (requestBody) {
         return __awaiter(this, void 0, void 0, function () {
-            var form, key, cache, result;
+            var headers, body;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        form = new FormData();
-                        form.append('client', BeneficialOwnerClient.client);
-                        form.append('clientKey', BeneficialOwnerClient.clientKey);
-                        key = 'BO:token';
-                        return [4 /*yield*/, BeneficialOwnerClient.redis.getJson(key)];
-                    case 1:
-                        cache = _a.sent();
-                        if (!cache) return [3 /*break*/, 2];
-                        return [2 /*return*/, cache];
-                    case 2: return [4 /*yield*/, BeneficialOwnerClient.post('/service/getToken', form.getHeaders(), form)];
-                    case 3:
-                        result = _a.sent();
-                        if (result.status == 200 && result.data.status == 'success') {
-                            BeneficialOwnerClient.redis.setJson(key, { data: result.data, status: result.status }, 'EX', 60 * 20);
-                            return [2 /*return*/, result];
-                        }
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    BeneficialOwnerClient.transaction = function (body) {
-        return __awaiter(this, void 0, void 0, function () {
-            var token, headers;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, BeneficialOwnerClient.getToken()];
-                    case 1:
-                        token = _a.sent();
-                        if (token.status != 200 && token.data.status != 'success') {
-                            return [2 /*return*/, token];
-                        }
                         headers = {
                             'content-type': 'application/json',
-                            'auth-jwt': 'Bearer ' + token.data.data,
                         };
-                        return [4 /*yield*/, BeneficialOwnerClient.post('/service/transaksi', headers, body)];
-                    case 2: return [2 /*return*/, _a.sent()];
+                        body = lodash_1.pickBy({
+                            USER_ID: DukcapilClient.userId,
+                            PASSWORD: DukcapilClient.password,
+                            IP_USER: requestBody.trackingParam,
+                            TRESHOLD: requestBody.threshold,
+                            NAMA_LGKP: requestBody.fullName,
+                            NIK: requestBody.nik,
+                            TGL_LHR: moment(requestBody.birthDate).locale('id').format('DD-MM-YYYY'),
+                        }, lodash_1.Identity);
+                        return [4 /*yield*/, DukcapilClient.post('/dukcapil/get_json/ditjen_ahu/nik_verifby_elemen', headers, body)];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     };
-    BeneficialOwnerClient.environment = process.env.ENVIRONMENT || 'development';
-    BeneficialOwnerClient.host = process.env.BENEFICIAL_OWNER_HOST || 'https://staging-bo.ahu.go.id';
-    BeneficialOwnerClient.client = process.env.BENEFICIAL_OWNER_CLIENT_ID || 'tes-api-bo';
-    BeneficialOwnerClient.clientKey = process.env.BENEFICIAL_OWNER_CLIENT_SECRET || '123456';
-    BeneficialOwnerClient.redis = new redis_connect_1.RedisConnect(10);
-    BeneficialOwnerClient.logger = new logger_1.Logger();
-    return BeneficialOwnerClient;
+    DukcapilClient.environment = process.env.ENVIRONMENT || 'development';
+    DukcapilClient.host = process.env.DUKCAPIL_HOST || 'http://127.0.0.1';
+    DukcapilClient.userId = process.env.DUKCAPIL_CLIENT_ID || 'userId';
+    DukcapilClient.password = process.env.DUKCAPIL_PASSWORD || 'password';
+    DukcapilClient.logger = new logger_1.Logger();
+    return DukcapilClient;
 }());
-exports.BeneficialOwnerClient = BeneficialOwnerClient;
-//# sourceMappingURL=beneficial-owner-client.js.map
+exports.DukcapilClient = DukcapilClient;
+//# sourceMappingURL=dukcapil-client.js.map

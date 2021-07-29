@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { forOwn } from 'lodash';
+import { forOwn, toString } from 'lodash';
+import { Logger } from './logger';
 import * as moment from 'moment';
 
 interface submitRegistrationBussinessOwner {
@@ -61,6 +62,7 @@ class DjpClient {
     private static readonly clientSecret: string = process.env.DJP_CLIENT_SECRET || 'BR2JH-LA8PF-FQKV7-SIW5G';
     private static readonly username: string = process.env.DJP_USERNAME || 'AHU-20180504001-U001';
     private static readonly password: string = process.env.DJP_PASSWORD || 'TGHY-UJKL-87JK-RF54-GFYL';
+    private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
         try {
@@ -69,10 +71,20 @@ class DjpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.post(DjpClient.host + path + paramUri, body, { headers: headers, timeout: 10000 });
+            const result = await axios.post(DjpClient.host + path + paramUri, body, {
+                headers: headers,
+                timeout: 10000,
+            });
+            DjpClient.logger.eInfo(`DjpClient:post:${path}`, {
+                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
+
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            DjpClient.logger.eError(`DjpClient:post:${path}`, { message: e.message });
             return e.response;
         }
     }
@@ -84,10 +96,15 @@ class DjpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.get(DjpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const result = await axios.get(DjpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            DjpClient.logger.eInfo(`DjpClient:get:${path}`, {
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            DjpClient.logger.eError(`DjpClient:get:${path}`, { message: e.message });
             return e.response;
         }
     }

@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DjpClient = void 0;
 var axios_1 = require("axios");
 var lodash_1 = require("lodash");
+var logger_1 = require("./logger");
 var moment = require("moment");
 var DjpClient = /** @class */ (function () {
     function DjpClient() {
@@ -46,7 +47,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.post = function (path, headers, body, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, e_1;
+            var paramUri_1, result, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -55,12 +56,22 @@ var DjpClient = /** @class */ (function () {
                         lodash_1.forOwn(params, function (value, key) {
                             paramUri_1 += paramUri_1 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
-                        return [4 /*yield*/, axios_1.default.post(DjpClient.host + path + paramUri_1, body, { headers: headers, timeout: 10000 })];
-                    case 1: return [2 /*return*/, _a.sent()];
+                        return [4 /*yield*/, axios_1.default.post(DjpClient.host + path + paramUri_1, body, {
+                                headers: headers,
+                                timeout: 10000,
+                            })];
+                    case 1:
+                        result = _a.sent();
+                        DjpClient.logger.eInfo("DjpClient:post:" + path, {
+                            bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            status: result.status,
+                        });
+                        return [2 /*return*/, result];
                     case 2:
                         e_1 = _a.sent();
-                        console.log(e_1.message);
-                        console.log(e_1.response);
+                        DjpClient.logger.eError("DjpClient:post:" + path, { message: e_1.message });
                         return [2 /*return*/, e_1.response];
                     case 3: return [2 /*return*/];
                 }
@@ -70,7 +81,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.get = function (path, headers, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_2, e_2;
+            var paramUri_2, result, e_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -80,11 +91,17 @@ var DjpClient = /** @class */ (function () {
                             paramUri_2 += paramUri_2 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
                         return [4 /*yield*/, axios_1.default.get(DjpClient.host + path + paramUri_2, { headers: headers, timeout: 10000 })];
-                    case 1: return [2 /*return*/, _a.sent()];
+                    case 1:
+                        result = _a.sent();
+                        DjpClient.logger.eInfo("DjpClient:get:" + path, {
+                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            status: result.status,
+                        });
+                        return [2 /*return*/, result];
                     case 2:
                         e_2 = _a.sent();
-                        console.log(e_2.message);
-                        console.log(e_2.response);
+                        DjpClient.logger.eError("DjpClient:get:" + path, { message: e_2.message });
                         return [2 /*return*/, e_2.response];
                     case 3: return [2 /*return*/];
                 }
@@ -194,6 +211,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.clientSecret = process.env.DJP_CLIENT_SECRET || 'BR2JH-LA8PF-FQKV7-SIW5G';
     DjpClient.username = process.env.DJP_USERNAME || 'AHU-20180504001-U001';
     DjpClient.password = process.env.DJP_PASSWORD || 'TGHY-UJKL-87JK-RF54-GFYL';
+    DjpClient.logger = new logger_1.Logger();
     return DjpClient;
 }());
 exports.DjpClient = DjpClient;

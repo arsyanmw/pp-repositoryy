@@ -1,4 +1,4 @@
-import { RedisConnect } from './lib/redis-connect';
+import { RedisConnect } from '../lib/redis-connect';
 
 const redis = new RedisConnect(1);
 

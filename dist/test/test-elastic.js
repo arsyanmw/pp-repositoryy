@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _1 = require(".");
-var elastic = new _1.ElasticLibrary();
+var __1 = require("../");
+var elastic = new __1.ElasticLibrary();
 elastic
     .indexOrUpdateProfilePp({
     ppMasterId: 998,

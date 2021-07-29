@@ -1,5 +1,7 @@
-import { BeneficialOwnerClient } from './lib/beneficial-owner-client';
-const transactionOwner = BeneficialOwnerClient.transaction({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var beneficial_owner_client_1 = require("../lib/beneficial-owner-client");
+var transactionOwner = beneficial_owner_client_1.BeneficialOwnerClient.transaction({
     transaksi_korporasi: {
         npwp: '915329108068000',
         nama_korporasi: 'LIMA RODA ABADI',
@@ -60,7 +62,7 @@ const transactionOwner = BeneficialOwnerClient.transaction({
         },
     ],
 });
-
-transactionOwner.then((res) => {
+transactionOwner.then(function (res) {
     console.log(res);
 });
+//# sourceMappingURL=test-bo.js.map

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var redis_connect_1 = require("./lib/redis-connect");
+var redis_connect_1 = require("../lib/redis-connect");
 var redis = new redis_connect_1.RedisConnect(1);
 var setResult = redis.set('key-nya', JSON.stringify({
     datasatu: 'masuk',
