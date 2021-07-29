@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { forOwn, toString, unset, pickBy, Identity } from 'lodash';
+import { forOwn, toString, unset, pickBy, Identity, includes } from 'lodash';
 import { Logger } from './logger';
 import * as moment from 'moment';
+import { RedisConnect } from './redis-connect';
 
 interface nikVerifByElementParams {
     trackingParam?: string; //IP_USER
@@ -17,6 +18,7 @@ class DukcapilClient {
     private static readonly host: string = process.env.DUKCAPIL_HOST || 'http://127.0.0.1';
     private static readonly userId: string = process.env.DUKCAPIL_CLIENT_ID || 'userId';
     private static readonly password: string = process.env.DUKCAPIL_PASSWORD || 'password';
+    private static readonly redis: RedisConnect = new RedisConnect(10);
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
@@ -68,9 +70,52 @@ class DukcapilClient {
     }
 
     public static async nikVerifByElement(requestBody: nikVerifByElementParams) {
+        if (this.environment.toLowerCase() != 'production') {
+            const testList = await DukcapilClient.redis.getJson('test:dukcapil_list');
+            if (!includes(testList, requestBody.nik)) {
+                return {
+                    status: 200,
+                    data: {
+                        content: [
+                            {
+                                NO_KK: 'Sesuai',
+                                NIK: requestBody.nik,
+                                NAMA_LGKP: 'Sesuai (100)',
+                                AGAMA: 'Sesuai',
+                                KAB_NAME: 'Sesuai',
+                                JENIS_PKRJN: 'Sesuai',
+                                KEC_NAME: 'Sesuai',
+                                NO_RW: 'Sesuai',
+                                NO_KEL: 'Sesuai',
+                                NO_RT: 'Sesuai',
+                                ALAMAT: 'Sesuai (100)',
+                                NO_KEC: 'Sesuai',
+                                TMPT_LHR: 'Sesuai (100)',
+                                STATUS_KAWIN: 'Sesuai',
+                                NO_PROP: 'Sesuai',
+                                PROP_NAME: 'Sesuai',
+                                NO_KAB: 'Sesuai',
+                                TGL_LHR: 'Sesuai',
+                                JENIS_KLMIN: 'Sesuai',
+                                KEL_NAME: 'Sesuai',
+                            },
+                        ],
+                        lastPage: true,
+                        numberOfElements: 1,
+                        sort: null,
+                        totalElements: 1,
+                        firstPage: true,
+                        number: 0,
+                        size: 1,
+                    },
+                };
+            }
+        }
+
         const headers = {
             'content-type': 'application/json',
         };
+
         const body = pickBy(
             {
                 USER_ID: DukcapilClient.userId,
