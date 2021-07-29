@@ -2,13 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = require(".");
 var elastic = new _1.ElasticLibrary();
-elastic.indexOrUpdateProfilePp({
+elastic
+    .indexOrUpdateProfilePp({
     ppMasterId: 998,
-    perseroanAddress: "bisa",
-    districtName: "test",
-    cityName: "city"
+    perseroanAddress: 'bisa',
+    districtName: 'test',
+    cityName: 'city',
 })
-    .then(function (e) { console.log(e); })
+    .then(function (e) {
+    console.log(e);
+})
     .catch(function (e) { return console.log(e); });
 elastic
     .searchProfilePp({

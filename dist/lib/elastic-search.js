@@ -103,7 +103,7 @@ var ElasticLibrary = /** @class */ (function () {
                         return [4 /*yield*/, this.elasticSearchConnection.index({
                                 index: this.getIndexPostfix('search_profile_pp'),
                                 id: profilePp.ppMasterId,
-                                body: { doc: doc }
+                                body: { doc: doc },
                             })];
                     case 1:
                         result = _a.sent();

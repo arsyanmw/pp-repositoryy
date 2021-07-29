@@ -23,6 +23,12 @@ export class PpMaster extends Base {
     transactionTypeId: number;
 
     @Column({
+        name: 'section_value_json',
+        type: 'text',
+    })
+    sectionValueJson: string;
+
+    @Column({
         name: 'identities_id',
         type: 'bigint',
         nullable: false,

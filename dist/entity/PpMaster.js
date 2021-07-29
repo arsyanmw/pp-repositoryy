@@ -56,6 +56,13 @@ var PpMaster = /** @class */ (function (_super) {
     ], PpMaster.prototype, "transactionTypeId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'section_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], PpMaster.prototype, "sectionValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'identities_id',
             type: 'bigint',
             nullable: false,
