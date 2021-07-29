@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { forOwn } from 'lodash';
+import { forOwn, toString } from 'lodash';
+import { Logger } from './logger';
 
 export enum enumPpPermissionCode {
     PP01 = 'PP01',
@@ -15,6 +16,7 @@ class KswpClient {
 
     private static readonly username: string = process.env.KSWP_USERNAME || 'ditjenahu';
     private static readonly password: string = process.env.KSWP_PASSWORD || 'YY28iPB9h';
+    private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
         try {
@@ -23,10 +25,20 @@ class KswpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.post(KswpClient.host + path + paramUri, body, { headers: headers, timeout: 10000 });
+            const result = await axios.post(KswpClient.host + path + paramUri, body, {
+                headers: headers,
+                timeout: 10000,
+            });
+            KswpClient.logger.eInfo(`KswpClient:post:${path}`, {
+                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
+
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            KswpClient.logger.eError(`KswpClient:post:${path}`, { message: e.message });
             return e.response;
         }
     }
@@ -38,10 +50,15 @@ class KswpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
-            return await axios.get(KswpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const result = await axios.get(KswpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            KswpClient.logger.eInfo(`KswpClient:get:${path}`, {
+                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            KswpClient.logger.eError(`KswpClient:get:${path}`, { message: e.message });
             return e.response;
         }
     }
