@@ -46,6 +46,8 @@ interface SourceProfilePp {
     transaction_qty?: number;
     perseroan_address?: string;
     perseroan_postalcode?: number;
+    last_status?: number;
+    is_blocked?: number;
 }
 interface ResultProfilePp {
     ppMasterId: number;
@@ -58,6 +60,8 @@ interface ResultProfilePp {
     transactionQty?: number;
     perseroanAddress?: string;
     perseroanPostalcode?: number;
+    lastStatus?: number;
+    isBlocked?: number;
 }
 
 class ElasticLibrary {
@@ -95,6 +99,8 @@ class ElasticLibrary {
                     transactionQty: source.transaction_qty,
                     perseroanAddress: source.perseroan_address,
                     perseroanPostalcode: source.perseroan_postalcode,
+                    lastStatus: source.last_status,
+                    isBlocked: source.is_blocked,
                 };
             },
         );
@@ -118,6 +124,8 @@ class ElasticLibrary {
                 transaction_qty: profilePp.transactionQty,
                 perseroan_address: profilePp.perseroanAddress,
                 perseroan_postalcode: profilePp.perseroanPostalcode,
+                last_status: profilePp.lastStatus,
+                is_blocked: profilePp.isBlocked
             },
             Identity,
         );
