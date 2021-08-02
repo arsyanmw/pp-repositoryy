@@ -72,6 +72,8 @@ var ElasticLibrary = /** @class */ (function () {
                                 transactionQty: source.transaction_qty,
                                 perseroanAddress: source.perseroan_address,
                                 perseroanPostalcode: source.perseroan_postalcode,
+                                lastStatus: source.last_status,
+                                isBlocked: source.is_blocked,
                             };
                         });
                         return [2 /*return*/, {
@@ -99,6 +101,8 @@ var ElasticLibrary = /** @class */ (function () {
                             transaction_qty: profilePp.transactionQty,
                             perseroan_address: profilePp.perseroanAddress,
                             perseroan_postalcode: profilePp.perseroanPostalcode,
+                            last_status: profilePp.lastStatus,
+                            is_blocked: profilePp.isBlocked,
                         }, lodash_1.Identity);
                         return [4 /*yield*/, this.elasticSearchConnection.index({
                                 index: this.getIndexPostfix('search_profile_pp'),

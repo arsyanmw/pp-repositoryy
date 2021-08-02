@@ -44,6 +44,8 @@ interface ResultProfilePp {
     transactionQty?: number;
     perseroanAddress?: string;
     perseroanPostalcode?: number;
+    lastStatus?: number;
+    isBlocked?: number;
 }
 declare class ElasticLibrary {
     private static readonly environment;

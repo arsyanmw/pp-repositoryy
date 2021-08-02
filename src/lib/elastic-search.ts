@@ -125,7 +125,7 @@ class ElasticLibrary {
                 perseroan_address: profilePp.perseroanAddress,
                 perseroan_postalcode: profilePp.perseroanPostalcode,
                 last_status: profilePp.lastStatus,
-                is_blocked: profilePp.isBlocked
+                is_blocked: profilePp.isBlocked,
             },
             Identity,
         );

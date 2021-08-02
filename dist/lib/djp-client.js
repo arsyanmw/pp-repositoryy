@@ -151,7 +151,7 @@ var DjpClient = /** @class */ (function () {
                         return [4 /*yield*/, DjpClient.redis.getJson('test:dukcapil_list')];
                     case 2:
                         testList = (_a.sent()) || [];
-                        regexNpwp_1 = new RegExp([npwp.slice(0, 1), ".", npwp.slice(1)].join(''));
+                        regexNpwp_1 = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
                         findOnList = lodash_1.findIndex(testList, function (index) { return regexNpwp_1.test(index); });
                         if (testList[findOnList]) {
                             nikFake = testList[findOnList];
