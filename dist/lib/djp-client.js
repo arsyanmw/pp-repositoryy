@@ -41,6 +41,7 @@ var axios_1 = require("axios");
 var lodash_1 = require("lodash");
 var logger_1 = require("./logger");
 var moment = require("moment");
+var redis_connect_1 = require("./redis-connect");
 var DjpClient = /** @class */ (function () {
     function DjpClient() {
     }
@@ -62,6 +63,8 @@ var DjpClient = /** @class */ (function () {
                             })];
                     case 1:
                         result = _a.sent();
+                        lodash_1.unset(params, 'username');
+                        lodash_1.unset(params, 'password');
                         DjpClient.logger.eInfo("DjpClient:post:" + path, {
                             bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
@@ -93,6 +96,8 @@ var DjpClient = /** @class */ (function () {
                         return [4 /*yield*/, axios_1.default.get(DjpClient.host + path + paramUri_2, { headers: headers, timeout: 10000 })];
                     case 1:
                         result = _a.sent();
+                        lodash_1.unset(params, 'username');
+                        lodash_1.unset(params, 'password');
                         DjpClient.logger.eInfo("DjpClient:get:" + path, {
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
@@ -131,7 +136,7 @@ var DjpClient = /** @class */ (function () {
     };
     DjpClient.validateNpwp = function (npwp) {
         return __awaiter(this, void 0, void 0, function () {
-            var token, headers;
+            var token, nikFake, testList, regexNpwp_1, findOnList, headers;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, DjpClient.getToken()];
@@ -141,7 +146,20 @@ var DjpClient = /** @class */ (function () {
                         if (token.status != 200) {
                             return [2 /*return*/, token];
                         }
-                        if (this.environment.toLowerCase() != 'production' && DjpClient.byPassNpwp.test(npwp)) {
+                        if (!(this.environment.toLowerCase() != 'production')) return [3 /*break*/, 3];
+                        nikFake = void 0;
+                        return [4 /*yield*/, DjpClient.redis.getJson('test:dukcapil_list')];
+                    case 2:
+                        testList = (_a.sent()) || [];
+                        regexNpwp_1 = new RegExp([npwp.slice(0, 1), ".", npwp.slice(1)].join(''));
+                        findOnList = lodash_1.findIndex(testList, function (index) { return regexNpwp_1.test(index); });
+                        if (testList[findOnList]) {
+                            nikFake = testList[findOnList];
+                        }
+                        if (DjpClient.byPassNpwp.test(npwp)) {
+                            nikFake = "50000000000" + npwp.substring(10);
+                        }
+                        if (nikFake) {
                             return [2 /*return*/, {
                                     status: 200,
                                     data: {
@@ -150,18 +168,20 @@ var DjpClient = /** @class */ (function () {
                                             npwp: '',
                                             status: '',
                                             nama: '',
-                                            nik: "50000000000" + npwp.substring(10),
+                                            nik: nikFake,
                                             kdJnsWp: '',
                                         },
                                     },
                                 }];
                         }
+                        _a.label = 3;
+                    case 3:
                         headers = {
                             'content-type': 'application/json',
                             Authorization: 'Bearer ' + token.data.access_token,
                         };
                         return [4 /*yield*/, DjpClient.get("/api/getwpbynpwp/" + npwp, headers)];
-                    case 2: return [2 /*return*/, _a.sent()];
+                    case 4: return [2 /*return*/, _a.sent()];
                 }
             });
         });
@@ -211,6 +231,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.clientSecret = process.env.DJP_CLIENT_SECRET || 'BR2JH-LA8PF-FQKV7-SIW5G';
     DjpClient.username = process.env.DJP_USERNAME || 'AHU-20180504001-U001';
     DjpClient.password = process.env.DJP_PASSWORD || 'TGHY-UJKL-87JK-RF54-GFYL';
+    DjpClient.redis = new redis_connect_1.RedisConnect(10);
     DjpClient.logger = new logger_1.Logger();
     return DjpClient;
 }());

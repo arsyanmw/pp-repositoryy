@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { forOwn, toString } from 'lodash';
+import { forOwn, toString, unset, findIndex } from 'lodash';
 import { Logger } from './logger';
 import * as moment from 'moment';
+import { RedisConnect } from './redis-connect';
 
 interface submitRegistrationBussinessOwner {
     statusPj: string;
@@ -62,6 +63,7 @@ class DjpClient {
     private static readonly clientSecret: string = process.env.DJP_CLIENT_SECRET || 'BR2JH-LA8PF-FQKV7-SIW5G';
     private static readonly username: string = process.env.DJP_USERNAME || 'AHU-20180504001-U001';
     private static readonly password: string = process.env.DJP_PASSWORD || 'TGHY-UJKL-87JK-RF54-GFYL';
+    private static readonly redis: RedisConnect = new RedisConnect(10);
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
@@ -75,6 +77,8 @@ class DjpClient {
                 headers: headers,
                 timeout: 10000,
             });
+            unset(params, 'username');
+            unset(params, 'password');
             DjpClient.logger.eInfo(`DjpClient:post:${path}`, {
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
@@ -97,6 +101,8 @@ class DjpClient {
             });
 
             const result = await axios.get(DjpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            unset(params, 'username');
+            unset(params, 'password');
             DjpClient.logger.eInfo(`DjpClient:get:${path}`, {
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -131,20 +137,32 @@ class DjpClient {
             return token;
         }
 
-        if (this.environment.toLowerCase() != 'production' && DjpClient.byPassNpwp.test(npwp)) {
-            return {
-                status: 200,
-                data: {
-                    kdStatus: 1,
-                    message: {
-                        npwp: '',
-                        status: '',
-                        nama: '',
-                        nik: `50000000000${npwp.substring(10)}`,
-                        kdJnsWp: '',
+        if (this.environment.toLowerCase() != 'production') {
+            let nikFake;
+            const testList = (await DjpClient.redis.getJson('test:dukcapil_list')) || [];
+            const regexNpwp = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
+            const findOnList = findIndex(testList, (index) => regexNpwp.test(index));
+            if (testList[findOnList]) {
+                nikFake = testList[findOnList];
+            }
+            if (DjpClient.byPassNpwp.test(npwp)) {
+                nikFake = `50000000000${npwp.substring(10)}`;
+            }
+            if (nikFake) {
+                return {
+                    status: 200,
+                    data: {
+                        kdStatus: 1,
+                        message: {
+                            npwp: '',
+                            status: '',
+                            nama: '',
+                            nik: nikFake,
+                            kdJnsWp: '',
+                        },
                     },
-                },
-            };
+                };
+            }
         }
 
         const headers = {

@@ -54,6 +54,7 @@ declare class DjpClient {
     private static readonly clientSecret;
     private static readonly username;
     private static readonly password;
+    private static readonly redis;
     private static readonly logger;
     private static post;
     private static get;
