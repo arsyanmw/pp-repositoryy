@@ -6,6 +6,8 @@ import { createConnection, ConnectionOptions, Connection } from 'typeorm';
  */
 import { AccessMenu } from './entity/AccessMenu';
 import { ActionMenu } from './entity/ActionMenu';
+import { AnnouncementNews } from './entity/AnnouncementNews';
+import { AnnouncementTransaction } from './entity/AnnouncementTransaction';
 import { Badwords } from './entity/Badwords';
 import { BadwordsType } from './entity/BadwordsType';
 import { Base } from './entity/Base';
@@ -84,6 +86,8 @@ export {
     Connection,
     AccessMenu,
     ActionMenu,
+    AnnouncementNews,
+    AnnouncementTransaction,
     Badwords,
     BadwordsType,
     Base,

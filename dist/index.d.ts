@@ -5,6 +5,8 @@ import { ConnectionOptions, Connection } from 'typeorm';
  */
 import { AccessMenu } from './entity/AccessMenu';
 import { ActionMenu } from './entity/ActionMenu';
+import { AnnouncementNews } from './entity/AnnouncementNews';
+import { AnnouncementTransaction } from './entity/AnnouncementTransaction';
 import { Badwords } from './entity/Badwords';
 import { BadwordsType } from './entity/BadwordsType';
 import { Base } from './entity/Base';
@@ -65,4 +67,4 @@ import { Logger } from './lib/logger';
 import { KafkaLibrary, kafkaMessageInterface } from './lib/kafka-library';
 import { RedisConnect } from './lib/redis-connect';
 export declare const connection: (config: ConnectionOptions) => Promise<Connection>;
-export { RedisConnect, KafkaLibrary, kafkaMessageInterface, ElasticLibrary, Jwt, Logger, Connection, AccessMenu, ActionMenu, Badwords, BadwordsType, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpBlocked, PpBlockedHistory, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, TrackingDownloadSection, TrackingDownloadDetail, TrackingDownloadCounter, Section, };
+export { RedisConnect, KafkaLibrary, kafkaMessageInterface, ElasticLibrary, Jwt, Logger, Connection, AccessMenu, ActionMenu, AnnouncementNews, AnnouncementTransaction, Badwords, BadwordsType, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpBlocked, PpBlockedHistory, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, TrackingDownloadSection, TrackingDownloadDetail, TrackingDownloadCounter, Section, };
