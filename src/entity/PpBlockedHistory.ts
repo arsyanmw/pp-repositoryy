@@ -125,6 +125,11 @@ export class PpBlockedHistory {
     updatedAt: Date;
 
     @Column({
+        name: 'created_at',
+    })
+    createdAt: Date;
+
+    @Column({
         name: 'updated_by',
         type: 'bigint',
         nullable: true,

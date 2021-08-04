@@ -156,6 +156,12 @@ var PpBlockedHistory = /** @class */ (function () {
     ], PpBlockedHistory.prototype, "updatedAt", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'created_at',
+        }),
+        __metadata("design:type", Date)
+    ], PpBlockedHistory.prototype, "createdAt", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'updated_by',
             type: 'bigint',
             nullable: true,

@@ -18,5 +18,6 @@ export declare class PpBlockedHistory {
     blockedAt: Date;
     blockedBy: number;
     updatedAt: Date;
+    createdAt: Date;
     updatedBy: number;
 }
