@@ -82,6 +82,24 @@ export class ModificationPpBenefit extends Base {
     benefitAddress: string;
 
     @Column({
+        name: 'benefit_sub_district_id',
+        type: 'bigint',
+    })
+    benefitSubDistrictId: number;
+
+    @Column({
+        name: 'benefit_rt',
+        type: 'bigint',
+    })
+    benefitRt: number;
+
+    @Column({
+        name: 'benefit_rw',
+        type: 'bigint',
+    })
+    benefitRw: number;
+
+    @Column({
         name: 'benefit_nationality',
         type: 'varchar',
         length: 255,
