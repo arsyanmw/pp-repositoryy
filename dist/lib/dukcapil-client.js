@@ -172,6 +172,14 @@ var DukcapilClient = /** @class */ (function () {
                             NAMA_LGKP: requestBody.fullName,
                             NIK: requestBody.nik,
                             TGL_LHR: moment(requestBody.birthDate).locale('id').format('DD-MM-YYYY'),
+                            TMPT_LHR: requestBody.birthPlace,
+                            ALAMAT: requestBody.address,
+                            NO_PROP: requestBody.provinceCode,
+                            NO_KAB: requestBody.cityCode,
+                            NO_KEC: requestBody.districtCode,
+                            NO_KEL: requestBody.subDistrictCode,
+                            NO_RT: requestBody.addressRt,
+                            NO_RW: requestBody.addressRw,
                         }, lodash_1.Identity);
                         return [4 /*yield*/, DukcapilClient.post('/dukcapil/get_json/ditjen_ahu/nik_verifby_elemen', headers, body)];
                     case 3: return [2 /*return*/, _a.sent()];

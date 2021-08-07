@@ -10,6 +10,14 @@ interface nikVerifByElementParams {
     fullName?: string; //NAMA_LGKP
     nik: string; //NIK
     birthDate?: Date; // TGL_LHR" : "DD-MM-YYYY"
+    birthPlace?: string; //TMPT_LHR
+    address?: string; // ALAMAT
+    provinceCode?: number; //NO_PROP
+    cityCode?: number; //NO_KAB
+    districtCode?: number; //NO_KEC
+    subDistrictCode?: number; //NO_KEL
+    addressRt?: number; //NO_RT
+    addressRw?: number; //NO_RW
 }
 
 class DukcapilClient {
@@ -125,6 +133,14 @@ class DukcapilClient {
                 NAMA_LGKP: requestBody.fullName,
                 NIK: requestBody.nik,
                 TGL_LHR: moment(requestBody.birthDate).locale('id').format('DD-MM-YYYY'),
+                TMPT_LHR: requestBody.birthPlace,
+                ALAMAT: requestBody.address,
+                NO_PROP: requestBody.provinceCode,
+                NO_KAB: requestBody.cityCode,
+                NO_KEC: requestBody.districtCode,
+                NO_KEL: requestBody.subDistrictCode,
+                NO_RT: requestBody.addressRt,
+                NO_RW: requestBody.addressRw,
             },
             Identity,
         );

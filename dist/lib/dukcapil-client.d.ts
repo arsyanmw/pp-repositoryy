@@ -4,6 +4,14 @@ interface nikVerifByElementParams {
     fullName?: string;
     nik: string;
     birthDate?: Date;
+    birthPlace?: string;
+    address?: string;
+    provinceCode?: number;
+    cityCode?: number;
+    districtCode?: number;
+    subDistrictCode?: number;
+    addressRt?: number;
+    addressRw?: number;
 }
 declare class DukcapilClient {
     private static readonly environment;
