@@ -24,4 +24,4 @@ declare class DukcapilClient {
     private static get;
     static nikVerifByElement(requestBody: nikVerifByElementParams): Promise<any>;
 }
-export { DukcapilClient };
+export { DukcapilClient, nikVerifByElementParams };

@@ -149,4 +149,4 @@ class DukcapilClient {
     }
 }
 
-export { DukcapilClient };
+export { DukcapilClient, nikVerifByElementParams };
