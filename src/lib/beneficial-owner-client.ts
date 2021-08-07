@@ -4,6 +4,7 @@ import { forOwn, toString } from 'lodash';
 import * as FormData from 'form-data';
 import { RedisConnect } from './redis-connect';
 import { Logger } from './logger';
+import { performance } from 'perf_hooks';
 interface TransaksiBeneficialOwnerInterface {
     nama_lengkap: string;
     id_jenis_identitas: number;
@@ -60,9 +61,11 @@ class BeneficialOwnerClient {
                 headers,
                 timeout: 10000,
             };
-
+            const start = performance.now();
             const result = await axios.post(BeneficialOwnerClient.host + path + paramUri, body, config);
+            const end = performance.now();
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -87,8 +90,11 @@ class BeneficialOwnerClient {
                 timeout: 10000,
             };
 
+            const start = performance.now();
             const result = await axios.get(BeneficialOwnerClient.host + path + paramUri, config);
+            const end = performance.now();
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:get:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

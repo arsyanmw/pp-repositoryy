@@ -3,6 +3,7 @@ import { forOwn, toString, unset, findIndex } from 'lodash';
 import { Logger } from './logger';
 import * as moment from 'moment';
 import { RedisConnect } from './redis-connect';
+import { performance } from 'perf_hooks';
 
 interface submitRegistrationBussinessOwner {
     statusPj: string;
@@ -73,13 +74,16 @@ class DjpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.post(DjpClient.host + path + paramUri, body, {
                 headers: headers,
                 timeout: 10000,
             });
+            const end = performance.now();
             unset(params, 'username');
             unset(params, 'password');
             DjpClient.logger.eInfo(`DjpClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -100,10 +104,13 @@ class DjpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.get(DjpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const end = performance.now();
             unset(params, 'username');
             unset(params, 'password');
             DjpClient.logger.eInfo(`DjpClient:get:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

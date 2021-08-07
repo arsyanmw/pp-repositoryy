@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as FormData from 'form-data';
-
+import { toString } from 'lodash';
+import { Logger } from './logger';
+import { performance } from 'perf_hooks';
 interface DefaultRequest {
     idProduk?: number;
     tipeTransaksi?: number;
@@ -20,22 +22,32 @@ class SimpadhuClient {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly host: string = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     private static readonly key: string = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
+    private static readonly logger: Logger = new Logger();
 
-    private static async post(path, form, headers) {
+    private static async post(path, dataForm: Array<{ key: string; value: any }> = []) {
         try {
-            return await axios.post(SimpadhuClient.host + path, form, { headers: headers });
+            const form = new FormData();
+            for await (const iterator of dataForm) {
+                form.append(iterator.key, iterator.value);
+            }
+            const start = performance.now();
+            const result = await axios.post(SimpadhuClient.host + path, form, { headers: form.getHeaders() });
+            const end = performance.now();
+            SimpadhuClient.logger.eInfo(`SimpadhuClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                formData: dataForm,
+                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                status: result.status,
+            });
+            return result;
         } catch (e) {
-            console.log(e.message);
-            console.log(e.response);
+            SimpadhuClient.logger.eError(`SimpadhuClient:post:${path}`, { message: e.message });
             return e.response;
         }
     }
 
     private static async getToken() {
-        const form = new FormData();
-        form.append('key', SimpadhuClient.key);
-
-        return await SimpadhuClient.post('/auth/generateSign', form, form.getHeaders());
+        return await SimpadhuClient.post('/auth/generateSign', [{ key: 'key', value: SimpadhuClient.key }]);
     }
 
     public static async validate(data: ValidationRequest) {
@@ -61,17 +73,24 @@ class SimpadhuClient {
         form.append('tipe_transaksi', data.tipeTransaksi || 60);
         form.append('id_mapping', data.idMapping || 1);
 
-        const validationResp = await SimpadhuClient.post(
-            '/service/kodePembayaran?sign=' + resp.data.value,
-            form,
-            form.getHeaders(),
-        );
-        console.log(
-            'Response validasi voucher, HTTP Code: ',
-            validationResp.status,
-            ' Response Body: ',
-            validationResp.data,
-        );
+        const validationResp = await SimpadhuClient.post('/service/kodePembayaran?sign=' + resp.data.value, [
+            {
+                key: 'no_voucher',
+                value: data.voucher,
+            },
+            {
+                key: 'id_produk',
+                value: data.idProduk || 40,
+            },
+            {
+                key: 'tipe_transaksi',
+                value: data.tipeTransaksi || 60,
+            },
+            {
+                key: 'id_mapping',
+                value: data.idMapping || 1,
+            },
+        ]);
 
         return validationResp;
     }
@@ -93,19 +112,28 @@ class SimpadhuClient {
             };
         }
 
-        const form = new FormData();
-        form.append('kode_pembayaran', data.voucher);
-        form.append('nomor_transaksi', data.trxNumber);
-        form.append('id_produk', data.idProduk || 40);
-        form.append('tipe_transaksi', data.tipeTransaksi || 60);
-        form.append('id_mapping', data.idMapping || 1);
-
-        const redeemResp = await SimpadhuClient.post(
-            '/service/updateTerpakaiMapping?sign=' + resp.data.value,
-            form,
-            form.getHeaders(),
-        );
-        console.log('Response redeem voucher, HTTP Code: ', redeemResp.status, ' Response Body: ', redeemResp.data);
+        const redeemResp = await SimpadhuClient.post('/service/updateTerpakaiMapping?sign=' + resp.data.value, [
+            {
+                key: 'kode_pembayaran',
+                value: data.voucher,
+            },
+            {
+                key: 'nomor_transaksi',
+                value: data.trxNumber,
+            },
+            {
+                key: 'id_produk',
+                value: data.idProduk || 40,
+            },
+            {
+                key: 'tipe_transaksi',
+                value: data.tipeTransaksi || 60,
+            },
+            {
+                key: 'id_mapping',
+                value: data.idMapping || 1,
+            },
+        ]);
 
         return redeemResp;
     }

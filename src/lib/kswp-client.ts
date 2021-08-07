@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { forOwn, toString } from 'lodash';
 import { Logger } from './logger';
+import { performance } from 'perf_hooks';
 
 export enum enumPpPermissionCode {
     PP01 = 'PP01',
@@ -25,11 +26,14 @@ class KswpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.post(KswpClient.host + path + paramUri, body, {
                 headers: headers,
                 timeout: 10000,
             });
+            const end = performance.now();
             KswpClient.logger.eInfo(`KswpClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -50,8 +54,11 @@ class KswpClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.get(KswpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const end = performance.now();
             KswpClient.logger.eInfo(`KswpClient:get:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

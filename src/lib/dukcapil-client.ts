@@ -3,6 +3,7 @@ import { forOwn, toString, unset, pickBy, Identity, includes } from 'lodash';
 import { Logger } from './logger';
 import * as moment from 'moment';
 import { RedisConnect } from './redis-connect';
+import { performance } from 'perf_hooks';
 
 interface nikVerifByElementParams {
     trackingParam?: string; //IP_USER
@@ -36,14 +37,17 @@ class DukcapilClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.post(DukcapilClient.host + path + paramUri, body, {
                 headers: headers,
                 timeout: 10000,
             });
+            const end = performance.now();
 
             unset(body, 'USER_ID');
             unset(body, 'PASSWORD');
             DukcapilClient.logger.eInfo(`DukcapilClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -64,8 +68,11 @@ class DukcapilClient {
                 paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
             });
 
+            const start = performance.now();
             const result = await axios.get(DukcapilClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const end = performance.now();
             DukcapilClient.logger.eInfo(`DukcapilClient:get:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

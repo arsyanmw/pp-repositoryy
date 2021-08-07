@@ -35,41 +35,90 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpadhuClient = void 0;
 var axios_1 = require("axios");
 var FormData = require("form-data");
+var lodash_1 = require("lodash");
+var logger_1 = require("./logger");
+var perf_hooks_1 = require("perf_hooks");
 var SimpadhuClient = /** @class */ (function () {
     function SimpadhuClient() {
     }
-    SimpadhuClient.post = function (path, form, headers) {
+    SimpadhuClient.post = function (path, dataForm) {
+        var dataForm_1, dataForm_1_1;
+        var e_1, _a;
+        if (dataForm === void 0) { dataForm = []; }
         return __awaiter(this, void 0, void 0, function () {
-            var e_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var form, iterator, e_1_1, start, result, end, e_2;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, axios_1.default.post(SimpadhuClient.host + path, form, { headers: headers })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                    case 2:
-                        e_1 = _a.sent();
-                        console.log(e_1.message);
-                        console.log(e_1.response);
-                        return [2 /*return*/, e_1.response];
-                    case 3: return [2 /*return*/];
+                        _b.trys.push([0, 14, , 15]);
+                        form = new FormData();
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 6, 7, 12]);
+                        dataForm_1 = __asyncValues(dataForm);
+                        _b.label = 2;
+                    case 2: return [4 /*yield*/, dataForm_1.next()];
+                    case 3:
+                        if (!(dataForm_1_1 = _b.sent(), !dataForm_1_1.done)) return [3 /*break*/, 5];
+                        iterator = dataForm_1_1.value;
+                        form.append(iterator.key, iterator.value);
+                        _b.label = 4;
+                    case 4: return [3 /*break*/, 2];
+                    case 5: return [3 /*break*/, 12];
+                    case 6:
+                        e_1_1 = _b.sent();
+                        e_1 = { error: e_1_1 };
+                        return [3 /*break*/, 12];
+                    case 7:
+                        _b.trys.push([7, , 10, 11]);
+                        if (!(dataForm_1_1 && !dataForm_1_1.done && (_a = dataForm_1.return))) return [3 /*break*/, 9];
+                        return [4 /*yield*/, _a.call(dataForm_1)];
+                    case 8:
+                        _b.sent();
+                        _b.label = 9;
+                    case 9: return [3 /*break*/, 11];
+                    case 10:
+                        if (e_1) throw e_1.error;
+                        return [7 /*endfinally*/];
+                    case 11: return [7 /*endfinally*/];
+                    case 12:
+                        start = perf_hooks_1.performance.now();
+                        return [4 /*yield*/, axios_1.default.post(SimpadhuClient.host + path, form, { headers: form.getHeaders() })];
+                    case 13:
+                        result = _b.sent();
+                        end = perf_hooks_1.performance.now();
+                        SimpadhuClient.logger.eInfo("SimpadhuClient:post:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            formData: dataForm,
+                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            status: result.status,
+                        });
+                        return [2 /*return*/, result];
+                    case 14:
+                        e_2 = _b.sent();
+                        SimpadhuClient.logger.eError("SimpadhuClient:post:" + path, { message: e_2.message });
+                        return [2 /*return*/, e_2.response];
+                    case 15: return [2 /*return*/];
                 }
             });
         });
     };
     SimpadhuClient.getToken = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var form;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        form = new FormData();
-                        form.append('key', SimpadhuClient.key);
-                        return [4 /*yield*/, SimpadhuClient.post('/auth/generateSign', form, form.getHeaders())];
+                    case 0: return [4 /*yield*/, SimpadhuClient.post('/auth/generateSign', [{ key: 'key', value: SimpadhuClient.key }])];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -101,10 +150,26 @@ var SimpadhuClient = /** @class */ (function () {
                         form.append('id_produk', data.idProduk || 40);
                         form.append('tipe_transaksi', data.tipeTransaksi || 60);
                         form.append('id_mapping', data.idMapping || 1);
-                        return [4 /*yield*/, SimpadhuClient.post('/service/kodePembayaran?sign=' + resp.data.value, form, form.getHeaders())];
+                        return [4 /*yield*/, SimpadhuClient.post('/service/kodePembayaran?sign=' + resp.data.value, [
+                                {
+                                    key: 'no_voucher',
+                                    value: data.voucher,
+                                },
+                                {
+                                    key: 'id_produk',
+                                    value: data.idProduk || 40,
+                                },
+                                {
+                                    key: 'tipe_transaksi',
+                                    value: data.tipeTransaksi || 60,
+                                },
+                                {
+                                    key: 'id_mapping',
+                                    value: data.idMapping || 1,
+                                },
+                            ])];
                     case 2:
                         validationResp = _a.sent();
-                        console.log('Response validasi voucher, HTTP Code: ', validationResp.status, ' Response Body: ', validationResp.data);
                         return [2 /*return*/, validationResp];
                 }
             });
@@ -112,7 +177,7 @@ var SimpadhuClient = /** @class */ (function () {
     };
     SimpadhuClient.redeem = function (data) {
         return __awaiter(this, void 0, void 0, function () {
-            var resp, form, redeemResp;
+            var resp, redeemResp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
@@ -131,16 +196,30 @@ var SimpadhuClient = /** @class */ (function () {
                                     },
                                 }];
                         }
-                        form = new FormData();
-                        form.append('kode_pembayaran', data.voucher);
-                        form.append('nomor_transaksi', data.trxNumber);
-                        form.append('id_produk', data.idProduk || 40);
-                        form.append('tipe_transaksi', data.tipeTransaksi || 60);
-                        form.append('id_mapping', data.idMapping || 1);
-                        return [4 /*yield*/, SimpadhuClient.post('/service/updateTerpakaiMapping?sign=' + resp.data.value, form, form.getHeaders())];
+                        return [4 /*yield*/, SimpadhuClient.post('/service/updateTerpakaiMapping?sign=' + resp.data.value, [
+                                {
+                                    key: 'kode_pembayaran',
+                                    value: data.voucher,
+                                },
+                                {
+                                    key: 'nomor_transaksi',
+                                    value: data.trxNumber,
+                                },
+                                {
+                                    key: 'id_produk',
+                                    value: data.idProduk || 40,
+                                },
+                                {
+                                    key: 'tipe_transaksi',
+                                    value: data.tipeTransaksi || 60,
+                                },
+                                {
+                                    key: 'id_mapping',
+                                    value: data.idMapping || 1,
+                                },
+                            ])];
                     case 2:
                         redeemResp = _a.sent();
-                        console.log('Response redeem voucher, HTTP Code: ', redeemResp.status, ' Response Body: ', redeemResp.data);
                         return [2 /*return*/, redeemResp];
                 }
             });
@@ -151,6 +230,7 @@ var SimpadhuClient = /** @class */ (function () {
     SimpadhuClient.environment = process.env.ENVIRONMENT || 'development';
     SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
+    SimpadhuClient.logger = new logger_1.Logger();
     return SimpadhuClient;
 }());
 exports.SimpadhuClient = SimpadhuClient;

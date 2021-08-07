@@ -15,6 +15,7 @@ declare class SimpadhuClient {
     private static readonly environment;
     private static readonly host;
     private static readonly key;
+    private static readonly logger;
     private static post;
     private static getToken;
     static validate(data: ValidationRequest): Promise<any>;

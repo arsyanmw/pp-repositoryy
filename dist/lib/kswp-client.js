@@ -40,6 +40,7 @@ exports.KswpClient = exports.enumPpPermissionCode = void 0;
 var axios_1 = require("axios");
 var lodash_1 = require("lodash");
 var logger_1 = require("./logger");
+var perf_hooks_1 = require("perf_hooks");
 var enumPpPermissionCode;
 (function (enumPpPermissionCode) {
     enumPpPermissionCode["PP01"] = "PP01";
@@ -52,7 +53,7 @@ var KswpClient = /** @class */ (function () {
     KswpClient.post = function (path, headers, body, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, result, e_1;
+            var paramUri_1, start, result, end, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -61,13 +62,16 @@ var KswpClient = /** @class */ (function () {
                         lodash_1.forOwn(params, function (value, key) {
                             paramUri_1 += paramUri_1 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
+                        start = perf_hooks_1.performance.now();
                         return [4 /*yield*/, axios_1.default.post(KswpClient.host + path + paramUri_1, body, {
                                 headers: headers,
                                 timeout: 10000,
                             })];
                     case 1:
                         result = _a.sent();
+                        end = perf_hooks_1.performance.now();
                         KswpClient.logger.eInfo("KswpClient:post:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
@@ -86,7 +90,7 @@ var KswpClient = /** @class */ (function () {
     KswpClient.get = function (path, headers, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_2, result, e_2;
+            var paramUri_2, start, result, end, e_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -95,10 +99,13 @@ var KswpClient = /** @class */ (function () {
                         lodash_1.forOwn(params, function (value, key) {
                             paramUri_2 += paramUri_2 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
+                        start = perf_hooks_1.performance.now();
                         return [4 /*yield*/, axios_1.default.get(KswpClient.host + path + paramUri_2, { headers: headers, timeout: 10000 })];
                     case 1:
                         result = _a.sent();
+                        end = perf_hooks_1.performance.now();
                         KswpClient.logger.eInfo("KswpClient:get:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
