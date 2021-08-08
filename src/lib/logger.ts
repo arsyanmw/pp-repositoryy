@@ -19,7 +19,7 @@ class Logger {
         indexSuffixPattern: 'YYYY.MM.DD',
     });
 
-    private consoleLogger = winston.createLogger({
+    public consoleLogger = winston.createLogger({
         format: winston.format.json(),
         transports: [
             new winston.transports.Console({

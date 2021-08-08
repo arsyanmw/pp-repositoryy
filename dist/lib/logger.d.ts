@@ -1,6 +1,6 @@
 declare class Logger {
     private esTransport;
-    private consoleLogger;
+    consoleLogger: any;
     private contextFunction;
     elasticLogger: any;
     eInfo(message: string, fields?: any): void;

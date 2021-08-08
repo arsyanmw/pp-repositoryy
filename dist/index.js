@@ -184,7 +184,7 @@ var connection = function (config) { return __awaiter(void 0, void 0, void 0, fu
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + '/entity/**/*'], logger: new winston_1.WinstonAdaptor(new logger_1.Logger().elasticLogger, 'all') });
+                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + '/entity/**/*'], logger: config.logger || new winston_1.WinstonAdaptor(new logger_1.Logger().elasticLogger, 'all') });
                 return [4 /*yield*/, typeorm_1.createConnection(connectionOptions)];
             case 1: return [2 /*return*/, _a.sent()];
         }

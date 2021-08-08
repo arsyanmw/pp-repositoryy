@@ -73,7 +73,7 @@ export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
         ...config,
         entities: [__dirname + '/entity/**/*'],
-        logger: new WinstonAdaptor(new Logger().elasticLogger, 'all'),
+        logger: config.logger || new WinstonAdaptor(new Logger().elasticLogger, 'all'),
     };
     return await createConnection(connectionOptions);
 };
