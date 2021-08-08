@@ -260,6 +260,32 @@ var ModificationPpHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], ModificationPpHistory.prototype, "benefitValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "identitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'next_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "prevIdentitiesId", void 0);
     ModificationPpHistory = __decorate([
         typeorm_1.Entity({ name: 'modification_pp_history' })
     ], ModificationPpHistory);

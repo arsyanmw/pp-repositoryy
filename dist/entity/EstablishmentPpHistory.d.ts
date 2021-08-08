@@ -9,6 +9,8 @@ export declare class EstablishmentPpHistory extends Base {
     sectionValueJson: string;
     vouchersCode: string;
     identitiesId: number;
+    nextIdentitiesId: number;
+    prevIdentitiesId: number;
     transactionNumber: string;
     certificateNumber: string;
     perseroanName: string;

@@ -29,4 +29,7 @@ export declare class ModificationPpHistory extends Base {
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
+    identitiesId: number;
+    nextIdentitiesId: number;
+    prevIdentitiesId: number;
 }

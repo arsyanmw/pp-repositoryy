@@ -56,6 +56,22 @@ export class DispersalPpHistory extends Base {
     identitiesId: number;
 
     @Column({
+        name: 'next_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    nextIdentitiesId: number;
+
+    @Column({
+        name: 'prev_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    prevIdentitiesId: number;
+
+    @Column({
         name: 'transaction_number',
         type: 'varchar',
         length: 255,

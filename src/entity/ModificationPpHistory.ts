@@ -202,4 +202,27 @@ export class ModificationPpHistory extends Base {
         type: 'text',
     })
     benefitValueJson: string;
+
+    @Column({
+        name: 'identities_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    identitiesId: number;
+
+    @Column({
+        name: 'next_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    nextIdentitiesId: number;
+
+    @Column({
+        name: 'prev_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    prevIdentitiesId: number;
 }

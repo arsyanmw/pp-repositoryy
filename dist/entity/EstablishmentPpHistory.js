@@ -95,6 +95,24 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
     ], EstablishmentPpHistory.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'next_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpHistory.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], EstablishmentPpHistory.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'transaction_number',
             type: 'varchar',
             length: 255,
