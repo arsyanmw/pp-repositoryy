@@ -2,7 +2,7 @@ declare class Logger {
     private esTransport;
     private consoleLogger;
     private contextFunction;
-    private elasticLogger;
+    elasticLogger: any;
     eInfo(message: string, fields?: any): void;
     eError(message: string, fields?: any): void;
     eWarn(message: string, fields?: any): void;

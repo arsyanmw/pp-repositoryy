@@ -37,7 +37,7 @@ class Logger {
 
     private contextFunction: string;
 
-    private elasticLogger = winston.createLogger({
+    public elasticLogger = winston.createLogger({
         format: winston.format.json(),
         transports: [this.esTransport],
     });

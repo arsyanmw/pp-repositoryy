@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { createConnection, ConnectionOptions, Connection } from 'typeorm';
+import { WinstonAdaptor } from './lib/typeorm-logger-adaptor/logger/winston';
 
 /**
  * Alphabetic entity import
@@ -72,6 +73,7 @@ export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
         ...config,
         entities: [__dirname + '/entity/**/*'],
+        logger: new WinstonAdaptor(new Logger().elasticLogger, 'all'),
     };
     return await createConnection(connectionOptions);
 };
