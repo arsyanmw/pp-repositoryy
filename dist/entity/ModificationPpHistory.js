@@ -55,6 +55,14 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "modificationtPpId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'modification_pp_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "modificationPpId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'pp_type_id',
             type: 'bigint',
             nullable: false,

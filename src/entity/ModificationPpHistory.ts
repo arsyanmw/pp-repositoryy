@@ -22,6 +22,13 @@ export class ModificationPpHistory extends Base {
     modificationtPpId: number;
 
     @Column({
+        name: 'modification_pp_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    modificationPpId: number;
+
+    @Column({
         name: 'pp_type_id',
         type: 'bigint',
         nullable: false,

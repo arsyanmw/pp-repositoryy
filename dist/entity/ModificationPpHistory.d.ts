@@ -4,6 +4,7 @@ export declare class ModificationPpHistory extends Base {
     id: number;
     insertedAt: Date;
     modificationtPpId: number;
+    modificationPpId: number;
     ppTypeId: number;
     transactionTypeId: number;
     sectionValueJson: string;
