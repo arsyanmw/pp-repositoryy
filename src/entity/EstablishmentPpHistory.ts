@@ -227,4 +227,17 @@ export class EstablishmentPpHistory extends Base {
         type: 'text',
     })
     benefitValueJson: string;
+
+    @Column({
+        name: 'is_blocked',
+        type: 'bigint',
+        nullable: true,
+    })
+    isBlocked: number;
+
+    @Column({
+        name: 'blocked_at',
+        nullable: true,
+    })
+    blockedAt: Date;
 }

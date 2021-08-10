@@ -286,6 +286,21 @@ var ModificationPpHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], ModificationPpHistory.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "isBlocked", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'blocked_at',
+            nullable: true,
+        }),
+        __metadata("design:type", Date)
+    ], ModificationPpHistory.prototype, "blockedAt", void 0);
     ModificationPpHistory = __decorate([
         typeorm_1.Entity({ name: 'modification_pp_history' })
     ], ModificationPpHistory);

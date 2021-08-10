@@ -32,4 +32,6 @@ export declare class ModificationPpHistory extends Base {
     identitiesId: number;
     nextIdentitiesId: number;
     prevIdentitiesId: number;
+    isBlocked: number;
+    blockedAt: Date;
 }

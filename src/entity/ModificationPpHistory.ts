@@ -225,4 +225,17 @@ export class ModificationPpHistory extends Base {
         default: '0',
     })
     prevIdentitiesId: number;
+
+    @Column({
+        name: 'is_blocked',
+        type: 'bigint',
+        nullable: true,
+    })
+    isBlocked: number;
+
+    @Column({
+        name: 'blocked_at',
+        nullable: true,
+    })
+    blockedAt: Date;
 }
