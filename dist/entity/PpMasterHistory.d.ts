@@ -6,6 +6,7 @@ export declare class PpMasterHistory extends Base {
     ppMasterId: number;
     ppTypeId: number;
     transactionTypeId: number;
+    sectionValueJson: string;
     identitiesId: number;
     certificateNumber: string;
     perseroanName: string;

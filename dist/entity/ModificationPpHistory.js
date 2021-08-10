@@ -71,6 +71,13 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "transactionTypeId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'section_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "sectionValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'vouchers_code',
             type: 'varchar',
             length: 255,

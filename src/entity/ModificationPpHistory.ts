@@ -36,6 +36,12 @@ export class ModificationPpHistory extends Base {
     transactionTypeId: number;
 
     @Column({
+        name: 'section_value_json',
+        type: 'text',
+    })
+    sectionValueJson: string;
+
+    @Column({
         name: 'vouchers_code',
         type: 'varchar',
         length: 255,
