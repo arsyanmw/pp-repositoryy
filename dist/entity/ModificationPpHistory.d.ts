@@ -1,10 +1,11 @@
 import { Base } from './Base';
 import { SubDistrict } from './SubDistrict';
+import { ModificationPp } from './ModificationPp';
 export declare class ModificationPpHistory extends Base {
     id: number;
     insertedAt: Date;
     modificationtPpId: number;
-    modificationPpId: number;
+    modificationPp: ModificationPp;
     ppTypeId: number;
     transactionTypeId: number;
     sectionValueJson: string;

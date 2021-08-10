@@ -1,6 +1,7 @@
 import { Base } from './Base';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { SubDistrict } from './SubDistrict';
+import { ModificationPp } from './ModificationPp';
 import { IsEmail, IsNotEmpty, IsDateString } from 'class-validator';
 
 @Entity({ name: 'modification_pp_history' })
@@ -21,12 +22,12 @@ export class ModificationPpHistory extends Base {
     })
     modificationtPpId: number;
 
-    @Column({
+    @ManyToOne((type) => ModificationPp)
+    @JoinColumn({
         name: 'modification_pp_id',
-        type: 'bigint',
-        nullable: false,
+        referencedColumnName: 'id',
     })
-    modificationPpId: number;
+    modificationPp: ModificationPp;
 
     @Column({
         name: 'pp_type_id',

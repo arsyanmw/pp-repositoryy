@@ -28,6 +28,7 @@ exports.ModificationPpHistory = void 0;
 var Base_1 = require("./Base");
 var typeorm_1 = require("typeorm");
 var SubDistrict_1 = require("./SubDistrict");
+var ModificationPp_1 = require("./ModificationPp");
 var class_validator_1 = require("class-validator");
 var ModificationPpHistory = /** @class */ (function (_super) {
     __extends(ModificationPpHistory, _super);
@@ -54,13 +55,13 @@ var ModificationPpHistory = /** @class */ (function (_super) {
         __metadata("design:type", Number)
     ], ModificationPpHistory.prototype, "modificationtPpId", void 0);
     __decorate([
-        typeorm_1.Column({
+        typeorm_1.ManyToOne(function (type) { return ModificationPp_1.ModificationPp; }),
+        typeorm_1.JoinColumn({
             name: 'modification_pp_id',
-            type: 'bigint',
-            nullable: false,
+            referencedColumnName: 'id',
         }),
-        __metadata("design:type", Number)
-    ], ModificationPpHistory.prototype, "modificationPpId", void 0);
+        __metadata("design:type", ModificationPp_1.ModificationPp)
+    ], ModificationPpHistory.prototype, "modificationPp", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'pp_type_id',
