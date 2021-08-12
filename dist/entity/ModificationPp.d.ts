@@ -28,4 +28,5 @@ export declare class ModificationPp extends Base {
     perseroanKppName: number;
     fileStatement: string;
     fileCertificate: string;
+    isBlocked: number;
 }
