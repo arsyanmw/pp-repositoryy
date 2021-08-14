@@ -4,5 +4,6 @@ declare module 'redis' {
     export interface RedisClient extends NodeJS.EventEmitter {
         setAsync(key: string, value: string, Option?: Option, vaueOption?: any): Promise<any>;
         getAsync(key: string): Promise<string>;
+        del(key: string): Promise<string>;
     }
 }

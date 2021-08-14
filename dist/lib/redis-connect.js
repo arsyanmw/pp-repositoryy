@@ -100,6 +100,16 @@ var RedisConnect = /** @class */ (function () {
             });
         });
     };
+    RedisConnect.prototype.delete = function (key) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.del(key)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     RedisConnect.prototype.getJson = function (key) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, _b;

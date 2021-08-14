@@ -9,6 +9,7 @@ declare class RedisConnect {
         [key: string]: unknown;
     }, option?: Option, valueOption?: any): Promise<any>;
     get(key: string): Promise<any>;
+    delete(key: string): Promise<any>;
     getJson(key: string): Promise<{
         [key: string]: unknown;
     }>;

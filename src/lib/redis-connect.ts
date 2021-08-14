@@ -48,6 +48,10 @@ class RedisConnect {
         return await this.client.getAsync(key);
     }
 
+    public async delete(key: string): Promise<any> {
+        return await this.client.del(key);
+    }
+
     public async getJson(key: string): Promise<{ [key: string]: unknown }> {
         return JSON.parse(await this.client.getAsync(key));
     }
