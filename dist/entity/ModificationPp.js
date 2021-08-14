@@ -245,6 +245,14 @@ var ModificationPp = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], ModificationPp.prototype, "fileCertificate", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "isBlocked", void 0);
     ModificationPp = __decorate([
         typeorm_1.Entity({ name: 'modification_pp' })
     ], ModificationPp);

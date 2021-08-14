@@ -189,4 +189,11 @@ export class ModificationPp extends Base {
         length: 255,
     })
     fileCertificate: string;
+
+    @Column({
+        name: 'is_blocked',
+        type: 'bigint',
+        nullable: false,
+    })
+    isBlocked: number;
 }
