@@ -68,6 +68,7 @@ import { Jwt } from './lib/jwt';
 import { Logger } from './lib/logger';
 import { KafkaLibrary, kafkaMessageInterface } from './lib/kafka-library';
 import { RedisConnect } from './lib/redis-connect';
+import { ClientInformation } from './lib/client-information'
 
 export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
@@ -79,6 +80,7 @@ export const connection = async (config: ConnectionOptions) => {
 };
 
 export {
+    ClientInformation,
     RedisConnect,
     KafkaLibrary,
     kafkaMessageInterface,

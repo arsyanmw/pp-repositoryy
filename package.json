@@ -24,6 +24,7 @@
     "@types/kafkajs": "^1.9.0",
     "@types/node": "^14.11.1",
     "@types/redis": "^2.8.31",
+    "@types/ua-parser-js": "^0.7.36",
     "@types/validator": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
@@ -42,6 +43,7 @@
     "bluebird": "^3.7.2",
     "class-validator": "^0.13.1",
     "form-data": "^4.0.0",
+    "forwarded-for": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "kafkajs": "^1.15.0",
     "kafkajs-snappy": "^1.1.0",
@@ -51,6 +53,7 @@
     "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.32",
+    "ua-parser-js": "^0.7.28",
     "winston": "^3.3.3",
     "winston-elasticsearch": "^0.15.6",
     "winston-format-debug": "^1.0.3"
