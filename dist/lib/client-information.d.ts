@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import { IBrowser, IDevice, IOS, IEngine, ICPU } from 'ua-parser-js';
 import { IncomingHttpHeaders } from 'http';
-interface ClientInformationResult {
+interface ClientInformationResultInterface {
     ipAddress: string;
     operatingSystem: string;
     operatingSystemVersion: string;
@@ -42,6 +42,6 @@ declare class ClientInformation {
     /**
      * getResult
      */
-    getResult(): ClientInformationResult;
+    getResult(): ClientInformationResultInterface;
 }
 export { ClientInformation };

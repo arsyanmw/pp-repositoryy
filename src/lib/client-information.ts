@@ -3,7 +3,7 @@ import { IncomingHttpHeaders } from 'http';
 // eslint-disable-next-line
 const forwarded = require('forwarded-for');
 
-interface ClientInformationResult {
+interface ClientInformationResultInterface {
     ipAddress: string;
     operatingSystem: string;
     operatingSystemVersion: string;
@@ -68,7 +68,7 @@ class ClientInformation {
     /**
      * getResult
      */
-    public getResult(): ClientInformationResult {
+    public getResult(): ClientInformationResultInterface {
         return {
             ipAddress: this.getIpClient(),
             operatingSystem: this.getOS().name || '-',
