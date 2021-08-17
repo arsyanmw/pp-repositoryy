@@ -19,7 +19,6 @@ interface UserInformationInterface {
 interface BaseAuditrail {
     clientInformation: ClientInformationResultInterface;
     userInformation: UserInformationInterface;
-    '@timestamp'?: Date;
     action: string;
     source?: string;
     dataType: Array<DataType>;

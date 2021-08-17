@@ -112,7 +112,7 @@ var PtClient = /** @class */ (function () {
                         e_2 = _b.sent();
                         PtClient.logger.eError("PtClient:post:" + path, {
                             code: e_2.code,
-                            message: e_2.message
+                            message: e_2.message,
                         });
                         return [2 /*return*/, {
                                 status: e_2.code == 'ECONNABORTED' ? 501 : 500,
@@ -133,7 +133,7 @@ var PtClient = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, PtClient.post('/service/getToken', [
                             { key: 'client', value: PtClient.client },
-                            { key: 'clientKey', value: PtClient.clientKey }
+                            { key: 'clientKey', value: PtClient.clientKey },
                         ], function (form) { return form.getHeaders(); })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
@@ -152,8 +152,8 @@ var PtClient = /** @class */ (function () {
                             return [2 /*return*/, resp];
                         }
                         return [4 /*yield*/, PtClient.post('/service/getPesanNamaPerseroan', [
-                                { key: "nama", value: name },
-                                { key: "nama_singkat", value: alias }
+                                { key: 'nama', value: name },
+                                { key: 'nama_singkat', value: alias },
                             ], function (form) { return ({
                                 'content-type': 'multipart/form-data; boundary=' + form.getBoundary(),
                                 AuthJWT: 'Bearer ' + resp.data.data.token,

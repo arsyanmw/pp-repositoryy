@@ -72,7 +72,7 @@ var AuditTrail = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.elasticLibrary.indexOrUpdate({
                             index: this.getIndex(),
-                            body: __assign({ "@timestamp": moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, auditTrail)
+                            body: __assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, auditTrail),
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
