@@ -1,7 +1,7 @@
 import { IBrowser, IDevice, UAParser, IOS, IEngine, ICPU } from 'ua-parser-js';
 import { IncomingHttpHeaders } from 'http';
 // eslint-disable-next-line
-const forwarded = require('forwarded-for');
+const ForwardedFor = require('forwarded-for');
 
 interface ClientInformationResultInterface {
     ipAddress: string;
@@ -20,7 +20,7 @@ class ClientInformation {
 
     constructor(headers: IncomingHttpHeaders) {
         this.uAParser.setUA(headers['user-agent']);
-        this.forwarded = forwarded(headers);
+        this.forwarded = ForwardedFor.forwarded(headers);
     }
 
     /**

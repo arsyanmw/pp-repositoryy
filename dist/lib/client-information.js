@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientInformation = void 0;
 var ua_parser_js_1 = require("ua-parser-js");
 // eslint-disable-next-line
-var forwarded = require('forwarded-for');
+var ForwardedFor = require('forwarded-for');
 var ClientInformation = /** @class */ (function () {
     function ClientInformation(headers) {
         this.uAParser = new ua_parser_js_1.UAParser();
         this.uAParser.setUA(headers['user-agent']);
-        this.forwarded = forwarded(headers);
+        this.forwarded = ForwardedFor.forwarded(headers);
     }
     /**
      * getIp
