@@ -64,6 +64,12 @@ interface ResultProfilePp {
     isBlocked?: number;
 }
 
+interface IndexInputInterface<T> {
+    index: string;
+    id?: string | number;
+    body: any;
+}
+
 class ElasticLibrary {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly elasticsearchHost = process.env.ELASTICSEARCH_APPS || 'http://127.0.0.1:9200';
@@ -72,6 +78,12 @@ class ElasticLibrary {
     constructor() {
         this.elasticSearchConnection = new Client({
             node: ElasticLibrary.elasticsearchHost,
+        });
+    }
+
+    public async indexOrUpdate(indexInput: IndexInputInterface<any>): Promise<ResultIndexorUpdateResponse> {
+        return await this.elasticSearchConnection.index({
+            ...indexInput,
         });
     }
 
@@ -139,4 +151,4 @@ class ElasticLibrary {
     }
 }
 
-export { ElasticLibrary };
+export { ElasticLibrary, IndexInputInterface, ResultIndexorUpdateResponse };

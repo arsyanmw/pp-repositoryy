@@ -11,7 +11,11 @@ class PtClient {
     private static readonly timeout: number = 20 * 1000; // 20 detik
     private static readonly logger: Logger = new Logger();
 
-    private static async post(path, dataForm: Array<{ key: string; value: any }> = [], headers: (from: FormData) => FormData.Headers) {
+    private static async post(
+        path,
+        dataForm: Array<{ key: string; value: any }> = [],
+        headers: (from: FormData) => FormData.Headers,
+    ) {
         try {
             const form = new FormData();
             for await (const iterator of dataForm) {
@@ -33,9 +37,9 @@ class PtClient {
             });
             return result;
         } catch (e) {
-            PtClient.logger.eError(`PtClient:post:${path}`, { 
+            PtClient.logger.eError(`PtClient:post:${path}`, {
                 code: e.code,
-                message: e.message 
+                message: e.message,
             });
             return {
                 status: e.code == 'ECONNABORTED' ? 501 : 500,
@@ -49,10 +53,11 @@ class PtClient {
     }
 
     private static async getToken() {
-        return await PtClient.post('/service/getToken',
+        return await PtClient.post(
+            '/service/getToken',
             [
                 { key: 'client', value: PtClient.client },
-                { key: 'clientKey', value: PtClient.clientKey }
+                { key: 'clientKey', value: PtClient.clientKey },
             ],
             (form: FormData): FormData.Headers => form.getHeaders(),
         );
@@ -64,15 +69,16 @@ class PtClient {
             return resp;
         }
 
-        return await PtClient.post('/service/getPesanNamaPerseroan',
+        return await PtClient.post(
+            '/service/getPesanNamaPerseroan',
             [
-                { key: "nama", value: name},
-                { key: "nama_singkat", value: alias}
+                { key: 'nama', value: name },
+                { key: 'nama_singkat', value: alias },
             ],
             (form: FormData): FormData.Headers => ({
                 'content-type': 'multipart/form-data; boundary=' + form.getBoundary(),
                 AuthJWT: 'Bearer ' + resp.data.data.token,
-            })
+            }),
         );
     }
 }

@@ -69,6 +69,7 @@ import { Logger } from './lib/logger';
 import { KafkaLibrary, kafkaMessageInterface } from './lib/kafka-library';
 import { RedisConnect } from './lib/redis-connect';
 import { ClientInformation } from './lib/client-information';
+import { AuditTrail, DataType as AuditTrailDataType } from './lib/audittrail';
 
 export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
@@ -85,6 +86,8 @@ export {
     KafkaLibrary,
     kafkaMessageInterface,
     ElasticLibrary,
+    AuditTrail,
+    AuditTrailDataType,
     Jwt,
     Logger,
     Connection,

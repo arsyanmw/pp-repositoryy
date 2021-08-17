@@ -83,4 +83,4 @@ class ClientInformation {
     }
 }
 
-export { ClientInformation };
+export { ClientInformation, ClientInformationResultInterface };

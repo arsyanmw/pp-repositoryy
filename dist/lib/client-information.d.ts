@@ -44,4 +44,4 @@ declare class ClientInformation {
      */
     getResult(): ClientInformationResultInterface;
 }
-export { ClientInformation };
+export { ClientInformation, ClientInformationResultInterface };

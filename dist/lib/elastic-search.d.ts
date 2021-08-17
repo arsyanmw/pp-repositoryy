@@ -47,13 +47,19 @@ interface ResultProfilePp {
     lastStatus?: number;
     isBlocked?: number;
 }
+interface IndexInputInterface<T> {
+    index: string;
+    id?: string | number;
+    body: any;
+}
 declare class ElasticLibrary {
     private static readonly environment;
     private static readonly elasticsearchHost;
     private elasticSearchConnection;
     constructor();
+    indexOrUpdate(indexInput: IndexInputInterface<any>): Promise<ResultIndexorUpdateResponse>;
     getIndexPostfix(index: string): string;
     searchProfilePp(query: SearchBodyProfilePp): Promise<ResultSearchResponse<ResultProfilePp>>;
     indexOrUpdateProfilePp(profilePp: ResultProfilePp): Promise<ResultIndexorUpdateResponse>;
 }
-export { ElasticLibrary };
+export { ElasticLibrary, IndexInputInterface, ResultIndexorUpdateResponse };
