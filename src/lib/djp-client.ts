@@ -137,6 +137,20 @@ class DjpClient {
         return await DjpClient.post('/auth/oauth/token', headers, {}, params);
     }
 
+    private static async getNikFakeFromRedis(npwp: string): Promise<any> {
+        let nikFake: string;
+        const testList = (await DjpClient.redis.getJson('test:dukcapil_list')) || [];
+        const regexNpwp = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
+        const findOnList = findIndex(testList, (index) => regexNpwp.test(index));
+        if (testList[findOnList]) {
+            nikFake = testList[findOnList];
+        }
+        if (DjpClient.byPassNpwp.test(npwp)) {
+            nikFake = `50000000000${npwp.substring(10)}`;
+        }
+        return nikFake;
+    }
+
     public static async validateNpwp(npwp: string) {
         const token = await DjpClient.getToken();
         console.log('Response getToken DJP, HTTP Code: ', token.status, ' Response Body: ', token.data);
@@ -145,16 +159,7 @@ class DjpClient {
         }
 
         if (this.environment.toLowerCase() != 'production') {
-            let nikFake;
-            const testList = (await DjpClient.redis.getJson('test:dukcapil_list')) || [];
-            const regexNpwp = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
-            const findOnList = findIndex(testList, (index) => regexNpwp.test(index));
-            if (testList[findOnList]) {
-                nikFake = testList[findOnList];
-            }
-            if (DjpClient.byPassNpwp.test(npwp)) {
-                nikFake = `50000000000${npwp.substring(10)}`;
-            }
+            const nikFake = await DjpClient.getNikFakeFromRedis(npwp);
             if (nikFake) {
                 return {
                     status: 200,
@@ -188,20 +193,23 @@ class DjpClient {
         }
         const npwp = body.dataPengurus[0].npwpPj;
 
-        if (this.environment.toLowerCase() != 'production' && DjpClient.byPassNpwp.test(npwp)) {
-            return {
-                status: 200,
-                data: {
-                    kdStatus: 1,
-                    ketStatus: 'Registration Succeed',
-                    message: {
-                        npwp: `915${npwp.substring(10)}8068000`,
-                        kodeKpp: '068',
-                        namaKpp: 'PRATAMA JAKARTA JAGAKARSA',
+        if (this.environment.toLowerCase() != 'production') {
+            const nikFake = await DjpClient.getNikFakeFromRedis(npwp);
+            if (nikFake) {
+                return {
+                    status: 200,
+                    data: {
+                        kdStatus: 1,
+                        ketStatus: 'Registration Succeed',
+                        message: {
+                            npwp: `915${npwp.substring(10)}8068000`,
+                            kodeKpp: '068',
+                            namaKpp: 'PRATAMA JAKARTA JAGAKARSA',
+                        },
+                        createdDate: moment().locale('id').format('DD-MM-YYYY'),
                     },
-                    createdDate: moment().locale('id').format('DD-MM-YYYY'),
-                },
-            };
+                };
+            }
         }
 
         const headers = {

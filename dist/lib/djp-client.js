@@ -141,9 +141,30 @@ var DjpClient = /** @class */ (function () {
             });
         });
     };
+    DjpClient.getNikFakeFromRedis = function (npwp) {
+        return __awaiter(this, void 0, void 0, function () {
+            var nikFake, testList, regexNpwp, findOnList;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, DjpClient.redis.getJson('test:dukcapil_list')];
+                    case 1:
+                        testList = (_a.sent()) || [];
+                        regexNpwp = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
+                        findOnList = lodash_1.findIndex(testList, function (index) { return regexNpwp.test(index); });
+                        if (testList[findOnList]) {
+                            nikFake = testList[findOnList];
+                        }
+                        if (DjpClient.byPassNpwp.test(npwp)) {
+                            nikFake = "50000000000" + npwp.substring(10);
+                        }
+                        return [2 /*return*/, nikFake];
+                }
+            });
+        });
+    };
     DjpClient.validateNpwp = function (npwp) {
         return __awaiter(this, void 0, void 0, function () {
-            var token, nikFake, testList, regexNpwp_1, findOnList, headers;
+            var token, nikFake, headers;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, DjpClient.getToken()];
@@ -154,18 +175,9 @@ var DjpClient = /** @class */ (function () {
                             return [2 /*return*/, token];
                         }
                         if (!(this.environment.toLowerCase() != 'production')) return [3 /*break*/, 3];
-                        nikFake = void 0;
-                        return [4 /*yield*/, DjpClient.redis.getJson('test:dukcapil_list')];
+                        return [4 /*yield*/, DjpClient.getNikFakeFromRedis(npwp)];
                     case 2:
-                        testList = (_a.sent()) || [];
-                        regexNpwp_1 = new RegExp([npwp.slice(0, 1), '.', npwp.slice(1)].join(''));
-                        findOnList = lodash_1.findIndex(testList, function (index) { return regexNpwp_1.test(index); });
-                        if (testList[findOnList]) {
-                            nikFake = testList[findOnList];
-                        }
-                        if (DjpClient.byPassNpwp.test(npwp)) {
-                            nikFake = "50000000000" + npwp.substring(10);
-                        }
+                        nikFake = _a.sent();
                         if (nikFake) {
                             return [2 /*return*/, {
                                     status: 200,
@@ -195,7 +207,7 @@ var DjpClient = /** @class */ (function () {
     };
     DjpClient.submitRegistrationNpwpPp = function (body) {
         return __awaiter(this, void 0, void 0, function () {
-            var token, npwp, headers;
+            var token, npwp, nikFake, headers;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, DjpClient.getToken()];
@@ -206,7 +218,11 @@ var DjpClient = /** @class */ (function () {
                             return [2 /*return*/, token];
                         }
                         npwp = body.dataPengurus[0].npwpPj;
-                        if (this.environment.toLowerCase() != 'production' && DjpClient.byPassNpwp.test(npwp)) {
+                        if (!(this.environment.toLowerCase() != 'production')) return [3 /*break*/, 3];
+                        return [4 /*yield*/, DjpClient.getNikFakeFromRedis(npwp)];
+                    case 2:
+                        nikFake = _a.sent();
+                        if (nikFake) {
                             return [2 /*return*/, {
                                     status: 200,
                                     data: {
@@ -221,12 +237,14 @@ var DjpClient = /** @class */ (function () {
                                     },
                                 }];
                         }
+                        _a.label = 3;
+                    case 3:
                         headers = {
                             'content-type': 'application/json',
                             Authorization: 'Bearer ' + token.data.access_token,
                         };
                         return [4 /*yield*/, DjpClient.post('/api/submitregptp', headers, body)];
-                    case 2: return [2 /*return*/, _a.sent()];
+                    case 4: return [2 /*return*/, _a.sent()];
                 }
             });
         });

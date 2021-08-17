@@ -59,6 +59,7 @@ declare class DjpClient {
     private static post;
     private static get;
     private static getToken;
+    private static getNikFakeFromRedis;
     static validateNpwp(npwp: string): Promise<any>;
     static submitRegistrationNpwpPp(body: submitRegistrationNpwpPpParams): Promise<any>;
 }
