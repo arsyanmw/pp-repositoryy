@@ -207,6 +207,27 @@ export class PpMasterHistory extends Base {
     dispersalReasonId: number;
 
     @Column({
+        name: 'statement_name_similarity',
+        type: 'text',
+        nullable: true,
+    })
+    statementNameSimilarity: string;
+
+    @Column({
+        name: 'statement_beneficial_owner',
+        type: 'text',
+        nullable: true,
+    })
+    statementBeneficialOwner: string;
+
+    @Column({
+        name: 'statement_condition',
+        type: 'text',
+        nullable: true,
+    })
+    statementCondition: string;
+
+    @Column({
         name: 'is_blocked',
         type: 'bigint',
         nullable: true,

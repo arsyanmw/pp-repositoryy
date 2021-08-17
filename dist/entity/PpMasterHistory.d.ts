@@ -30,6 +30,9 @@ export declare class PpMasterHistory extends Base {
     ownerValueJson: string;
     benefitValueJson: string;
     dispersalReasonId: number;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
     isBlocked: number;
     blockedAt: Date;
 }

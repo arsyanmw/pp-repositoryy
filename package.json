@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'src/**/*.ts?(x)' --quiet --fix",
-    "build": "rm -rf ./dist && tsc"
+    "build": "yarn lint && rm -rf ./dist && tsc"
   },
   "husky": {
     "hooks": {
