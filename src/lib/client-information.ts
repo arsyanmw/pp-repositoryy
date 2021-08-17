@@ -1,5 +1,6 @@
 import { IBrowser, IDevice, UAParser, IOS, IEngine, ICPU } from 'ua-parser-js';
 import { IncomingHttpHeaders } from 'http';
+import { get } from 'lodash';
 // eslint-disable-next-line
 const ForwardedFor = require('forwarded-for');
 
@@ -27,7 +28,7 @@ class ClientInformation {
      * getIp
      */
     public getIpClient(): string {
-        return this.forwarded.ip;
+        return get(this.forwarded, 'ip', '127.0.0.1');
     }
 
     /**

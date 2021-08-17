@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientInformation = void 0;
 var ua_parser_js_1 = require("ua-parser-js");
+var lodash_1 = require("lodash");
 // eslint-disable-next-line
 var ForwardedFor = require('forwarded-for');
 var ClientInformation = /** @class */ (function () {
@@ -14,7 +15,7 @@ var ClientInformation = /** @class */ (function () {
      * getIp
      */
     ClientInformation.prototype.getIpClient = function () {
-        return this.forwarded.ip;
+        return lodash_1.get(this.forwarded, 'ip', '127.0.0.1');
     };
     /**
      * getBrowser
