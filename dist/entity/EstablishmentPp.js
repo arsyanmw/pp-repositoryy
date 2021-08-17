@@ -235,6 +235,30 @@ var EstablishmentPp = /** @class */ (function (_super) {
         }),
         __metadata("design:type", String)
     ], EstablishmentPp.prototype, "fileCertificate", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPp.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPp.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPp.prototype, "statementCondition", void 0);
     EstablishmentPp = __decorate([
         typeorm_1.Entity({ name: 'establishment_pp' })
     ], EstablishmentPp);

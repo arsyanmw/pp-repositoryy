@@ -27,4 +27,7 @@ export declare class EstablishmentPp extends Base {
     perseroanKppName: number;
     fileStatement: string;
     fileCertificate: string;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
 }
