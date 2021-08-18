@@ -14,6 +14,8 @@ export declare class ModificationPpBenefit extends Base {
     benefitRt: number;
     benefitRw: number;
     benefitNationality: string;
+    benefitCountryId: number;
+    benefitCountryAddress: string;
     benefitNpwp: string;
     benefitRelation: string;
 }

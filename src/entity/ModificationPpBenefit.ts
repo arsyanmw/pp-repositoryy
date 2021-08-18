@@ -109,6 +109,19 @@ export class ModificationPpBenefit extends Base {
     benefitNationality: string;
 
     @Column({
+        name: 'benefit_country_id',
+        type: 'bigint',
+    })
+    benefitCountryId: number;
+
+    @Column({
+        name: 'benefit_country_address',
+        type: 'varchar',
+        length: 255,
+    })
+    benefitCountryAddress: string;
+
+    @Column({
         name: 'benefit_npwp',
         type: 'varchar',
         length: 255,

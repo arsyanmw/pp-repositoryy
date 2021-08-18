@@ -153,6 +153,21 @@ var ModificationPpBenefit = /** @class */ (function (_super) {
     ], ModificationPpBenefit.prototype, "benefitNationality", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'benefit_country_id',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpBenefit.prototype, "benefitCountryId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'benefit_country_address',
+            type: 'varchar',
+            length: 255,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpBenefit.prototype, "benefitCountryAddress", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'benefit_npwp',
             type: 'varchar',
             length: 255,
