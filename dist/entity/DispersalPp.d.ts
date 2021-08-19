@@ -25,4 +25,9 @@ export declare class DispersalPp extends Base {
     fileStatement: string;
     fileCertificate: string;
     dispersalReasonId: number;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
+    isBlocked: number;
+    blockedAt: Date;
 }

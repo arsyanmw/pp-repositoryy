@@ -231,6 +231,45 @@ var DispersalPp = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], DispersalPp.prototype, "dispersalReasonId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPp.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPp.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], DispersalPp.prototype, "statementCondition", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: true,
+        }),
+        __metadata("design:type", Number)
+    ], DispersalPp.prototype, "isBlocked", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'blocked_at',
+            nullable: true,
+        }),
+        __metadata("design:type", Date)
+    ], DispersalPp.prototype, "blockedAt", void 0);
     DispersalPp = __decorate([
         typeorm_1.Entity({ name: 'dispersal_pp' })
     ], DispersalPp);
