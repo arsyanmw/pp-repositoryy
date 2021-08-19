@@ -33,6 +33,9 @@ export declare class EstablishmentPpHistory extends Base {
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
     isBlocked: number;
     blockedAt: Date;
 }

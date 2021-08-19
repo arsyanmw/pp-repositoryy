@@ -291,6 +291,30 @@ var EstablishmentPpHistory = /** @class */ (function (_super) {
     ], EstablishmentPpHistory.prototype, "benefitValueJson", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], EstablishmentPpHistory.prototype, "statementCondition", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'is_blocked',
             type: 'bigint',
             nullable: true,
