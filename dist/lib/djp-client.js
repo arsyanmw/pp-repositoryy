@@ -170,7 +170,6 @@ var DjpClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, DjpClient.getToken()];
                     case 1:
                         token = _a.sent();
-                        console.log('Response getToken DJP, HTTP Code: ', token.status, ' Response Body: ', token.data);
                         if (token.status != 200) {
                             return [2 /*return*/, token];
                         }
@@ -213,7 +212,6 @@ var DjpClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, DjpClient.getToken()];
                     case 1:
                         token = _a.sent();
-                        console.log('Response getToken DJP, HTTP Code: ', token.status, ' Response Body: ', token.data);
                         if (token.status != 200) {
                             return [2 /*return*/, token];
                         }

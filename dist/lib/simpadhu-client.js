@@ -132,7 +132,6 @@ var SimpadhuClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
                     case 1:
                         resp = _a.sent();
-                        console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
                         if (resp.data.status != 200) {
                             return [2 /*return*/, resp];
                         }
@@ -183,7 +182,6 @@ var SimpadhuClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
                     case 1:
                         resp = _a.sent();
-                        console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
                         if (resp.data.status != 200) {
                             return [2 /*return*/, resp];
                         }

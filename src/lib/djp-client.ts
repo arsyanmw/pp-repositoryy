@@ -153,7 +153,6 @@ class DjpClient {
 
     public static async validateNpwp(npwp: string) {
         const token = await DjpClient.getToken();
-        console.log('Response getToken DJP, HTTP Code: ', token.status, ' Response Body: ', token.data);
         if (token.status != 200) {
             return token;
         }
@@ -187,7 +186,6 @@ class DjpClient {
 
     public static async submitRegistrationNpwpPp(body: submitRegistrationNpwpPpParams) {
         const token = await DjpClient.getToken();
-        console.log('Response getToken DJP, HTTP Code: ', token.status, ' Response Body: ', token.data);
         if (token.status != 200) {
             return token;
         }

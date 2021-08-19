@@ -148,7 +148,6 @@ var KswpClient = /** @class */ (function () {
                     case 0: return [4 /*yield*/, KswpClient.getToken()];
                     case 1:
                         token = _a.sent();
-                        console.log('Response getToken KSWP, HTTP Code: ', token.status, ' Response Body: ', token.data);
                         if (token.status != 200) {
                             return [2 /*return*/, token];
                         }
@@ -181,7 +180,6 @@ var KswpClient = /** @class */ (function () {
                         return [4 /*yield*/, KswpClient.post("/djp/kswp", headers, body)];
                     case 2:
                         response = _a.sent();
-                        console.log('Response Validate Npwp KSWP, HTTP Code: ', response.status, ' Response Body: ', response.data);
                         return [2 /*return*/, response];
                 }
             });

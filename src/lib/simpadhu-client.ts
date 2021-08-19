@@ -52,7 +52,6 @@ class SimpadhuClient {
 
     public static async validate(data: ValidationRequest) {
         const resp = await SimpadhuClient.getToken();
-        console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
         if (resp.data.status != 200) {
             return resp;
         }
@@ -97,7 +96,6 @@ class SimpadhuClient {
 
     public static async redeem(data: RedeemRequest) {
         const resp = await SimpadhuClient.getToken();
-        console.log('Response generateSign, HTTP Code: ', resp.status, ' Response Body: ', resp.data);
         if (resp.data.status != 200) {
             return resp;
         }

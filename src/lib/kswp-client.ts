@@ -89,7 +89,6 @@ class KswpClient {
         perseroanName: string = null,
     ) {
         const token = await KswpClient.getToken();
-        console.log('Response getToken KSWP, HTTP Code: ', token.status, ' Response Body: ', token.data);
         if (token.status != 200) {
             return token;
         }
@@ -125,7 +124,6 @@ class KswpClient {
         };
 
         const response = await KswpClient.post(`/djp/kswp`, headers, body);
-        console.log('Response Validate Npwp KSWP, HTTP Code: ', response.status, ' Response Body: ', response.data);
 
         return response;
     }
