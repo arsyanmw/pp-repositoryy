@@ -4,10 +4,18 @@ const elastic = new ElasticLibrary();
 
 elastic
     .indexOrUpdateProfilePp({
-        ppMasterId: 998,
-        perseroanAddress: 'bisa',
-        districtName: 'test',
+        ppMasterId: 999,
+        perseroanName: 'APA AJA ASAL ADA DONK',
+        perseroanPhone: 'phone',
+        provinceName: 'provinsi',
         cityName: 'city',
+        districtName: 'district',
+        subDistrictName: 'subdistric',
+        transactionQty: 3,
+        perseroanAddress: 'FX Mall lt.4, Unit 401. Jl Jendral Sudirman',
+        perseroanPostalcode: 10101,
+        lastStatus: 2,
+        isBlocked: 0,
     })
     .then((e) => {
         console.log(e);

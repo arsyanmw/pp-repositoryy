@@ -50,6 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ElasticLibrary = void 0;
 var elasticsearch_1 = require("@elastic/elasticsearch");
 var lodash_1 = require("lodash");
+var moment = require("moment");
 var ElasticLibrary = /** @class */ (function () {
     function ElasticLibrary() {
         this.elasticSearchConnection = new elasticsearch_1.Client({
@@ -128,7 +129,7 @@ var ElasticLibrary = /** @class */ (function () {
                         return [4 /*yield*/, this.elasticSearchConnection.index({
                                 index: this.getIndexPostfix('search_profile_pp'),
                                 id: profilePp.ppMasterId,
-                                body: { doc: doc },
+                                body: __assign(__assign({}, doc), { '@timestamp': moment().locale('id').toISOString() }),
                             })];
                     case 1:
                         result = _a.sent();

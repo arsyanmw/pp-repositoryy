@@ -1,5 +1,6 @@
 import { Client } from '@elastic/elasticsearch';
 import { pickBy, Identity } from 'lodash';
+import * as moment from 'moment';
 
 interface SearchBodyProfilePp {
     from?: number;
@@ -145,7 +146,7 @@ class ElasticLibrary {
         const result = await this.elasticSearchConnection.index({
             index: this.getIndexPostfix('search_profile_pp'),
             id: profilePp.ppMasterId,
-            body: { doc },
+            body: { ...doc, '@timestamp': moment().locale('id').toISOString() },
         });
         return result;
     }
