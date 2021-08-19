@@ -6,5 +6,5 @@ const verify = DukcapilClient.nikVerifByElement({
     threshold: '80',
     birthDate: new Date('07-06-1990'),
 })
-    .then((s) => console.log(s))
+    .then((s) => console.log(s.data.content))
     .catch((e) => console.log(e));

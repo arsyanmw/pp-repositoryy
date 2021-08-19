@@ -21,6 +21,43 @@ interface nikVerifByElementParams {
     addressRw?: number; //NO_RW
 }
 
+const nikVerifByElementResult = (nik: string): any => ({
+    status: 200,
+    data: {
+        content: [
+            {
+                NO_KK: 'Sesuai',
+                NIK: nik,
+                NAMA_LGKP: 'Sesuai (100)',
+                AGAMA: 'Sesuai',
+                KAB_NAME: 'Sesuai',
+                JENIS_PKRJN: 'Sesuai',
+                KEC_NAME: 'Sesuai',
+                NO_RW: 'Sesuai',
+                NO_KEL: 'Sesuai',
+                NO_RT: 'Sesuai',
+                ALAMAT: 'Sesuai (100)',
+                NO_KEC: 'Sesuai',
+                TMPT_LHR: 'Sesuai (100)',
+                STATUS_KAWIN: 'Sesuai',
+                NO_PROP: 'Sesuai',
+                PROP_NAME: 'Sesuai',
+                NO_KAB: 'Sesuai',
+                TGL_LHR: 'Sesuai',
+                JENIS_KLMIN: 'Sesuai',
+                KEL_NAME: 'Sesuai',
+            },
+        ],
+        lastPage: true,
+        numberOfElements: 1,
+        sort: null,
+        totalElements: 1,
+        firstPage: true,
+        number: 0,
+        size: 1,
+    },
+});
+
 class DukcapilClient {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
 
@@ -85,45 +122,11 @@ class DukcapilClient {
     }
 
     public static async nikVerifByElement(requestBody: nikVerifByElementParams) {
+        if (1) return nikVerifByElementResult(requestBody.nik);
         if (this.environment.toLowerCase() != 'production') {
             const testList = await DukcapilClient.redis.getJson('test:dukcapil_list');
             if (!includes(testList, requestBody.nik)) {
-                return {
-                    status: 200,
-                    data: {
-                        content: [
-                            {
-                                NO_KK: 'Sesuai',
-                                NIK: requestBody.nik,
-                                NAMA_LGKP: 'Sesuai (100)',
-                                AGAMA: 'Sesuai',
-                                KAB_NAME: 'Sesuai',
-                                JENIS_PKRJN: 'Sesuai',
-                                KEC_NAME: 'Sesuai',
-                                NO_RW: 'Sesuai',
-                                NO_KEL: 'Sesuai',
-                                NO_RT: 'Sesuai',
-                                ALAMAT: 'Sesuai (100)',
-                                NO_KEC: 'Sesuai',
-                                TMPT_LHR: 'Sesuai (100)',
-                                STATUS_KAWIN: 'Sesuai',
-                                NO_PROP: 'Sesuai',
-                                PROP_NAME: 'Sesuai',
-                                NO_KAB: 'Sesuai',
-                                TGL_LHR: 'Sesuai',
-                                JENIS_KLMIN: 'Sesuai',
-                                KEL_NAME: 'Sesuai',
-                            },
-                        ],
-                        lastPage: true,
-                        numberOfElements: 1,
-                        sort: null,
-                        totalElements: 1,
-                        firstPage: true,
-                        number: 0,
-                        size: 1,
-                    },
-                };
+                return nikVerifByElementResult(requestBody.nik);
             }
         }
 

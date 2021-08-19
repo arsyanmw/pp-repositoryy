@@ -43,6 +43,42 @@ var logger_1 = require("./logger");
 var moment = require("moment");
 var redis_connect_1 = require("./redis-connect");
 var perf_hooks_1 = require("perf_hooks");
+var nikVerifByElementResult = function (nik) { return ({
+    status: 200,
+    data: {
+        content: [
+            {
+                NO_KK: 'Sesuai',
+                NIK: nik,
+                NAMA_LGKP: 'Sesuai (100)',
+                AGAMA: 'Sesuai',
+                KAB_NAME: 'Sesuai',
+                JENIS_PKRJN: 'Sesuai',
+                KEC_NAME: 'Sesuai',
+                NO_RW: 'Sesuai',
+                NO_KEL: 'Sesuai',
+                NO_RT: 'Sesuai',
+                ALAMAT: 'Sesuai (100)',
+                NO_KEC: 'Sesuai',
+                TMPT_LHR: 'Sesuai (100)',
+                STATUS_KAWIN: 'Sesuai',
+                NO_PROP: 'Sesuai',
+                PROP_NAME: 'Sesuai',
+                NO_KAB: 'Sesuai',
+                TGL_LHR: 'Sesuai',
+                JENIS_KLMIN: 'Sesuai',
+                KEL_NAME: 'Sesuai',
+            },
+        ],
+        lastPage: true,
+        numberOfElements: 1,
+        sort: null,
+        totalElements: 1,
+        firstPage: true,
+        number: 0,
+        size: 1,
+    },
+}); };
 var DukcapilClient = /** @class */ (function () {
     function DukcapilClient() {
     }
@@ -124,47 +160,14 @@ var DukcapilClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        if (1)
+                            return [2 /*return*/, nikVerifByElementResult(requestBody.nik)];
                         if (!(this.environment.toLowerCase() != 'production')) return [3 /*break*/, 2];
                         return [4 /*yield*/, DukcapilClient.redis.getJson('test:dukcapil_list')];
                     case 1:
                         testList = _a.sent();
                         if (!lodash_1.includes(testList, requestBody.nik)) {
-                            return [2 /*return*/, {
-                                    status: 200,
-                                    data: {
-                                        content: [
-                                            {
-                                                NO_KK: 'Sesuai',
-                                                NIK: requestBody.nik,
-                                                NAMA_LGKP: 'Sesuai (100)',
-                                                AGAMA: 'Sesuai',
-                                                KAB_NAME: 'Sesuai',
-                                                JENIS_PKRJN: 'Sesuai',
-                                                KEC_NAME: 'Sesuai',
-                                                NO_RW: 'Sesuai',
-                                                NO_KEL: 'Sesuai',
-                                                NO_RT: 'Sesuai',
-                                                ALAMAT: 'Sesuai (100)',
-                                                NO_KEC: 'Sesuai',
-                                                TMPT_LHR: 'Sesuai (100)',
-                                                STATUS_KAWIN: 'Sesuai',
-                                                NO_PROP: 'Sesuai',
-                                                PROP_NAME: 'Sesuai',
-                                                NO_KAB: 'Sesuai',
-                                                TGL_LHR: 'Sesuai',
-                                                JENIS_KLMIN: 'Sesuai',
-                                                KEL_NAME: 'Sesuai',
-                                            },
-                                        ],
-                                        lastPage: true,
-                                        numberOfElements: 1,
-                                        sort: null,
-                                        totalElements: 1,
-                                        firstPage: true,
-                                        number: 0,
-                                        size: 1,
-                                    },
-                                }];
+                            return [2 /*return*/, nikVerifByElementResult(requestBody.nik)];
                         }
                         _a.label = 2;
                     case 2:
