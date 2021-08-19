@@ -253,6 +253,14 @@ var ModificationPp = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], ModificationPp.prototype, "isBlocked", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'pp_master_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "ppMasterId", void 0);
     ModificationPp = __decorate([
         typeorm_1.Entity({ name: 'modification_pp' })
     ], ModificationPp);

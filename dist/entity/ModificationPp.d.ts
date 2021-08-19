@@ -29,4 +29,5 @@ export declare class ModificationPp extends Base {
     fileStatement: string;
     fileCertificate: string;
     isBlocked: number;
+    ppMasterId: number;
 }

@@ -196,4 +196,11 @@ export class ModificationPp extends Base {
         nullable: false,
     })
     isBlocked: number;
+
+    @Column({
+        name: 'pp_master_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    ppMasterId: number;
 }
