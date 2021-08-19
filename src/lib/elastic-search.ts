@@ -1,5 +1,5 @@
 import { Client } from '@elastic/elasticsearch';
-import { pickBy, Identity } from 'lodash';
+import { pickBy, identity, isNumber } from 'lodash';
 import * as moment from 'moment';
 
 interface SearchBodyProfilePp {
@@ -125,6 +125,7 @@ class ElasticLibrary {
     }
 
     public async indexOrUpdateProfilePp(profilePp: ResultProfilePp): Promise<ResultIndexorUpdateResponse> {
+        const is_blocked = profilePp.isBlocked;
         const doc: SourceProfilePp = pickBy(
             {
                 pp_master_id: profilePp.ppMasterId,
@@ -138,17 +139,31 @@ class ElasticLibrary {
                 perseroan_address: profilePp.perseroanAddress,
                 perseroan_postalcode: profilePp.perseroanPostalcode,
                 last_status: profilePp.lastStatus,
-                is_blocked: profilePp.isBlocked,
             },
-            Identity,
+            identity,
         );
 
-        const result = await this.elasticSearchConnection.index({
-            index: this.getIndexPostfix('search_profile_pp'),
-            id: profilePp.ppMasterId,
-            body: { ...doc, '@timestamp': moment().locale('id').toISOString() },
-        });
-        return result;
+        if (isNumber(is_blocked)) doc.is_blocked = is_blocked;
+
+        try {
+            const { body: oldSource } = await this.elasticSearchConnection.getSource({
+                index: this.getIndexPostfix('search_profile_pp'),
+                id: profilePp.ppMasterId,
+            });
+            const result = await this.elasticSearchConnection.index({
+                index: this.getIndexPostfix('search_profile_pp'),
+                id: profilePp.ppMasterId,
+                body: { ...oldSource, ...doc, '@timestamp': moment().locale('id').toISOString() },
+            });
+            return result;
+        } catch (error) {
+            const result = await this.elasticSearchConnection.index({
+                index: this.getIndexPostfix('search_profile_pp'),
+                id: profilePp.ppMasterId,
+                body: { ...doc, '@timestamp': moment().locale('id').toISOString() },
+            });
+            return result;
+        }
     }
 }
 

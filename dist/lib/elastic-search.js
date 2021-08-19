@@ -108,10 +108,11 @@ var ElasticLibrary = /** @class */ (function () {
     };
     ElasticLibrary.prototype.indexOrUpdateProfilePp = function (profilePp) {
         return __awaiter(this, void 0, void 0, function () {
-            var doc, result;
+            var is_blocked, doc, oldSource, result, error_1, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        is_blocked = profilePp.isBlocked;
                         doc = lodash_1.pickBy({
                             pp_master_id: profilePp.ppMasterId,
                             perseroan_name: profilePp.perseroanName,
@@ -124,16 +125,37 @@ var ElasticLibrary = /** @class */ (function () {
                             perseroan_address: profilePp.perseroanAddress,
                             perseroan_postalcode: profilePp.perseroanPostalcode,
                             last_status: profilePp.lastStatus,
-                            is_blocked: profilePp.isBlocked,
-                        }, lodash_1.Identity);
+                        }, lodash_1.identity);
+                        if (lodash_1.isNumber(is_blocked))
+                            doc.is_blocked = is_blocked;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 4, , 6]);
+                        return [4 /*yield*/, this.elasticSearchConnection.getSource({
+                                index: this.getIndexPostfix('search_profile_pp'),
+                                id: profilePp.ppMasterId,
+                            })];
+                    case 2:
+                        oldSource = (_a.sent()).body;
+                        return [4 /*yield*/, this.elasticSearchConnection.index({
+                                index: this.getIndexPostfix('search_profile_pp'),
+                                id: profilePp.ppMasterId,
+                                body: __assign(__assign(__assign({}, oldSource), doc), { '@timestamp': moment().locale('id').toISOString() }),
+                            })];
+                    case 3:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
+                    case 4:
+                        error_1 = _a.sent();
                         return [4 /*yield*/, this.elasticSearchConnection.index({
                                 index: this.getIndexPostfix('search_profile_pp'),
                                 id: profilePp.ppMasterId,
                                 body: __assign(__assign({}, doc), { '@timestamp': moment().locale('id').toISOString() }),
                             })];
-                    case 1:
+                    case 5:
                         result = _a.sent();
                         return [2 /*return*/, result];
+                    case 6: return [2 /*return*/];
                 }
             });
         });
