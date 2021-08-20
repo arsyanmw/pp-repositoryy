@@ -257,6 +257,30 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "fileCertificate", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPpHistory.prototype, "statementCondition", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'kbli_value_json',
             type: 'text',
         }),
