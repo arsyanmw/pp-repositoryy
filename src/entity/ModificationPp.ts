@@ -198,6 +198,27 @@ export class ModificationPp extends Base {
     isBlocked: number;
 
     @Column({
+        name: 'statement_name_similarity',
+        type: 'text',
+        nullable: true,
+    })
+    statementNameSimilarity: string;
+
+    @Column({
+        name: 'statement_beneficial_owner',
+        type: 'text',
+        nullable: true,
+    })
+    statementBeneficialOwner: string;
+
+    @Column({
+        name: 'statement_condition',
+        type: 'text',
+        nullable: true,
+    })
+    statementCondition: string;
+
+    @Column({
         name: 'pp_master_id',
         type: 'bigint',
         nullable: false,

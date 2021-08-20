@@ -255,6 +255,30 @@ var ModificationPp = /** @class */ (function (_super) {
     ], ModificationPp.prototype, "isBlocked", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementCondition", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'pp_master_id',
             type: 'bigint',
             nullable: false,
