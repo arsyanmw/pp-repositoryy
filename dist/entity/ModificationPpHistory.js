@@ -281,6 +281,14 @@ var ModificationPpHistory = /** @class */ (function (_super) {
     ], ModificationPpHistory.prototype, "statementCondition", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'pp_master_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPpHistory.prototype, "ppMasterId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'kbli_value_json',
             type: 'text',
         }),
