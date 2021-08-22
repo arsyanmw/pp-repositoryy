@@ -29,6 +29,9 @@ export declare class ModificationPpHistory extends Base {
     perseroanKppName: string;
     fileStatement: string;
     fileCertificate: string;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;

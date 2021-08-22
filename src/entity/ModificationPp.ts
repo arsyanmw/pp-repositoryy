@@ -191,11 +191,25 @@ export class ModificationPp extends Base {
     fileCertificate: string;
 
     @Column({
-        name: 'is_blocked',
-        type: 'bigint',
-        nullable: false,
+        name: 'statement_name_similarity',
+        type: 'text',
+        nullable: true,
     })
-    isBlocked: number;
+    statementNameSimilarity: string;
+
+    @Column({
+        name: 'statement_beneficial_owner',
+        type: 'text',
+        nullable: true,
+    })
+    statementBeneficialOwner: string;
+
+    @Column({
+        name: 'statement_condition',
+        type: 'text',
+        nullable: true,
+    })
+    statementCondition: string;
 
     @Column({
         name: 'pp_master_id',
@@ -203,4 +217,11 @@ export class ModificationPp extends Base {
         nullable: false,
     })
     ppMasterId: number;
+
+    @Column({
+        name: 'is_blocked',
+        type: 'bigint',
+        nullable: false,
+    })
+    isBlocked: number;
 }

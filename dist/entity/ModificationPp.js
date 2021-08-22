@@ -247,12 +247,28 @@ var ModificationPp = /** @class */ (function (_super) {
     ], ModificationPp.prototype, "fileCertificate", void 0);
     __decorate([
         typeorm_1.Column({
-            name: 'is_blocked',
-            type: 'bigint',
-            nullable: false,
+            name: 'statement_name_similarity',
+            type: 'text',
+            nullable: true,
         }),
-        __metadata("design:type", Number)
-    ], ModificationPp.prototype, "isBlocked", void 0);
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementNameSimilarity", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_beneficial_owner',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementBeneficialOwner", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'statement_condition',
+            type: 'text',
+            nullable: true,
+        }),
+        __metadata("design:type", String)
+    ], ModificationPp.prototype, "statementCondition", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'pp_master_id',
@@ -261,6 +277,14 @@ var ModificationPp = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Number)
     ], ModificationPp.prototype, "ppMasterId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_blocked',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "isBlocked", void 0);
     ModificationPp = __decorate([
         typeorm_1.Entity({ name: 'modification_pp' })
     ], ModificationPp);

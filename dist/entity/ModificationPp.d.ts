@@ -28,6 +28,9 @@ export declare class ModificationPp extends Base {
     perseroanKppName: number;
     fileStatement: string;
     fileCertificate: string;
-    isBlocked: number;
+    statementNameSimilarity: string;
+    statementBeneficialOwner: string;
+    statementCondition: string;
     ppMasterId: number;
+    isBlocked: number;
 }
