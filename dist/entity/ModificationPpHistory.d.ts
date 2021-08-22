@@ -32,6 +32,7 @@ export declare class ModificationPpHistory extends Base {
     statementNameSimilarity: string;
     statementBeneficialOwner: string;
     statementCondition: string;
+    ppMasterId: number;
     kbliValueJson: string;
     ownerValueJson: string;
     benefitValueJson: string;

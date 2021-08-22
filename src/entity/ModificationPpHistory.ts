@@ -221,6 +221,13 @@ export class ModificationPpHistory extends Base {
     statementCondition: string;
 
     @Column({
+        name: 'pp_master_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    ppMasterId: number;
+
+    @Column({
         name: 'kbli_value_json',
         type: 'text',
     })
