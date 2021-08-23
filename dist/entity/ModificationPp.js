@@ -180,9 +180,7 @@ var ModificationPp = /** @class */ (function (_super) {
         typeorm_1.Column({
             name: 'perseroan_postalcode',
             type: 'bigint',
-            nullable: false,
         }),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", Number)
     ], ModificationPp.prototype, "perseroanPostalcode", void 0);
     __decorate([
