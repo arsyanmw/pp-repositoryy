@@ -74,7 +74,9 @@ var KswpClient = /** @class */ (function () {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            resultData: typeof result.data == 'object'
+                                ? { resultNotObject: JSON.stringify(result.data) }
+                                : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];

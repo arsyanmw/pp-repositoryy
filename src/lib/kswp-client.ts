@@ -32,11 +32,15 @@ class KswpClient {
                 timeout: 10000,
             });
             const end = performance.now();
+
             KswpClient.logger.eInfo(`KswpClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                resultData:
+                    typeof result.data == 'object'
+                        ? { resultNotObject: JSON.stringify(result.data) }
+                        : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
 
