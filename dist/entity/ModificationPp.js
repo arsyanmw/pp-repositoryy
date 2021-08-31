@@ -80,6 +80,22 @@ var ModificationPp = /** @class */ (function (_super) {
     ], ModificationPp.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'next_identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'vouchers_code',
             type: 'varchar',
             length: 255,

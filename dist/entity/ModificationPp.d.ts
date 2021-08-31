@@ -8,6 +8,8 @@ export declare class ModificationPp extends Base {
     transactionTypeId: number;
     sectionValueJson: string;
     identitiesId: number;
+    nextIdentitiesId: number;
+    prevIdentitiesId: number;
     vouchersCode: string;
     transactionNumber: string;
     certificateNumber: string;

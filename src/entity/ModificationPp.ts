@@ -44,6 +44,20 @@ export class ModificationPp extends Base {
     identitiesId: number;
 
     @Column({
+        name: 'next_identities_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    nextIdentitiesId: number;
+
+    @Column({
+        name: 'prev_identities_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    prevIdentitiesId: number;
+
+    @Column({
         name: 'vouchers_code',
         type: 'varchar',
         length: 255,
