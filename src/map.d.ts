@@ -5,5 +5,6 @@ declare module 'redis' {
         setAsync(key: string, value: string, Option?: Option, vaueOption?: any): Promise<any>;
         getAsync(key: string): Promise<string>;
         del(key: string): Promise<string>;
+        keysAsync(key: string, resp?: any): Promise<any>;
     }
 }

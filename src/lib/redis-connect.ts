@@ -55,6 +55,30 @@ class RedisConnect {
     public async getJson(key: string): Promise<{ [key: string]: unknown }> {
         return JSON.parse(await this.client.getAsync(key));
     }
+
+    public async getAll(key: string): Promise<Array<{ key: string; value: string }>> {
+        const data = [];
+        const allKeys = await this.client.keysAsync(key);
+
+        for await (const k of allKeys) {
+            const value = await this.client.getAsync(k);
+            data.push({ key: k, value });
+        }
+
+        return data;
+    }
+
+    public async getAllJson(key: string): Promise<Array<{ key: string; value: { [key: string]: unknown } }>> {
+        const data = [];
+        const allKeys = await this.client.keysAsync(key);
+
+        for await (const k of allKeys) {
+            const value = await this.getJson(k);
+            data.push({ key: k, value });
+        }
+
+        return data;
+    }
 }
 
 export { RedisConnect };

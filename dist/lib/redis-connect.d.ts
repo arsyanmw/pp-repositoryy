@@ -13,5 +13,15 @@ declare class RedisConnect {
     getJson(key: string): Promise<{
         [key: string]: unknown;
     }>;
+    getAll(key: string): Promise<Array<{
+        key: string;
+        value: string;
+    }>>;
+    getAllJson(key: string): Promise<Array<{
+        key: string;
+        value: {
+            [key: string]: unknown;
+        };
+    }>>;
 }
 export { RedisConnect };
