@@ -293,6 +293,21 @@ var ModificationPp = /** @class */ (function (_super) {
     ], ModificationPp.prototype, "ppMasterId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'is_approved',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], ModificationPp.prototype, "isApproved", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'approved_at',
+            nullable: false,
+        }),
+        __metadata("design:type", Date)
+    ], ModificationPp.prototype, "approvedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'is_blocked',
             type: 'bigint',
             nullable: false,

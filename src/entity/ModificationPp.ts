@@ -231,6 +231,19 @@ export class ModificationPp extends Base {
     ppMasterId: number;
 
     @Column({
+        name: 'is_approved',
+        type: 'bigint',
+        nullable: false,
+    })
+    isApproved: number;
+
+    @Column({
+        name: 'approved_at',
+        nullable: false,
+    })
+    approvedAt: Date;
+
+    @Column({
         name: 'is_blocked',
         type: 'bigint',
         nullable: false,
