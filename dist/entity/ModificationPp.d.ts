@@ -34,5 +34,7 @@ export declare class ModificationPp extends Base {
     statementBeneficialOwner: string;
     statementCondition: string;
     ppMasterId: number;
+    isApproved: number;
+    approvedAt: Date;
     isBlocked: number;
 }
