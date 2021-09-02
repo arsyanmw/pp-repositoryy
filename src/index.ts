@@ -70,6 +70,8 @@ import { KafkaLibrary, kafkaMessageInterface } from './lib/kafka-library';
 import { RedisConnect } from './lib/redis-connect';
 import { ClientInformation } from './lib/client-information';
 import { AuditTrail, DataType as AuditTrailDataType } from './lib/audittrail';
+import { ServiceResponse, GeneralResponse, PageSummary } from './lib/service-response';
+import { ErrorCode } from './lib/global-constant';
 
 export const connection = async (config: ConnectionOptions) => {
     const connectionOptions: ConnectionOptions = {
@@ -81,6 +83,10 @@ export const connection = async (config: ConnectionOptions) => {
 };
 
 export {
+    ServiceResponse,
+    GeneralResponse,
+    PageSummary,
+    ErrorCode,
     ClientInformation,
     RedisConnect,
     KafkaLibrary,
