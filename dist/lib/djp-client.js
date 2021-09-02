@@ -49,7 +49,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.post = function (path, headers, body, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, start, result, end, e_1;
+            var paramUri_1, start, endPoint, result, end, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -59,7 +59,8 @@ var DjpClient = /** @class */ (function () {
                             paramUri_1 += paramUri_1 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
                         start = perf_hooks_1.performance.now();
-                        return [4 /*yield*/, axios_1.default.post(DjpClient.host + path + paramUri_1, body, {
+                        endPoint = DjpClient.host + path + paramUri_1;
+                        return [4 /*yield*/, axios_1.default.post(endPoint, body, {
                                 headers: headers,
                                 timeout: 10000,
                             })];
@@ -70,6 +71,7 @@ var DjpClient = /** @class */ (function () {
                         lodash_1.unset(params, 'password');
                         DjpClient.logger.eInfo("DjpClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
                             bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
@@ -88,7 +90,7 @@ var DjpClient = /** @class */ (function () {
     DjpClient.get = function (path, headers, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_2, start, result, end, e_2;
+            var paramUri_2, start, endPoint, result, end, e_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -98,7 +100,8 @@ var DjpClient = /** @class */ (function () {
                             paramUri_2 += paramUri_2 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
                         start = perf_hooks_1.performance.now();
-                        return [4 /*yield*/, axios_1.default.get(DjpClient.host + path + paramUri_2, { headers: headers, timeout: 10000 })];
+                        endPoint = DjpClient.host + path + paramUri_2;
+                        return [4 /*yield*/, axios_1.default.get(endPoint, { headers: headers, timeout: 10000 })];
                     case 1:
                         result = _a.sent();
                         end = perf_hooks_1.performance.now();
@@ -106,6 +109,7 @@ var DjpClient = /** @class */ (function () {
                         lodash_1.unset(params, 'password');
                         DjpClient.logger.eInfo("DjpClient:get:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
                             paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,

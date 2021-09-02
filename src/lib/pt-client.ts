@@ -23,7 +23,8 @@ class PtClient {
             }
 
             const start = performance.now();
-            const result = await axios.post(PtClient.host + path, form, {
+            const endPoint: string = PtClient.host + path;
+            const result = await axios.post(endPoint, form, {
                 headers: headers(form),
                 timeout: this.timeout,
             });
@@ -31,6 +32,7 @@ class PtClient {
 
             PtClient.logger.eInfo(`PtClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 formData: dataForm,
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
