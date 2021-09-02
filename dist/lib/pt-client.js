@@ -57,7 +57,7 @@ var PtClient = /** @class */ (function () {
         var e_1, _a;
         if (dataForm === void 0) { dataForm = []; }
         return __awaiter(this, void 0, void 0, function () {
-            var form, iterator, e_1_1, start, result, end, e_2;
+            var form, iterator, e_1_1, start, endPoint, result, end, e_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -94,7 +94,8 @@ var PtClient = /** @class */ (function () {
                     case 11: return [7 /*endfinally*/];
                     case 12:
                         start = perf_hooks_1.performance.now();
-                        return [4 /*yield*/, axios_1.default.post(PtClient.host + path, form, {
+                        endPoint = PtClient.host + path;
+                        return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: headers(form),
                                 timeout: this.timeout,
                             })];
@@ -103,6 +104,7 @@ var PtClient = /** @class */ (function () {
                         end = perf_hooks_1.performance.now();
                         PtClient.logger.eInfo("PtClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
                             formData: dataForm,
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
