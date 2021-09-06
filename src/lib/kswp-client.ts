@@ -27,7 +27,8 @@ class KswpClient {
             });
 
             const start = performance.now();
-            const result = await axios.post(KswpClient.host + path + paramUri, body, {
+            const endPoint: string = KswpClient.host + path + paramUri;
+            const result = await axios.post(endPoint, body, {
                 headers: headers,
                 timeout: 10000,
             });
@@ -35,6 +36,7 @@ class KswpClient {
 
             KswpClient.logger.eInfo(`KswpClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData:
@@ -59,10 +61,12 @@ class KswpClient {
             });
 
             const start = performance.now();
-            const result = await axios.get(KswpClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const endPoint: string = KswpClient.host + path + paramUri;
+            const result = await axios.get(endPoint, { headers: headers, timeout: 10000 });
             const end = performance.now();
             KswpClient.logger.eInfo(`KswpClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

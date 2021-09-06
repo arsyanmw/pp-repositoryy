@@ -31,10 +31,12 @@ class SimpadhuClient {
                 form.append(iterator.key, iterator.value);
             }
             const start = performance.now();
-            const result = await axios.post(SimpadhuClient.host + path, form, { headers: form.getHeaders() });
+            const endPoint: string = SimpadhuClient.host + path;
+            const result = await axios.post(endPoint, form, { headers: form.getHeaders() });
             const end = performance.now();
             SimpadhuClient.logger.eInfo(`SimpadhuClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 formData: dataForm,
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,

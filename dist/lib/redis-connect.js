@@ -35,6 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RedisConnect = void 0;
 var bluebird_1 = require("bluebird");
@@ -119,6 +126,102 @@ var RedisConnect = /** @class */ (function () {
                         _b = (_a = JSON).parse;
                         return [4 /*yield*/, this.client.getAsync(key)];
                     case 1: return [2 /*return*/, _b.apply(_a, [_c.sent()])];
+                }
+            });
+        });
+    };
+    RedisConnect.prototype.getAll = function (key) {
+        var e_1, _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var data, allKeys, allKeys_1, allKeys_1_1, k, value, e_1_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        data = [];
+                        return [4 /*yield*/, this.client.keysAsync(key)];
+                    case 1:
+                        allKeys = _b.sent();
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 8, 9, 14]);
+                        allKeys_1 = __asyncValues(allKeys);
+                        _b.label = 3;
+                    case 3: return [4 /*yield*/, allKeys_1.next()];
+                    case 4:
+                        if (!(allKeys_1_1 = _b.sent(), !allKeys_1_1.done)) return [3 /*break*/, 7];
+                        k = allKeys_1_1.value;
+                        return [4 /*yield*/, this.client.getAsync(k)];
+                    case 5:
+                        value = _b.sent();
+                        data.push({ key: k, value: value });
+                        _b.label = 6;
+                    case 6: return [3 /*break*/, 3];
+                    case 7: return [3 /*break*/, 14];
+                    case 8:
+                        e_1_1 = _b.sent();
+                        e_1 = { error: e_1_1 };
+                        return [3 /*break*/, 14];
+                    case 9:
+                        _b.trys.push([9, , 12, 13]);
+                        if (!(allKeys_1_1 && !allKeys_1_1.done && (_a = allKeys_1.return))) return [3 /*break*/, 11];
+                        return [4 /*yield*/, _a.call(allKeys_1)];
+                    case 10:
+                        _b.sent();
+                        _b.label = 11;
+                    case 11: return [3 /*break*/, 13];
+                    case 12:
+                        if (e_1) throw e_1.error;
+                        return [7 /*endfinally*/];
+                    case 13: return [7 /*endfinally*/];
+                    case 14: return [2 /*return*/, data];
+                }
+            });
+        });
+    };
+    RedisConnect.prototype.getAllJson = function (key) {
+        var e_2, _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var data, allKeys, allKeys_2, allKeys_2_1, k, value, e_2_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        data = [];
+                        return [4 /*yield*/, this.client.keysAsync(key)];
+                    case 1:
+                        allKeys = _b.sent();
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 8, 9, 14]);
+                        allKeys_2 = __asyncValues(allKeys);
+                        _b.label = 3;
+                    case 3: return [4 /*yield*/, allKeys_2.next()];
+                    case 4:
+                        if (!(allKeys_2_1 = _b.sent(), !allKeys_2_1.done)) return [3 /*break*/, 7];
+                        k = allKeys_2_1.value;
+                        return [4 /*yield*/, this.getJson(k)];
+                    case 5:
+                        value = _b.sent();
+                        data.push({ key: k, value: value });
+                        _b.label = 6;
+                    case 6: return [3 /*break*/, 3];
+                    case 7: return [3 /*break*/, 14];
+                    case 8:
+                        e_2_1 = _b.sent();
+                        e_2 = { error: e_2_1 };
+                        return [3 /*break*/, 14];
+                    case 9:
+                        _b.trys.push([9, , 12, 13]);
+                        if (!(allKeys_2_1 && !allKeys_2_1.done && (_a = allKeys_2.return))) return [3 /*break*/, 11];
+                        return [4 /*yield*/, _a.call(allKeys_2)];
+                    case 10:
+                        _b.sent();
+                        _b.label = 11;
+                    case 11: return [3 /*break*/, 13];
+                    case 12:
+                        if (e_2) throw e_2.error;
+                        return [7 /*endfinally*/];
+                    case 13: return [7 /*endfinally*/];
+                    case 14: return [2 /*return*/, data];
                 }
             });
         });

@@ -75,7 +75,8 @@ class DukcapilClient {
             });
 
             const start = performance.now();
-            const result = await axios.post(DukcapilClient.host + path + paramUri, body, {
+            const endPoint: string = DukcapilClient.host + path + paramUri;
+            const result = await axios.post(endPoint, body, {
                 headers: headers,
                 timeout: 10000,
             });
@@ -85,6 +86,7 @@ class DukcapilClient {
             unset(body, 'PASSWORD');
             DukcapilClient.logger.eInfo(`DukcapilClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
@@ -106,10 +108,12 @@ class DukcapilClient {
             });
 
             const start = performance.now();
-            const result = await axios.get(DukcapilClient.host + path + paramUri, { headers: headers, timeout: 10000 });
+            const endPoint: string = DukcapilClient.host + path + paramUri;
+            const result = await axios.get(endPoint, { headers: headers, timeout: 10000 });
             const end = performance.now();
             DukcapilClient.logger.eInfo(`DukcapilClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
