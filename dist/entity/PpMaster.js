@@ -320,6 +320,21 @@ var PpMaster = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Date)
     ], PpMaster.prototype, "blockedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_approved',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], PpMaster.prototype, "isApproved", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'approved_at',
+            nullable: false,
+        }),
+        __metadata("design:type", Date)
+    ], PpMaster.prototype, "approvedAt", void 0);
     PpMaster = __decorate([
         typeorm_1.Entity({ name: 'pp_master' })
     ], PpMaster);

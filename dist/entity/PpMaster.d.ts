@@ -37,4 +37,6 @@ export declare class PpMaster extends Base {
     statementCondition: string;
     isBlocked: number;
     blockedAt: Date;
+    isApproved: number;
+    approvedAt: Date;
 }
