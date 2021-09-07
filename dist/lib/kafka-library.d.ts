@@ -15,7 +15,8 @@ declare class KafkaLibrary {
     private applicationId;
     private kafka;
     private producer;
-    constructor(logLevelKafka?: logLevel);
+    constructor(logLevelKafka?: logLevel, optionConfig?: any);
+    getBroker(): Array<string>;
     getTopicPostfix(topic: string): string;
     getConsumer(group: string): Consumer;
     sendMessages(messages: kafkaMessageInterface[], topic: string): Promise<kafkaLibraryResponseInterface>;

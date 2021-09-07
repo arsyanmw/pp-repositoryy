@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -42,20 +53,20 @@ var kafkajs_1 = require("kafkajs");
 var SnappyCodec = require('kafkajs-snappy');
 kafkajs_1.CompressionCodecs[kafkajs_1.CompressionTypes.Snappy] = SnappyCodec;
 var KafkaLibrary = /** @class */ (function () {
-    function KafkaLibrary(logLevelKafka) {
+    function KafkaLibrary(logLevelKafka, optionConfig) {
         if (logLevelKafka === void 0) { logLevelKafka = kafkajs_1.logLevel.ERROR; }
+        if (optionConfig === void 0) { optionConfig = {}; }
         var brokers = KafkaLibrary.kafkaBroker.trim().split(',');
         this.applicationId = KafkaLibrary.serviceName + "-" + KafkaLibrary.environment;
-        this.kafka = new kafkajs_1.Kafka({
-            logLevel: logLevelKafka,
-            brokers: brokers,
-            clientId: this.applicationId,
-        });
+        this.kafka = new kafkajs_1.Kafka(__assign({ logLevel: logLevelKafka, brokers: brokers, clientId: this.applicationId }, optionConfig));
         this.producer = this.kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
         });
     }
+    KafkaLibrary.prototype.getBroker = function () {
+        return KafkaLibrary.kafkaBroker.trim().split(',');
+    };
     KafkaLibrary.prototype.getTopicPostfix = function (topic) {
         return topic.trim() + "-" + KafkaLibrary.environment;
     };

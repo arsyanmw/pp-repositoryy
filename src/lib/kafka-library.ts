@@ -21,18 +21,24 @@ class KafkaLibrary {
     private kafka: Kafka;
     private producer: Producer;
 
-    constructor(logLevelKafka: logLevel = logLevel.ERROR) {
+    constructor(logLevelKafka: logLevel = logLevel.ERROR, optionConfig: any = {}) {
         const brokers = KafkaLibrary.kafkaBroker.trim().split(',');
         this.applicationId = `${KafkaLibrary.serviceName}-${KafkaLibrary.environment}`;
+
         this.kafka = new Kafka({
             logLevel: logLevelKafka,
             brokers,
             clientId: this.applicationId,
+            ...optionConfig,
         });
         this.producer = this.kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
         });
+    }
+
+    public getBroker(): Array<string> {
+        return KafkaLibrary.kafkaBroker.trim().split(',');
     }
 
     public getTopicPostfix(topic: string): string {
