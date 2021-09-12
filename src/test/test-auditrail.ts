@@ -21,6 +21,7 @@ audittrail
             email: 'emailaj@mail.com',
             fullName: 'nama penuh',
             nik: '12317123768123',
+            token: 'token',
         },
         data: {
             id: 1,
@@ -52,6 +53,7 @@ audittrail
             email: 'emailaj@mail.com',
             fullName: 'nama penuh',
             nik: '12317123768123',
+            token: 'token',
         },
         data: {
             id: 1,

@@ -15,6 +15,7 @@ interface UserInformationInterface {
     nik?: string;
     fullName: string;
     email: string;
+    token: string;
 }
 interface BaseAuditrail {
     clientInformation: ClientInformationResultInterface;
