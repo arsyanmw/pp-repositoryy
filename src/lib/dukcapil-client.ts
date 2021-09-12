@@ -126,7 +126,6 @@ class DukcapilClient {
     }
 
     public static async nikVerifByElement(requestBody: nikVerifByElementParams) {
-        if (1) return nikVerifByElementResult(requestBody.nik);
         if (this.environment.toLowerCase() != 'production') {
             const testList = await DukcapilClient.redis.getJson('test:dukcapil_list');
             if (!includes(testList, requestBody.nik)) {

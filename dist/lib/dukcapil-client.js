@@ -164,8 +164,6 @@ var DukcapilClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (1)
-                            return [2 /*return*/, nikVerifByElementResult(requestBody.nik)];
                         if (!(this.environment.toLowerCase() != 'production')) return [3 /*break*/, 2];
                         return [4 /*yield*/, DukcapilClient.redis.getJson('test:dukcapil_list')];
                     case 1:
