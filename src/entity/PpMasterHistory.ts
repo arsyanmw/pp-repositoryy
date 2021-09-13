@@ -49,6 +49,34 @@ export class PpMasterHistory extends Base {
     identitiesId: number;
 
     @Column({
+        name: 'next_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    nextIdentitiesId: number;
+
+    @Column({
+        name: 'prev_identities_id',
+        type: 'bigint',
+        nullable: false,
+        default: '0',
+    })
+    prevIdentitiesId: number;
+
+    @Column({
+        name: 'next_owner_value_json',
+        type: 'text',
+    })
+    nextOwnerValueJson: string;
+
+    @Column({
+        name: 'prev_owner_value_json',
+        type: 'text',
+    })
+    prevOwnerValueJson: string;
+
+    @Column({
         name: 'certificate_number',
         type: 'varchar',
         length: 255,

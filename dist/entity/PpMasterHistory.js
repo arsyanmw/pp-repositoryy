@@ -86,6 +86,38 @@ var PpMasterHistory = /** @class */ (function (_super) {
     ], PpMasterHistory.prototype, "identitiesId", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'next_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterHistory.prototype, "nextIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_identities_id',
+            type: 'bigint',
+            nullable: false,
+            default: '0',
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterHistory.prototype, "prevIdentitiesId", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'next_owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], PpMasterHistory.prototype, "nextOwnerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'prev_owner_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], PpMasterHistory.prototype, "prevOwnerValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'certificate_number',
             type: 'varchar',
             length: 255,

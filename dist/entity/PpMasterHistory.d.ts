@@ -8,6 +8,10 @@ export declare class PpMasterHistory extends Base {
     transactionTypeId: number;
     sectionValueJson: string;
     identitiesId: number;
+    nextIdentitiesId: number;
+    prevIdentitiesId: number;
+    nextOwnerValueJson: string;
+    prevOwnerValueJson: string;
     certificateNumber: string;
     perseroanName: string;
     perseroanAlias: string;
