@@ -267,4 +267,17 @@ export class PpMasterHistory extends Base {
         nullable: true,
     })
     blockedAt: Date;
+
+    @Column({
+        name: 'is_approved',
+        type: 'bigint',
+        nullable: false,
+    })
+    isApproved: number;
+
+    @Column({
+        name: 'approved_at',
+        nullable: false,
+    })
+    approvedAt: Date;
 }

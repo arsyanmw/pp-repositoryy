@@ -335,6 +335,21 @@ var PpMasterHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Date)
     ], PpMasterHistory.prototype, "blockedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'is_approved',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], PpMasterHistory.prototype, "isApproved", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'approved_at',
+            nullable: false,
+        }),
+        __metadata("design:type", Date)
+    ], PpMasterHistory.prototype, "approvedAt", void 0);
     PpMasterHistory = __decorate([
         typeorm_1.Entity({ name: 'pp_master_history' })
     ], PpMasterHistory);

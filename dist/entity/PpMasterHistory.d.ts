@@ -39,4 +39,6 @@ export declare class PpMasterHistory extends Base {
     statementCondition: string;
     isBlocked: number;
     blockedAt: Date;
+    isApproved: number;
+    approvedAt: Date;
 }
