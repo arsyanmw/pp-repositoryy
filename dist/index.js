@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.PpBlockedHistory = exports.PpBlocked = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.BadwordsType = exports.Badwords = exports.AnnouncementTransaction = exports.AnnouncementNews = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Logger = exports.Jwt = exports.AuditTrailDataType = exports.AuditTrail = exports.ElasticLibrary = exports.KafkaLibrary = exports.RedisConnect = exports.ClientInformation = exports.ErrorCode = exports.ServiceResponse = exports.connection = void 0;
-exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = void 0;
+exports.CorrectionPpPrevious = exports.CorrectionPpOwner = exports.CorrectionPp = exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -168,6 +168,12 @@ var TrackingDownloadDetail_1 = require("./entity/TrackingDownloadDetail");
 Object.defineProperty(exports, "TrackingDownloadDetail", { enumerable: true, get: function () { return TrackingDownloadDetail_1.TrackingDownloadDetail; } });
 var TrackingDownloadCounter_1 = require("./entity/TrackingDownloadCounter");
 Object.defineProperty(exports, "TrackingDownloadCounter", { enumerable: true, get: function () { return TrackingDownloadCounter_1.TrackingDownloadCounter; } });
+var CorrectionPp_1 = require("./entity/CorrectionPp");
+Object.defineProperty(exports, "CorrectionPp", { enumerable: true, get: function () { return CorrectionPp_1.CorrectionPp; } });
+var CorrectionPpOwner_1 = require("./entity/CorrectionPpOwner");
+Object.defineProperty(exports, "CorrectionPpOwner", { enumerable: true, get: function () { return CorrectionPpOwner_1.CorrectionPpOwner; } });
+var CorrectionPpPrevious_1 = require("./entity/CorrectionPpPrevious");
+Object.defineProperty(exports, "CorrectionPpPrevious", { enumerable: true, get: function () { return CorrectionPpPrevious_1.CorrectionPpPrevious; } });
 /**
  * Another lib
  */

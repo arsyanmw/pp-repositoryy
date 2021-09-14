@@ -59,6 +59,9 @@ import { Section } from './entity/Section';
 import { TrackingDownloadSection } from './entity/TrackingDownloadSection';
 import { TrackingDownloadDetail } from './entity/TrackingDownloadDetail';
 import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
+import { CorrectionPp } from './entity/CorrectionPp';
+import { CorrectionPpOwner } from './entity/CorrectionPpOwner';
+import { CorrectionPpPrevious } from './entity/CorrectionPpPrevious';
 /**
  * Another lib
  */
@@ -71,4 +74,4 @@ import { AuditTrail, DataType as AuditTrailDataType } from './lib/audittrail';
 import { ServiceResponse, GeneralResponse, PageSummary } from './lib/service-response';
 import { ErrorCode } from './lib/global-constant';
 export declare const connection: (config: ConnectionOptions) => Promise<Connection>;
-export { ServiceResponse, GeneralResponse, PageSummary, ErrorCode, ClientInformation, RedisConnect, KafkaLibrary, kafkaMessageInterface, ElasticLibrary, AuditTrail, AuditTrailDataType, Jwt, Logger, Connection, AccessMenu, ActionMenu, AnnouncementNews, AnnouncementTransaction, Badwords, BadwordsType, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpBlocked, PpBlockedHistory, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, TrackingDownloadSection, TrackingDownloadDetail, TrackingDownloadCounter, Section, };
+export { ServiceResponse, GeneralResponse, PageSummary, ErrorCode, ClientInformation, RedisConnect, KafkaLibrary, kafkaMessageInterface, ElasticLibrary, AuditTrail, AuditTrailDataType, Jwt, Logger, Connection, AccessMenu, ActionMenu, AnnouncementNews, AnnouncementTransaction, Badwords, BadwordsType, Base, Blacklist, BlacklistType, City, Country, District, EstablishmentPp, EstablishmentPpActivities, EstablishmentPpBenefit, EstablishmentPpHistory, EstablishmentPpOwner, ModificationPp, ModificationPpActivities, ModificationPpBenefit, ModificationPpHistory, ModificationPpOwner, GlobalParam, Group, Identity, IdentityEmail, IdentityGroup, IdentityNik, Kbli, Menu, NormalizationWords, Position, PpBlocked, PpBlockedHistory, PpMaster, PpMasterHistory, PpMasterTransactionState, PpMasterTransactionNumberCount, Province, SubDistrict, TransactionType, Whitelist, DispersalPp, DispersalPpActivities, DispersalPpBenefit, DispersalPpOwner, DispersalReason, DispersalPpHistory, PpProfileLeads, BenefitCriteria, PpProfileState, TrackingDownloadSection, TrackingDownloadDetail, TrackingDownloadCounter, Section, CorrectionPp, CorrectionPpOwner, CorrectionPpPrevious, };

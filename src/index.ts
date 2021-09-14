@@ -61,6 +61,9 @@ import { Section } from './entity/Section';
 import { TrackingDownloadSection } from './entity/TrackingDownloadSection';
 import { TrackingDownloadDetail } from './entity/TrackingDownloadDetail';
 import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
+import { CorrectionPp } from './entity/CorrectionPp';
+import { CorrectionPpOwner } from './entity/CorrectionPpOwner';
+import { CorrectionPpPrevious } from './entity/CorrectionPpPrevious';
 /**
  * Another lib
  */
@@ -152,4 +155,7 @@ export {
     TrackingDownloadDetail,
     TrackingDownloadCounter,
     Section,
+    CorrectionPp,
+    CorrectionPpOwner,
+    CorrectionPpPrevious,
 };
