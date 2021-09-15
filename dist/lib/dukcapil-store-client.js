@@ -131,11 +131,11 @@ var DukcapilStoreClient = /** @class */ (function () {
                             endPoint: endPoint,
                             formData: dataForm,
                         };
-                        if (e_2.response.status) {
+                        if (e_2.response) {
                             logData['status'] = e_2.response.status;
-                        }
-                        if (e_2.response.data) {
-                            logData['resultData'] = { resultNotObject: lodash_1.toString(e_2.response.data) };
+                            if (e_2.response.data) {
+                                logData['resultData'] = { resultNotObject: lodash_1.toString(e_2.response.data) };
+                            }
                         }
                         DukcapilStoreClient.logger.eError("DukcapilStoreClient:post:" + path, logData);
                         return [2 /*return*/, e_2.response];

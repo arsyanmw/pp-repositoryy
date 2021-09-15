@@ -50,11 +50,11 @@ class DukcapilStoreClient {
                 endPoint,
                 formData: dataForm,
             };
-            if (e.response.status) {
+            if (e.response) {
                 logData['status'] = e.response.status;
-            }
-            if (e.response.data) {
-                logData['resultData'] = { resultNotObject: toString(e.response.data) };
+                if (e.response.data) {
+                    logData['resultData'] = { resultNotObject: toString(e.response.data) };
+                }
             }
             DukcapilStoreClient.logger.eError(`DukcapilStoreClient:post:${path}`, logData);
             return e.response;

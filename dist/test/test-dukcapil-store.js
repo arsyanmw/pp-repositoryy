@@ -12,6 +12,6 @@ var verify = dukcapil_store_client_1.DukcapilStoreClient.store({
         },
     ],
 })
-    .then(function (s) { return console.log(); })
-    .catch(function (e) { return console.log(); });
+    .then(function (s) { return console.log(s); })
+    .catch(function (e) { return console.log(e); });
 //# sourceMappingURL=test-dukcapil-store.js.map

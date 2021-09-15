@@ -12,5 +12,5 @@ const verify = DukcapilStoreClient.store({
         },
     ],
 })
-    .then((s) => console.log())
-    .catch((e) => console.log());
+    .then((s) => console.log(s))
+    .catch((e) => console.log(e));
