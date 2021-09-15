@@ -1,6 +1,5 @@
 interface StoreParamData {
-    NO_AKTA: string;
-    DESKRIPSI: string;
+    nomor_sertifikat?: string;
 }
 export interface StoreRequest {
     nik: string;

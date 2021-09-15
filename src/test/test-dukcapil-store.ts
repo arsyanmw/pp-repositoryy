@@ -7,8 +7,7 @@ const verify = DukcapilStoreClient.store({
     nik: '3173021404941002',
     param: [
         {
-            NO_AKTA: '01/384/XVI/08/2020/001',
-            DESKRIPSI: 'AKTA KEPEMILIKAN RUKO 300M2',
+            nomor_sertifikat: 'AHU-000142.AH.01.30.Tahun 2021',
         },
     ],
 })
