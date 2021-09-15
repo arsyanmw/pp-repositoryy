@@ -68,12 +68,6 @@ class SimpadhuClient {
             };
         }
 
-        const form = new FormData();
-        form.append('no_voucher', data.voucher);
-        form.append('id_produk', data.idProduk || 40);
-        form.append('tipe_transaksi', data.tipeTransaksi || 60);
-        form.append('id_mapping', data.idMapping || 1);
-
         const validationResp = await SimpadhuClient.post('/service/kodePembayaran?sign=' + resp.data.value, [
             {
                 key: 'no_voucher',

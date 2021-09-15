@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -43,25 +54,24 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SimpadhuClient = void 0;
+exports.DukcapilStoreClient = void 0;
 var axios_1 = require("axios");
 var FormData = require("form-data");
 var lodash_1 = require("lodash");
 var logger_1 = require("./logger");
 var perf_hooks_1 = require("perf_hooks");
-var SimpadhuClient = /** @class */ (function () {
-    function SimpadhuClient() {
+var DukcapilStoreClient = /** @class */ (function () {
+    function DukcapilStoreClient() {
     }
-    SimpadhuClient.post = function (path, dataForm) {
+    DukcapilStoreClient.post = function (path, dataForm) {
         var dataForm_1, dataForm_1_1;
         var e_1, _a;
         if (dataForm === void 0) { dataForm = []; }
         return __awaiter(this, void 0, void 0, function () {
-            var form, iterator, e_1_1, start, endPoint, result, end, e_2;
+            var form, iterator, e_1_1, start, endPoint, result, end, e_2, end, logData;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 14, , 15]);
                         form = new FormData();
                         _b.label = 1;
                     case 1:
@@ -94,12 +104,17 @@ var SimpadhuClient = /** @class */ (function () {
                     case 11: return [7 /*endfinally*/];
                     case 12:
                         start = perf_hooks_1.performance.now();
-                        endPoint = SimpadhuClient.host + path;
-                        return [4 /*yield*/, axios_1.default.post(endPoint, form, { headers: form.getHeaders() })];
+                        endPoint = DukcapilStoreClient.host + path;
+                        _b.label = 13;
                     case 13:
+                        _b.trys.push([13, 15, , 16]);
+                        return [4 /*yield*/, axios_1.default.post(endPoint, form, {
+                                headers: __assign({ Authorization: "Bearer " + DukcapilStoreClient.key }, form.getHeaders()),
+                            })];
+                    case 14:
                         result = _b.sent();
                         end = perf_hooks_1.performance.now();
-                        SimpadhuClient.logger.eInfo("SimpadhuClient:post:" + path, {
+                        DukcapilStoreClient.logger.eInfo("DukcapilStoreClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
                             formData: dataForm,
@@ -107,126 +122,62 @@ var SimpadhuClient = /** @class */ (function () {
                             status: result.status,
                         });
                         return [2 /*return*/, result];
-                    case 14:
+                    case 15:
                         e_2 = _b.sent();
-                        SimpadhuClient.logger.eError("SimpadhuClient:post:" + path, { message: e_2.message });
+                        end = perf_hooks_1.performance.now();
+                        logData = {
+                            errorMessage: e_2.message,
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
+                            formData: dataForm,
+                        };
+                        if (e_2.response.status) {
+                            logData['status'] = e_2.response.status;
+                        }
+                        if (e_2.response.data) {
+                            logData['resultData'] = { resultNotObject: lodash_1.toString(e_2.response.data) };
+                        }
+                        DukcapilStoreClient.logger.eError("DukcapilStoreClient:post:" + path, logData);
                         return [2 /*return*/, e_2.response];
-                    case 15: return [2 /*return*/];
+                    case 16: return [2 /*return*/];
                 }
             });
         });
     };
-    SimpadhuClient.getToken = function () {
+    DukcapilStoreClient.store = function (data) {
         return __awaiter(this, void 0, void 0, function () {
+            var validationResp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, SimpadhuClient.post('/auth/generateSign', [{ key: 'key', value: SimpadhuClient.key }])];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    SimpadhuClient.validate = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var resp, validationResp;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
+                    case 0: return [4 /*yield*/, DukcapilStoreClient.post('/databalikan/api/store', [
+                            {
+                                key: 'nik',
+                                value: data.nik,
+                            },
+                            {
+                                key: 'id_lembaga',
+                                value: data.idLembaga || '010028',
+                            },
+                            {
+                                key: 'nama_lembaga',
+                                value: data.namaLembaga || 'DIREKTORAT JENDERAL ADMINISTRASI HUKUM UMUM, KEMENKUMHAM',
+                            },
+                            {
+                                key: 'param',
+                                value: JSON.stringify(data.param),
+                            },
+                        ])];
                     case 1:
-                        resp = _a.sent();
-                        if (resp.data.status != 200) {
-                            return [2 /*return*/, resp];
-                        }
-                        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
-                            return [2 /*return*/, {
-                                    data: {
-                                        status: 200,
-                                        message: 'SUCCESS',
-                                        value: 1,
-                                    },
-                                }];
-                        }
-                        return [4 /*yield*/, SimpadhuClient.post('/service/kodePembayaran?sign=' + resp.data.value, [
-                                {
-                                    key: 'no_voucher',
-                                    value: data.voucher,
-                                },
-                                {
-                                    key: 'id_produk',
-                                    value: data.idProduk || 40,
-                                },
-                                {
-                                    key: 'tipe_transaksi',
-                                    value: data.tipeTransaksi || 60,
-                                },
-                                {
-                                    key: 'id_mapping',
-                                    value: data.idMapping || 1,
-                                },
-                            ])];
-                    case 2:
                         validationResp = _a.sent();
                         return [2 /*return*/, validationResp];
                 }
             });
         });
     };
-    SimpadhuClient.redeem = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var resp, redeemResp;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, SimpadhuClient.getToken()];
-                    case 1:
-                        resp = _a.sent();
-                        if (resp.data.status != 200) {
-                            return [2 /*return*/, resp];
-                        }
-                        if (this.environment.toLowerCase() != 'production' && data.voucher == SimpadhuClient.byPassVoucher) {
-                            return [2 /*return*/, {
-                                    data: {
-                                        status: 200,
-                                        message: 'SUCCESS',
-                                        value: 1,
-                                    },
-                                }];
-                        }
-                        return [4 /*yield*/, SimpadhuClient.post('/service/updateTerpakaiMapping?sign=' + resp.data.value, [
-                                {
-                                    key: 'kode_pembayaran',
-                                    value: data.voucher,
-                                },
-                                {
-                                    key: 'nomor_transaksi',
-                                    value: data.trxNumber,
-                                },
-                                {
-                                    key: 'id_produk',
-                                    value: data.idProduk || 40,
-                                },
-                                {
-                                    key: 'tipe_transaksi',
-                                    value: data.tipeTransaksi || 60,
-                                },
-                                {
-                                    key: 'id_mapping',
-                                    value: data.idMapping || 1,
-                                },
-                            ])];
-                    case 2:
-                        redeemResp = _a.sent();
-                        return [2 /*return*/, redeemResp];
-                }
-            });
-        });
-    };
-    // for bypassing voucher validation, testing purpose
-    SimpadhuClient.byPassVoucher = '000000000001';
-    SimpadhuClient.environment = process.env.ENVIRONMENT || 'development';
-    SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
-    SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
-    SimpadhuClient.logger = new logger_1.Logger();
-    return SimpadhuClient;
+    DukcapilStoreClient.host = process.env.DUKCAPIL_STORE_HOST || 'http://127.0.0.1';
+    DukcapilStoreClient.key = process.env.DUKCAPIL_STORE_KEY || 'key';
+    DukcapilStoreClient.logger = new logger_1.Logger();
+    return DukcapilStoreClient;
 }());
-exports.SimpadhuClient = SimpadhuClient;
-//# sourceMappingURL=simpadhu-client.js.map
+exports.DukcapilStoreClient = DukcapilStoreClient;
+//# sourceMappingURL=dukcapil-store-client.js.map
