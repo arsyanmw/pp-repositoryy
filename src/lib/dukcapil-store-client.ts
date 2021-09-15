@@ -31,6 +31,7 @@ class DukcapilStoreClient {
                     Authorization: `Bearer ${DukcapilStoreClient.key}`,
                     ...form.getHeaders(),
                 },
+                timeout: 10000,
             });
             const end = performance.now();
             DukcapilStoreClient.logger.eInfo(`DukcapilStoreClient:post:${path}`, {

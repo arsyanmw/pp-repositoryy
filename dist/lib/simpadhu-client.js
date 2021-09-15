@@ -95,7 +95,10 @@ var SimpadhuClient = /** @class */ (function () {
                     case 12:
                         start = perf_hooks_1.performance.now();
                         endPoint = SimpadhuClient.host + path;
-                        return [4 /*yield*/, axios_1.default.post(endPoint, form, { headers: form.getHeaders() })];
+                        return [4 /*yield*/, axios_1.default.post(endPoint, form, {
+                                headers: form.getHeaders(),
+                                timeout: 10000,
+                            })];
                     case 13:
                         result = _b.sent();
                         end = perf_hooks_1.performance.now();

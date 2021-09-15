@@ -32,7 +32,10 @@ class SimpadhuClient {
             }
             const start = performance.now();
             const endPoint: string = SimpadhuClient.host + path;
-            const result = await axios.post(endPoint, form, { headers: form.getHeaders() });
+            const result = await axios.post(endPoint, form, {
+                headers: form.getHeaders(),
+                timeout: 10000,
+            });
             const end = performance.now();
             SimpadhuClient.logger.eInfo(`SimpadhuClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,

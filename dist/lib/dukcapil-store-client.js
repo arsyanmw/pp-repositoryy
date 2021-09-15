@@ -110,6 +110,7 @@ var DukcapilStoreClient = /** @class */ (function () {
                         _b.trys.push([13, 15, , 16]);
                         return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: __assign({ Authorization: "Bearer " + DukcapilStoreClient.key }, form.getHeaders()),
+                                timeout: 10000,
                             })];
                     case 14:
                         result = _b.sent();
