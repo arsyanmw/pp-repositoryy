@@ -64,6 +64,7 @@ import { TrackingDownloadCounter } from './entity/TrackingDownloadCounter';
 import { CorrectionPp } from './entity/CorrectionPp';
 import { CorrectionPpOwner } from './entity/CorrectionPpOwner';
 import { CorrectionPpPrevious } from './entity/CorrectionPpPrevious';
+import { CorrectionPpActivities } from './entity/CorrectionPpActivities';
 /**
  * Another lib
  */
@@ -158,4 +159,5 @@ export {
     CorrectionPp,
     CorrectionPpOwner,
     CorrectionPpPrevious,
+    CorrectionPpActivities,
 };

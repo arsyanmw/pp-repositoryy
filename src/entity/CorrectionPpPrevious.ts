@@ -244,6 +244,12 @@ export class CorrectionPpPrevious extends Base {
     ownerValueJson: string;
 
     @Column({
+        name: 'kbli_value_json',
+        type: 'text',
+    })
+    kbliValueJson: string;
+
+    @Column({
         name: 'is_approved',
         type: 'bigint',
         nullable: false,

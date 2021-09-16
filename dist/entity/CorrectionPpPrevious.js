@@ -308,6 +308,13 @@ var CorrectionPpPrevious = /** @class */ (function (_super) {
     ], CorrectionPpPrevious.prototype, "ownerValueJson", void 0);
     __decorate([
         typeorm_1.Column({
+            name: 'kbli_value_json',
+            type: 'text',
+        }),
+        __metadata("design:type", String)
+    ], CorrectionPpPrevious.prototype, "kbliValueJson", void 0);
+    __decorate([
+        typeorm_1.Column({
             name: 'is_approved',
             type: 'bigint',
             nullable: false,

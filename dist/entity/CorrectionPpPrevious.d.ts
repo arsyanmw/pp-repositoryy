@@ -36,6 +36,7 @@ export declare class CorrectionPpPrevious extends Base {
     statementCondition: string;
     ppMasterId: number;
     ownerValueJson: string;
+    kbliValueJson: string;
     isApproved: number;
     blockedAt: Date;
     isBlocked: number;
