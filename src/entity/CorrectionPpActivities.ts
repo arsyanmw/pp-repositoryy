@@ -11,7 +11,7 @@ export class CorrectionPpActivities extends Base {
         type: 'bigint',
         nullable: false,
     })
-    modificationtPpId: number;
+    correctionPpId: number;
 
     @Column({
         name: 'kbli_id',

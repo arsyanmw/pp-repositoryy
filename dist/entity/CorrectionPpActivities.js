@@ -43,7 +43,7 @@ var CorrectionPpActivities = /** @class */ (function (_super) {
             nullable: false,
         }),
         __metadata("design:type", Number)
-    ], CorrectionPpActivities.prototype, "modificationtPpId", void 0);
+    ], CorrectionPpActivities.prototype, "correctionPpId", void 0);
     __decorate([
         typeorm_1.Column({
             name: 'kbli_id',
