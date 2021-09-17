@@ -141,11 +141,13 @@ class DukcapilClient {
             {
                 USER_ID: DukcapilClient.userId,
                 PASSWORD: DukcapilClient.password,
-                IP_USER: `PP:${requestBody.trackingParam}`,
+                IP_USER: requestBody.trackingParam ? `PP:${requestBody.trackingParam}` : undefined,
                 TRESHOLD: requestBody.threshold,
                 NAMA_LGKP: requestBody.fullName,
                 NIK: requestBody.nik,
-                TGL_LHR: moment(requestBody.birthDate).locale('id').format('DD-MM-YYYY'),
+                TGL_LHR: requestBody.birthDate
+                    ? moment(requestBody.birthDate).locale('id').format('DD-MM-YYYY')
+                    : undefined,
                 TMPT_LHR: requestBody.birthPlace,
                 ALAMAT: requestBody.address,
                 NO_PROP: requestBody.provinceCode,
