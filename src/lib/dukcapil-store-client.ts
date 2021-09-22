@@ -20,8 +20,12 @@ class DukcapilStoreClient {
 
     private static async post(path, dataForm: Array<{ key: string; value: any }> = []) {
         const form = new FormData();
+        let nik = '-';
         for await (const iterator of dataForm) {
             form.append(iterator.key, iterator.value);
+            if (iterator.key == 'nik') {
+                nik = iterator.value;
+            }
         }
         const start = performance.now();
         const endPoint: string = DukcapilStoreClient.host + path;
@@ -37,6 +41,7 @@ class DukcapilStoreClient {
             DukcapilStoreClient.logger.eInfo(`DukcapilStoreClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                nik,
                 formData: dataForm,
                 resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
@@ -48,6 +53,7 @@ class DukcapilStoreClient {
                 errorMessage: e.message,
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                nik,
                 formData: dataForm,
             };
             if (e.response) {

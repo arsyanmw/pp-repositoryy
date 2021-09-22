@@ -68,11 +68,12 @@ var DukcapilStoreClient = /** @class */ (function () {
         var e_1, _a;
         if (dataForm === void 0) { dataForm = []; }
         return __awaiter(this, void 0, void 0, function () {
-            var form, iterator, e_1_1, start, endPoint, result, end, e_2, end, logData;
+            var form, nik, iterator, e_1_1, start, endPoint, result, end, e_2, end, logData;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         form = new FormData();
+                        nik = '-';
                         _b.label = 1;
                     case 1:
                         _b.trys.push([1, 6, 7, 12]);
@@ -83,6 +84,9 @@ var DukcapilStoreClient = /** @class */ (function () {
                         if (!(dataForm_1_1 = _b.sent(), !dataForm_1_1.done)) return [3 /*break*/, 5];
                         iterator = dataForm_1_1.value;
                         form.append(iterator.key, iterator.value);
+                        if (iterator.key == 'nik') {
+                            nik = iterator.value;
+                        }
                         _b.label = 4;
                     case 4: return [3 /*break*/, 2];
                     case 5: return [3 /*break*/, 12];
@@ -118,6 +122,7 @@ var DukcapilStoreClient = /** @class */ (function () {
                         DukcapilStoreClient.logger.eInfo("DukcapilStoreClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            nik: nik,
                             formData: dataForm,
                             resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
@@ -130,6 +135,7 @@ var DukcapilStoreClient = /** @class */ (function () {
                             errorMessage: e_2.message,
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            nik: nik,
                             formData: dataForm,
                         };
                         if (e_2.response) {
