@@ -22,10 +22,12 @@ interface BaseAuditrail {
     dataType: Array<DataType>;
     data: any;
 }
+declare type sendStatusType = 'success' | 'failed';
 interface LogEmailInterface {
     subject: string;
     sendTo: string;
     sendFrom?: string;
+    sendStatus?: sendStatusType;
     source?: string;
 }
 declare class AuditTrail {

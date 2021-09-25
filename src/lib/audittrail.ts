@@ -26,10 +26,12 @@ interface BaseAuditrail {
     data: any;
 }
 
+type sendStatusType = 'success' | 'failed';
 interface LogEmailInterface {
     subject: string;
     sendTo: string;
     sendFrom?: string;
+    sendStatus?: sendStatusType;
     source?: string;
 }
 
