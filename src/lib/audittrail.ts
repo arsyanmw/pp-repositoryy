@@ -32,6 +32,7 @@ interface LogEmailInterface {
     sendTo: string;
     sendFrom?: string;
     sendStatus?: sendStatusType;
+    errorMessage?: string;
     source?: string;
 }
 
