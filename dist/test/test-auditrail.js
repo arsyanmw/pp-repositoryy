@@ -63,4 +63,11 @@ audittrail
 })
     .then(function (r) { return console.log(r); })
     .catch(function (e) { return console.log(e); });
+audittrail
+    .email({
+    subject: 'ini subject email',
+    sendTo: 'oke@mail.com',
+})
+    .then(function (r) { return console.log(r); })
+    .catch(function (e) { return console.log(e); });
 //# sourceMappingURL=test-auditrail.js.map

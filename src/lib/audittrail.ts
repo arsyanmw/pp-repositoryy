@@ -26,6 +26,13 @@ interface BaseAuditrail {
     data: any;
 }
 
+interface LogEmailInterface {
+    subject: string;
+    sendTo: string;
+    sendFrom?: string;
+    source?: string;
+}
+
 class AuditTrail {
     private static readonly ENVIRONMENT: string = process.env.ENVIRONMENT || 'development';
     private static readonly SERVICE_NAME = process.env.SERVICE_NAME || 'service-local';
@@ -35,8 +42,12 @@ class AuditTrail {
         this.elasticLibrary = new ElasticLibrary();
     }
 
-    private getIndex() {
+    private getIndex(): string {
         return `audittrail-${AuditTrail.ENVIRONMENT.toLowerCase()}-${moment().locale('id').format('YYYY.MM.DD')}`;
+    }
+
+    private getIndexLogEmail(): string {
+        return `logs-email-${AuditTrail.ENVIRONMENT.toLowerCase()}-${moment().locale('id').format('YYYY.MM.DD')}`;
     }
 
     public async commit(auditTrail: BaseAuditrail): Promise<ResultIndexorUpdateResponse> {
@@ -46,6 +57,17 @@ class AuditTrail {
                 '@timestamp': moment().locale('id').toISOString(),
                 source: AuditTrail.SERVICE_NAME,
                 ...auditTrail,
+            },
+        });
+    }
+
+    public async email(logEmail: LogEmailInterface): Promise<ResultIndexorUpdateResponse> {
+        return await this.elasticLibrary.indexOrUpdate({
+            index: this.getIndexLogEmail(),
+            body: {
+                '@timestamp': moment().locale('id').toISOString(),
+                source: AuditTrail.SERVICE_NAME,
+                ...logEmail,
             },
         });
     }

@@ -64,3 +64,11 @@ audittrail
     })
     .then((r) => console.log(r))
     .catch((e) => console.log(e));
+
+audittrail
+    .email({
+        subject: 'ini subject email',
+        sendTo: 'oke@mail.com',
+    })
+    .then((r) => console.log(r))
+    .catch((e) => console.log(e));

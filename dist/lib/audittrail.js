@@ -66,6 +66,9 @@ var AuditTrail = /** @class */ (function () {
     AuditTrail.prototype.getIndex = function () {
         return "audittrail-" + AuditTrail.ENVIRONMENT.toLowerCase() + "-" + moment().locale('id').format('YYYY.MM.DD');
     };
+    AuditTrail.prototype.getIndexLogEmail = function () {
+        return "logs-email-" + AuditTrail.ENVIRONMENT.toLowerCase() + "-" + moment().locale('id').format('YYYY.MM.DD');
+    };
     AuditTrail.prototype.commit = function (auditTrail) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -73,6 +76,19 @@ var AuditTrail = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.elasticLibrary.indexOrUpdate({
                             index: this.getIndex(),
                             body: __assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, auditTrail),
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    AuditTrail.prototype.email = function (logEmail) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.elasticLibrary.indexOrUpdate({
+                            index: this.getIndexLogEmail(),
+                            body: __assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, logEmail),
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

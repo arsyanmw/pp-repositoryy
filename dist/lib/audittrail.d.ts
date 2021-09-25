@@ -22,12 +22,20 @@ interface BaseAuditrail {
     dataType: Array<DataType>;
     data: any;
 }
+interface LogEmailInterface {
+    subject: string;
+    sendTo: string;
+    sendFrom?: string;
+    source?: string;
+}
 declare class AuditTrail {
     private static readonly ENVIRONMENT;
     private static readonly SERVICE_NAME;
     private elasticLibrary;
     constructor();
     private getIndex;
+    private getIndexLogEmail;
     commit(auditTrail: BaseAuditrail): Promise<ResultIndexorUpdateResponse>;
+    email(logEmail: LogEmailInterface): Promise<ResultIndexorUpdateResponse>;
 }
 export { AuditTrail, DataType };
