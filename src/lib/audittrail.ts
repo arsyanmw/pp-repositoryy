@@ -55,16 +55,19 @@ class AuditTrail {
     }
 
     public async commit(auditTrail: BaseAuditrail): Promise<any> {
+        const data = cloneDeepWith(auditTrail.data, (value) => {
+            if (isInteger(value)) {
+                return value.toString();
+            }
+        });
+        delete auditTrail.data;
         return await this.elasticLibrary.indexOrUpdate({
             index: this.getIndex(),
             body: {
                 '@timestamp': moment().locale('id').toISOString(),
                 source: AuditTrail.SERVICE_NAME,
-                data: cloneDeepWith(auditTrail.data, (value) => {
-                    if (isInteger(value)) {
-                        return value.toString();
-                    }
-                }),
+                ...auditTrail,
+                data,
             },
         });
     }
