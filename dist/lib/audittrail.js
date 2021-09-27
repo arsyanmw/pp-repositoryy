@@ -76,11 +76,15 @@ var AuditTrail = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.elasticLibrary.indexOrUpdate({
                             index: this.getIndex(),
-                            body: __assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, lodash_1.cloneDeepWith(auditTrail.data, function (value) {
-                                if (lodash_1.isInteger(value)) {
-                                    return value.toString();
-                                }
-                            })),
+                            body: {
+                                '@timestamp': moment().locale('id').toISOString(),
+                                source: AuditTrail.SERVICE_NAME,
+                                data: lodash_1.cloneDeepWith(auditTrail.data, function (value) {
+                                    if (lodash_1.isInteger(value)) {
+                                        return value.toString();
+                                    }
+                                }),
+                            },
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

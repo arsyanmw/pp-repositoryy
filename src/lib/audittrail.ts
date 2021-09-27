@@ -60,7 +60,7 @@ class AuditTrail {
             body: {
                 '@timestamp': moment().locale('id').toISOString(),
                 source: AuditTrail.SERVICE_NAME,
-                ...cloneDeepWith(auditTrail.data, (value) => {
+                data: cloneDeepWith(auditTrail.data, (value) => {
                     if (isInteger(value)) {
                         return value.toString();
                     }
