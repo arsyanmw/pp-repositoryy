@@ -1,5 +1,6 @@
 import { ElasticLibrary, ResultIndexorUpdateResponse } from './elastic-search';
 import { ClientInformationResultInterface } from './client-information';
+import { cloneDeepWith, isInteger } from 'lodash';
 import * as moment from 'moment';
 
 enum DataType {
@@ -53,13 +54,17 @@ class AuditTrail {
         return `logs-email-${AuditTrail.ENVIRONMENT.toLowerCase()}-${moment().locale('id').format('YYYY.MM.DD')}`;
     }
 
-    public async commit(auditTrail: BaseAuditrail): Promise<ResultIndexorUpdateResponse> {
+    public async commit(auditTrail: BaseAuditrail): Promise<any> {
         return await this.elasticLibrary.indexOrUpdate({
             index: this.getIndex(),
             body: {
                 '@timestamp': moment().locale('id').toISOString(),
                 source: AuditTrail.SERVICE_NAME,
-                ...auditTrail,
+                ...cloneDeepWith(auditTrail.data, (value) => {
+                    if (isInteger(value)) {
+                        return value.toString();
+                    }
+                }),
             },
         });
     }
