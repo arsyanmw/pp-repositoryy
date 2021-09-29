@@ -72,10 +72,12 @@ var AuditTrail = /** @class */ (function () {
     };
     AuditTrail.prototype.commit = function (auditTrail) {
         return __awaiter(this, void 0, void 0, function () {
-            var data;
+            var isCreated, data, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
+                    case 0: return [4 /*yield*/, this.checkIndex(this.getIndex())];
+                    case 1:
+                        isCreated = _a.sent();
                         data = lodash_1.cloneDeepWith(auditTrail.data, function (value) {
                             if (lodash_1.isInteger(value)) {
                                 return value.toString();
@@ -86,7 +88,49 @@ var AuditTrail = /** @class */ (function () {
                                 index: this.getIndex(),
                                 body: __assign(__assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, auditTrail), { data: data }),
                             })];
-                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        response = _a.sent();
+                        if (!!isCreated) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.elasticLibrary.indicesPutSettings({
+                                index: this.getIndex(),
+                                flat_settings: true,
+                                body: {
+                                    'index.mapping.total_fields.limit': '5000',
+                                },
+                            })];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    AuditTrail.prototype.checkIndex = function (indexName) {
+        return __awaiter(this, void 0, void 0, function () {
+            var isCreated, indexList, e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.elasticLibrary.indicesGet({
+                                index: indexName,
+                            })];
+                    case 1:
+                        indexList = _a.sent();
+                        if (indexList) {
+                            isCreated = true;
+                        }
+                        else {
+                            isCreated = false;
+                        }
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.log(e_1.message);
+                        isCreated = false;
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/, isCreated];
                 }
             });
         });

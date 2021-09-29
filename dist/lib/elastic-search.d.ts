@@ -52,12 +52,41 @@ interface IndexInputInterface<T> {
     id?: string | number;
     body: any;
 }
+interface IndicesBase {
+    index: string | string[];
+    flat_settings?: boolean;
+    master_timeout?: string;
+    ignore_unavailable?: boolean;
+    allow_no_indices?: boolean;
+    expand_wildcards?: 'open' | 'closed' | 'hidden' | 'none' | 'all';
+}
+interface IndicesGet extends IndicesBase {
+    include_type_name?: boolean;
+    local?: boolean;
+    include_defaults?: boolean;
+}
+interface IndicesPutSettingsInterface extends IndicesBase {
+    index: string | string[];
+    timeout?: string;
+    preserve_existing?: boolean;
+    body: any;
+}
 declare class ElasticLibrary {
     private static readonly environment;
     private static readonly elasticsearchHost;
     private elasticSearchConnection;
     constructor();
     indexOrUpdate(indexInput: IndexInputInterface<any>): Promise<ResultIndexorUpdateResponse>;
+    indicesPutSettings(indexPutSettings: IndicesPutSettingsInterface): Promise<{
+        body: {
+            acknowledged: boolean;
+        };
+        statusCode: number;
+    }>;
+    indicesGet(indexGet: IndicesGet): Promise<{
+        body: any;
+        statusCode: number;
+    }>;
     getIndexPostfix(index: string): string;
     searchProfilePp(query: SearchBodyProfilePp): Promise<ResultSearchResponse<ResultProfilePp>>;
     indexOrUpdateProfilePp(profilePp: ResultProfilePp): Promise<ResultIndexorUpdateResponse>;

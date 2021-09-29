@@ -39,6 +39,7 @@ declare class AuditTrail {
     private getIndex;
     private getIndexLogEmail;
     commit(auditTrail: BaseAuditrail): Promise<any>;
+    private checkIndex;
     email(logEmail: LogEmailInterface): Promise<ResultIndexorUpdateResponse>;
 }
 export { AuditTrail, DataType };

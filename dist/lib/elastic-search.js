@@ -67,6 +67,26 @@ var ElasticLibrary = /** @class */ (function () {
             });
         });
     };
+    ElasticLibrary.prototype.indicesPutSettings = function (indexPutSettings) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.elasticSearchConnection.indices.putSettings(__assign({}, indexPutSettings))];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    ElasticLibrary.prototype.indicesGet = function (indexGet) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.elasticSearchConnection.indices.get(__assign({}, indexGet))];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     ElasticLibrary.prototype.getIndexPostfix = function (index) {
         return index.trim() + "_" + ElasticLibrary.environment.toLowerCase();
     };

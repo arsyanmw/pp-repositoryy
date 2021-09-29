@@ -55,13 +55,15 @@ class AuditTrail {
     }
 
     public async commit(auditTrail: BaseAuditrail): Promise<any> {
+        const isCreated = await this.checkIndex(this.getIndex());
+
         const data = cloneDeepWith(auditTrail.data, (value) => {
             if (isInteger(value)) {
                 return value.toString();
             }
         });
         delete auditTrail.data;
-        return await this.elasticLibrary.indexOrUpdate({
+        const response = await this.elasticLibrary.indexOrUpdate({
             index: this.getIndex(),
             body: {
                 '@timestamp': moment().locale('id').toISOString(),
@@ -70,6 +72,34 @@ class AuditTrail {
                 data,
             },
         });
+        if (!isCreated) {
+            await this.elasticLibrary.indicesPutSettings({
+                index: this.getIndex(),
+                flat_settings: true,
+                body: {
+                    'index.mapping.total_fields.limit': '5000',
+                },
+            });
+        }
+        return response;
+    }
+
+    private async checkIndex(indexName: string): Promise<boolean> {
+        let isCreated: boolean;
+        try {
+            const indexList = await this.elasticLibrary.indicesGet({
+                index: indexName,
+            });
+            if (indexList) {
+                isCreated = true;
+            } else {
+                isCreated = false;
+            }
+        } catch (e) {
+            console.log(e.message);
+            isCreated = false;
+        }
+        return isCreated;
     }
 
     public async email(logEmail: LogEmailInterface): Promise<ResultIndexorUpdateResponse> {
