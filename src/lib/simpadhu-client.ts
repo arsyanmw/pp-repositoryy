@@ -40,8 +40,9 @@ class SimpadhuClient {
             SimpadhuClient.logger.eInfo(`SimpadhuClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                formData: dataForm,
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                formDataSimpadhuClient: dataForm,
+                resultDataSimpadhuClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;

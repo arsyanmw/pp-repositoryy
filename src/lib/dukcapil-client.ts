@@ -87,9 +87,10 @@ class DukcapilClient {
             DukcapilClient.logger.eInfo(`DukcapilClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                bodyDataDukcapilClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataDukcapilClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataDukcapilClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
 
@@ -114,8 +115,9 @@ class DukcapilClient {
             DukcapilClient.logger.eInfo(`DukcapilClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                paramsDataDukcapilClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataDukcapilClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;

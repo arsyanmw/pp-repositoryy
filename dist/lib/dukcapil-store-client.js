@@ -123,8 +123,8 @@ var DukcapilStoreClient = /** @class */ (function () {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
                             nik: nik,
-                            formData: dataForm,
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            formDataDukcapilStoreClient: dataForm,
+                            resultDataDukcapilStoreClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];
@@ -136,7 +136,7 @@ var DukcapilStoreClient = /** @class */ (function () {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
                             nik: nik,
-                            formData: dataForm,
+                            formDataDukcapilStoreClient: dataForm,
                         };
                         if (e_2.response) {
                             logData['status'] = e_2.response.status;

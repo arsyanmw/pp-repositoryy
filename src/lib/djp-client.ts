@@ -86,9 +86,10 @@ class DjpClient {
             DjpClient.logger.eInfo(`DjpClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                bodyDataDjpClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataDjpClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
 
@@ -115,8 +116,9 @@ class DjpClient {
             DjpClient.logger.eInfo(`DjpClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataDjpClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;

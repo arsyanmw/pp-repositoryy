@@ -37,9 +37,9 @@ class KswpClient {
             KswpClient.logger.eInfo(`KswpClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData:
+                bodyDataKswpClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataKswpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataKswpClient:
                     typeof result.data == 'object'
                         ? { resultNotObject: JSON.stringify(result.data) }
                         : { resultNotObject: toString(result.data) },
@@ -67,8 +67,9 @@ class KswpClient {
             KswpClient.logger.eInfo(`KswpClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                paramsDataKswpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataKswpClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;

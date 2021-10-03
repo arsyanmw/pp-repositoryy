@@ -105,8 +105,8 @@ var SimpadhuClient = /** @class */ (function () {
                         SimpadhuClient.logger.eInfo("SimpadhuClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
-                            formData: dataForm,
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            formDataSimpadhuClient: dataForm,
+                            resultDataSimpadhuClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];

@@ -68,9 +68,11 @@ class BeneficialOwnerClient {
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                bodyData: typeof body == 'object' ? body : { resultNotObject: toString(body) },
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataBeneficialOwnerClient:
+                    typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataBeneficialOwnerClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;
@@ -99,8 +101,10 @@ class BeneficialOwnerClient {
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
-                paramsData: typeof params == 'object' ? params : { resultNotObject: toString(params) },
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                paramsDataBeneficialOwnerClient:
+                    typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                resultDataBeneficialOwnerClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;

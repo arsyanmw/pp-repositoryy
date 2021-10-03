@@ -74,9 +74,9 @@ var KswpClient = /** @class */ (function () {
                         KswpClient.logger.eInfo("KswpClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
-                            bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
-                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultData: typeof result.data == 'object'
+                            bodyDataKswpClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataKswpClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultDataKswpClient: typeof result.data == 'object'
                                 ? { resultNotObject: JSON.stringify(result.data) }
                                 : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
@@ -112,8 +112,8 @@ var KswpClient = /** @class */ (function () {
                         KswpClient.logger.eInfo("KswpClient:get:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
-                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            paramsDataKswpClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultDataKswpClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];

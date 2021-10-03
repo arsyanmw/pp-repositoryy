@@ -72,9 +72,9 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
-                            bodyData: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
-                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataBeneficialOwnerClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultDataBeneficialOwnerClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];
@@ -112,8 +112,8 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:get:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
-                            paramsData: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultData: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            paramsDataBeneficialOwnerClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultDataBeneficialOwnerClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
                             status: result.status,
                         });
                         return [2 /*return*/, result];

@@ -42,8 +42,9 @@ class DukcapilStoreClient {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
                 nik,
-                formData: dataForm,
-                resultData: typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
+                formDataDukcapilStoreClient: dataForm,
+                resultDataDukcapilStoreClient:
+                    typeof result.data == 'object' ? result.data : { resultNotObject: toString(result.data) },
                 status: result.status,
             });
             return result;
@@ -54,7 +55,7 @@ class DukcapilStoreClient {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
                 nik,
-                formData: dataForm,
+                formDataDukcapilStoreClient: dataForm,
             };
             if (e.response) {
                 logData['status'] = e.response.status;
