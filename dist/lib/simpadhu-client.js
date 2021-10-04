@@ -57,11 +57,10 @@ var SimpadhuClient = /** @class */ (function () {
         var e_1, _a;
         if (dataForm === void 0) { dataForm = []; }
         return __awaiter(this, void 0, void 0, function () {
-            var form, iterator, e_1_1, start, endPoint, result, end, e_2;
+            var form, iterator, e_1_1, start, endPoint, result, end, e_2, end;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 14, , 15]);
                         form = new FormData();
                         _b.label = 1;
                     case 1:
@@ -95,11 +94,14 @@ var SimpadhuClient = /** @class */ (function () {
                     case 12:
                         start = perf_hooks_1.performance.now();
                         endPoint = SimpadhuClient.host + path;
+                        _b.label = 13;
+                    case 13:
+                        _b.trys.push([13, 15, , 16]);
                         return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: form.getHeaders(),
                                 timeout: SimpadhuClient.timeout,
                             })];
-                    case 13:
+                    case 14:
                         result = _b.sent();
                         end = perf_hooks_1.performance.now();
                         SimpadhuClient.logger.eInfo("SimpadhuClient:post:" + path, {
@@ -110,11 +112,16 @@ var SimpadhuClient = /** @class */ (function () {
                             status: result.status,
                         });
                         return [2 /*return*/, result];
-                    case 14:
+                    case 15:
                         e_2 = _b.sent();
-                        SimpadhuClient.logger.eError("SimpadhuClient:post:" + path, { message: e_2.message });
+                        end = perf_hooks_1.performance.now();
+                        SimpadhuClient.logger.eError("SimpadhuClient:post:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
+                            message: e_2.message,
+                        });
                         return [2 /*return*/, e_2.response];
-                    case 15: return [2 /*return*/];
+                    case 16: return [2 /*return*/];
                 }
             });
         });

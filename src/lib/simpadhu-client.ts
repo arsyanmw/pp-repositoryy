@@ -26,13 +26,13 @@ class SimpadhuClient {
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, dataForm: Array<{ key: string; value: any }> = []) {
+        const form = new FormData();
+        for await (const iterator of dataForm) {
+            form.append(iterator.key, iterator.value);
+        }
+        const start = performance.now();
+        const endPoint: string = SimpadhuClient.host + path;
         try {
-            const form = new FormData();
-            for await (const iterator of dataForm) {
-                form.append(iterator.key, iterator.value);
-            }
-            const start = performance.now();
-            const endPoint: string = SimpadhuClient.host + path;
             const result = await axios.post(endPoint, form, {
                 headers: form.getHeaders(),
                 timeout: SimpadhuClient.timeout,
@@ -48,7 +48,12 @@ class SimpadhuClient {
             });
             return result;
         } catch (e) {
-            SimpadhuClient.logger.eError(`SimpadhuClient:post:${path}`, { message: e.message });
+            const end = performance.now();
+            SimpadhuClient.logger.eError(`SimpadhuClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
+                message: e.message,
+            });
             return e.response;
         }
     }

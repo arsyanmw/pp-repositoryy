@@ -50,7 +50,54 @@ var BeneficialOwnerClient = /** @class */ (function () {
     BeneficialOwnerClient.post = function (path, headers, body, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, config, start, endPoint, result, end, e_1;
+            var paramUri, config, start, endPoint, result, end, e_1, end;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        paramUri = '';
+                        lodash_1.forOwn(params, function (value, key) {
+                            paramUri += paramUri == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
+                        });
+                        config = {
+                            headers: headers,
+                            timeout: 10000,
+                        };
+                        start = perf_hooks_1.performance.now();
+                        endPoint = BeneficialOwnerClient.host + path + paramUri;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, axios_1.default.post(endPoint, body, config)];
+                    case 2:
+                        result = _a.sent();
+                        end = perf_hooks_1.performance.now();
+                        BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:post:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
+                            bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataBeneficialOwnerClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            resultDataBeneficialOwnerClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
+                            status: result.status,
+                        });
+                        return [2 /*return*/, result];
+                    case 3:
+                        e_1 = _a.sent();
+                        end = perf_hooks_1.performance.now();
+                        BeneficialOwnerClient.logger.eError("BeneficialOwnerClient:post:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
+                            message: e_1.message,
+                        });
+                        return [2 /*return*/, e_1.response];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    BeneficialOwnerClient.get = function (path, headers, params) {
+        if (params === void 0) { params = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var paramUri_1, config, start, endPoint, result, end, e_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -65,46 +112,6 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         };
                         start = perf_hooks_1.performance.now();
                         endPoint = BeneficialOwnerClient.host + path + paramUri_1;
-                        return [4 /*yield*/, axios_1.default.post(endPoint, body, config)];
-                    case 1:
-                        result = _a.sent();
-                        end = perf_hooks_1.performance.now();
-                        BeneficialOwnerClient.logger.eInfo("BeneficialOwnerClient:post:" + path, {
-                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
-                            endPoint: endPoint,
-                            bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
-                            paramsDataBeneficialOwnerClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
-                            resultDataBeneficialOwnerClient: typeof result.data == 'object' ? result.data : { resultNotObject: lodash_1.toString(result.data) },
-                            status: result.status,
-                        });
-                        return [2 /*return*/, result];
-                    case 2:
-                        e_1 = _a.sent();
-                        BeneficialOwnerClient.logger.eError("BeneficialOwnerClient:post:" + path, { message: e_1.message });
-                        return [2 /*return*/, e_1.response];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BeneficialOwnerClient.get = function (path, headers, params) {
-        if (params === void 0) { params = {}; }
-        return __awaiter(this, void 0, void 0, function () {
-            var paramUri_2, config, start, endPoint, result, end, e_2;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        paramUri_2 = '';
-                        lodash_1.forOwn(params, function (value, key) {
-                            paramUri_2 += paramUri_2 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
-                        });
-                        config = {
-                            headers: headers,
-                            timeout: 10000,
-                        };
-                        start = perf_hooks_1.performance.now();
-                        endPoint = BeneficialOwnerClient.host + path + paramUri_2;
                         return [4 /*yield*/, axios_1.default.get(endPoint, config)];
                     case 1:
                         result = _a.sent();

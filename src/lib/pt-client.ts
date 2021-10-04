@@ -16,14 +16,14 @@ class PtClient {
         dataForm: Array<{ key: string; value: any }> = [],
         headers: (from: FormData) => FormData.Headers,
     ) {
-        try {
-            const form = new FormData();
-            for await (const iterator of dataForm) {
-                form.append(iterator.key, iterator.value);
-            }
+        const form = new FormData();
+        for await (const iterator of dataForm) {
+            form.append(iterator.key, iterator.value);
+        }
 
-            const start = performance.now();
-            const endPoint: string = PtClient.host + path;
+        const start = performance.now();
+        const endPoint: string = PtClient.host + path;
+        try {
             const result = await axios.post(endPoint, form, {
                 headers: headers(form),
                 timeout: PtClient.timeout,
@@ -39,7 +39,10 @@ class PtClient {
             });
             return result;
         } catch (e) {
+            const end = performance.now();
             PtClient.logger.eError(`PtClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
                 code: e.code,
                 message: e.message,
             });

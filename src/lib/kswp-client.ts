@@ -20,14 +20,14 @@ class KswpClient {
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
-        try {
-            let paramUri = '';
-            forOwn(params, (value, key) => {
-                paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
-            });
+        let paramUri = '';
+        forOwn(params, (value, key) => {
+            paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
+        });
 
-            const start = performance.now();
-            const endPoint: string = KswpClient.host + path + paramUri;
+        const start = performance.now();
+        const endPoint: string = KswpClient.host + path + paramUri;
+        try {
             const result = await axios.post(endPoint, body, {
                 headers: headers,
                 timeout: 10000,
@@ -48,7 +48,12 @@ class KswpClient {
 
             return result;
         } catch (e) {
-            KswpClient.logger.eError(`KswpClient:post:${path}`, { message: e.message });
+            const end = performance.now();
+            KswpClient.logger.eError(`KswpClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
+                message: e.message,
+            });
             return e.response;
         }
     }

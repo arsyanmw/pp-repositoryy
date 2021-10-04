@@ -51,18 +51,18 @@ class BeneficialOwnerClient {
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
-        try {
-            let paramUri = '';
-            forOwn(params, (value, key) => {
-                paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
-            });
+        let paramUri = '';
+        forOwn(params, (value, key) => {
+            paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
+        });
 
-            const config = {
-                headers,
-                timeout: 10000,
-            };
-            const start = performance.now();
-            const endPoint: string = BeneficialOwnerClient.host + path + paramUri;
+        const config = {
+            headers,
+            timeout: 10000,
+        };
+        const start = performance.now();
+        const endPoint: string = BeneficialOwnerClient.host + path + paramUri;
+        try {
             const result = await axios.post(endPoint, body, config);
             const end = performance.now();
             BeneficialOwnerClient.logger.eInfo(`BeneficialOwnerClient:post:${path}`, {
@@ -77,7 +77,12 @@ class BeneficialOwnerClient {
             });
             return result;
         } catch (e) {
-            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:post:${path}`, { message: e.message });
+            const end = performance.now();
+            BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:post:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
+                message: e.message,
+            });
             return e.response;
         }
     }
