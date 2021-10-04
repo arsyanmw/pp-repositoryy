@@ -97,7 +97,7 @@ var PtClient = /** @class */ (function () {
                         endPoint = PtClient.host + path;
                         return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: headers(form),
-                                timeout: this.timeout,
+                                timeout: PtClient.timeout,
                             })];
                     case 13:
                         result = _b.sent();
@@ -168,7 +168,7 @@ var PtClient = /** @class */ (function () {
     PtClient.host = process.env.PT_HOST || 'https://AHU2021:ceban1@staging-ahuonline.ahu.go.id';
     PtClient.client = process.env.PT_CLIENT || 'hdti';
     PtClient.clientKey = process.env.PT_CLIENT_KEY || '4hu@hd2021';
-    PtClient.timeout = 20 * 1000; // 20 detik
+    PtClient.timeout = 60 * 1000; // 60 detik
     PtClient.logger = new logger_1.Logger();
     return PtClient;
 }());

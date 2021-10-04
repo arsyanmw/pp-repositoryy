@@ -8,7 +8,7 @@ class PtClient {
     private static readonly host: string = process.env.PT_HOST || 'https://AHU2021:ceban1@staging-ahuonline.ahu.go.id';
     private static readonly client: string = process.env.PT_CLIENT || 'hdti';
     private static readonly clientKey: string = process.env.PT_CLIENT_KEY || '4hu@hd2021';
-    private static readonly timeout: number = 20 * 1000; // 20 detik
+    private static readonly timeout: number = 60 * 1000; // 60 detik
     private static readonly logger: Logger = new Logger();
 
     private static async post(
@@ -26,7 +26,7 @@ class PtClient {
             const endPoint: string = PtClient.host + path;
             const result = await axios.post(endPoint, form, {
                 headers: headers(form),
-                timeout: this.timeout,
+                timeout: PtClient.timeout,
             });
             const end = performance.now();
 

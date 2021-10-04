@@ -22,6 +22,7 @@ class SimpadhuClient {
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
     private static readonly host: string = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     private static readonly key: string = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
+    private static readonly timeout: number = 30 * 1000; // 30 detik
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, dataForm: Array<{ key: string; value: any }> = []) {
@@ -34,7 +35,7 @@ class SimpadhuClient {
             const endPoint: string = SimpadhuClient.host + path;
             const result = await axios.post(endPoint, form, {
                 headers: form.getHeaders(),
-                timeout: 10000,
+                timeout: SimpadhuClient.timeout,
             });
             const end = performance.now();
             SimpadhuClient.logger.eInfo(`SimpadhuClient:post:${path}`, {

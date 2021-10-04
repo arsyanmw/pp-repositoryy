@@ -97,7 +97,7 @@ var SimpadhuClient = /** @class */ (function () {
                         endPoint = SimpadhuClient.host + path;
                         return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: form.getHeaders(),
-                                timeout: 10000,
+                                timeout: SimpadhuClient.timeout,
                             })];
                     case 13:
                         result = _b.sent();
@@ -228,6 +228,7 @@ var SimpadhuClient = /** @class */ (function () {
     SimpadhuClient.environment = process.env.ENVIRONMENT || 'development';
     SimpadhuClient.host = process.env.SIMPADHU_HOST || 'http://simpadhu.svc';
     SimpadhuClient.key = process.env.SIMPADHU_KEY || '14211c2b599e50e6f0b069beb8c0477c';
+    SimpadhuClient.timeout = 30 * 1000; // 30 detik
     SimpadhuClient.logger = new logger_1.Logger();
     return SimpadhuClient;
 }());
