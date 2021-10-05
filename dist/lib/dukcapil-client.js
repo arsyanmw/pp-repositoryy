@@ -100,7 +100,7 @@ var DukcapilClient = /** @class */ (function () {
                         _a.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, axios_1.default.post(endPoint, body, {
                                 headers: headers,
-                                timeout: 10000,
+                                timeout: DukcapilClient.timeout,
                             })];
                     case 2:
                         result = _a.sent();
@@ -144,7 +144,7 @@ var DukcapilClient = /** @class */ (function () {
                         });
                         start = perf_hooks_1.performance.now();
                         endPoint = DukcapilClient.host + path + paramUri_1;
-                        return [4 /*yield*/, axios_1.default.get(endPoint, { headers: headers, timeout: 10000 })];
+                        return [4 /*yield*/, axios_1.default.get(endPoint, { headers: headers, timeout: DukcapilClient.timeout })];
                     case 1:
                         result = _a.sent();
                         end = perf_hooks_1.performance.now();
@@ -213,6 +213,7 @@ var DukcapilClient = /** @class */ (function () {
     DukcapilClient.userId = process.env.DUKCAPIL_CLIENT_ID || 'userId';
     DukcapilClient.password = process.env.DUKCAPIL_PASSWORD || 'password';
     DukcapilClient.redis = new redis_connect_1.RedisConnect(10);
+    DukcapilClient.timeout = 30 * 1000; // 30 detik
     DukcapilClient.logger = new logger_1.Logger();
     return DukcapilClient;
 }());

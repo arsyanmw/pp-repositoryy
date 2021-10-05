@@ -16,6 +16,7 @@ export interface StoreRequest {
 class DukcapilStoreClient {
     private static readonly host: string = process.env.DUKCAPIL_STORE_HOST || 'http://127.0.0.1';
     private static readonly key: string = process.env.DUKCAPIL_STORE_KEY || 'key';
+    private static readonly timeout: number = 30 * 1000; // 30 detik
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, dataForm: Array<{ key: string; value: any }> = []) {
@@ -35,7 +36,7 @@ class DukcapilStoreClient {
                     Authorization: `Bearer ${DukcapilStoreClient.key}`,
                     ...form.getHeaders(),
                 },
-                timeout: 10000,
+                timeout: DukcapilStoreClient.timeout,
             });
             const end = performance.now();
             DukcapilStoreClient.logger.eInfo(`DukcapilStoreClient:post:${path}`, {

@@ -65,6 +65,7 @@ class DukcapilClient {
     private static readonly userId: string = process.env.DUKCAPIL_CLIENT_ID || 'userId';
     private static readonly password: string = process.env.DUKCAPIL_PASSWORD || 'password';
     private static readonly redis: RedisConnect = new RedisConnect(10);
+    private static readonly timeout: number = 30 * 1000; // 30 detik
     private static readonly logger: Logger = new Logger();
 
     private static async post(path, headers, body, params: any = {}) {
@@ -78,7 +79,7 @@ class DukcapilClient {
         try {
             const result = await axios.post(endPoint, body, {
                 headers: headers,
-                timeout: 10000,
+                timeout: DukcapilClient.timeout,
             });
             const end = performance.now();
 
@@ -115,7 +116,7 @@ class DukcapilClient {
 
             const start = performance.now();
             const endPoint: string = DukcapilClient.host + path + paramUri;
-            const result = await axios.get(endPoint, { headers: headers, timeout: 10000 });
+            const result = await axios.get(endPoint, { headers: headers, timeout: DukcapilClient.timeout });
             const end = performance.now();
             DukcapilClient.logger.eInfo(`DukcapilClient:get:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,

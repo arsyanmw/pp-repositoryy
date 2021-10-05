@@ -114,7 +114,7 @@ var DukcapilStoreClient = /** @class */ (function () {
                         _b.trys.push([13, 15, , 16]);
                         return [4 /*yield*/, axios_1.default.post(endPoint, form, {
                                 headers: __assign({ Authorization: "Bearer " + DukcapilStoreClient.key }, form.getHeaders()),
-                                timeout: 10000,
+                                timeout: DukcapilStoreClient.timeout,
                             })];
                     case 14:
                         result = _b.sent();
@@ -183,6 +183,7 @@ var DukcapilStoreClient = /** @class */ (function () {
     };
     DukcapilStoreClient.host = process.env.DUKCAPIL_STORE_HOST || 'http://127.0.0.1';
     DukcapilStoreClient.key = process.env.DUKCAPIL_STORE_KEY || 'key';
+    DukcapilStoreClient.timeout = 30 * 1000; // 30 detik
     DukcapilStoreClient.logger = new logger_1.Logger();
     return DukcapilStoreClient;
 }());

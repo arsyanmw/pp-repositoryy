@@ -10,6 +10,7 @@ export interface StoreRequest {
 declare class DukcapilStoreClient {
     private static readonly host;
     private static readonly key;
+    private static readonly timeout;
     private static readonly logger;
     private static post;
     static store(data: StoreRequest): Promise<any>;

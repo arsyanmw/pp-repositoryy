@@ -19,6 +19,7 @@ declare class DukcapilClient {
     private static readonly userId;
     private static readonly password;
     private static readonly redis;
+    private static readonly timeout;
     private static readonly logger;
     private static post;
     private static get;
