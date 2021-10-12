@@ -350,6 +350,15 @@ var PpMasterHistory = /** @class */ (function (_super) {
         }),
         __metadata("design:type", Date)
     ], PpMasterHistory.prototype, "approvedAt", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'transaction_number',
+            type: 'varchar',
+            length: 255,
+            nullable: false,
+        }),
+        __metadata("design:type", String)
+    ], PpMasterHistory.prototype, "transactionNumber", void 0);
     PpMasterHistory = __decorate([
         typeorm_1.Entity({ name: 'pp_master_history' })
     ], PpMasterHistory);

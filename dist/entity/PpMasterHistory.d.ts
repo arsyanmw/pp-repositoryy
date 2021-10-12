@@ -41,4 +41,5 @@ export declare class PpMasterHistory extends Base {
     blockedAt: Date;
     isApproved: number;
     approvedAt: Date;
+    transactionNumber: string;
 }

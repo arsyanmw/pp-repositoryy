@@ -280,4 +280,12 @@ export class PpMasterHistory extends Base {
         nullable: false,
     })
     approvedAt: Date;
+
+    @Column({
+        name: 'transaction_number',
+        type: 'varchar',
+        length: 255,
+        nullable: false,
+    })
+    transactionNumber: string;
 }
