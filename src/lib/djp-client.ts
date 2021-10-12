@@ -99,6 +99,8 @@ class DjpClient {
             DjpClient.logger.eError(`DjpClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                bodyDataDjpClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 message: e.message,
             });
             return e.response;
@@ -106,14 +108,14 @@ class DjpClient {
     }
 
     private static async get(path: string, headers: any, params: any = {}) {
-        try {
-            let paramUri = '';
-            forOwn(params, (value, key) => {
-                paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
-            });
+        let paramUri = '';
+        forOwn(params, (value, key) => {
+            paramUri += paramUri == '' ? `?${key}=${value}` : `&${key}=${value}`;
+        });
 
-            const start = performance.now();
-            const endPoint: string = DjpClient.host + path + paramUri;
+        const start = performance.now();
+        const endPoint: string = DjpClient.host + path + paramUri;
+        try {
             const result = await axios.get(endPoint, { headers: headers, timeout: 10000 });
             const end = performance.now();
             unset(params, 'username');
@@ -128,7 +130,15 @@ class DjpClient {
             });
             return result;
         } catch (e) {
-            DjpClient.logger.eError(`DjpClient:get:${path}`, { message: e.message });
+            const end = performance.now();
+            unset(params, 'username');
+            unset(params, 'password');
+            DjpClient.logger.eError(`DjpClient:get:${path}`, {
+                timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
+                endPoint,
+                paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
+                message: e.message,
+            });
             return e.response;
         }
     }

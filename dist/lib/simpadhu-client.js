@@ -118,6 +118,7 @@ var SimpadhuClient = /** @class */ (function () {
                         SimpadhuClient.logger.eError("SimpadhuClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            formDataSimpadhuClient: dataForm,
                             message: e_2.message,
                         });
                         return [2 /*return*/, e_2.response];

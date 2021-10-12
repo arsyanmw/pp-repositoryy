@@ -86,6 +86,8 @@ var BeneficialOwnerClient = /** @class */ (function () {
                         BeneficialOwnerClient.logger.eError("BeneficialOwnerClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataBeneficialOwnerClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             message: e_1.message,
                         });
                         return [2 /*return*/, e_1.response];

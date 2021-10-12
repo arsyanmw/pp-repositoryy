@@ -118,6 +118,7 @@ var PtClient = /** @class */ (function () {
                         PtClient.logger.eError("PtClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            formData: dataForm,
                             code: e_2.code,
                             message: e_2.message,
                         });

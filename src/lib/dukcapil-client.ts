@@ -101,6 +101,8 @@ class DukcapilClient {
             DukcapilClient.logger.eError(`DukcapilClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                bodyDataDukcapilClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataDukcapilClient: typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 message: e.message,
             });
             return e.response;

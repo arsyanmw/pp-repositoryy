@@ -52,6 +52,7 @@ class SimpadhuClient {
             SimpadhuClient.logger.eError(`SimpadhuClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                formDataSimpadhuClient: dataForm,
                 message: e.message,
             });
             return e.response;

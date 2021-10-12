@@ -86,6 +86,8 @@ var DjpClient = /** @class */ (function () {
                         DjpClient.logger.eError("DjpClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            bodyDataDjpClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             message: e_1.message,
                         });
                         return [2 /*return*/, e_1.response];
@@ -97,19 +99,21 @@ var DjpClient = /** @class */ (function () {
     DjpClient.get = function (path, headers, params) {
         if (params === void 0) { params = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            var paramUri_1, start, endPoint, result, end, e_2;
+            var paramUri, start, endPoint, result, end, e_2, end;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        paramUri_1 = '';
+                        paramUri = '';
                         lodash_1.forOwn(params, function (value, key) {
-                            paramUri_1 += paramUri_1 == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
+                            paramUri += paramUri == '' ? "?" + key + "=" + value : "&" + key + "=" + value;
                         });
                         start = perf_hooks_1.performance.now();
-                        endPoint = DjpClient.host + path + paramUri_1;
-                        return [4 /*yield*/, axios_1.default.get(endPoint, { headers: headers, timeout: 10000 })];
+                        endPoint = DjpClient.host + path + paramUri;
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, axios_1.default.get(endPoint, { headers: headers, timeout: 10000 })];
+                    case 2:
                         result = _a.sent();
                         end = perf_hooks_1.performance.now();
                         lodash_1.unset(params, 'username');
@@ -122,11 +126,19 @@ var DjpClient = /** @class */ (function () {
                             status: result.status,
                         });
                         return [2 /*return*/, result];
-                    case 2:
+                    case 3:
                         e_2 = _a.sent();
-                        DjpClient.logger.eError("DjpClient:get:" + path, { message: e_2.message });
+                        end = perf_hooks_1.performance.now();
+                        lodash_1.unset(params, 'username');
+                        lodash_1.unset(params, 'password');
+                        DjpClient.logger.eError("DjpClient:get:" + path, {
+                            timeExecution: (end - start).toFixed(2) + " milliseconds.",
+                            endPoint: endPoint,
+                            paramsDataDjpClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
+                            message: e_2.message,
+                        });
                         return [2 /*return*/, e_2.response];
-                    case 3: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

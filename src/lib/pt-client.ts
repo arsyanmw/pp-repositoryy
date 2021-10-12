@@ -43,6 +43,7 @@ class PtClient {
             PtClient.logger.eError(`PtClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                formData: dataForm,
                 code: e.code,
                 message: e.message,
             });

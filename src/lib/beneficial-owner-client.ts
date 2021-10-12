@@ -81,6 +81,9 @@ class BeneficialOwnerClient {
             BeneficialOwnerClient.logger.eError(`BeneficialOwnerClient:post:${path}`, {
                 timeExecution: `${(end - start).toFixed(2)} milliseconds.`,
                 endPoint,
+                bodyDataBeneficialOwnerClient: typeof body == 'object' ? body : { resultNotObject: toString(body) },
+                paramsDataBeneficialOwnerClient:
+                    typeof params == 'object' ? params : { resultNotObject: toString(params) },
                 message: e.message,
             });
             return e.response;

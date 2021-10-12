@@ -122,6 +122,8 @@ var DukcapilClient = /** @class */ (function () {
                         DukcapilClient.logger.eError("DukcapilClient:post:" + path, {
                             timeExecution: (end - start).toFixed(2) + " milliseconds.",
                             endPoint: endPoint,
+                            bodyDataDukcapilClient: typeof body == 'object' ? body : { resultNotObject: lodash_1.toString(body) },
+                            paramsDataDukcapilClient: typeof params == 'object' ? params : { resultNotObject: lodash_1.toString(params) },
                             message: e_1.message,
                         });
                         return [2 /*return*/, e_1.response];
