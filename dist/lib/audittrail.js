@@ -64,18 +64,22 @@ var AuditTrail = /** @class */ (function () {
     function AuditTrail() {
         this.elasticLibrary = new elastic_search_1.ElasticLibrary();
     }
-    AuditTrail.prototype.getIndex = function () {
-        return "audittrail-" + AuditTrail.ENVIRONMENT.toLowerCase() + "-" + moment().locale('id').format('YYYY.MM.DD');
+    AuditTrail.prototype.getIndex = function (source) {
+        return "audittrail-" + source + "-" + AuditTrail.ENVIRONMENT.toLowerCase() + "-" + moment()
+            .locale('id')
+            .format('YYYY.MM.DD');
     };
     AuditTrail.prototype.getIndexLogEmail = function () {
         return "logs-email-" + AuditTrail.ENVIRONMENT.toLowerCase() + "-" + moment().locale('id').format('YYYY.MM.DD');
     };
     AuditTrail.prototype.commit = function (auditTrail) {
         return __awaiter(this, void 0, void 0, function () {
-            var isCreated, data, response;
+            var sourceName, isCreated, data, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.checkIndex(this.getIndex())];
+                    case 0:
+                        sourceName = auditTrail.source || AuditTrail.SERVICE_NAME;
+                        return [4 /*yield*/, this.checkIndex(this.getIndex(sourceName))];
                     case 1:
                         isCreated = _a.sent();
                         data = lodash_1.cloneDeepWith(auditTrail.data, function (value) {
@@ -85,17 +89,17 @@ var AuditTrail = /** @class */ (function () {
                         });
                         delete auditTrail.data;
                         return [4 /*yield*/, this.elasticLibrary.indexOrUpdate({
-                                index: this.getIndex(),
+                                index: this.getIndex(sourceName),
                                 body: __assign(__assign({ '@timestamp': moment().locale('id').toISOString(), source: AuditTrail.SERVICE_NAME }, auditTrail), { data: data }),
                             })];
                     case 2:
                         response = _a.sent();
                         if (!!isCreated) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.elasticLibrary.indicesPutSettings({
-                                index: this.getIndex(),
+                                index: this.getIndex(sourceName),
                                 flat_settings: true,
                                 body: {
-                                    'index.mapping.total_fields.limit': '5000',
+                                    'index.mapping.total_fields.limit': '3000',
                                 },
                             })];
                     case 3:

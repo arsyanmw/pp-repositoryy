@@ -46,8 +46,10 @@ class AuditTrail {
         this.elasticLibrary = new ElasticLibrary();
     }
 
-    private getIndex(): string {
-        return `audittrail-${AuditTrail.ENVIRONMENT.toLowerCase()}-${moment().locale('id').format('YYYY.MM.DD')}`;
+    private getIndex(source: string): string {
+        return `audittrail-${source}-${AuditTrail.ENVIRONMENT.toLowerCase()}-${moment()
+            .locale('id')
+            .format('YYYY.MM.DD')}`;
     }
 
     private getIndexLogEmail(): string {
@@ -55,7 +57,8 @@ class AuditTrail {
     }
 
     public async commit(auditTrail: BaseAuditrail): Promise<any> {
-        const isCreated = await this.checkIndex(this.getIndex());
+        const sourceName = auditTrail.source || AuditTrail.SERVICE_NAME;
+        const isCreated = await this.checkIndex(this.getIndex(sourceName));
 
         const data = cloneDeepWith(auditTrail.data, (value) => {
             if (isInteger(value)) {
@@ -64,7 +67,7 @@ class AuditTrail {
         });
         delete auditTrail.data;
         const response = await this.elasticLibrary.indexOrUpdate({
-            index: this.getIndex(),
+            index: this.getIndex(sourceName),
             body: {
                 '@timestamp': moment().locale('id').toISOString(),
                 source: AuditTrail.SERVICE_NAME,
@@ -74,10 +77,10 @@ class AuditTrail {
         });
         if (!isCreated) {
             await this.elasticLibrary.indicesPutSettings({
-                index: this.getIndex(),
+                index: this.getIndex(sourceName),
                 flat_settings: true,
                 body: {
-                    'index.mapping.total_fields.limit': '5000',
+                    'index.mapping.total_fields.limit': '3000',
                 },
             });
         }
