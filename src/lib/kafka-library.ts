@@ -68,12 +68,14 @@ class KafkaLibrary {
                 data: result,
             };
         } catch (error) {
-            console.error(`[example/producer] ${error.message}`, error);
+            console.error(`KafkaLibrary/sendMessages Error Message - ${error.message}`, error);
+            console.error(`KafkaLibrary/sendMessages Error Data -`, topic, messages);
             return {
                 status: 400,
                 message: error.message,
             };
         } finally {
+            console.log(`KafkaLibrary/sendMessages Data -`, topic, messages);
             await this.producer.disconnect();
         }
     }
