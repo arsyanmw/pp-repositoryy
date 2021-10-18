@@ -99,14 +99,14 @@ var KafkaLibrary = /** @class */ (function () {
                             }];
                     case 3:
                         error_1 = _a.sent();
-                        console.error("KafkaLibrary/sendMessages Error Message - " + error_1.message, error_1);
-                        console.error("KafkaLibrary/sendMessages Error Data -", topic, messages);
+                        console.error("KafkaLibrary/sendMessages Error Message - " + error_1.message, JSON.stringify(error_1));
+                        console.error("KafkaLibrary/sendMessages Error Data -", topic, JSON.stringify(messages));
                         return [2 /*return*/, {
                                 status: 400,
                                 message: error_1.message,
                             }];
                     case 4:
-                        console.log("KafkaLibrary/sendMessages Data -", topic, messages);
+                        console.log("KafkaLibrary/sendMessages Data -", topic, JSON.stringify(messages));
                         return [4 /*yield*/, this.producer.disconnect()];
                     case 5:
                         _a.sent();
