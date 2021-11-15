@@ -12,10 +12,12 @@ declare class KafkaLibrary {
     private static readonly kafkaBroker;
     private static readonly serviceName;
     private static readonly environment;
-    private applicationId;
-    private kafka;
-    private producer;
+    private logLevel;
+    private optionConfig;
     constructor(logLevelKafka?: logLevel, optionConfig?: any);
+    private createKafkaConnection;
+    private createProducers;
+    private getApplicationId;
     getBroker(): Array<string>;
     getTopicPostfix(topic: string): string;
     getConsumer(group: string): Consumer;

@@ -17,24 +17,35 @@ class KafkaLibrary {
     private static readonly kafkaBroker: string = process.env.KAFKA_BROKER || '127.0.0.1:9092';
     private static readonly serviceName: string = process.env.SERVICE_NAME || 'service-local';
     private static readonly environment: string = process.env.ENVIRONMENT || 'development';
-    private applicationId: string;
-    private kafka: Kafka;
-    private producer: Producer;
+    private logLevel: logLevel;
+    private optionConfig: any;
 
     constructor(logLevelKafka: logLevel = logLevel.ERROR, optionConfig: any = {}) {
-        const brokers = KafkaLibrary.kafkaBroker.trim().split(',');
-        this.applicationId = `${KafkaLibrary.serviceName}-${KafkaLibrary.environment}`;
+        this.logLevel = logLevelKafka;
+        this.optionConfig = optionConfig;
+    }
 
-        this.kafka = new Kafka({
-            logLevel: logLevelKafka,
+    private createKafkaConnection(): Kafka {
+        const brokers = this.getBroker();
+
+        return new Kafka({
+            logLevel: this.logLevel,
             brokers,
-            clientId: this.applicationId,
-            ...optionConfig,
+            clientId: this.getApplicationId(),
+            ...this.optionConfig,
         });
-        this.producer = this.kafka.producer({
+    }
+
+    private createProducers(): Producer {
+        const kafka: Kafka = this.createKafkaConnection();
+        return kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
         });
+    }
+
+    private getApplicationId(): string {
+        return `${KafkaLibrary.serviceName}-${KafkaLibrary.environment}`;
     }
 
     public getBroker(): Array<string> {
@@ -46,8 +57,8 @@ class KafkaLibrary {
     }
 
     public getConsumer(group: string): Consumer {
-        return this.kafka.consumer({
-            groupId: `${group}-${this.applicationId}`,
+        return this.createKafkaConnection().consumer({
+            groupId: `${group}-${this.getApplicationId()}`,
         });
     }
 
@@ -55,9 +66,10 @@ class KafkaLibrary {
         messages: kafkaMessageInterface[],
         topic: string,
     ): Promise<kafkaLibraryResponseInterface> {
+        const producer = this.createProducers();
         try {
-            await this.producer.connect();
-            const result = await this.producer.send({
+            await producer.connect();
+            const result = await producer.send({
                 topic: this.getTopicPostfix(topic),
                 compression: CompressionTypes.Snappy,
                 messages,
@@ -76,7 +88,7 @@ class KafkaLibrary {
             };
         } finally {
             console.log(`KafkaLibrary/sendMessages Data -`, topic, JSON.stringify(messages));
-            await this.producer.disconnect();
+            await producer.disconnect();
         }
     }
 }

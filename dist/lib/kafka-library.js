@@ -56,14 +56,23 @@ var KafkaLibrary = /** @class */ (function () {
     function KafkaLibrary(logLevelKafka, optionConfig) {
         if (logLevelKafka === void 0) { logLevelKafka = kafkajs_1.logLevel.ERROR; }
         if (optionConfig === void 0) { optionConfig = {}; }
-        var brokers = KafkaLibrary.kafkaBroker.trim().split(',');
-        this.applicationId = KafkaLibrary.serviceName + "-" + KafkaLibrary.environment;
-        this.kafka = new kafkajs_1.Kafka(__assign({ logLevel: logLevelKafka, brokers: brokers, clientId: this.applicationId }, optionConfig));
-        this.producer = this.kafka.producer({
+        this.logLevel = logLevelKafka;
+        this.optionConfig = optionConfig;
+    }
+    KafkaLibrary.prototype.createKafkaConnection = function () {
+        var brokers = this.getBroker();
+        return new kafkajs_1.Kafka(__assign({ logLevel: this.logLevel, brokers: brokers, clientId: this.getApplicationId() }, this.optionConfig));
+    };
+    KafkaLibrary.prototype.createProducers = function () {
+        var kafka = this.createKafkaConnection();
+        return kafka.producer({
             idempotent: true,
             maxInFlightRequests: 5,
         });
-    }
+    };
+    KafkaLibrary.prototype.getApplicationId = function () {
+        return KafkaLibrary.serviceName + "-" + KafkaLibrary.environment;
+    };
     KafkaLibrary.prototype.getBroker = function () {
         return KafkaLibrary.kafkaBroker.trim().split(',');
     };
@@ -71,33 +80,36 @@ var KafkaLibrary = /** @class */ (function () {
         return topic.trim() + "-" + KafkaLibrary.environment;
     };
     KafkaLibrary.prototype.getConsumer = function (group) {
-        return this.kafka.consumer({
-            groupId: group + "-" + this.applicationId,
+        return this.createKafkaConnection().consumer({
+            groupId: group + "-" + this.getApplicationId(),
         });
     };
     KafkaLibrary.prototype.sendMessages = function (messages, topic) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
+            var producer, result, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, 4, 6]);
-                        return [4 /*yield*/, this.producer.connect()];
+                        producer = this.createProducers();
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 4, 5, 7]);
+                        return [4 /*yield*/, producer.connect()];
+                    case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.producer.send({
+                        return [4 /*yield*/, producer.send({
                                 topic: this.getTopicPostfix(topic),
                                 compression: kafkajs_1.CompressionTypes.Snappy,
                                 messages: messages,
                             })];
-                    case 2:
+                    case 3:
                         result = _a.sent();
                         return [2 /*return*/, {
                                 status: 200,
                                 message: 'success',
                                 data: result,
                             }];
-                    case 3:
+                    case 4:
                         error_1 = _a.sent();
                         console.error("KafkaLibrary/sendMessages Error Message - " + error_1.message, JSON.stringify(error_1));
                         console.error("KafkaLibrary/sendMessages Error Data -", topic, JSON.stringify(messages));
@@ -105,13 +117,13 @@ var KafkaLibrary = /** @class */ (function () {
                                 status: 400,
                                 message: error_1.message,
                             }];
-                    case 4:
-                        console.log("KafkaLibrary/sendMessages Data -", topic, JSON.stringify(messages));
-                        return [4 /*yield*/, this.producer.disconnect()];
                     case 5:
+                        console.log("KafkaLibrary/sendMessages Data -", topic, JSON.stringify(messages));
+                        return [4 /*yield*/, producer.disconnect()];
+                    case 6:
                         _a.sent();
                         return [7 /*endfinally*/];
-                    case 6: return [2 /*return*/];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
