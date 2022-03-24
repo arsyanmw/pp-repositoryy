@@ -54,7 +54,8 @@ var moment = require("moment");
 var ElasticLibrary = /** @class */ (function () {
     function ElasticLibrary() {
         this.elasticSearchConnection = new elasticsearch_1.Client({
-            node: ElasticLibrary.elasticsearchHost,
+            nodes: lodash_1.toString(ElasticLibrary.elasticsearchHost).split(','),
+            requestTimeout: 20000,
         });
     }
     ElasticLibrary.prototype.indexOrUpdate = function (indexInput) {

@@ -1,5 +1,6 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 import debugFormat from 'winston-format-debug';
+import { toString } from 'lodash';
 import { ElasticsearchTransport } from 'winston-elasticsearch';
 const winston = require('winston');
 
@@ -10,7 +11,7 @@ const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 class Logger {
     private esTransport = new ElasticsearchTransport({
         clientOpts: {
-            node: ELASTICSEARCH_LOGS,
+            nodes: toString(ELASTICSEARCH_LOGS).split(','),
             maxRetries: 2,
             requestTimeout: 60000,
             sniffOnStart: true,

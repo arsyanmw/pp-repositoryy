@@ -8,6 +8,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = void 0;
 /* eslint @typescript-eslint/no-var-requires: "off" */
 var winston_format_debug_1 = require("winston-format-debug");
+var lodash_1 = require("lodash");
 var winston_elasticsearch_1 = require("winston-elasticsearch");
 var winston = require('winston');
 var ELASTICSEARCH_LOGS = process.env.ELASTICSEARCH_LOGS || 'http://127.0.0.1:9200';
@@ -17,7 +18,7 @@ var Logger = /** @class */ (function () {
     function Logger() {
         this.esTransport = new winston_elasticsearch_1.ElasticsearchTransport({
             clientOpts: {
-                node: ELASTICSEARCH_LOGS,
+                nodes: lodash_1.toString(ELASTICSEARCH_LOGS).split(','),
                 maxRetries: 2,
                 requestTimeout: 60000,
                 sniffOnStart: true,

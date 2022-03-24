@@ -1,5 +1,5 @@
 import { Client } from '@elastic/elasticsearch';
-import { pickBy, identity, isNumber } from 'lodash';
+import { pickBy, identity, isNumber, toString } from 'lodash';
 import * as moment from 'moment';
 
 interface SearchBodyProfilePp {
@@ -97,7 +97,8 @@ class ElasticLibrary {
 
     constructor() {
         this.elasticSearchConnection = new Client({
-            node: ElasticLibrary.elasticsearchHost,
+            nodes: toString(ElasticLibrary.elasticsearchHost).split(','),
+            requestTimeout: 20000,
         });
     }
 
