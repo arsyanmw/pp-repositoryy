@@ -1,0 +1,30 @@
+import { BaseUserLog } from './BaseUserLog';
+export declare class FinancePpHistory extends BaseUserLog {
+    id: number;
+    identitiesId: number;
+    ppMasterId: number;
+    perseroanName: string;
+    transactionNumber: string;
+    fileCertificate: string;
+    aktivaKas: number;
+    aktivaPerlengkapan: number;
+    aktivaLainnya: number;
+    aktivaTotal: number;
+    modalKewajiban: number;
+    modalHutangDagang: number;
+    modalHutangLainnya: number;
+    modalUsaha: number;
+    modalTotal: number;
+    pendapatan: number;
+    pendapatanJasa: number;
+    pendapatanLainnya: number;
+    pendapatanTotal: number;
+    bebanOperasional: number;
+    bebanSewa: number;
+    bebanLainnya: number;
+    bebanTotal: number;
+    labaRugi: number;
+    periodeBulan: number;
+    periodeTahun: number;
+    statementCondition: string;
+}
