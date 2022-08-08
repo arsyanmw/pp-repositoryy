@@ -3,6 +3,7 @@ import { IdentityNik } from './IdentityNik';
 import { IdentityEmail } from './IdentityEmail';
 import { IdentityGroup } from './IdentityGroup';
 import { Position } from './Position';
+import { Finance } from './Finance';
 export declare class Identity extends BaseUserLog {
     id: number;
     fullName: string;
@@ -28,4 +29,5 @@ export declare class Identity extends BaseUserLog {
     createdBy: number;
     updatedBy: number;
     deletedBy: number;
+    finance: Finance;
 }

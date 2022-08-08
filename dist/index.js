@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PpMasterTransactionNumberCount = exports.PpMasterTransactionState = exports.PpMasterHistory = exports.PpMaster = exports.PpBlockedHistory = exports.PpBlocked = exports.Position = exports.NormalizationWords = exports.Menu = exports.Kbli = exports.IdentityNik = exports.IdentityGroup = exports.IdentityEmail = exports.Identity = exports.Group = exports.GlobalParam = exports.ModificationPpOwner = exports.ModificationPpHistory = exports.ModificationPpBenefit = exports.ModificationPpActivities = exports.ModificationPp = exports.EstablishmentPpOwner = exports.EstablishmentPpHistory = exports.EstablishmentPpBenefit = exports.EstablishmentPpActivities = exports.EstablishmentPp = exports.District = exports.Country = exports.City = exports.BlacklistType = exports.Blacklist = exports.Base = exports.BadwordsType = exports.Badwords = exports.AnnouncementTransaction = exports.AnnouncementNews = exports.ActionMenu = exports.AccessMenu = exports.Connection = exports.Logger = exports.Jwt = exports.AuditTrailDataType = exports.AuditTrail = exports.ElasticLibrary = exports.KafkaLibrary = exports.RedisConnect = exports.ClientInformation = exports.ErrorCode = exports.ServiceResponse = exports.connection = void 0;
-exports.CorrectionPpActivities = exports.CorrectionPpPrevious = exports.CorrectionPpOwner = exports.CorrectionPp = exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = void 0;
+exports.FinancePpHistory = exports.Finance = exports.CorrectionPpActivities = exports.CorrectionPpPrevious = exports.CorrectionPpOwner = exports.CorrectionPp = exports.Section = exports.TrackingDownloadCounter = exports.TrackingDownloadDetail = exports.TrackingDownloadSection = exports.PpProfileState = exports.BenefitCriteria = exports.PpProfileLeads = exports.DispersalPpHistory = exports.DispersalReason = exports.DispersalPpOwner = exports.DispersalPpBenefit = exports.DispersalPpActivities = exports.DispersalPp = exports.Whitelist = exports.TransactionType = exports.SubDistrict = exports.Province = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 Object.defineProperty(exports, "Connection", { enumerable: true, get: function () { return typeorm_1.Connection; } });
@@ -176,6 +176,10 @@ var CorrectionPpPrevious_1 = require("./entity/CorrectionPpPrevious");
 Object.defineProperty(exports, "CorrectionPpPrevious", { enumerable: true, get: function () { return CorrectionPpPrevious_1.CorrectionPpPrevious; } });
 var CorrectionPpActivities_1 = require("./entity/CorrectionPpActivities");
 Object.defineProperty(exports, "CorrectionPpActivities", { enumerable: true, get: function () { return CorrectionPpActivities_1.CorrectionPpActivities; } });
+var Finance_1 = require("./entity/Finance");
+Object.defineProperty(exports, "Finance", { enumerable: true, get: function () { return Finance_1.Finance; } });
+var FinancePpHistory_1 = require("./entity/FinancePpHistory");
+Object.defineProperty(exports, "FinancePpHistory", { enumerable: true, get: function () { return FinancePpHistory_1.FinancePpHistory; } });
 /**
  * Another lib
  */
@@ -201,8 +205,8 @@ var connection = function (config) { return __awaiter(void 0, void 0, void 0, fu
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + '/entity/**/*'], logger: config.logger || new winston_1.WinstonAdaptor(new logger_1.Logger().elasticLogger, config.logging || 'all') });
-                return [4 /*yield*/, typeorm_1.createConnection(connectionOptions)];
+                connectionOptions = __assign(__assign({}, config), { entities: [__dirname + '/entity/**/*'], migrations: [__dirname + '/migrations/**/*'], logger: config.logger || new winston_1.WinstonAdaptor(new logger_1.Logger().elasticLogger, config.logging || 'all') });
+                return [4 /*yield*/, (0, typeorm_1.createConnection)(connectionOptions)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });
