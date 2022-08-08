@@ -65,6 +65,8 @@ import { CorrectionPp } from './entity/CorrectionPp';
 import { CorrectionPpOwner } from './entity/CorrectionPpOwner';
 import { CorrectionPpPrevious } from './entity/CorrectionPpPrevious';
 import { CorrectionPpActivities } from './entity/CorrectionPpActivities';
+import { Finance } from './entity/Finance';
+import { FinancePpHistory } from './entity/FinancePpHistory';
 /**
  * Another lib
  */
@@ -160,4 +162,6 @@ export {
     CorrectionPpOwner,
     CorrectionPpPrevious,
     CorrectionPpActivities,
+    Finance,
+    FinancePpHistory,
 };

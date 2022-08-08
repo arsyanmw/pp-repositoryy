@@ -5,6 +5,7 @@ import { IdentityEmail } from './IdentityEmail';
 import { IdentityGroup } from './IdentityGroup';
 import { IsNotEmpty, Length, IsPhoneNumber, IsOptional, IsDateString, IsNumberString } from 'class-validator';
 import { Position } from './Position';
+import { Finance } from './Finance';
 
 @Entity({ name: 'identities' })
 export class Identity extends BaseUserLog {
@@ -176,4 +177,11 @@ export class Identity extends BaseUserLog {
         nullable: true,
     })
     deletedBy: number;
+
+    @OneToMany((type) => Finance, (finance) => finance.identitiesId)
+    @JoinColumn({
+        name: 'identities_id',
+        referencedColumnName: 'id',
+    })
+    finance: Finance;
 }
