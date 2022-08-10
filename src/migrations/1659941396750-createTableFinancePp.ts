@@ -29,6 +29,14 @@ export class createTableFinancePp1659941396750 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'perseroan_npwp',
+                        type: 'bigint',
+                    },
+                    {
+                        name: 'perseroan_sub_district_id',
+                        type: 'int',
+                    },
+                    {
                         name: 'transaction_number',
                         type: 'varchar',
                     },

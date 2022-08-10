@@ -34,6 +34,14 @@ export class createTableFinancePpHistory1659947015547 implements MigrationInterf
                         type: 'varchar',
                     },
                     {
+                        name: 'perseroan_npwp',
+                        type: 'bigint',
+                    },
+                    {
+                        name: 'perseroan_sub_district_id',
+                        type: 'int',
+                    },
+                    {
                         name: 'transaction_number',
                         type: 'varchar',
                     },

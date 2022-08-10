@@ -72,6 +72,14 @@ var createTableFinancePp1659941396750 = /** @class */ (function () {
                                     type: 'varchar',
                                 },
                                 {
+                                    name: 'perseroan_npwp',
+                                    type: 'bigint',
+                                },
+                                {
+                                    name: 'perseroan_sub_district_id',
+                                    type: 'int',
+                                },
+                                {
                                     name: 'transaction_number',
                                     type: 'varchar',
                                 },
