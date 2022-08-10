@@ -54,7 +54,15 @@ var FinancePpHistory = /** @class */ (function (_super) {
         __metadata("design:type", Number)
     ], FinancePpHistory.prototype, "ppMasterId", void 0);
     __decorate([
-        (0, typeorm_1.Column)({
+        typeorm_1.Column({
+            name: 'pp_finance_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        __metadata("design:type", Number)
+    ], FinancePpHistory.prototype, "ppFinanceId", void 0);
+    __decorate([
+        typeorm_1.Column({
             type: 'varchar',
             name: 'perseroan_name',
         }),

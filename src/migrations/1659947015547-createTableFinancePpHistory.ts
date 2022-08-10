@@ -25,6 +25,11 @@ export class createTableFinancePpHistory1659947015547 implements MigrationInterf
                         isNullable: false,
                     },
                     {
+                        name: 'pp_finance_id',
+                        type: 'bigint',
+                        isNullable: false,
+                    },
+                    {
                         name: 'perseroan_name',
                         type: 'varchar',
                     },

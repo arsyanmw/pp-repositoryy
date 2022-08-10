@@ -45,7 +45,7 @@ var createTableFinancePpHistory1659947015547 = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: 
+                    case 0:
                     // migration for create table finance_pp_history from entity/FinancePpHistory.ts
                     return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
                             name: 'finance_pp_history',
@@ -64,6 +64,11 @@ var createTableFinancePpHistory1659947015547 = /** @class */ (function () {
                                 },
                                 {
                                     name: 'pp_master_id',
+                                    type: 'bigint',
+                                    isNullable: false,
+                                },
+                                {
+                                    name: 'pp_finance_id',
                                     type: 'bigint',
                                     isNullable: false,
                                 },
@@ -230,7 +235,7 @@ var createTableFinancePpHistory1659947015547 = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: 
+                    case 0:
                     // migration for drop table finance_pp from entity/Finance.ts
                     return [4 /*yield*/, queryRunner.dropTable('finance_pp_history')];
                     case 1:

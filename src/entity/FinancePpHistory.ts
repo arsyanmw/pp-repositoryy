@@ -22,6 +22,13 @@ export class FinancePpHistory extends BaseUserLog {
     ppMasterId: number;
 
     @Column({
+        name: 'pp_finance_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    ppFinanceId: number;
+
+    @Column({
         type: 'varchar',
         name: 'perseroan_name',
     })
