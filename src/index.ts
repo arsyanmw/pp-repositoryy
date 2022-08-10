@@ -67,6 +67,7 @@ import { CorrectionPpPrevious } from './entity/CorrectionPpPrevious';
 import { CorrectionPpActivities } from './entity/CorrectionPpActivities';
 import { Finance } from './entity/Finance';
 import { FinancePpHistory } from './entity/FinancePpHistory';
+import { FinancePpTransactionNumberCount } from './entity/FinancePpTransactionNumberCount';
 /**
  * Another lib
  */
@@ -165,4 +166,5 @@ export {
     CorrectionPpActivities,
     Finance,
     FinancePpHistory,
+    FinancePpTransactionNumberCount,
 };

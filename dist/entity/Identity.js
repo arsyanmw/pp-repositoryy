@@ -32,7 +32,7 @@ var IdentityEmail_1 = require("./IdentityEmail");
 var IdentityGroup_1 = require("./IdentityGroup");
 var class_validator_1 = require("class-validator");
 var Position_1 = require("./Position");
-var Finance_1 = require("./Finance");
+var Finance = require("./Finance");
 var Identity = /** @class */ (function (_super) {
     __extends(Identity, _super);
     function Identity() {
@@ -232,12 +232,12 @@ var Identity = /** @class */ (function (_super) {
         __metadata("design:type", Number)
     ], Identity.prototype, "deletedBy", void 0);
     __decorate([
-        (0, typeorm_1.OneToMany)(function (type) { return Finance_1.Finance; }, function (finance) { return finance.identitiesId; }),
+        (0, typeorm_1.OneToMany)(function (type) { return Finance.Finance; }, function (finance) { return finance.identitiesId; }),
         (0, typeorm_1.JoinColumn)({
             name: 'identities_id',
             referencedColumnName: 'id',
         }),
-        __metadata("design:type", Finance_1.Finance)
+        __metadata("design:type", Finance.Finance)
     ], Identity.prototype, "finance", void 0);
     Identity = __decorate([
         typeorm_1.Entity({ name: 'identities' })
