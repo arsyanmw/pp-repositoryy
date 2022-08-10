@@ -180,6 +180,8 @@ var Finance_1 = require("./entity/Finance");
 Object.defineProperty(exports, "Finance", { enumerable: true, get: function () { return Finance_1.Finance; } });
 var FinancePpHistory_1 = require("./entity/FinancePpHistory");
 Object.defineProperty(exports, "FinancePpHistory", { enumerable: true, get: function () { return FinancePpHistory_1.FinancePpHistory; } });
+var FinancePpTransactionNumberCount_1 = require("./entity/FinancePpTransactionNumberCount");
+Object.defineProperty(exports, "FinancePpTransactionNumberCount", { enumerable: true, get: function () { return FinancePpTransactionNumberCount_1.FinancePpTransactionNumberCount; } });
 /**
  * Another lib
  */
