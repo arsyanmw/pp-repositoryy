@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, JoinColumn } from 'typeorm';
 import { BaseUserLog } from './BaseUserLog';
 import { Identity } from './Identity';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { PpMaster } from './PpMaster';
 
 @Entity({ name: 'finance_pp' })
@@ -29,6 +29,20 @@ export class Finance extends BaseUserLog {
     })
     @IsString()
     perseroanName: string;
+
+    @Column({
+        name: 'perseroan_npwp',
+        type: 'bigint',
+    })
+    perseroanNpwp: number;
+
+    @Column({
+        name: 'perseroan_sub_district_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    @IsNotEmpty()
+    perseroanSubDistrictId: number;
 
     @Column({
         type: 'varchar',

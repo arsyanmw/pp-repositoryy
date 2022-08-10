@@ -5,6 +5,8 @@ export declare class FinancePpHistory extends BaseUserLog {
     ppMasterId: number;
     ppFinanceId: number;
     perseroanName: string;
+    perseroanNpwp: number;
+    perseroanSubDistrictId: number;
     transactionNumber: string;
     fileCertificate: string;
     aktivaKas: number;

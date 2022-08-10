@@ -70,7 +70,23 @@ var FinancePpHistory = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], FinancePpHistory.prototype, "perseroanName", void 0);
     __decorate([
-        (0, typeorm_1.Column)({
+        typeorm_1.Column({
+            name: 'perseroan_npwp',
+            type: 'bigint',
+        }),
+        __metadata("design:type", Number)
+    ], FinancePpHistory.prototype, "perseroanNpwp", void 0);
+    __decorate([
+        typeorm_1.Column({
+            name: 'perseroan_sub_district_id',
+            type: 'bigint',
+            nullable: false,
+        }),
+        class_validator_1.IsNotEmpty(),
+        __metadata("design:type", Number)
+    ], FinancePpHistory.prototype, "perseroanSubDistrictId", void 0);
+    __decorate([
+        typeorm_1.Column({
             type: 'varchar',
             name: 'transaction_number',
         }),

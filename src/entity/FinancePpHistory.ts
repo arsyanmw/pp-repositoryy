@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { BaseUserLog } from './BaseUserLog';
-import { IsNumber, IsNumberString, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsNumberString, IsString } from 'class-validator';
 
 @Entity({ name: 'finance_pp_history' })
 export class FinancePpHistory extends BaseUserLog {
@@ -34,6 +34,20 @@ export class FinancePpHistory extends BaseUserLog {
     })
     @IsString()
     perseroanName: string;
+
+    @Column({
+        name: 'perseroan_npwp',
+        type: 'bigint',
+    })
+    perseroanNpwp: number;
+
+    @Column({
+        name: 'perseroan_sub_district_id',
+        type: 'bigint',
+        nullable: false,
+    })
+    @IsNotEmpty()
+    perseroanSubDistrictId: number;
 
     @Column({
         type: 'varchar',

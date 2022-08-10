@@ -6,6 +6,8 @@ export declare class Finance extends BaseUserLog {
     identitiesId: Identity;
     ppMasterId: PpMaster;
     perseroanName: string;
+    perseroanNpwp: number;
+    perseroanSubDistrictId: number;
     transactionNumber: string;
     fileCertificate: string;
     aktivaKas: number;
